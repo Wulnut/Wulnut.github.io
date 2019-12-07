@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Hello World ~ Wulnut</title>
+  <title>MinGW调试命令 ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -111,7 +111,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Friday, December 6th 2019, 6:21 pm
+                  Saturday, December 7th 2019, 1:13 pm
                 </p>
               
 
@@ -120,7 +120,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    75 字
+                    1.2k 字
                   </span>&nbsp;
                 
 
@@ -128,7 +128,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      5 分钟
                   </span>&nbsp;
                 
 
@@ -161,20 +161,192 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="lang-bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="lang-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="lang-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="lang-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h1 id="MinGW调试命令"><a href="#MinGW调试命令" class="headerlink" title="MinGW调试命令"></a>MinGW调试命令</h1><p>&emsp;&emsp;MinGW（Minimalist GNU for Windows）提供了一套简单方便的Windows下的基于GCC程序开发环境。MinGW收集了一系列免费的Windows是用的头文件和库文件；同时整合了GNU的工具集，特别是GNU程序开发
+工具，如经典的gcc，g++，make等。MinGW是完全免费的自由软件，它在Windows平台下模拟了Linux下
+GCC的开发环境，为C++的跨平台开发提供了良好的基础支持，为了在Windows下工作的程序员熟悉Linux下
+的C++工程组织提供了条件。简单的说，它是个精简的C/C++编译器，它实际上是将经典的开源C语言/C++编
+译器GCC/G++移植到了Windows下，并且包含了Win32API，因此可以将源代码编译生成Windows下的可执行
+程序。虽然VC6等编译器，只要点击鼠标就可以完成编译，但它会自动生成一大堆工程文件，让初学者摸不
+着头脑，而MinGW则只会生成一个可执行文件</p>
 
+<hr>
+<h2 id="gdb调试测试代码-test-c-："><a href="#gdb调试测试代码-test-c-：" class="headerlink" title="gdb调试测试代码(test.c)："></a>gdb调试测试代码(test.c)：</h2><pre><code>#include &lt;stdio.h&gt;
+
+void swap(int *a,int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(void)
+{
+    int a=1,b=2;
+    swap(&amp;a,&amp;b);
+    printf(&quot;a = %d ,b = %d\n&quot;,a,b);
+    return 0;
+}
+</code></pre><h3 id="要支持调试，在编译时要加入-g选项，编译命令："><a href="#要支持调试，在编译时要加入-g选项，编译命令：" class="headerlink" title="要支持调试，在编译时要加入-g选项，编译命令："></a>要支持调试，在编译时要加入-g选项，编译命令：</h3><pre><code>gcc text.c -g text.exe
+</code></pre><h3 id="出现调试命令："><a href="#出现调试命令：" class="headerlink" title="出现调试命令："></a>出现调试命令：</h3><pre><code>GNU gdb (GDB) 7.6.1
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;mingw32&quot;.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;...
+Reading symbols from D:\mypro\C\test.exe...done.
+(gdb)
+</code></pre><h3 id="gdb调试命令表："><a href="#gdb调试命令表：" class="headerlink" title="gdb调试命令表："></a>gdb调试命令表：</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:center">解释</th>
+<th style="text-align:right">简写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td style="text-align:center">加载一个可执行文件，也可以在运行gdb的时候加载，两种方法都不会运行程序</td>
+<td style="text-align:right">无</td>
+</tr>
+<tr>
+<td>list</td>
+<td style="text-align:center">列出可执行源码的一部分，通常在程序开始运行前执行，用来设置断点</td>
+<td style="text-align:right">l</td>
+</tr>
+<tr>
+<td>next</td>
+<td style="text-align:center">单步调试，不进入函数</td>
+<td style="text-align:right">n</td>
+</tr>
+<tr>
+<td>step</td>
+<td style="text-align:center">单步调试，进入函数</td>
+<td style="text-align:right">s</td>
+</tr>
+<tr>
+<td>run</td>
+<td style="text-align:center">运行加载了的程序</td>
+<td style="text-align:right">r</td>
+</tr>
+<tr>
+<td>continue</td>
+<td style="text-align:center">继续执行程序</td>
+<td style="text-align:right">c</td>
+</tr>
+<tr>
+<td>quit</td>
+<td style="text-align:center">退出调试</td>
+<td style="text-align:right">q</td>
+</tr>
+<tr>
+<td>print</td>
+<td style="text-align:center">输出制定的变量的值，变量要在程序运行处可见</td>
+<td style="text-align:right">p</td>
+</tr>
+<tr>
+<td>break</td>
+<td style="text-align:center">设置断点</td>
+<td style="text-align:right">b</td>
+</tr>
+<tr>
+<td>info break</td>
+<td style="text-align:center">查看断点的信息</td>
+<td style="text-align:right">i b</td>
+</tr>
+<tr>
+<td>delete</td>
+<td style="text-align:center">删除断点</td>
+<td style="text-align:right">d</td>
+</tr>
+<tr>
+<td>watch</td>
+<td style="text-align:center">监视一个变量的值，一旦值发生变化，程序将会被暂停执行</td>
+<td style="text-align:right">wa</td>
+</tr>
+<tr>
+<td>help</td>
+<td style="text-align:center">查看gdb的帮助信息</td>
+<td style="text-align:right">h</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="1-l命令，列出部分代码："><a href="#1-l命令，列出部分代码：" class="headerlink" title="1.l命令，列出部分代码："></a>1.l命令，列出部分代码：</h3><p>在(gdb)后面输入l可以显示一部分代码再输入一次l可以显示全部代码</p>
+<pre><code>(gdb) l
+2   
+3   void swap(int *a,int *b){
+4       int temp = *a;
+5       *a = *b;
+6       *b = temp;
+7   }
+8   
+9   int main(void)
+10  {
+11      int a=1,b=2;
+(gdb)
+
+(gdb) l
+12      swap(&amp;a,&amp;b);
+13      printf(&quot;a = %d ,b = %d\n&quot;,a,b);
+14      return 0;
+15  }(gdb) l
+(gdb) Line number 16 out of range; test.c has 15 lines
+</code></pre><h3 id="2-start命令，开始运行，会停到main入口处："><a href="#2-start命令，开始运行，会停到main入口处：" class="headerlink" title="2.start命令，开始运行，会停到main入口处："></a>2.start命令，开始运行，会停到main入口处：</h3><pre><code>(gdb) start
+Temporary breakpoint 1 at 0x401491: file test.c, line 11.
+Starting program: D:\mypro\C/test.exe 
+[New Thread 8000.0x18c4]
+[New Thread 8000.0x2418]
+
+Temporary breakpoint 1, main () at test.c:11
+11      int a=1,b=2
+</code></pre><h3 id="4-n命令：单步调试，不进入函数，跳到第12行"><a href="#4-n命令：单步调试，不进入函数，跳到第12行" class="headerlink" title="4.n命令：单步调试，不进入函数，跳到第12行:"></a>4.n命令：单步调试，不进入函数，跳到第12行:</h3><pre><code>(gdb) n
+12      swap(&amp;a,&amp;b);
+</code></pre><h3 id="5-s命令：单步调试，进入函数，跳到第4行"><a href="#5-s命令：单步调试，进入函数，跳到第4行" class="headerlink" title="5.s命令：单步调试，进入函数，跳到第4行:"></a>5.s命令：单步调试，进入函数，跳到第4行:</h3><pre><code>gdb) s
+swap (a=0x61ff2c, b=0x61ff28) at test.c:4
+4       int temp = *a;
+</code></pre><h3 id="6-b命令设置断点（b-第n行代码的行数）："><a href="#6-b命令设置断点（b-第n行代码的行数）：" class="headerlink" title="6.b命令设置断点（b + 第n行代码的行数）："></a>6.b命令设置断点（b + 第n行代码的行数）：</h3><pre><code>(gdb) b 6
+Breakpoint 2 at 0x401478: file test.c, line 6.
+</code></pre><h3 id="7-r命令-运行程序，直到下一个断点就停："><a href="#7-r命令-运行程序，直到下一个断点就停：" class="headerlink" title="7.r命令,运行程序，直到下一个断点就停："></a>7.r命令,运行程序，直到下一个断点就停：</h3><pre><code>The program being debugged has been started already.
+Start it from the beginning? (y or n)
+...
+Breakpoint 2, swap (a=0x61ff2c, b=0x61ff28) at test.c:6
+6       *b = temp;
+</code></pre><h3 id="7-p命令-输出制定的变量的值，变量要在程序运行处可见"><a href="#7-p命令-输出制定的变量的值，变量要在程序运行处可见" class="headerlink" title="7.p命令,输出制定的变量的值，变量要在程序运行处可见:"></a>7.p命令,输出制定的变量的值，变量要在程序运行处可见:</h3><pre><code>(gdb) p *a
+$1 = 2
+(gdb) p *b
+$2 = 2
+(gdb) p a
+$3 = (int *) 0x61ff2c
+(gdb) p b
+$4 = (int *) 0x61ff28
+</code></pre><p>next一下，再看b的值：</p>
+<pre><code>(gdb) n
+7   }
+(gdb) p *b
+$5 = 1
+</code></pre><h3 id="8-i-b命令-查看断点信息"><a href="#8-i-b命令-查看断点信息" class="headerlink" title="8.i b命令,查看断点信息:"></a>8.i b命令,查看断点信息:</h3><pre><code>(gdb) i b
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x00401478 in swap at test.c:6
+    breakpoint already hit 1 time
+</code></pre><h3 id="9-d命令-删除断点，不加断点位置即删除所有断点"><a href="#9-d命令-删除断点，不加断点位置即删除所有断点" class="headerlink" title="9.d命令,删除断点，不加断点位置即删除所有断点:"></a>9.d命令,删除断点，不加断点位置即删除所有断点:</h3><pre><code>(gdb) d 
+Delete all breakpoints? (y or n) [answered Y; input not from terminal]
+(gdb) i b
+No breakpoints or watchpoints.
+</code></pre><h3 id="10-没有断点后，再试一下r命令，可以看到，执行完了程序："><a href="#10-没有断点后，再试一下r命令，可以看到，执行完了程序：" class="headerlink" title="10.没有断点后，再试一下r命令，可以看到，执行完了程序："></a>10.没有断点后，再试一下r命令，可以看到，执行完了程序：</h3><pre><code>(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) [answered Y; input not from terminal]
+error return ../../gdb-7.6.1/gdb/windows-nat.c:1275 was 5
+Starting program: D:\mypro\C/test.exe 
+[New Thread 1976.0x1460]
+[New Thread 1976.0x5e0]
+a = 2 ,b = 1
+[Inferior 1 (process 1976) exited normally
+</code></pre><h3 id="11-q命令，退出gdb："><a href="#11-q命令，退出gdb：" class="headerlink" title="11.q命令，退出gdb："></a>11.q命令，退出gdb：</h3><pre><code>(gdb) q
+</code></pre>
             <hr>
           </div>
           <br>
@@ -330,7 +502,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Hello World&nbsp;",
+        "MinGW调试命令&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

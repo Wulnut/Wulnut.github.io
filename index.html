@@ -13,9 +13,9 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -40,7 +40,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Hexo</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Wulnut</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -134,6 +134,232 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/12/07/%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/">
+        <p class="h4 index-header">顺序存储结构</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">线性表的顺序存储结构顺序映象：
+&emsp;&emsp;—— 以x的存储位置和y的春初位置之间某种关系表示逻辑关系
+最简单的一种顺序映象方式是：
+&emsp;&ensp;令 y 的存储位置和 x 的存储位置相邻。用一组==地址连续==的存储单元==依次存放==线性表中的元素。==线性表的起始地址==，称作线性表的基地址。也就是第一个元素。
+以“存储位置相邻”表示有序对$$,即：$LOC(a~i~) = LOC(a~i-1~) + C$;
+&emsp;&ensp;所有数据元素的存储位置。$LOC(a~i~) = LOC(a~1~) + (i - 1) \times C$,其中LOC(a~1~)就是基地址。
+
+存取结构：与存储结构是两个不同的概念。
+存取结构是在一个数据结构上对查找操作的时间性能的一种描述。
+通常由两种存取结构；随机存取结构和顺序存取结构。
+
+随机存取结构是指在一个数据结构上进行查找的时间性能是$O(1)$,即查找任意一个数据元素的时间时候相等的，均为常数时间，例如顺序表示一种随机存期结构。
+顺序存取结构是指在一个数据结构上进行查找的时间性能是$O(n)$，即查找一个数据元</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/12/07/%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8/">
+        <p class="h4 index-header">链式存储</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.3线性表的链式存储结构(单链表)&emsp;&emsp;用一组地址任意的存储来存放线性表中的元素。
+&emsp;&emsp;以元素（数据元素的映象）+指针（指示后继元素存储位置）=结点（表示数据元素或数据元素的映象）
+&emsp;&emsp;以“结点的序列”表示线性表&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;————称作链表
+&emsp;&emsp;以线性表中第一个数据元素a~1~的存储地址作为线性表中的地址，称作线性表的头指针。&emsp;&emsp;有时为了操作方便，在第一个结点之前需加一个“头结点”，以指向头结点的指针为链表的头指针。
+单链表的C语言实现：typedef struct LNode{
+    ElemType data;//数据域
+    struct LNode *next;//指针域
+}LNode, *LinkList;
+
+LinkList L;//L为单链表的头指针;
+单链表操作实现的基本实现：
+
+GetElem(L, i, e)&emsp;//取第i个数据元素
+ListInse</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/12/07/%E9%93%BE%E8%A1%A8Dummy%20Node/">
+        <p class="h4 index-header">链表Dummy Node</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">链表Dummy Node（一）Partition Listhttps://leetcode.com/problems/partition-list/description/
+题目：给出一个链表和一个x值，要求返回一个顺序链表使得小于x的数在链表前面，大于等于x的数在链表后面，保证节点顺序不变。
+      例如：$1-&gt;3-&gt;2-&gt;4-&gt;2, 3$ 变成：$1-&gt;2-&gt;2-&gt;3-&gt;4$
+解答：建立两个新的左、右指针及dummy node，使用head指针遍历整个链表，遇到大于等于head的节点则放到右链表，否则放到左链表。最后将左右链表相连。
+
+第一次犯错：忘记将又指针的尾部指向null;
+
+代码：
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+         if (head == null) {
+            return head;
+        }
+
+        ListNode leftDummy = new Lis</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/12/07/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/">
+        <p class="h4 index-header">二叉树遍历</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">二叉树遍历总结&emsp;&emsp;二叉树的遍历(treaversing binary tree)是指从根节点出发，按照某种次序依次访问二叉树中的所有结点，使得每个结点被访问一次且仅被访问一次。这是二叉树遍历的定义。二叉树的遍历方式可以很多，如果我们限制了从左到右的习惯方式，那么主要就分四种。
+
+前序遍历(PreOrder)
+中序遍历(InOrder)
+后续遍历(PastOrder)
+层序遍历(LevelOrder)
+
+树的前中后序遍历是个递归的定义，在遍历到根节点的左/右子树时，也要遵循前/中/后序遍历的顺序，例如下面这棵树：
+前序遍历：ABDECFG中序遍历：DBEAFCG后序遍历：DEBFGCA层序遍历：ABCDEFG
+树的结点结构体声明如下：语言：C语言（为了省事用到了C++的栈，因为C语言要用栈的话要自己重新写一个出来，就偷了个懒）编译器：VS
+typedef char DataType;
+typedef struct TreeNode{    DataType data;    struct TreeNode left;    struct TreeNode right;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/12/07/MinGW%E8%B0%83%E8%AF%95%E5%91%BD%E4%BB%A4/">
+        <p class="h4 index-header">MinGW调试命令</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">MinGW调试命令&emsp;&emsp;MinGW（Minimalist GNU for Windows）提供了一套简单方便的Windows下的基于GCC程序开发环境。MinGW收集了一系列免费的Windows是用的头文件和库文件；同时整合了GNU的工具集，特别是GNU程序开发
+工具，如经典的gcc，g++，make等。MinGW是完全免费的自由软件，它在Windows平台下模拟了Linux下
+GCC的开发环境，为C++的跨平台开发提供了良好的基础支持，为了在Windows下工作的程序员熟悉Linux下
+的C++工程组织提供了条件。简单的说，它是个精简的C/C++编译器，它实际上是将经典的开源C语言/C++编
+译器GCC/G++移植到了Windows下，并且包含了Win32API，因此可以将源代码编译生成Windows下的可执行
+程序。虽然VC6等编译器，只要点击鼠标就可以完成编译，但它会自动生成一大堆工程文件，让初学者摸不
+着头脑，而MinGW则只会生成一个可执行文件
+
+
+gdb调试测试代码(test.c)：#include &lt;stdio.h&gt;
+
+void swap(i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/12/07/remove_list_entry%EF%BC%88%E6%97%A0%E9%9C%80%20if%20%E9%80%BB%E8%BE%91%EF%BC%89/">
+        <p class="h4 index-header">remove_list_entry（无需 if 逻辑）</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">remove_list_entry（无需 if 逻辑）
+&emsp;&emsp;这是期TED里面的内容，内容是采访linux的之父Linus Torvalds。&emsp;&emsp;Linus Torvalds两次改变了技术，第一次是Linux内核，它帮助互联网的发展，第二次是Git，全球开发者使用的源代码管理系统。在一次TED的采访中，Torvalds以极其开放的态度讨论了他独特的工作方式和性格特点。Torvalds说：“我不是一个空想家，我是一名工程师，我非常乐意跟梦想家在一起，他们行走四方，仰望苍穹，看着满天星辰说，“我想到那儿去。”但我是低头看路的那种人，我只想填好眼前这个坑，不让自己掉进去，这就是我。”
+
+***
+
+&emsp;&emsp;在聊天中CA问道了一个关于代码品味的的问题，这个问题其实很有意思，对于很多写代码的人来说，有好的代码风格和代码品味就好比有了一种审美品味一样。就好比在写代码时你的缩进习惯一样。
+
+
+第一段代码
+
+remove_list_entry(entry)
+{
+    prev = NULL;
+    walk = head;
+​
+    // Wa</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2019/12/06/hello-world/">
         <p class="h4 index-header">Hello World</p>
         
@@ -142,16 +368,16 @@
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
+Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
 
 More info: Writing
-Run server1$ hexo server
+Run server$ hexo server
 
 More info: Server
-Generate static files1$ hexo generate
+Generate static files$ hexo generate
 
 More info: Generating
-Deploy to remote sites1$ hexo deploy
+Deploy to remote sites$ hexo deploy
 
 More info: Deployment
 </div>
@@ -348,6 +574,32 @@ More info: Deployment
   </script>
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 
