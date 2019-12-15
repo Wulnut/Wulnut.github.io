@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>AC（1136）</title>
+    <link href="undefined2019/12/15/AC%EF%BC%881136%EF%BC%89/"/>
+    <url>2019/12/15/AC%EF%BC%881136%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="递归优化"><a href="#递归优化" class="headerlink" title="递归优化"></a>递归优化</h1><p><strong>题目表述</strong><br>优化一下代码：</p><pre><code>#include &lt;iostream&gt;using namespace std;int f(int n){    if (n &lt; 0) return 0;    if (n == 0) return 1;    return f(n - 1) + f(n - 2);}int main(){        int n;    cin &gt;&gt; n;    cout &lt;&lt; f(n);    return 0;}</code></pre><p><strong>输入</strong><br>    一个小于50的正整数n。<br><strong>输出</strong><br>    f(n)，不要换行。<br><strong>样例输入</strong><br>    3<br><strong>样例输出</strong><br>    3</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>&emsp;&emsp;这个题目看起来没有什么意思，但是我们通过分析计算我们会发现。<br>&emsp;&emsp;1. 递归50次后$int$是否够存，<br>&emsp;&emsp;2. 递归50次后会不会爆栈。<br>&emsp;&emsp;3. 我们应该如何优化。<br>&emsp;&emsp;我们将代码复制到编辑器里面后编译会发现在输入49后$int$会溢出说明这49的递归后是一个超过21亿的数，所以我们应该使用$long$ $long$来储存这个庞大的数值。然后就是爆栈的问题，在使用$long$ $long$之后还是能计算出来的说明还没有爆栈，还能计算。然后就是递归的优化问题了。</p><h3 id="什么是递归优化？"><a href="#什么是递归优化？" class="headerlink" title="什么是递归优化？"></a>什么是递归优化？</h3><p>&emsp;&emsp;递归优化是由于递归多次后递归深度过大，导致爆栈。或者是由于递归深度过深之后时间过长，导致之间效率低下。所以我们常见的递归优化有两种。</p><ol><li>尾递归。</li><li>将递归改循环。<br>两种方法，我们在记忆化之后我们发现这些数列之间的插值满足斐波拉切数列。所以我们就可以把这个递归函数改成一个循环函数。就可以实现对递归的优化。</li></ol><p><strong>答案</strong></p><pre><code>#include &lt;iostream&gt;using namespace std;/*int f(int n){    if (n &lt; 0) return 0;    if (n == 0) return 1;    return f(n - 1) + f(n - 2);}*/long long  fibo(int n){    long long nFirst = 0;    long long nSecond = 1;    long long  nThird = 0;    for(int i = 2 ; i &lt;= n; i++){        nThird = nFirst + nSecond;        nFirst = nSecond;        nSecond = nThird;    }    return nThird;}long long f(int n){    long long count = 1;    if(n == 1){        return 1;    }    for (int i = 1; i &lt; n; i++)    {        count += fibo(i);    }    return count+1;}int main(){        int n;    cin &gt;&gt; n;    cout &lt;&lt; f(n);    return 0;}</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>19-12-15</title>
+    <link href="undefined2019/12/15/19-12-15/"/>
+    <url>2019/12/15/19-12-15/</url>
+    
+    <content type="html"><![CDATA[<h1 id="2019-12-15"><a href="#2019-12-15" class="headerlink" title="2019-12-15"></a>2019-12-15</h1><p>&emsp;&emsp;周日这周是一个考试周，有三门考试在这周进行。网页设计、数据结构、CET4。三个考试难度也相对成线性排列。期末考试时间其实是已经提前两个星期已经知道了，我对我得学习能力相对感觉良好，所以我在考试前几周时间我还是把重心放在CET4上面但是也不是全部放上去，在加上两个星期之前我们才进行过线性代数的考试和入党积极分子的最后一次考试，总体来说我的12月过的相对比较忙碌，各种考试在一起导致我每天都要去选择做一些题目来查漏补缺但是到目前为止我在已经考完的三门科目中没有一个要我满意的，并且还有点让我失望，这不仅要我开始反思我从开学到现在我的学习情况到底是一个什么状态，我是不是在认证学习。<br>&emsp;&emsp;12月14号我结束了CET4的考试，对于我来说我抽中的卷子是相对最简单的了。但是我感觉我做的并不好，毕竟我平时做了很多套试卷我都没有计算过我的分数，因为我知道我是个什么水平，在考前一个月左右才开始坚持每天做题，在之前完全没有把这个东西放在心上，只是每天知道马上要开始考CET4了我要准备了，说实话这事一个很严重的问题，对于一个目标是考研学生来说，每天没有自制力，总认为自己在学习生怕被别人看见，难道你现在还么有看清楚么？其实你的学习一点都不影响别人，学习是你的事情，你能对自己的约束力强那你就可学习更多的东西今年的线性代数应该是最简单的一门考试了，那个分数说谁都是很难以置信的，当我看见我的分数的时候我自己都惊了！怎么会这么差，我是怎么做的？考前我每天都在做课后习题啊….<br>&emsp;&emsp;但是说到这，我就很是费解了。我之前认为功夫下在平时，这句话我做到了么，自从我开始当上学生辅导员之后我每晚自习都在干啥？我现在都是大学生了还有一年就要去参加研究生入学考试的人了，你有没有给自己一个准确的目标？我认为是么有，你这个学期完全没有一个完整的学籍计划。上课没有精神，课后没有复习和练习，大一的时候高数课课后你生怕自己和高中一样，眼高手低不练习就认为自己会的状态，去问老师有没有每节课课后的习题可以来巩固知识，而看看现在，上课不听讲，课后看视频认为自己会了但是到头来还是什么都不会，不去做题不去总结是不可能来提升自己的能力的，更何况到最后来复习来查漏补缺？说实话大学时间那么多你都是这么使用的？每天晚上玩到1点？早上就睡觉睡过去？这是你这一个学期的状态对吧，好好反思一下吧。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>顺序存储结构</title>
     <link href="undefined2019/12/07/%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/"/>
     <url>2019/12/07/%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/</url>
