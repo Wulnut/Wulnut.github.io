@@ -133,6 +133,12 @@
   <div class="row mb-4 mx-auto">
     
     
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/12/26/%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91/" target="_self">
+          <img src="/img/报错截图.jpg" srcset="/img/loading.gif" alt="多文件编译" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
     <div class="col-12 col-md-8 m-auto">
       <a href="/2019/12/26/%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91/">
         <p class="h4 index-header">多文件编译</p>
@@ -141,9 +147,17 @@
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">多文件编译遇见的问题C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0x1c): undefined reference to `std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0x2f): undefined reference to `std::istream::operator&gt;&gt;(double&amp;)&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8</div>
+          <div class="index-text mb-1">多文件编译遇见的问题
+该错误出现在 command line 为
+gcc coordin.h file1.cpp file2.cpp -o file1
+解决方法为：解决方法是用如下命令进行编译(使用 -l 来连接 stdc++):
+gcc coordin.h file1.cpp file2.cpp -o HelloWorld
+gcc编译cpp文件为什么要加-lstdc++?
+   gcc可以编译c++文件，也可以编译c文件，但默认是编译c文件的，加-lstdc++表示编译c++文件，
+即链接c++库，加-lc表示链接c库，默认情况下就是链接c库，所以如果编译c文件可以不加-lc。
+另外，你也可以使用 g++, 效果是一样的, stdc++会被自动连接:
+g++ coordin.h file1.cpp file2.cpp -o HelloWorld
+</div>
         </div>
       </a>
 
@@ -186,31 +200,6 @@ int main()
 }
 输入    一个小于50的正整数n。输出    f(n)，不要换行。样例输入    3样例输出    3
 分析&emsp;&emsp;这个题目看起来没有什么意思，但是我们通过分析计算我们会发现。&emsp;&emsp;1. 递归50次后$int$是否够存，&emsp;&emsp;2. 递归50次后会不会爆栈。&emsp;&emsp;3. 我们应该如何优化。&emsp;&emsp;我们将代码复制到编辑器里面后编译会发现在输入49后$int$会溢出说明这49的递归后是一个超过21亿的数，所以</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-15&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/12/15/19-12-15/">
-        <p class="h4 index-header">19-12-15</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2019-12-15&emsp;&emsp;周日这周是一个考试周，有三门考试在这周进行。网页设计、数据结构、CET4。三个考试难度也相对成线性排列。期末考试时间其实是已经提前两个星期已经知道了，我对我得学习能力相对感觉良好，所以我在考试前几周时间我还是把重心放在CET4上面但是也不是全部放上去，在加上两个星期之前我们才进行过线性代数的考试和入党积极分子的最后一次考试，总体来说我的12月过的相对比较忙碌，各种考试在一起导致我每天都要去选择做一些题目来查漏补缺但是到目前为止我在已经考完的三门科目中没有一个要我满意的，并且还有点让我失望，这不仅要我开始反思我从开学到现在我的学习情况到底是一个什么状态，我是不是在认证学习。&emsp;&emsp;12月14号我结束了CET4的考试，对于我来说我抽中的卷子是相对最简单的了。但是我感觉我做的并不好，毕竟我平时做了很多套试卷我都没有计算过我的分数，因为我知道我是个什么水平，在考前一个月左右才开始坚持每天做题，在之前完全没有把这个东西放在心上，只是每天知道马上要开始考CET4了我要准备了，说实话这事一个很严重的问题，对于一个目标是考研学生来说，每天没有</div>
         </div>
       </a>
 
@@ -611,7 +600,7 @@ More info: Deployment
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "&nbsp;",
+        "Despair is chief&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -632,7 +621,7 @@ More info: Deployment
       placement: "right",
       visible: "false",
       
-      icon: "❡"
+      icon: "#"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");

@@ -120,7 +120,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    733 字
+                    176 字
                   </span>&nbsp;
                 
 
@@ -128,7 +128,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -161,27 +161,10 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="多文件编译遇见的问题"><a href="#多文件编译遇见的问题" class="headerlink" title="多文件编译遇见的问题"></a>多文件编译遇见的问题</h1><pre><code>C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0x1c): undefined reference to `std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0x2f): undefined reference to `std::istream::operator&gt;&gt;(double&amp;)&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0x42): undefined reference to `std::istream::operator&gt;&gt;(double&amp;)&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0x57): undefined reference to `std::basic_ios&lt;char, std::char_traits&lt;char&gt; &gt;::operator bool() const&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0xba): undefined reference to `std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0xd2): undefined reference to `std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0xf1): undefined reference to `std::ios_base::Init::~Init()&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.text+0x121): undefined reference to `std::ios_base::Init::Init()&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.rdata$.refptr._ZSt3cin[.refptr._ZSt3cin]+0x0): undefined reference to `std::cin&#39;
-C:\Users\98595\AppData\Local\Temp\ccrAgvY8.o:file1.cpp:(.rdata$.refptr._ZSt4cout[.refptr._ZSt4cout]+0x0): undefined reference to `std::cout&#39;
-C:\Users\98595\AppData\Local\Temp\ccGI62hL.o:file2.cpp:(.text+0xc1): undefined reference to `std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)&#39;
-C:\Users\98595\AppData\Local\Temp\ccGI62hL.o:file2.cpp:(.text+0xd2): undefined reference to `std::ostream::operator&lt;&lt;(double)&#39;
-C:\Users\98595\AppData\Local\Temp\ccGI62hL.o:file2.cpp:(.text+0xe5): undefined reference to `std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)&#39;
-C:\Users\98595\AppData\Local\Temp\ccGI62hL.o:file2.cpp:(.text+0x102): undefined reference to `std::ostream::operator&lt;&lt;(double)&#39;
-C:\Users\98595\AppData\Local\Temp\ccGI62hL.o:file2.cpp:(.text+0x115): undefined reference to `std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)&#39;
-C:\Users\98595\AppData\Local\Temp\ccGI62hL.o:file2.cpp:(.text+0x131): undefined reference to `std::ios_base::Init::~Init()&#39;
-C:\Users\98595\AppData\Local\Temp\ccGI62hL.o:file2.cpp:(.text+0x161): undefined reference to `std::ios_base::Init::Init()&#39;
-collect2.exe: error: ld returned 1 exit status
-</code></pre><p>该错误出现在 command line 为</p>
+            <h1 id="多文件编译遇见的问题"><a href="#多文件编译遇见的问题" class="headerlink" title="多文件编译遇见的问题"></a>多文件编译遇见的问题</h1><p><img src="/img/报错截图.jpg" srcset="/img/loading.gif" alt=" "></p>
+<p>该错误出现在 command line 为</p>
 <pre><code>gcc coordin.h file1.cpp file2.cpp -o file1
-</code></pre><p><strong>解决方法为：</strong><br><strong>解决方法是用如下命令进行编译(使用 -l 来连接 stdc++):</strong> :*</p>
+</code></pre><p><strong>解决方法为：</strong><br><strong>解决方法是用如下命令进行编译(使用 -l 来连接 stdc++):</strong></p>
 <pre><code>gcc coordin.h file1.cpp file2.cpp -o HelloWorld
 </code></pre><p><strong>gcc编译cpp文件为什么要加-lstdc++?</strong></p>
 <pre><code>   gcc可以编译c++文件，也可以编译c文件，但默认是编译c文件的，加-lstdc++表示编译c++文件，
@@ -365,7 +348,7 @@ collect2.exe: error: ld returned 1 exit status
       placement: "right",
       visible: "false",
       
-      icon: "❡"
+      icon: "#"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
