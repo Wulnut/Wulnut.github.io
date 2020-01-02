@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+  <link rel="stylesheet" href="/lib/prettify/github-v2.min.css"  >
 
 <link rel="stylesheet" href="/css/main.css"  >
 
@@ -145,20 +145,11 @@
         
         
           
+          
         
-        <div class="index-excerpt" >
+        <div class="index-excerpt" style="max-height: none;">
           <div class="index-text mb-1">
-多文件编译遇见的问题
-该错误出现在 command line 为
-gcc coordin.h file1.cpp file2.cpp -o file1
-解决方法为：解决方法是用如下命令进行编译(使用 -l 来连接 stdc++):
-gcc coordin.h file1.cpp file2.cpp -o HelloWorld
-gcc编译cpp文件为什么要加-lstdc++?
-   gcc可以编译c++文件，也可以编译c文件，但默认是编译c文件的，加-lstdc++表示编译c++文件，
-即链接c++库，加-lc表示链接c库，默认情况下就是链接c库，所以如果编译c文件可以不加-lc。
-另外，你也可以使用 g++, 效果是一样的, stdc++会被自动连接:
-g++ coordin.h file1.cpp file2.cpp -o HelloWorld
-</div>
+在编译多个文件的时候所出现的报错...</div>
         </div>
       </a>
 
@@ -166,6 +157,11 @@ g++ coordin.h file1.cpp file2.cpp -o HelloWorld
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-26&nbsp;&nbsp;
         
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Notes">Notes</a>&nbsp;
+          &nbsp;
         
         
       </div>
@@ -200,7 +196,56 @@ int main()
     return 0;
 }
 输入    一个小于50的正整数n。输出    f(n)，不要换行。样例输入    3样例输出    3
-分析&emsp;&emsp;这个题目看起来没有什么意思，但是我们通过分析计算我们会发现。&emsp;&emsp;1. 递归50次后$int$是否够存，&emsp;&emsp;2. 递归50次后会不会爆栈。&emsp;&emsp;3. 我们应该如何优化。&emsp;&emsp;我们将代码复制到编辑器里面后编译会发现在输入49后$int$会溢出说明这49的递归后是一个超过21亿的数，所以</div>
+分析&emsp;&emsp;这个题目看起来没有什么意思，但是我们通过分析计算我们会发现。&emsp;&emsp;1. 递归50次后$int$是否够存，&emsp;&emsp;2. 递归50次后会不会爆栈。&emsp;&emsp;3. 我们应该如何优化。&emsp;&emsp;我们将代码复制到编辑器里面后编译会发现在输入49后$int$会溢出说明这49的递归后是一个超过21亿的数，所以我们应该使用$long$ $long$来储存这个庞大的数值。然后就是爆栈的问题，在使用$long$ $long$之后还是能计算出来的说明还没有爆栈，还能计算。然后就是递归的优化问题了。
+什么是递归优化？&emsp;&emsp;递归优化是由于递归多次后递归深度过大，导致爆栈。或者是由于递归深度过深之后时间过长，导致之间效率低下。所以我们常见的递归优化有两种。
+
+尾递归。
+将递归改循环。两种方法，我们在记忆化之后我们发现这些数列之间的插值满足斐波拉切数列。所以我们就可以把这个递归函数改成一个循环函数。就可以实现对递归的优化。
+
+答案
+#include &lt;iostream&gt;
+using namespace std;
+/*int f(int n)
+{
+    if (n &lt; 0) return 0;
+    if (n == 0) return 1;
+    return f(n - 1) + f(n - 2);
+}*/
+
+
+long long  fibo(int n)
+{
+    long long nFirst = 0;
+    long long nSecond = 1;
+    long long  nThird = 0;
+    for(int i = 2 ; i &lt;= n; i++){
+        nThird = nFirst + nSecond;
+        nFirst = nSecond;
+        nSecond = nThird;
+    }
+    return nThird;
+}
+
+long long f(int n){
+    long long count = 1;
+    if(n == 1){
+        return 1;
+    }
+    for (int i = 1; i &lt; n; i++)
+    {
+        count += fibo(i);
+    }
+    return count+1;
+}
+
+int main()
+{    
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; f(n);
+    return 0;
+}
+</div>
         </div>
       </a>
 
@@ -237,7 +282,99 @@ int main()
 通常由两种存取结构；随机存取结构和顺序存取结构。
 
 随机存取结构是指在一个数据结构上进行查找的时间性能是$O(1)$,即查找任意一个数据元素的时间时候相等的，均为常数时间，例如顺序表示一种随机存期结构。
-顺序存取结构是指在一个数据结构上进行查找的时间性能是$O(n)$，即查找一个数据元</div>
+顺序存取结构是指在一个数据结构上进行查找的时间性能是$O(n)$，即查找一个数据元素的时间复杂度是线性的，与该元素在结构中的位置有关，例如单链表是一种顺序存储结构。
+
+
+
+顺序映象的C语言描述#define LISTSIZE 100  //存储空间最大分配量
+typedef struct {
+    ElemType elem[LISTSZIE];
+    int length;  //当前长度
+}Sqlist; 
+//Sqlist，代表线性表;
+
+在线性表的静态分配顺序存储结构中，线性表的最多数据元素个数为LSITSIZE，元素数量不能随意增加，这是以数组方式描述线性表的缺点。
+
+&emsp;&ensp;为了实现线性表最大存储数据元素数可随意变化，可以使用一个动态的数组来取代上面的固定长度数组，如下描述。
+线性表的动态分配顺序储存结构：
+#define LIST_INIT_SIZE 100  //初始分配量
+#define LISTINCREMENT 10 //分配分配增量
+
+typedef struct {
+    ElemType *elem;  //储存空间基址
+    int length; //当前长度
+    int listsize; //当前分配的存储容量
+}SqList;// 俗称 顺序表
+线性表操作1.InitList(&amp;L);&emsp;&emsp;InitList(&amp;L); 的实现是一个加工型的运算，因此，将L设为引用参数，首先动态分配存储空间，然后，将length设置为0，表示表中没有数据元素。
+代码实现：
+Status InitList_Sq (SqList &amp;L){
+    L.elem = (ElemType* )malloc(LIST_INIT_SIZE * sizeof (ElemType));
+    if (!L.elem){
+        exit (1);//储存分配失败
+    }
+    L.length = 0;
+    L.listsize = LIST_INIT_SIZE;//初始储存容量;
+    return OK;
+}
+2.LocateElme(L,x,compare());
+线性表中的按置操作是指在线性表中查找与给定值X相等的数据元素。
+顺序表中完成该运算最简单的方法是：从第一个元素a~1~起依次和X比较，直到找到一个与X相等的数据元素，则返回它在顺序表中的存储下标记或序号(二者差1);或者查遍整个表都没有找到与X相等的元素，返回ERROR。
+
+代码实现：
+Status LocateElem_Sq (SqList L, ElemType x){
+    int i = 0;
+    while (i &lt;= L.length-1 &amp;&amp; L.elem[i] != x){
+        i++;
+    }
+    if(i &gt; L.length - 1){
+        return ERROR;
+    }
+    else return i;
+}
+
+本算法的主要运算是比较，显然比较的次数与x在表中的位置有关，也与表长有关。当a~1~ = x时，比较一次成功，当a~n~ = x时比较n次成功，按值查找的平均比较次数为 $\frac{(N+1)}{2}$,时间性能为$O(n)$。
+
+3. ListInsert(&amp;L, i, e)代码实现:
+Status ListInsert_Sq (SqList &amp;L, int i, ElemType e){
+    //在顺序表L的第i个元素之前插入新的元素e
+    //i的合法范围为 1 &lt;=i&lt;=L.length+1
+    ElemType *q = &amp;(L.elem[i-1]);//q指示插入位置
+    ElemType *p;
+    for (p = &amp;(L.elem[L.length-1]); p &gt;= q; --p){
+            *(p + 1) = *p;//插入位置及之后的元素右移
+            *q = e;//插入e
+        ++L.length;//表长增1
+    }
+}
+算法时间复杂度为：$O(ListLength(L))$
+if (i &lt; 1 || i &gt; L.length + 1){
+    return ERROR;//插入位置不合法
+}
+
+if (L.length &gt;= L.listsize){
+    return OVERFLOW;//当前存储空间已满
+}
+考虑移动元素的平均情况：&emsp;&emsp;假设在第i个元素之前插入的概率为p~i~,则在长度为n的线性表中插入一个元素为所需移动元素次数的期望值为：
+E_is = \sum_{i = 1}^{n + 1} P_i(n - i + 1)所有为位置的概率的累加和。
+&emsp;&emsp;若假定在线性表中任何一个位置上进行插入的概率都是相等的，则移动元素的期望值为：
+E_is = \frac{i}{n+1}\sum_{i=1}^{n+1}(n-i+1) = \frac{2}{n}4. ListDelete(&amp;L, i, &amp;e)的实现：代码实现：
+Status LsitDelet_Sq (SqList &amp;L, int i, ElemType &amp;e){
+    if((i &lt; 1) || (i &gt; L.length)){
+        return ERROR;//删除位置不合法
+    }
+    p = &amp;(L.elem[i-1]);//p为被删除元素的位置
+    e = *p;//被删除元素的值赋给e,可以查看被删元素
+    q = L.elem + L.length-1;//表尾元素的位置，基址加上一个整数值
+    for (++p; p &lt;= q; ++p){
+        *(p-1) = *p;//被删除元素之后的元素左移
+        --L.length;//表长减一
+    }
+    return OK;
+}
+算法时间复杂度为：$O(ListLength(L))$
+考虑移动元素的平均情况：&emsp;&emsp;假设删除第i个元素的概率为$q_i$,则在长度为$n$的线性表中删除一个元素所需移动元素次数的期望值为：
+E_dl = \sum_{i=1}^{n}q_i(n-i)&emsp;&emsp;假设定在线性表中任何一个位置上进行删除的概率都是相等的，则移动元素的期望值为：
+E_dl=\frac{1}{n}\sum_{i=1}^{n}(n-1)=\frac{n-1}{2}</div>
         </div>
       </a>
 
@@ -275,7 +412,13 @@ LinkList L;//L为单链表的头指针;
 单链表操作实现的基本实现：
 
 GetElem(L, i, e)&emsp;//取第i个数据元素
-ListInse</div>
+ListInsert(&amp;L, i, e)&emsp;//插入数据元素
+ListDelete(&amp;L, i, e)&emsp;//删除数据元素
+ClearList(&amp;L)&emsp;//重新置为一个空表
+CreateList(&amp;L, n)&emsp;//生成含$n$个数据元素的链表
+
+找第1个数据元素，必须先找到第$i-1$个数据元素。因此，查找第i个数据元素的基本操作是==移动指针，比较j和i==。令指针p始终指向线性表中第j个数据元素。
+</div>
         </div>
       </a>
 
@@ -314,7 +457,169 @@ class Solution {
             return head;
         }
 
-        ListNode leftDummy = new Lis</div>
+        ListNode leftDummy = new ListNode(0);
+        ListNode rightDummy = new ListNode(0);
+        ListNode left = leftDummy;
+        ListNode right = rightDummy;
+
+        while (head != null) {
+            if (head.val &gt;= x) {
+                right.next = head;
+                right = right.next;
+            } else {
+                left.next = head;
+                left = left.next;
+            }
+            head = head.next;
+        }
+        right.next = null;
+        left.next = rightDummy.next;
+        return leftDummy.next;
+    }
+}
+（二） Merge Two Sorted Listshttps://leetcode.com/problems/merge-two-sorted-lists/description/
+AC！
+
+题目：将两个顺序链表合并成一个顺序链表；
+解答：依次比较两个链表里的值大小进行排列；
+
+改进：当一个链表指针指向null，另一个链表还没时，可以直接将重新排列的链表尾指向当前指针：
+
+           if (l1 != null) {
+
+           head.next = l1;
+
+           } else {
+
+           head.next = l2;
+
+          }
+代码：
+
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode head = dummy;
+
+        while (l2 != null &amp;&amp; l1 != null) {
+            if (l1.val &lt;= l2.val) {
+                head.next = l1;
+                l1 = l1.next;
+            } else {
+                head.next = l2;
+                l2 = l2.next;
+            }
+            head = head.next;
+        } 
+        while (l1 != null) {
+            head.next = l1;
+            l1 = l1.next;
+            head = head.next;
+        }
+        while (l2 != null) {
+            head.next = l2;
+            l2 = l2.next;
+            head = head.next;
+        }
+        head.next = null;
+        return dummy.next;
+    }
+}
+（三）swap two nodes in linked listhttps://leetcode.com/problems/swap-nodes-in-pairs/description/
+AC！
+
+题目：两两交换链表中节点位置。如：$1-&gt;2-&gt;4-&gt;5-&gt;6$ 转变为: $2-&gt;1-&gt;5-&gt;4-&gt;6$
+解答：使用两个指针遍历链表；
+
+代码：
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode headNext = head.next;
+        ListNode headPrev = dummy;
+
+        while (head != null &amp;&amp; headNext != null) {
+            headPrev.next = headNext;
+            head.next = headNext.next;
+            headNext.next = head;
+            headPrev = head;
+            head = head.next;
+            if (head != null) {
+                headNext = head.next;
+            }
+        }
+        return dummy.next;
+    }
+}
+（四）reorder listhttps://leetcode.com/problems/reorder-list/description/
+题目：给定一个单链表：$L0-&gt;L1-&gt;…-&gt;Ln-1-&gt;Ln,$
+      重新排序后为：$L0-&gt;Ln-&gt;L1-&gt;Ln-1-&gt;L2-&gt;Ln-2-&gt;...$
+解答：
+
+第一次犯错：将链表尾连接到头之后，忘记将尾的前一个指针指向空；
+
+第二次犯错：忘记考虑链表头和prevTail重合的情况（偶数链表）。
+
+代码：
+class Solution {
+    public void reorderList(ListNode head) {
+        while (head != null &amp;&amp; head.next != null) {
+            ListNode prevTail = head;
+            while (prevTail.next.next != null) {
+                prevTail = prevTail.next;
+            }
+            ListNode tail = prevTail.next;
+            if (head.next == tail) {
+                break;
+            } 
+            tail.next = head.next;
+            head.next = tail;
+            head = head.next.next;
+            prevTail.next = null;
+        }
+    }
+}
+（四）Rotate Listhttps://leetcode.com/problems/rotate-list/description/
+题目：将链表尾部的k个节点移到链表头部；
+解答：每次将链表最后一个节点移动至链表头，移动k次；
+
+第一次犯错：（超时）先遍历链表，得到链表长度length，循环只需执行 k%length 次；
+代码：
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+
+
+        ListNode tail = head;
+        int length = 0;
+
+        while (tail != null ) {
+            length++;
+            tail = tail.next;
+        }
+
+        if (length == 0 || length == 1) {
+            return head;
+        }
+
+        for (int i = 0; i &lt; k % length; i++) {
+            ListNode preTail = head;
+            while (preTail != null &amp;&amp; preTail.next != null &amp;&amp; preTail.next.next != null) {
+                preTail = preTail.next;
+            }
+            tail = preTail.next;
+            tail.next = head;
+            preTail.next = null;
+            head = tail;
+        }
+        return head;
+    }
+}
+</div>
         </div>
       </a>
 
@@ -350,7 +655,125 @@ class Solution {
 前序遍历：ABDECFG中序遍历：DBEAFCG后序遍历：DEBFGCA层序遍历：ABCDEFG
 树的结点结构体声明如下：语言：C语言（为了省事用到了C++的栈，因为C语言要用栈的话要自己重新写一个出来，就偷了个懒）编译器：VS
 typedef char DataType;
-typedef struct TreeNode{    DataType data;    struct TreeNode left;    struct TreeNode right;</div>
+typedef struct TreeNode{    DataType data;    struct TreeNode left;    struct TreeNode right;}TreeNode;
+前序遍历（先序遍历）对于一棵树的前序遍历，递归的写法是最简单的（写起来），就是将一个大的问题转化为几个小的子问题，直到子问题可以很容易求解，最后将子问题的解组合起来就是大问题的解。
+前序访问的递归写法先放代码，如果看完觉得不太清楚可以看看下面的详细步骤图解。
+void PreOrder(const TreeNode *root){    if (root == NULL)                 //若结点为空    {        printf(“# “);        return;    }    printf(“%c “, root-&gt;data);        //输出根节点的值    PreOrder(root-&gt;left);             //前序访问左子树    PreOrder(root-&gt;right);            //前序访问右子树}
+比如说还是上面的这颗树：
+访问根节点
+访问左子树
+走到这里之后发现根节点的左孩子还是一棵子树，那就将访问这棵子树看作是遍历整颗树的一个子问题，遍历这棵子树的方法和遍历整颗树的方法是一样的。然后继续访问它的左子树：
+为了理解起来方便一点，我在这里加上了它的两个为空的左右孩子然后发现这（可能）还是一棵子树，就继续用这种方法来对待这颗子树，就是继续访问它的左子树：
+发现这是一个空节点，那就直接返回，去访问它的右子树：
+发现还是一个空节点，那么继续返回，这时候D和它的左右孩子结点都访问过了，继续返回，应该访问B的右子树了。
+然后就和D结点一样的处理方法，-&gt;左孩子，发现是空，返回-&gt;右孩子，发现还是空，继续返回，发现这时候B的左右孩子都访问过了，继续返回。访问右子树
+然后和处理A的左子树的方法一样，最后访问到G结点的右子树时，发现是空，就返回，这时候树的所有节点都已经访问过了，所以可以一路返回到A结点的右子树完的地方，整个递归就结束了。
+最后输出的前序访问序列便是：ABDECFG前序访问的非递归写法还是先上代码：
+void PreOrderLoop(TreeNode root){    std::stack&lt;TreeNode &gt; s;    TreeNode cur, top;    cur = root;    while (cur != NULL || !s.empty())    {        while (cur != NULL)        {            printf(“%c “, cur-&gt;data);            s.push(cur);            cur = cur-&gt;left;        }
+    top = s.top();
+    s.pop();
+
+    cur = top-&gt;right;
+}
+}
+非递归的写法比递归写法要麻烦一点，要用到栈来存储树的结点，在理解非递归方法的时候要重点理解栈中保存的元素的共同点是什么，在前序访问中，栈中元素都是自己和自己的左孩子都访问过了，而右孩子还没有访问到的节点，如果不太懂可以看下面的详细步骤图解。
+首先我们要用一个指针（cur）来指向当前访问的结点
+发现这个节点不为空，就将它的数据输出，然后将这个节点的地址（图上的栈中写了节点的值是为了便于理解，实际上栈中保存的是节点地址）压栈。
+再去访问它的左子树，发现左孩子结点依旧不为空，继续输出并压栈。
+同理压栈D节点
+然后访问D的左孩子，发现为空，便从栈中拿出栈顶结点top，让cur = top-&gt;right,便访问到了D的右孩子。
+发现D的右孩子还是为空，这个看一下栈，发现栈不为空，说明还存在右孩子没被访问过的节点，就继续从栈中拿出栈顶结点top，让cur = top-&gt;right，便访问到了B的右孩子。
+B的右孩子处理方法和D一样，然后再从栈中拿出A节点，去访问A的右孩子C，在访问到G节点的右孩子之后，发现当前节点cur为空，栈中也没有元素可以取出来了，这时候就代表整棵树都被访问过了，便结束循环。
+最后输出的前序访问序列便是：ABDECFG中序遍历对于一棵树的中序遍历，和前序一样，可以分为递归遍历和非递归遍历，递归遍历是相对简单的，还是子问题思想，将一个大问题分解，直到可以解决，最后解决整个大问题。
+中序遍历的递归写法还是先上代码：
+void InOrder(const TreeNode *root){    if (root == NULL)              //判断节点是否为空    {        printf(“# “);        return;    }    InOrder(root-&gt;left);           //中序遍历左子树    printf(“%c “, root-&gt;data);     //访问节点值    InOrder(root-&gt;right);          //中序遍历右子树}
+从根节点进入
+发现根节点不为空，访问左子树
+发现不为空，继续访问左子树
+发现不为空，继续访问左子树
+这时root为空了，就返回去访问它的根节点，刚才的访问只是路过，并没有真正地遍历节点的信息，在返回途中才是真正地遍历到了节点的信息。
+访问到了D节点，下来要访问的是D的右孩子，因为D的左孩子已经访问过了。
+发现还是空，就返回，而它的根节点D也访问过了，那么就继续返回，该访问D节点的父节点B了。
+B访问过后下来要访问的是B的右孩子，因为是从B的左子树回来的路，B的左孩子已经访问过了。
+然后和访问D一样，-&gt;左孩子，为空，返回访问根节点E，-&gt;右孩子，为空（这部分就不画了，和D节点的访问是一样的），最后返回，B已经访问过了，就继续返回，至此，整颗树的左子树访问完了。
+
+访问B的根节点A
+
+遍历A的右子树遍历右子树的过程和左子树一样，还是左-&gt;根-&gt;右的中序遍历下去，直到遍历到G的右孩子，发现为空，就返回，因为右子树都遍历过了，所以可以一直返回到root为A节点的那一层递归，整个遍历结束。
+
+
+最后输出的中序访问序列为：DBEAFCG
+非递归写法中序访问的非递归写法和前序一样，都要用到一个栈来辅助存储，不一样的地方在于前序访问时，栈中保存的元素是右子树还没有被访问到的节点的地址，而中序访问时栈中保存的元素是节点自身和它的右子树都没有被访问到的节点地址。
+先上代码：
+void InOrderLoop(TreeNode root){    std::stack&lt;TreeNode &gt; s;    TreeNode *cur;    cur = root;    while (cur != NULL || !s.empty())    {        while (cur != NULL)        {            s.push(cur);            cur = cur-&gt;left;        }
+    cur = s.top();
+    s.pop();
+    printf(&quot;%c &quot;, cur-&gt;data);
+
+    cur = cur-&gt;right;
+}
+}
+cur指针一路沿着最左边往下访问，路过的节点全部压栈，直到遇到空节点
+从栈中取出栈顶节点top，输出栈顶结点的值并使cur = top-&gt;right，从第一步开始去遍历top的右子树。
+遍历完之后，cur走到了D节点的右孩子，发现cur 为空，但栈中还有元素，就重复第二步
+这时候，cur走到了E节点的右孩子，发现cur 为空，但栈中还有元素，就继续重复第二步，之后cur = top-&gt;right，cur指针继续去遍历A节点的右子树，从第一步开始
+访问到F的左孩子节点发现是空，这时候栈中还有元素，就重复第二步
+照这个规则依次访问下去，最后会访问到G节点的右孩子，这时候cur为空，栈也空了，就代表所有节点已经遍历完了，就结束循环，遍历完成。
+最后输出的中序访问序列为:DBEAFCG
+后序遍历后序遍历还是分递归版本和非递归版本，后序遍历的递归版本和前序中序很相似，就是输出根节点值的时机不同，而后序遍历的非递归版本则要比前序和中序的要难一些，因为在返回根节点时要分从左子树返回和右子树返回两种情况，从左子树返回时不输出，从右子树返回时才需要输出根节点的值。
+递归写法先上代码：
+void PostOrder(TreeNode *root){    if (root == NULL)    {        printf(“# “);        return;    }    PostOrder(root-&gt;left);    PostOrder(root-&gt;right);    printf(“%c “, root-&gt;data);}
+后序遍历的递归版本和前中序非常相似，就是输出根节点值的时机不同，详细图解这里就不画了，可以联系前中序的递归版本来理解。
+后序遍历的非递归写法后序遍历的非递归同样要借助一个栈来保存元素，栈中保存的元素是它的右子树和自身都没有被遍历到的节点，与中序遍历不同的是先访问右子树，在回来的时候再输出根节点的值。需要多一个last指针指向上一次访问到的节点，用来确认是从根节点的左子树返回的还是从右子树返回的。
+先上代码：
+void PostOrderLoop(TreeNode root){    std::stack&lt;TreeNode &gt; s;    TreeNode cur, top, *last = NULL;    cur = root;    while (cur != NULL || !s.empty())    {        while (cur != NULL)        {            s.push(cur);            cur = cur-&gt;left;        }
+    top = s.top();
+
+    if (top-&gt;right == NULL || top-&gt;right == last){
+        s.pop();
+        printf(&quot;%c &quot;, top-&gt;data);
+        last = top;
+    }
+    else {
+        cur = top-&gt;right;
+    }
+}
+}
+还是沿着左子树一路往下走，将路过的节点都压栈，直到走到空节点。
+然后从栈中看一下栈顶元素（只看一眼，用top指针记下，先不出栈），如果top节点没有右子树，或者last等于top的右孩子，说明top的右子树不存在或者遍历过了，就输出top节点的值，并将栈顶元素pop掉（出栈），反之则是从左子树回到根节点的，接下来要去右子树。
+如图，top的右孩子为空，说明右子树不存在，就可以输出top的值并pop掉栈顶了，这时候用last指针记下top指向的节点，代表上一次处理的节点。（这一过程cur始终没有动，一直指向空）
+继续从栈顶看一个元素记为top，然后发现top的右孩子不为空，而且last也不等于top-&gt;right，就使cur = top-&gt;right，回到第一步，用同样的方法来处理top的右子树，下一次回来的时候，last指针指向的是E节点。
+这时候发现top的右孩子不为空，但是last等于top-&gt;right，说明top的右子树遍历完成，下一步就要输出top的值并且将这个节点出栈，下一次再从栈中看一个栈顶元素A即为top。
+这时候再比较，发现top的right不为空，而且last也不等于top-&gt;right，说明top有右子树并且还没有遍历过，就让cur = top-&gt;right，回到第一步用同样的方法来遍历A的右子树。到最后，cur访问到了G的左孩子，而top也一路出栈到了A节点，发现cur为空，并且栈中也为空，这时候便代表整个树已经遍历完成，结束循环。
+最后输出的中序访问序列为:DEBFGCA
+层序遍历层序遍历是比较接近人的思维方式的一种遍历方法，将二叉树的每一层分别遍历，直到最后的叶子节点被全部遍历完，这里要用到的辅助数据结构是队列，队列具有先进先出的性质。
+上代码：
+void LevelOrder(TreeNode root){    std::queue&lt;TreeNode &gt; q;    TreeNode *front;
+if (root == NULL)return;
+
+q.push(root);
+
+while (!q.empty())
+{
+    front = q.front();
+    q.pop();
+
+    if (front-&gt;left)
+        q.push(front-&gt;left);
+
+    if (front-&gt;right)
+        q.push(front-&gt;right);
+
+    printf(&quot;%c &quot;, front-&gt;data);
+}
+}
+层序遍历的思路是，创建一个队列，先将根节点（A）入队，然后用front指针将根节点记下来，再将根节点出队，接下来看front节点（也就是刚才的根节点）有没有左孩子或右孩子，如果有，先左（B）后右（C）入队，最后输出front节点的值，只要队列还不为空，就说明还没有遍历完，就进行下一次循环，这时的队头元素（front）则为刚才入队的左孩子（B），然后front出队，再把它的左右孩子拉进来（如果有），因为队列的先进先出性质，B的左右孩子DE是排在C后面的，然后输出B，下一次循环将会拉人C的左右孩子FG，最后因为FG没有左右孩子，一直出队，没有入队元素，队列迟早会变为空，当队列为空时，整颗树就层序遍历完成了，结束循环。
+根节点入队，并用front指针标记
+队头出队，并将左右孩子拉进队列
+重复1，2
+直到队列为空
+这时候便代表整个树遍历完成，结束循环。最后输出的层序访问序列为:ABCDEF
+</div>
         </div>
       </a>
 
@@ -386,7 +809,181 @@ GCC的开发环境，为C++的跨平台开发提供了良好的基础支持，�
 
 gdb调试测试代码(test.c)：#include &lt;stdio.h&gt;
 
-void swap(i</div>
+void swap(int *a,int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(void)
+{
+    int a=1,b=2;
+    swap(&amp;a,&amp;b);
+    printf(&quot;a = %d ,b = %d\n&quot;,a,b);
+    return 0;
+}
+要支持调试，在编译时要加入-g选项，编译命令：gcc text.c -g text.exe
+出现调试命令：GNU gdb (GDB) 7.6.1
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;mingw32&quot;.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;...
+Reading symbols from D:\mypro\C\test.exe...done.
+(gdb)
+gdb调试命令表：
+
+
+
+命令
+解释
+简写
+
+
+
+
+file
+加载一个可执行文件，也可以在运行gdb的时候加载，两种方法都不会运行程序
+无
+
+
+list
+列出可执行源码的一部分，通常在程序开始运行前执行，用来设置断点
+l
+
+
+next
+单步调试，不进入函数
+n
+
+
+step
+单步调试，进入函数
+s
+
+
+run
+运行加载了的程序
+r
+
+
+continue
+继续执行程序
+c
+
+
+quit
+退出调试
+q
+
+
+print
+输出制定的变量的值，变量要在程序运行处可见
+p
+
+
+break
+设置断点
+b
+
+
+info break
+查看断点的信息
+i b
+
+
+delete
+删除断点
+d
+
+
+watch
+监视一个变量的值，一旦值发生变化，程序将会被暂停执行
+wa
+
+
+help
+查看gdb的帮助信息
+h
+
+
+
+
+1.l命令，列出部分代码：在(gdb)后面输入l可以显示一部分代码再输入一次l可以显示全部代码
+(gdb) l
+2   
+3   void swap(int *a,int *b){
+4       int temp = *a;
+5       *a = *b;
+6       *b = temp;
+7   }
+8   
+9   int main(void)
+10  {
+11      int a=1,b=2;
+(gdb)
+
+(gdb) l
+12      swap(&amp;a,&amp;b);
+13      printf(&quot;a = %d ,b = %d\n&quot;,a,b);
+14      return 0;
+15  }(gdb) l
+(gdb) Line number 16 out of range; test.c has 15 lines
+2.start命令，开始运行，会停到main入口处：(gdb) start
+Temporary breakpoint 1 at 0x401491: file test.c, line 11.
+Starting program: D:\mypro\C/test.exe 
+[New Thread 8000.0x18c4]
+[New Thread 8000.0x2418]
+
+Temporary breakpoint 1, main () at test.c:11
+11      int a=1,b=2
+4.n命令：单步调试，不进入函数，跳到第12行:(gdb) n
+12      swap(&amp;a,&amp;b);
+5.s命令：单步调试，进入函数，跳到第4行:gdb) s
+swap (a=0x61ff2c, b=0x61ff28) at test.c:4
+4       int temp = *a;
+6.b命令设置断点（b + 第n行代码的行数）：(gdb) b 6
+Breakpoint 2 at 0x401478: file test.c, line 6.
+7.r命令,运行程序，直到下一个断点就停：The program being debugged has been started already.
+Start it from the beginning? (y or n)
+...
+Breakpoint 2, swap (a=0x61ff2c, b=0x61ff28) at test.c:6
+6       *b = temp;
+7.p命令,输出制定的变量的值，变量要在程序运行处可见:(gdb) p *a
+$1 = 2
+(gdb) p *b
+$2 = 2
+(gdb) p a
+$3 = (int *) 0x61ff2c
+(gdb) p b
+$4 = (int *) 0x61ff28
+next一下，再看b的值：
+(gdb) n
+7   }
+(gdb) p *b
+$5 = 1
+8.i b命令,查看断点信息:(gdb) i b
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x00401478 in swap at test.c:6
+    breakpoint already hit 1 time
+9.d命令,删除断点，不加断点位置即删除所有断点:(gdb) d 
+Delete all breakpoints? (y or n) [answered Y; input not from terminal]
+(gdb) i b
+No breakpoints or watchpoints.
+10.没有断点后，再试一下r命令，可以看到，执行完了程序：(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) [answered Y; input not from terminal]
+error return ../../gdb-7.6.1/gdb/windows-nat.c:1275 was 5
+Starting program: D:\mypro\C/test.exe 
+[New Thread 1976.0x1460]
+[New Thread 1976.0x5e0]
+a = 2 ,b = 1
+[Inferior 1 (process 1976) exited normally
+11.q命令，退出gdb：(gdb) q
+</div>
         </div>
       </a>
 
@@ -426,7 +1023,83 @@ remove_list_entry(entry)
     prev = NULL;
     walk = head;
 ​
-    // Wa</div>
+    // Walk the list
+​
+    while (walk != entry)
+    {
+        prev = walk;
+        walk = walk-&gt;next;
+    }
+
+    // Remove the entry by updating the 
+    // head or the previous entry
+    if(!prev)
+    {
+        head = entry-&gt;next;
+    }
+    else
+    {
+        prev-&gt;next = entry-&gt;next;
+    } 
+}
+
+第二段代码
+
+remove_list_entry(entry)
+{
+    // The &quot;indirect&quot; pointer points to the
+    // *address* of the thing we&#39;ll update
+    indirect = &amp;head;
+​
+    // Walk the list, looking for the thing that
+    // points to the entry we want to remove 
+    while ((*indirect) != entry))
+    {
+        indirect = &amp;(*indirect)-&gt;next;
+    }
+​
+    // .. and just remove it
+    *indirect = entry-&gt;next;
+}
+这里我注释一下哈，这两段代码都是伪码。所以看起来有点奇怪
+
+&emsp;&emsp;看起来这两段代码功能上都一样的但是，第一段的最后用了一个if和一个else目的在于处理特殊情况，但是第二段代码很简洁没有if和else来处理特殊情况，这是一种很有意思且巧妙的思想同样Dummy Node链表也是一种处理方式，在这里不讨论，后面我回专门来说这种链表。
+
+Node *head, *prev, *walk;
+void remove_list_entry(Node* entry)
+{
+    prev = NULL;
+
+    // walk 这一变量名，十分巧妙，
+    // 变量命名的不二法门就是对应其物理（实际）意义
+    walk = head;
+
+    while (walk != entry)
+    {
+        prev = walk;
+        walk = walk-&gt;next;
+    }
+
+    // 也即没有执行 while 循环，walk == entry，entry == head
+    if (!prev)
+        head = entry-&gt;next;
+    else
+        prev-&gt;next = entry-&gt;next;
+
+}
+void remove_list_entry(Node* entry)
+{
+    Node **indirect;
+    indirect = &amp;head;
+    while ((*indirect) != entry)
+        indirect = &amp;(*indirect)-&gt;next;
+    *indirect = entry-&gt;next;
+}
+&emsp;&emsp;这是两段代码的表准形式
+
+&emsp;&emsp;为什么要区分是头指针呢，因为整个程序的逻辑是找到被删除指针的前一个指针，如果被删除的指针为头指针，显然其没有前一个指针。
+显然这种的代码不具很好的 taste，话说 Jobs 也很爱讲 taste（Windows 最大的特点就是 has no taste）。这两段代码的显著区别就是第二段代码省略了 if 语句，对头指针和前一个指针做了统一化处理。
+头指针没有前一个指针，但有自己的地址，自己的地址自然还是指向自己。</div>
         </div>
       </a>
 
@@ -574,7 +1247,36 @@ More info: Deployment
 
 
   
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?074863aa995605d4632cd9ef35d442b1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
 
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', '218949323', 'auto');
+      ga('send', 'pageview');
+    </script>
   
 
   
@@ -589,7 +1291,7 @@ More info: Deployment
   <script src="/lib/prettify/prettify.min.js" ></script>
   <script>
     $(document).ready(function () {
-      $('pre').addClass('prettyprint  linenums');
+      $('pre').addClass('prettyprint  ');
       prettyPrint();
     })
   </script>
@@ -604,7 +1306,7 @@ More info: Deployment
         "Despair is chief&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 70,
+      typeSpeed: 60,
       loop: false,
     });
     typed.stop();

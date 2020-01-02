@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
-  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+  <link rel="stylesheet" href="/lib/prettify/github-v2.min.css"  >
 
 <link rel="stylesheet" href="/css/main.css"  >
 
@@ -120,7 +120,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    176 字
+                    192 字
                   </span>&nbsp;
                 
 
@@ -164,6 +164,7 @@
             <!--
 banner_img:是当前页面图片
 -->
+<p>在编译多个文件的时候所出现的报错<br><a id="more"></a></p>
 <h1 id="多文件编译遇见的问题"><a href="#多文件编译遇见的问题" class="headerlink" title="多文件编译遇见的问题"></a>多文件编译遇见的问题</h1><p><img src="/img/报错截图.jpg" srcset="/img/loading.gif" alt=" "></p>
 <p>该错误出现在 command line 为</p>
 <pre><code>gcc coordin.h file1.cpp file2.cpp -o file1
@@ -180,6 +181,14 @@ banner_img:是当前页面图片
           <br>
           <div>
             <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Notes">Notes</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
             
             
             </p>
@@ -303,7 +312,36 @@ banner_img:是当前页面图片
 
 
   
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?074863aa995605d4632cd9ef35d442b1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
 
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', '218949323', 'auto');
+      ga('send', 'pageview');
+    </script>
   
 
   
@@ -318,7 +356,7 @@ banner_img:是当前页面图片
   <script src="/lib/prettify/prettify.min.js" ></script>
   <script>
     $(document).ready(function () {
-      $('pre').addClass('prettyprint  linenums');
+      $('pre').addClass('prettyprint  ');
       prettyPrint();
     })
   </script>
@@ -333,7 +371,7 @@ banner_img:是当前页面图片
         "多文件编译&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 70,
+      typeSpeed: 60,
       loop: false,
     });
     typed.stop();
