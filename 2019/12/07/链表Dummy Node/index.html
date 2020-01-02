@@ -120,7 +120,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    835 字
+                    842 字
                   </span>&nbsp;
                 
 
@@ -161,7 +161,9 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="链表Dummy-Node"><a href="#链表Dummy-Node" class="headerlink" title="链表Dummy Node"></a>链表Dummy Node</h1><h2 id="（一）Partition-List"><a href="#（一）Partition-List" class="headerlink" title="（一）Partition List"></a>（一）Partition List</h2><p><a href="https://leetcode.com/problems/partition-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/partition-list/description/</a></p>
+            <p>值得思考的实现</p>
+<a id="more"></a>
+<h1 id="链表Dummy-Node"><a href="#链表Dummy-Node" class="headerlink" title="链表Dummy Node"></a>链表Dummy Node</h1><h2 id="（一）Partition-List"><a href="#（一）Partition-List" class="headerlink" title="（一）Partition List"></a>（一）Partition List</h2><p><a href="https://leetcode.com/problems/partition-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/partition-list/description/</a></p>
 <p><strong>题目：给出一个链表和一个x值，要求返回一个顺序链表使得小于x的数在链表前面，大于等于x的数在链表后面，保证节点顺序不变。</strong></p>
 <pre><code>      例如：$1-&gt;3-&gt;2-&gt;4-&gt;2, 3$ 变成：$1-&gt;2-&gt;2-&gt;3-&gt;4$
 </code></pre><font color="#435d6c" size="3px">解答：建立两个新的左、右指针及dummy node，使用head指针遍历整个链表，遇到大于等于head的节点则放到右链表，否则放到左链表。最后将左右链表相连。
