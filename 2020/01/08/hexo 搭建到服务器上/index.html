@@ -242,10 +242,10 @@ chmod 700 ~/.ssh
 </code></pre><p>&emsp;&emsp;但是大家一定要注意在远程连接服务其之前，我们一定要先对我能的服务器进行设置。<br>在root用户下修改 <strong>/etc/ssh/sshd_config</strong> 文件中的<strong>PasswordAuthentication no改为PasswordAuthentication yes</strong> 并保存。<br><img src="https://img.alicdn.com/tfs/TB1B8ELgHsTMeJjSszgXXacpFXa-799-554.png" srcset="/img/loading.gif" alt=" "><br>输入如下命令<strong>sudo service sshd restart</strong>重启SSH服务,就可以重新使用账号密码连接服务器了。<br><img src="https://img.alicdn.com/tfs/TB1OjQ_gMMPMeJjy1XbXXcwxVXa-812-264.png" srcset="/img/loading.gif" alt=" "></p>
 <p>&emsp;&emsp;然后我们在<strong>自己的电脑上自己的电脑上自己的电脑上</strong>（重要的事说三遍），打开cmd，使用ssh方式连接我们的云服务器。<br>     <img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93d7a77735c4d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt=" "></p>
 <p>最后当你远程连接上你的服务器时，就会出现</p>
-<p><img src="/img/服务器-4" srcset="/img/loading.gif" alt=" "></p>
+<p><img src="/img/服务器-4.png" srcset="/img/loading.gif" alt=" "></p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>&emsp;&emsp;我们需要更改hexo博客的根目录下的_config.yml文件将最后一行的的repo：后面改成 </p>
 <pre><code>git@这里写服务器外网IP:/home/git/repos/blog.git
-</code></pre><p>之后大家就可以来尝试用hexo clean &amp; hexo g &amp; hexo d 来部署大家的博客了。<br><img src="/img/服务器-2" srcset="/img/loading.gif" alt=" "></p>
+</code></pre><p>之后大家就可以来尝试用hexo clean &amp; hexo g &amp; hexo d 来部署大家的博客了。<br><img src="/img/服务器-2.png" srcset="/img/loading.gif" alt=" "></p>
 
             <hr>
           </div>
