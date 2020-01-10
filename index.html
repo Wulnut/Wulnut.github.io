@@ -135,7 +135,7 @@
     
       <div class="col-12 col-md-4 m-auto">
         <a href="/2020/01/10/docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" target="_self">
-          <img src="docker_img.jpg" srcset="/img/loading.gif" alt="docker的基本操作" class="img-fluid rounded z-depth-3 index-thumbnails">
+          <img src="/img/docker_img.jpg" srcset="/img/loading.gif" alt="docker的基本操作" class="img-fluid rounded z-depth-3 index-thumbnails">
         </a>
       </div>
     
@@ -350,28 +350,10 @@
         
         
           
+          
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.3线性表的链式存储结构(单链表)&emsp;&emsp;用一组地址任意的存储来存放线性表中的元素。
-&emsp;&emsp;以元素（数据元素的映象）+指针（指示后继元素存储位置）=结点（表示数据元素或数据元素的映象）
-&emsp;&emsp;以“结点的序列”表示线性表&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;————称作链表
-&emsp;&emsp;以线性表中第一个数据元素a~1~的存储地址作为线性表中的地址，称作线性表的头指针。&emsp;&emsp;有时为了操作方便，在第一个结点之前需加一个“头结点”，以指向头结点的指针为链表的头指针。
-单链表的C语言实现：typedef struct LNode{
-    ElemType data;//数据域
-    struct LNode *next;//指针域
-}LNode, *LinkList;
-
-LinkList L;//L为单链表的头指针;
-单链表操作实现的基本实现：
-
-GetElem(L, i, e)&emsp;//取第i个数据元素
-ListInsert(&amp;L, i, e)&emsp;//插入数据元素
-ListDelete(&amp;L, i, e)&emsp;//删除数据元素
-ClearList(&amp;L)&emsp;//重新置为一个空表
-CreateList(&amp;L, n)&emsp;//生成含$n$个数据元素的链表
-
-找第1个数据元素，必须先找到第$i-1$个数据元素。因此，查找第i个数据元素的基本操作是==移动指针，比较j和i==。令指针p始终指向线性表中第j个数据元素。
-</div>
+        <div class="index-excerpt" style="max-height: none;">
+          <div class="index-text mb-1">链式存储的基本实现...</div>
         </div>
       </a>
 
@@ -379,6 +361,11 @@ CreateList(&amp;L, n)&emsp;//生成含$n$个数据元素的链表
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
         
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/study">study</a>&nbsp;
+          &nbsp;
         
         
       </div>
