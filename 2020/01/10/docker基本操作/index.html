@@ -169,10 +169,10 @@
 <pre><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 </code></pre><p>设置yum源：</p>
 <pre><code>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-</code></pre><p><img src="https://img2018.cnblogs.com/blog/1068501/201811/1068501-20181128145022180-347869770.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre><p><img src="/img/docker操作_6.png" srcset="/img/loading.gif" alt=" "></p>
 <p>我们可以查看所有仓库中所有docker版本，并选择特定版本安装：</p>
 <pre><code>yum list docker-ce --showduplicates | sort -r
-</code></pre><p><img src="https://img2018.cnblogs.com/blog/1068501/201811/1068501-20181128145202512-1932354955.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre><p><img src="/img/docker操作_5.png" srcset="/img/loading.gif" alt=" "></p>
 <p>做好这些前提准备之后我们就可以安装docker了</p>
 <pre><code>sudo yum install docker-ce-17.12.0.ce
 </code></pre><p>启动、设置开启开机启动</p>
@@ -180,10 +180,10 @@
 sudo systemctl enable docker
 </code></pre><p>完成上面的操作后验证安装是否成功(有client和service两部分表示docker安装启动都成功了):</p>
 <pre><code>docker version
-</code></pre><p><img src="https://img2018.cnblogs.com/blog/1068501/201811/1068501-20181128145435943-1657031411.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre><p><img src="/img/docker操作_4.png" srcset="/img/loading.gif" alt=" "></p>
 <p>查看docker启动状态：</p>
 <pre><code>systemctl status docker
-</code></pre><p><img src="/img/dcoker操作_3.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre><p><img src="/img/docker操作_3.png" srcset="/img/loading.gif" alt=" "></p>
 <h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>查询docker安装过的包：<br><img src="/img/docker操作_2.png" srcset="/img/loading.gif" alt=""></p>
 <p>删除安装包：</p>
 <pre><code>yum remove docker-ce.x86_64 ddocker-ce-cli.x86_64 -y
