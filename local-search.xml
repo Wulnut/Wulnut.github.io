@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>python学习笔记(1)</title>
+    <link href="undefined2020/01/15/python_ex34/"/>
+    <url>2020/01/15/python_ex34/</url>
+    
+    <content type="html"><![CDATA[<p>python入门学习</p><a id="more"></a><h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>编程语言都先从最基本的基本语法开始</p><h2 id="type-and-isinstance-函数"><a href="#type-and-isinstance-函数" class="headerlink" title="type() and isinstance() 函数"></a>type() and isinstance() 函数</h2><p>type(object): 接收一个对象object来作为参数， 返回这个参数的数据类型<br>isinstance(object, class): 判断接收的对象object是否是给定的类型class的对象：如果是就返回True,如果不是返回False.</p><p>type(object):</p><pre><code>m = 120print(&quot;m Type: &quot;, type(m))m = &quot;大数据&quot;print(&quot;m Type: &quot;, type(m))</code></pre><p><img src="/img/type.png" srcset="/img/loading.gif" alt=" "></p><p>isinstance(object, class):</p><pre><code>a = 20print(&quot;a是整型么？&quot;, isinstance(a, int))</code></pre><p><img src="/img/isinstance.png" srcset="/img/loading.gif" alt=" "></p><p>在判断一个对象类型时，type() 和 isinstance()有一点区别：</p><ol><li>type()不会认为子类对象时一种父类类型，不考虑继承关系，也就是说type()只检测当前该数据的数据类型</li><li>isinstance()会认为子类队形时一种父类类型，会考虑继承关系，也就是说如果该数据时类的话isinstance()会<br>检测父类的数据类型</li></ol><h2 id="简单了解位运算符"><a href="#简单了解位运算符" class="headerlink" title="简单了解位运算符"></a>简单了解位运算符</h2><p>使用’^’运算对字符加密和解密</p><pre><code>key = input(&quot;请输入加密密匙：&quot;)enc = input(&quot;请输入要加密的字符: &quot;)dec = ord(key) ^ ord(enc)print(&quot;加密结果:&quot;,chr(dec))enc = ord(key) ^ decprint(&quot;解密结果:&quot;,chr(enc))</code></pre><p>1<a href="/img/加密.png"> </a></p><p>在这段程序中我们看到了两个函数ord()和chr():</p><ul><li>ord()函数是对输入的字符转换成ASCII码</li><li>chr()函数是对输入的ASCII码(可以是十进制、十六进制)转换成对应的字符</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Study</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>docker的基本操作</title>
     <link href="undefined2020/01/10/docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <url>2020/01/10/docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
