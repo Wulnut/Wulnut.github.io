@@ -120,7 +120,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    370 字
+                    488 字
                   </span>&nbsp;
                 
 
@@ -181,7 +181,16 @@ print(&quot;a是整型么？&quot;, isinstance(a, int))
 <li>type()不会认为子类对象时一种父类类型，不考虑继承关系，也就是说type()只检测当前该数据的数据类型</li>
 <li>isinstance()会认为子类队形时一种父类类型，会考虑继承关系，也就是说如果该数据时类的话isinstance()会<br>检测父类的数据类型</li>
 </ol>
-<h2 id="简单了解位运算符"><a href="#简单了解位运算符" class="headerlink" title="简单了解位运算符"></a>简单了解位运算符</h2><p>使用’^’运算对字符加密和解密</p>
+<h2 id="eval-函数"><a href="#eval-函数" class="headerlink" title="eval()函数"></a>eval()函数</h2><p>eval()函数用来执行一个字符串表达式，并返回表达式的值，其一般格式为：</p>
+<pre><code>eval(expression[,globals[,locals]])
+</code></pre><p>其中，expression为表达式。globals为变量作用域，可选，必须是一个字典对象。locals为变量作用域，可选，可以是任何映射(map)对象</p>
+<pre><code>a = eval(&#39;2 + 3&#39;)
+print(&quot;a: &quot;, a)
+
+a, b = eval(input(&quot;请输入两个数(用&#39;,&#39;隔开): &quot;))
+print(&quot;a: &quot;, a)
+print(&quot;b: &quot;, b)
+</code></pre><h2 id="简单了解位运算符"><a href="#简单了解位运算符" class="headerlink" title="简单了解位运算符"></a>简单了解位运算符</h2><p>使用’^’运算对字符加密和解密</p>
 <pre><code>key = input(&quot;请输入加密密匙：&quot;)
 enc = input(&quot;请输入要加密的字符: &quot;)
 
