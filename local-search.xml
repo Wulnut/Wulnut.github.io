@@ -8,7 +8,7 @@
     <link href="/2020/01/16/python_ex35/"/>
     <url>/2020/01/16/python_ex35/</url>
     
-    <content type="html"><![CDATA[<p>python入门学习</p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<p>python入门学习</p><a id="more"></a><h2 id="filter-函数"><a href="#filter-函数" class="headerlink" title="filter()函数"></a>filter()函数</h2><p>filter()函数用于过滤掉不符合条件的元素，返回一个迭代器对象，一般格式为：</p><pre><code>filter(function,iterable)</code></pre><p>其中，function为半段函数，iterable为可迭代对象。</p>]]></content>
     
     
     <categories>
