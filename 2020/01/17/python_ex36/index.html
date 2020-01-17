@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>python学习笔记(2) ~ Wulnut</title>
+  <title>python学习笔记(3) ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -120,7 +120,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Thursday, January 16th 2020, 11:27 am
+                  Friday, January 17th 2020, 11:08 pm
                 </p>
               
 
@@ -129,7 +129,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    773 字
+                    521 字
                   </span>&nbsp;
                 
 
@@ -137,7 +137,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -172,120 +172,67 @@
           <div class="markdown-body">
             <p>python入门学习</p>
 <a id="more"></a>
-<h2 id="filter-函数"><a href="#filter-函数" class="headerlink" title="filter()函数"></a>filter()函数</h2><p>filter()函数用于过滤掉不符合条件的元素，返回一个迭代器对象，一般格式为：</p>
-<pre><code>filter(function,iterable)
-</code></pre><p>其中，function为半段函数，iterable为可迭代对象。</p>
-<pre><code>def IsEvenFunc(n):
-    return n % 2 == 0
+<h2 id="单分支结构"><a href="#单分支结构" class="headerlink" title="单分支结构"></a>单分支结构</h2><p>单分支结构可用if单分支语句实现，其一般格式为：</p>
+<pre><code>if表达式:
+    语句块
+</code></pre><p>语句的执行过程是：如果表达式的值为True，则执行语句中的语句块；否则，直接执行if语句的后续语句。</p>
+<p>注意：</p>
+<ol>
+<li>if语句中的语句块可以包含单个语句，也可以包含多个语句。</li>
+<li>如果语句块中只有一跳语句，也可以将整个if语句写在同一行中</li>
+</ol>
+<pre><code>    n = int(input(&quot;请输入一个整数: &quot;))
 
-a = list(filter(IsEvenFunc,[1,2,3,4,5]))
+    flag = str(n) + &quot; 是偶数!&quot;
 
-print(&quot;a: &quot;,a)
-</code></pre><p><img src="/img/filter.png" srcset="/img/loading.gif" alt=" "></p>
-<h2 id="zip-函数"><a href="#zip-函数" class="headerlink" title="zip()函数"></a>zip()函数</h2><p>zip()函数接收任意多个可迭代对象作为参数，将对象种对应的元素打包成一个<strong>元组</strong>，然后返回一个可迭代的zip对象<br>如果可迭代对象的长度不相同，取最短的可迭代对象的长度</p>
-<pre><code>zip([iterable,...])
-</code></pre><p>其中,iterable为一个或多个迭代器。</p>
-<pre><code>a = list(zip([&quot;泰山&quot;,&quot;黄山&quot;,&quot;庐山&quot;,&quot;华山&quot;],[&quot;山东&quot;,&quot;安徽&quot;,&quot;江西&quot;,&quot;陕西&quot;])) #打包
-print(&quot;a: &quot;,a)
+    if n % 2 != 0:
+        flag = str(n) + &quot; 是偶数!&quot;
 
-z = zip([1,2,3],[4,5,6]) #打包
-a = list(zip(*z)) #解包
-
-print(&quot;a: &quot;,a)
-</code></pre><p><img src="/img/zip.png" srcset="/img/loading.gif" alt=" "></p>
-<p>zip(*z)是解包，但是要注意我们不能先迭代z然后再去解包</p>
-<h2 id="枚举函数enumerate"><a href="#枚举函数enumerate" class="headerlink" title="枚举函数enumerate()"></a>枚举函数enumerate()</h2><p>枚举函数enumerate()用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标。</p>
-<pre><code>enumerate(sequence,[strat = 0])
-</code></pre><p>其中，sequence: 一个序列，迭代器或其他支持的迭代对象。<br>start: 下表其实位置，可选。</p>
-<pre><code>weeks = [&#39;Sunday&#39;, &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;, &#39;Thursday&#39;, &#39;Friday&#39;,&#39;saturday&#39;]
-a = list(enumerate(weeks))
-print(&quot;a: &quot;,a)
-</code></pre><p><img src="/img/enumerate.png" srcset="/img/loading.gif" alt=" "></p>
-<h2 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h2><p>map()函数把函数依此映射到序列或迭代器对象的每个元素上，并返回一个可迭代的map对象作为结果.</p>
-<pre><code>map(function,iterable,....)
-</code></pre><p>其中，function为被调用的函数,iterable为一个或多个序列</p>
-<pre><code>def cube(x):
-    return x ** 3
-
-a = list(map(cube,[1,2,3,4,5,6])) #计算列表中的各个元素的立方和
-
-print(&quot;a: &quot;,a)
-
-def add(x, y):
-    return x + y
-
-a = list(map(add,[1,2,3,4,5],[1,2,3,4,5])) #两个列表中相同位置的元素相加
-
-print(&quot;a: &quot;,a)
-
-a,b = map(int, input(&quot;请输入两个数(用空格隔开):&quot;).split())
-
-print(&quot;a = %d, b = %d.&quot;%(a,b))
-</code></pre><p><img src="/img/map.png" srcset="/img/loading.gif" alt=" "></p>
+    print(flag)
+</code></pre><p><img src="/img/if.png" srcset="/img/loading.gif" alt=" "></p>
 <ul>
-<li>我们注意到使用了一个函数 input().split()其中split()可以接收键盘输入的两个数字。</li>
+<li><p>str() 函数将对象转化为适于人阅读的形式，就是把对象转换成字符串</p>
+<pre><code>  class str(object=&#39;&#39;)
+</code></pre></li>
+<li><p>object — 对象。</p>
+</li>
 </ul>
-<p>split()函数的原型为：</p>
-<pre><code>    str1.split(str2=&quot; &quot;,num=string.count(str))
-</code></pre><p>str1 : 表示为字符串<br>str2 : 分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等。<br>num : 分割次数。默认为 -1, 即分隔所有。</p>
-<h2 id="逻辑运算符和逻辑运算表达式"><a href="#逻辑运算符和逻辑运算表达式" class="headerlink" title="逻辑运算符和逻辑运算表达式"></a>逻辑运算符和逻辑运算表达式</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>名称</th>
-<th>逻辑表达式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>and</td>
-<td>逻辑“与”</td>
-<td>x and y</td>
-<td>x为True或非0，返回y；否则返回x</td>
-</tr>
-<tr>
-<td>or</td>
-<td>逻辑“或”</td>
-<td>x or y</td>
-<td>x为True或非0，返回x；否则返回y</td>
-</tr>
-<tr>
-<td>not</td>
-<td>逻辑“非”</td>
-<td>not x</td>
-<td>x为True或非0，返回False；否则返回True</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>实例</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>in</td>
-<td>判断对象是否在序列中</td>
-<td>obj sequence</td>
-<td>obj 在 sequence中返回True，否则返回False</td>
-</tr>
-<tr>
-<td>not in</td>
-<td>判断对象是否不在序列中</td>
-<td>obj not int sequence</td>
-<td>obj 不在sequence中返回True，否则返回False</td>
-</tr>
-</tbody>
-</table>
-</div>
+<h2 id="二分支结构"><a href="#二分支结构" class="headerlink" title="二分支结构"></a>二分支结构</h2><p>二分支结构可用if二分支语句实现，其一般格式为：</p>
+<pre><code>if 表达式：
+    语句块1
+else：
+    语句块2
+</code></pre><p>语句执行过程是：如果表达式的值为True时，则执行语句块1；否则，执行语句块2</p>
+<pre><code>a = 5
+b = 6
+
+print(&quot;a = %d, b = %d&quot; % (a,b))
+
+if a &gt; b:
+    max = a
+else: 
+    max = b
+
+print(max)
+</code></pre><p><img src="/img/if-else.png" srcset="/img/loading.gif" alt=" "></p>
+<h2 id="多分枝结构"><a href="#多分枝结构" class="headerlink" title="多分枝结构"></a>多分枝结构</h2><p>二分支结构只能根据条件的True和False决定处理两个分支中的一个。当实际处理的问题有多种条件时，就要用到多分支结构。<br>多分支结构可用if多分支语句实现，其一般格式为：</p>
+<pre><code>if 表达式1：
+    语句块1
+elif 表达式2：
+    语句块2
+    ...
+[else:
+    语句块n+1]
+</code></pre><p>if多分支语句根据不同的表达式值确定执行哪个语句块，测试条件的顺序为表达式1，表达式2，…。一旦<br>遇到表达式的值为True，则执行该条件下的语句块，然后执行if语句的后续语句。</p>
+<pre><code>score = int(input(&quot;请输入成绩:&quot;))
+
+if score &gt;= 90:
+    print(&quot;成绩等级:优秀！&quot;)
+elif score &gt;= 80:
+    print(&quot;成绩等级：良好！&quot;)
+elif score &gt;= 60:
+    print(&quot;成绩等级：不合格！&quot;)
+</code></pre><p><img src="/img/elif.png" srcset="/img/loading.gif" alt=" "></p>
 
             <hr>
           </div>
@@ -512,7 +459,7 @@ print(&quot;a = %d, b = %d.&quot;%(a,b))
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "python学习笔记(2)&nbsp;",
+        "python学习笔记(3)&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
