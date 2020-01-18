@@ -129,7 +129,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    654 字
+                    1.1k 字
                   </span>&nbsp;
                 
 
@@ -137,7 +137,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -237,12 +237,41 @@ while score != -1:
 ave = total / count
 print(&quot;录入学生英语成绩%d份,学生英语总成绩%d，平均成绩%4.2f.&quot; % (count, total, ave))
 </code></pre><p><img src="/img/while-input.png" srcset="/img/loading.gif" alt=" "><br>注意:%4.2f是值精度为2宽度为4。</p>
-<!--
+<h2 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h2><p>for语句更合适循环访问系列或迭代对象(如字符串、列表、元组、字典等))中的元素，其一般格式：</p>
+<pre><code>for 变量 in 序列或迭代对象：
+    语句块
+[else:
+    else 子句语句块]
+</code></pre><p>for语句执行过程是:当序列或迭代对象中的元素没有遍历完毕时，执行for语句中的语句块：<br>否则，执行else子句中的语句块，结束循环，其中，else子句时可选的。</p>
+<pre><code>for letter in &#39;python&#39;:
+    print(letter, end=&#39; &#39;)
 
-## for语句
-for语句更合适循环访问系列或迭代对象(如字符串、列表、元组、字典等))中的元素，其一般格式：
+print() #起到换行作用
 
--->
+chemists = [&#39;道尔顿&#39;,&#39;门捷列夫&#39;,&#39;拉瓦锡&#39;,&#39;诺贝尔&#39;]
+
+print(&quot;化学家:&quot;,end=&#39; &#39;)
+
+for hxj in chemists:
+    print(hxj, end=&#39; &#39;)
+</code></pre><p><img src="/img/for.png" srcset="/img/loading.gif" alt=" "></p>
+<p>一般情况下else子句是可选选项，可以做为在循环遍历结束之后给出提示信息。</p>
+<h3 id="for语句中的range-函数"><a href="#for语句中的range-函数" class="headerlink" title="for语句中的range()函数"></a>for语句中的range()函数</h3><p>range()函数经常用在for循环中，用于控制循环次数。</p>
+<pre><code>universities = [&#39;哈弗大学&#39;,&#39;斯坦福大学&#39;,&#39;剑桥大学&#39;,&#39;麻省理工学院&#39;,&#39;加州大学&#39;,&#39;普林斯顿大学&#39;,&#39;牛津大学&#39;,&#39;哥伦比亚大学&#39;,&#39;加州理工学院&#39;,&#39;芝加哥大学&#39;]
+
+print(&quot;2017《Times》世界大学排名前三的大学是：&quot;)
+
+for i in range(3):
+    print(str(i+1) + &quot;.&quot;, universities[i])
+</code></pre><h3 id="break-continue和pass语句"><a href="#break-continue和pass语句" class="headerlink" title="break,continue和pass语句"></a>break,continue和pass语句</h3><p>break语句用于退出循环，continue语句用于跳过该次循环,pass时空语句(不做任何处理)</p>
+<h2 id="循环结构的嵌套"><a href="#循环结构的嵌套" class="headerlink" title="循环结构的嵌套"></a>循环结构的嵌套</h2><p>在一个循环结构的循环体内出现另一个循环结构，称为循环结构的嵌套。</p>
+<pre><code>for i in range(1,6):
+    for j in range(i):
+        print(&quot;*&quot;, end=&#39; &#39;)
+    print() #该print是属于  第一层循环
+</code></pre><p><img src="/img/for-for.png" srcset="/img/loading.gif" alt=" "></p>
+<p><a href="https://github.com/Wulnut/Learning-only/tree/master/pyhononly" target="_blank" rel="noopener">源码可见ex36.py</a></p>
+
             <hr>
           </div>
           <br>
