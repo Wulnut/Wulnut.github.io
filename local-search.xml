@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>python学习笔记(4)</title>
+    <link href="/2020/01/18/python_ex37/"/>
+    <url>/2020/01/18/python_ex37/</url>
+    
+    <content type="html"><![CDATA[<p>python入门学习</p><a id="more"></a><h2 id="条件运算"><a href="#条件运算" class="headerlink" title="条件运算"></a>条件运算</h2><p>条件运算相当于一个二分支结构语句的功能，包含三个表达式，其一般格式为：</p><pre><code>表达式1 if 表达式 else 表达式2</code></pre><p>条件运算的执行过程是：如果if后面的表达式值为True，则以表达式1的值为条件运算的结构；<br>否则，以表达式2的值为条件运算的结果。<br>可以将整个条件运算作为一个表达式，出现在其他表达式中。</p><pre><code>score = int(input(&quot;Please enter:&quot;))flag = &quot;ok&quot; if score &gt;= 60 else &quot;no&quot;print(&quot;score: &quot;,flag)</code></pre><p><img src="/img/条件运算.png" srcset="/img/loading.gif" alt=" "></p><p>但是我们要注意表达式1与if之间不能加换行。</p><h2 id="选择结构嵌套"><a href="#选择结构嵌套" class="headerlink" title="选择结构嵌套"></a>选择结构嵌套</h2><p>当在一个选择结构中需要进一步的条件选择时，可以在if语句中再嵌套使用if语句，形成选择结构嵌套以实现相应功能。</p><pre><code>a = 3; b = 2; c = 4if a &gt; b:    if a &gt; c:        print(&quot;最大的数是：&quot;, a)    else:        print(&quot;最大的数是：&quot;, c)else:    if b &gt; c:        print(&quot;最大的数是: &quot;, b)    else:        print(&quot;最大的数是: &quot;, c)</code></pre><h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><p>循环结构依据某一条件反复执行某段程序，即语句块。该语句块被执行的次数称为循环次数。</p><h3 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a>while语句</h3><p>while语句用于循环执行一段程序，即再满足某种条件的情况下循环执行某段程序，以处理需要重复处理的<br>相同任务。while语句的一般格式为：</p><pre><code>while 表达式：   语句块[else：   else 子句语句块]</code></pre><p>while语句执行过程：如果表达式的值为True，则执行while后面的语句块；否则，执行else子语句语句块，结束循环。其中else子句为可选。</p><p>while语句</p><pre><code>n = 100sum = 0i = 1while i &lt;= n:    sum = sum + i    i += 1print(&quot;1到%d之和为: %d.&quot; % (n,sum))</code></pre><p>while-else语句</p><pre><code>mu1 = 1; i = 1; sum = 0while i &lt;= 10:    mu1 = mu1 * i    sum = sum + mu1    i = i + 1else:    print(&quot;循环结束!&quot;)print(&quot;sum =&quot;, sum)</code></pre><h3 id="while语句块中的input-函数"><a href="#while语句块中的input-函数" class="headerlink" title="while语句块中的input()函数"></a>while语句块中的input()函数</h3><p>while语句常常和input()函数结合使用，给变量循环输入数据，进行相应的处理。</p><pre><code>total = 0; ave = 0; count = 0score = int(input(&quot;请输入学生英语成绩: &quot;))print(&quot;输入&#39;-1&#39;结束输入\n&quot;)while score != -1:    total = total + score    count = count + 1    score = int(input(&quot;请输入学生英语成绩: &quot;))ave = total / countprint(&quot;录入学生英语成绩%d份,学生英语总成绩%d，平均成绩%4.2f.&quot; % (count, total, ave))</code></pre><p><img src="/img/while-input.png" srcset="/img/loading.gif" alt=" "><br>注意:%4.2f是值精度为2宽度为4。</p><!--## for语句for语句更合适循环访问系列或迭代对象(如字符串、列表、元组、字典等))中的元素，其一般格式：-->]]></content>
+    
+    
+    <categories>
+      
+      <category>study</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python学习笔记(3)</title>
     <link href="/2020/01/17/python_ex36/"/>
     <url>/2020/01/17/python_ex36/</url>
