@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>链式存储 ~ Wulnut</title>
+  <title>python学习笔记(5) ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('/img/python_study.jpeg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -120,7 +120,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Saturday, December 7th 2019, 1:13 pm
+                  Saturday, January 18th 2020, 10:28 pm
                 </p>
               
 
@@ -129,7 +129,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    371 字
+                    799 字
                   </span>&nbsp;
                 
 
@@ -137,7 +137,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -170,27 +170,63 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>链式存储的基本实现</p>
+            <p>python入门学习</p>
 <a id="more"></a>
-<h2 id="1-3线性表的链式存储结构-单链表"><a href="#1-3线性表的链式存储结构-单链表" class="headerlink" title="1.3线性表的链式存储结构(单链表)"></a>1.3线性表的链式存储结构(单链表)</h2><p>&emsp;&emsp;用一组地址任意的存储来存放线性表中的元素。</p>
-<p>&emsp;&emsp;以<strong>元素</strong>（数据元素的映象）+指针（指示后继元素存储位置）=<strong>结点</strong>（表示数据元素或数据元素的映象）</p>
-<p>&emsp;&emsp;以“结点的序列”表示线性表<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;————称作链表</p>
-<p>&emsp;&emsp;以线性表中第一个数据元素a~1~的存储地址作为线性表中的地址，称作线性表的头指针。<br>&emsp;&emsp;有时为了操作方便，在第一个结点之前需加一个“头结点”，以指向头结点的指针为链表的头指针。</p>
-<h3 id="单链表的C语言实现："><a href="#单链表的C语言实现：" class="headerlink" title="单链表的C语言实现："></a>单链表的C语言实现：</h3><pre><code>typedef struct LNode{
-    ElemType data;//数据域
-    struct LNode *next;//指针域
-}LNode, *LinkList;
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>列表(list)是写在方括号[]之间、用于逗号隔开的元素集合。<br>列表中的元素可以是零个或多个。只有零个元素的列表称为空列表[]。<br>列表中的元素可以相同。例如：</p>
+<pre><code>[&quot;c/c++&quot;,&quot;Python&quot;,&quot;Java&quot;]
+</code></pre><p>该列表中的个元素均不同。</p>
+<pre><code>[1,1,2,3,4]
+</code></pre><p>该列表中有重复元素。</p>
+<p>列表中的元素可以类型相同，如[2,4,6,8];也可以是类型不同，如列表[“Rose”,”Female”,18];还可以是复杂的数据类型，如列表[(1,0),(0,1)]</p>
+<p>同字符串类似，列表支持元素的双向索引，正向第1个元素的索引是0，第2个元素的索引是1，以此类推。反向最后1个元素的索引是-1，倒数第2个元素的索引是-2，以此类推。</p>
+<h2 id="列表创建"><a href="#列表创建" class="headerlink" title="列表创建"></a>列表创建</h2><p>通常使用[]运算符或list()函数创建列表。</p>
+<h3 id="1-使用-运算符"><a href="#1-使用-运算符" class="headerlink" title="1.使用[]运算符"></a>1.使用[]运算符</h3><p>使用[]运算符创建列表的一般格式为：</p>
+<pre><code>列表名 = [元素1, 元素2, 元素3, ....]
+</code></pre><p>其中列表中的元素可以是相同类型或不同类型，简单数据或组合数据。</p>
+<pre><code>list1 = []
+list2 = [1, 2, 3.2]
+list3 = [&quot;石油&quot;,&quot;汽车&quot;,&quot;建筑&quot;,&quot;IT&quot;]
+list4 = [&#39;Alice&#39;,18,&#39;Beth&#39;,19]
+</code></pre><h3 id="2-使用list-函数创建列表"><a href="#2-使用list-函数创建列表" class="headerlink" title="2.使用list()函数创建列表"></a>2.使用list()函数创建列表</h3><p>使用内置函数list()创建列表的一般格式为:</p>
+<pre><code>列表名 = list(sequence)
+</code></pre><p>其中，sequence可以是字符串、元组、结合或range()函数返回结果等迭代对象</p>
+<h2 id="列表访问"><a href="#列表访问" class="headerlink" title="列表访问"></a>列表访问</h2><h3 id="1-访问列表"><a href="#1-访问列表" class="headerlink" title="1.访问列表"></a>1.访问列表</h3><p>(1)访问列表及元素<br>可以使用列表名访问整个列表，也可以通过list[index]访问索引为index的元素。</p>
+<pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
-LinkList L;//L为单链表的头指针;
-</code></pre><p>单链表操作实现的基本实现：</p>
-<ul>
-<li>GetElem(L, i, e)&emsp;//取第i个数据元素</li>
-<li>ListInsert(&amp;L, i, e)&emsp;//插入数据元素</li>
-<li>ListDelete(&amp;L, i, e)&emsp;//删除数据元素</li>
-<li>ClearList(&amp;L)&emsp;//重新置为一个空表</li>
-<li>CreateList(&amp;L, n)&emsp;//生成含$n$个数据元素的链表</li>
-</ul>
-<p>找第1个数据元素，必须先找到第$i-1$个数据元素。因此，查找第i个数据元素的基本操作是==移动指针，比较j和i==。令指针p始终指向线性表中第j个数据元素。</p>
+print(&quot;carlist[2]:&quot;,carlist[2])
+print(&quot;carlist[-1]:&quot;,carlist[-1])
+</code></pre><p>(2)列表切片<br>Python支持使用切片访问列表指定范围的元素,语法格式为:</p>
+<pre><code>arr[index_start:index_end:step]
+</code></pre><p>注意结束是指在结束的数字前的一个数字结束。</p>
+<pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;eee&quot;,&quot;fff&quot;,&quot;bbb&quot;]
+
+print(&quot;carlist[2:5]:&quot;,carlist[2:5])
+print(&quot;carlist[2:5:2]:&quot;,carlist[2:5:2])
+</code></pre><p>(3)遍历列表<br>可以使用for语句遍历列表，即逐个访问列表中的每个元素。</p>
+<pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;eee&quot;,&quot;fff&quot;,&quot;bbb&quot;]
+
+print(&quot;print:&quot;,end = &#39; &#39;)
+
+for car in carlist:
+    print(car,end = &#39; &#39;)
+</code></pre><h3 id="2-添加列表元素"><a href="#2-添加列表元素" class="headerlink" title="2.添加列表元素"></a>2.添加列表元素</h3><p>列表创建后，可以使用列表函数或切片为列表添加新的元素。</p>
+<ol>
+<li>list.append(newItem): 在列表末尾添加新的元素newItem。</li>
+<li>list.insert(index,newItem):在列表末尾添加新元素newItem。</li>
+<li>list.extend(seq):在列表末尾添加迭代对象seq中的所有元素作为列表新元素。</li>
+<li>list.[len(list):] = newList:使用切片在列表list末尾添加新元素(newList中的元素)</li>
+</ol>
+<pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;eee&quot;,&quot;fff&quot;,&quot;bbb&quot;]
+
+#carlist.append(&quot;ggg&quot;)
+#carlist.insert(2,&quot;ggg&quot;)
+#carlist.extend([&quot;yyy&quot;,&quot;ggg&quot;])
+carlist[6:] = [&quot;iii&quot;,&quot;ggg&quot;] 
+
+print(carlist)
+</code></pre><font color="#f4f4f4" weight="bold" size="32">To be continue</font>
+
+<p><a href="https://github.com/Wulnut/Learning-only/tree/master/pyhononly" target="_blank" rel="noopener">源码戳我</a></p>
 
             <hr>
           </div>
@@ -417,7 +453,7 @@ LinkList L;//L为单链表的头指针;
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "链式存储&nbsp;",
+        "python学习笔记(5)&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
