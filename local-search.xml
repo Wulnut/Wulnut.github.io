@@ -4,9 +4,28 @@
   
   
   <entry>
+    <title>python学习笔记(6)</title>
+    <link href="/2020/01/20/python_ex39/"/>
+    <url>/2020/01/20/python_ex39/</url>
+    
+    <content type="html"><![CDATA[<p>python入门学习</p><a id="more"></a><h3 id="3-修改列表元素"><a href="#3-修改列表元素" class="headerlink" title="3.修改列表元素"></a>3.修改列表元素</h3><p>列表创建之后，可以对列表中单个元素或指定范围元素(切片)进行修改，方法是：</p><ol><li>list[index] = newValue: 对指定索引index的列表元素进行修改</li><li><p>list[::] = newList: 对指定方位的列表元素进行修改</p><p> list = [“aaa”,”bbb”,”ccc”,”ddd”]</p><p> list[0] = “eee”</p><p> print(“list:”,list)</p><p> list[1:3] = [“ggg”,”kkk”]</p><p> print(“list:”,list)</p></li></ol><p>4.删除列表元素<br>列表创建后，可以根据需要使用列表函数，del语句或切片和删除指定袁术或所有元素。</p><ol><li>del list[index]: 删除索引为index元素</li><li>list.pop(): 删除列表末尾的元素。</li><li>list.pop(index): 删除索引的元素。</li><li>list.remove(item): 删除列表元素item。</li><li>list.clear(): 删除列表中所有元素。</li><li>list[::] = []: 对指定范围的列表元素进行删除。</li></ol><h2 id="列表复制和删除"><a href="#列表复制和删除" class="headerlink" title="列表复制和删除"></a>列表复制和删除</h2><h3 id="1-列表复制"><a href="#1-列表复制" class="headerlink" title="1.列表复制"></a>1.列表复制</h3><p>列表复制有两种方法。</p><ol><li>list_copy = list.copy(): 列表浅复制。当列表list改变时，list_copy中的元素不会随之变化。</li><li>list_copy = list: 列表复制。当列表list改变时，list_copy中的元素也会随之改变。</li></ol><h3 id="2-列表删除"><a href="#2-列表删除" class="headerlink" title="2.列表删除"></a>2.列表删除</h3><p>当列表不再使用后，可以使用del语句删除列表，其一般格式：</p><pre><code>del 列表名</code></pre><h2 id="列表运算"><a href="#列表运算" class="headerlink" title="列表运算"></a>列表运算</h2><ol><li>+: 将多个列表组合成一个新的列表，新列表中的元素是多个元素的有序组合。</li><li>*: 将整数n和列表相乘可以得到一个将原列表重复n次的新列表。</li><li>in: 用于判断给定对象是否再列表中，如果再则返回True：否则返回False</li><li>not in: 用于判断给定对象是否不在列表中，如果不在则返回True；否则返回False</li><li>关系运算符：两个列表可以使用&lt;,&gt;等关系运算进行比较操作，其规则是从两个列表的第1个元素开始比较，如果比较有结果就结束；否则继续继续比较两个列表后面对应位置的元素。</li></ol><font color="#f4f4f4" weight="bold" size="32">To be continue</font>]]></content>
+    
+    
+    <categories>
+      
+      <category>study</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python学习笔记(5)</title>
-    <link href="/2020/01/18/python_ex38/"/>
-    <url>/2020/01/18/python_ex38/</url>
+    <link href="/2020/01/19/python_ex38/"/>
+    <url>/2020/01/19/python_ex38/</url>
     
     <content type="html"><![CDATA[<p>python入门学习</p><a id="more"></a><h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>列表(list)是写在方括号[]之间、用于逗号隔开的元素集合。<br>列表中的元素可以是零个或多个。只有零个元素的列表称为空列表[]。<br>列表中的元素可以相同。例如：</p><pre><code>[&quot;c/c++&quot;,&quot;Python&quot;,&quot;Java&quot;]</code></pre><p>该列表中的个元素均不同。</p><pre><code>[1,1,2,3,4]</code></pre><p>该列表中有重复元素。</p><p>列表中的元素可以类型相同，如[2,4,6,8];也可以是类型不同，如列表[“Rose”,”Female”,18];还可以是复杂的数据类型，如列表[(1,0),(0,1)]</p><p>同字符串类似，列表支持元素的双向索引，正向第1个元素的索引是0，第2个元素的索引是1，以此类推。反向最后1个元素的索引是-1，倒数第2个元素的索引是-2，以此类推。</p><h2 id="列表创建"><a href="#列表创建" class="headerlink" title="列表创建"></a>列表创建</h2><p>通常使用[]运算符或list()函数创建列表。</p><h3 id="1-使用-运算符"><a href="#1-使用-运算符" class="headerlink" title="1.使用[]运算符"></a>1.使用[]运算符</h3><p>使用[]运算符创建列表的一般格式为：</p><pre><code>列表名 = [元素1, 元素2, 元素3, ....]</code></pre><p>其中列表中的元素可以是相同类型或不同类型，简单数据或组合数据。</p><pre><code>list1 = []list2 = [1, 2, 3.2]list3 = [&quot;石油&quot;,&quot;汽车&quot;,&quot;建筑&quot;,&quot;IT&quot;]list4 = [&#39;Alice&#39;,18,&#39;Beth&#39;,19]</code></pre><h3 id="2-使用list-函数创建列表"><a href="#2-使用list-函数创建列表" class="headerlink" title="2.使用list()函数创建列表"></a>2.使用list()函数创建列表</h3><p>使用内置函数list()创建列表的一般格式为:</p><pre><code>列表名 = list(sequence)</code></pre><p>其中，sequence可以是字符串、元组、结合或range()函数返回结果等迭代对象</p><h2 id="列表访问"><a href="#列表访问" class="headerlink" title="列表访问"></a>列表访问</h2><h3 id="1-访问列表"><a href="#1-访问列表" class="headerlink" title="1.访问列表"></a>1.访问列表</h3><p>(1)访问列表及元素<br>可以使用列表名访问整个列表，也可以通过list[index]访问索引为index的元素。</p><pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]print(&quot;carlist[2]:&quot;,carlist[2])print(&quot;carlist[-1]:&quot;,carlist[-1])</code></pre><p>(2)列表切片<br>Python支持使用切片访问列表指定范围的元素,语法格式为:</p><pre><code>arr[index_start:index_end:step]</code></pre><p>注意结束是指在结束的数字前的一个数字结束。</p><pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;eee&quot;,&quot;fff&quot;,&quot;bbb&quot;]print(&quot;carlist[2:5]:&quot;,carlist[2:5])print(&quot;carlist[2:5:2]:&quot;,carlist[2:5:2])</code></pre><p>(3)遍历列表<br>可以使用for语句遍历列表，即逐个访问列表中的每个元素。</p><pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;eee&quot;,&quot;fff&quot;,&quot;bbb&quot;]print(&quot;print:&quot;,end = &#39; &#39;)for car in carlist:    print(car,end = &#39; &#39;)</code></pre><h3 id="2-添加列表元素"><a href="#2-添加列表元素" class="headerlink" title="2.添加列表元素"></a>2.添加列表元素</h3><p>列表创建后，可以使用列表函数或切片为列表添加新的元素。</p><ol><li>list.append(newItem): 在列表末尾添加新的元素newItem。</li><li>list.insert(index,newItem):在列表末尾添加新元素newItem。</li><li>list.extend(seq):在列表末尾添加迭代对象seq中的所有元素作为列表新元素。</li><li>list.[len(list):] = newList:使用切片在列表list末尾添加新元素(newList中的元素)</li></ol><pre><code>carlist = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;,&quot;eee&quot;,&quot;fff&quot;,&quot;bbb&quot;]#carlist.append(&quot;ggg&quot;)#carlist.insert(2,&quot;ggg&quot;)#carlist.extend([&quot;yyy&quot;,&quot;ggg&quot;])carlist[6:] = [&quot;iii&quot;,&quot;ggg&quot;] print(carlist)</code></pre><font color="#f4f4f4" weight="bold" size="32">To be continue</font><p><a href="https://github.com/Wulnut/Learning-only/tree/master/pyhononly" target="_blank" rel="noopener">源码戳我</a></p>]]></content>
     
