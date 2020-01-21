@@ -129,7 +129,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    526 字
+                    902 字
                   </span>&nbsp;
                 
 
@@ -137,7 +137,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -194,21 +194,69 @@
 <li>list.pop(index): 删除索引的元素。</li>
 <li>list.remove(item): 删除列表元素item。</li>
 <li>list.clear(): 删除列表中所有元素。</li>
-<li>list[::] = []: 对指定范围的列表元素进行删除。</li>
+<li>list[::] = []: 对指定范围的列表元素进行</li>
 </ol>
+<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+
+    print(&quot;list:&quot;,list)
+
+    #del list[3]
+    #list.pop()
+    #list.pop(0)
+    #list.remove(&quot;aaa&quot;)
+    #list.clear()
+    #list[2:3] = []
+
+    print(&quot;list:&quot;,list)
+</code></pre><p>list.remove(item)<br><img src="/img/list.remove.png" srcset="/img/loading.gif" alt=" "></p>
+<p>list.clear()<br><img src="/img/list.clear.png" srcset="/img/loading.gif" alt=" "></p>
+<p>list[::] = []<br><img src="/img/list[].png" srcset="/img/loading.gif" alt=" "></p>
 <h2 id="列表复制和删除"><a href="#列表复制和删除" class="headerlink" title="列表复制和删除"></a>列表复制和删除</h2><h3 id="1-列表复制"><a href="#1-列表复制" class="headerlink" title="1.列表复制"></a>1.列表复制</h3><p>列表复制有两种方法。</p>
 <ol>
 <li>list_copy = list.copy(): 列表浅复制。当列表list改变时，list_copy中的元素不会随之变化。</li>
 <li>list_copy = list: 列表复制。当列表list改变时，list_copy中的元素也会随之改变。</li>
 </ol>
+<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+
+    list_copy = list.copy()
+
+    print(&quot;list:&quot;,list)
+    print(&quot;list_copy:&quot;,list_copy)
+</code></pre><p><img src="/img/list.copy.png" srcset="/img/loading.gif" alt=" "></p>
 <h3 id="2-列表删除"><a href="#2-列表删除" class="headerlink" title="2.列表删除"></a>2.列表删除</h3><p>当列表不再使用后，可以使用del语句删除列表，其一般格式：</p>
 <pre><code>del 列表名
-</code></pre><h2 id="列表运算"><a href="#列表运算" class="headerlink" title="列表运算"></a>列表运算</h2><ol>
+</code></pre><p>del 可以索引删除也可以全部删除</p>
+<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+
+    print(&quot;list:&quot;,list)
+
+    del list
+
+    print(&quot;list:&quot;,list)
+</code></pre><p><img src="/img/del.png" srcset="/img/loading.gif" alt=" "></p>
+<h2 id="列表运算"><a href="#列表运算" class="headerlink" title="列表运算"></a>列表运算</h2><ol>
 <li>+: 将多个列表组合成一个新的列表，新列表中的元素是多个元素的有序组合。</li>
 <li>*: 将整数n和列表相乘可以得到一个将原列表重复n次的新列表。</li>
 <li>in: 用于判断给定对象是否再列表中，如果再则返回True：否则返回False</li>
 <li>not in: 用于判断给定对象是否不在列表中，如果不在则返回True；否则返回False</li>
 <li>关系运算符：两个列表可以使用&lt;,&gt;等关系运算进行比较操作，其规则是从两个列表的第1个元素开始比较，如果比较有结果就结束；否则继续继续比较两个列表后面对应位置的元素。</li>
+</ol>
+<h2 id="列表统计"><a href="#列表统计" class="headerlink" title="列表统计"></a>列表统计</h2><p>列表统计函数：</p>
+<ol>
+<li>len(list): 返回列表list中的元素个数</li>
+<li>max(list): 返回列表list中元素的最大值</li>
+<li>min(list): 返回列表list中元素的最小值</li>
+<li>sum(list): 返回列表list中所有元素的和</li>
+<li>list.count(key): 返回关键字key在列表中出现的次数</li>
+</ol>
+<h2 id="列表元素查找和排序"><a href="#列表元素查找和排序" class="headerlink" title="列表元素查找和排序"></a>列表元素查找和排序</h2><h3 id="1-列表元素查找"><a href="#1-列表元素查找" class="headerlink" title="1.列表元素查找"></a>1.列表元素查找</h3><p>list.index()函数用于查找并返回关键字在列表中第1次出现的位置，其一般格式为：</p>
+<pre><code>list.index(key)
+</code></pre><p>其中，key为要在列表中查找的元素。</p>
+<h3 id="2-列表元素的排序"><a href="#2-列表元素的排序" class="headerlink" title="2.列表元素的排序"></a>2.列表元素的排序</h3><p>列表创建后，可以使用一下函数更具关键字对列表中的元素进行排序、倒序或临时排序。</p>
+<ol>
+<li>list.sort(): 对列表中的元素按照一定的规则进行排序</li>
+<li>list.reverse(): 对列表list中的元素按照一定的规则反向排序</li>
+<li>sorted(list): 对列表list中的元素进行临时排序，返回副本。但是原列表中的元素次序不变</li>
 </ol>
 <font color="#f4f4f4" weight="bold" size="32">To be continue</font>
             <hr>
