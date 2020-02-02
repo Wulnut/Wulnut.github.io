@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Wulnut</title>
+  <title>STL队列 ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -37,7 +37,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/index.jpg')no-repeat center center;
+         style="background: url('/img/queue(stl).png')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -116,12 +116,43 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Sunday, February 2nd 2020, 11:05 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    435 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
-            </div>
           
         </div>
       </div>
@@ -130,93 +161,155 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>STL队列简述</p>
+<a id="more"></a>
+<h1 id="STL中队列-queue-的使用方法"><a href="#STL中队列-queue-的使用方法" class="headerlink" title="STL中队列(queue)的使用方法"></a><font color="#f278">STL中队列(queue)的使用方法</font></h1><h3 id="STL中队列的使用方法-queue"><a href="#STL中队列的使用方法-queue" class="headerlink" title="STL中队列的使用方法(queue)"></a><font style="text-align: 'center'">STL中队列的使用方法(queue)</font></h3><p>基本操作：</p>
+<ul>
+<li>push(x) 将x压入队列的末端</li>
+<li>pop() 弹出队列的第一个元素(队顶元素)，注意此函数并不返回任何值</li>
+<li>front() 返回第一个元素(队顶元素)</li>
+<li>back() 返回最后被压入的元素(队尾元素)</li>
+<li>empty() 当队列为空时，返回true</li>
+<li>size() 返回队列的长度</li>
+</ul>
+<p>使用方法：</p>
+<p>头文件：</p>
+<pre><code>#include &lt;queue&gt;
+</code></pre><p> 声明方法：<br>1、普通声明</p>
+<pre><code>queue&lt;int&gt;q;
+</code></pre><p>2、结构体</p>
+<pre><code>struct node
+{    
+int x, y;
+};
+queue&lt;node&gt;q;
+</code></pre><h3 id="STL-中优先队列的使用方法-priority-queue"><a href="#STL-中优先队列的使用方法-priority-queue" class="headerlink" title="STL 中优先队列的使用方法(priority_queue)"></a>STL 中<font color="#f278">优先队列</font>的使用方法(priority_queue)</h3><p>&emsp;&emsp;优先队列容器与队列一样，只能从队尾插入元素，从队首删除元素。但是它有一个特性，就是队列中最大的元素总是位于队首，所以出队时，并非按照先进先出的原则进行，而是将当前队列中最大的元素出队。这点类似于给队列里的元素进行了由大互小的顺序排序。元素的比较规则默认按元素值由大到小排序，可以重载“&lt;”操作符来重新定义比较规则。</p>
+<p>基本操作：</p>
+<ul>
+<li><p>empty() 如果队列为空返回真</p>
+</li>
+<li><p>pop() 删除对顶元素</p>
+</li>
+<li><p>push() 加入一个元素</p>
+</li>
+<li><p>size() 返回优先队列中拥有的元素个数</p>
+</li>
+<li><p>top() 返回优先队列对顶元素</p>
+</li>
+</ul>
+<p>在默认的优先队列中，优先级高的先出队。在默认的int型中先出队的为较大的数。</p>
+<p>使用方法：</p>
+<p>头文件：</p>
+<pre><code>#include &lt;queue&gt;
+</code></pre><p>声明方式：</p>
+<p>1、普通方法：<br>    priority_queue<int>q;   //通过操作，按照元素从大到小的顺序出队<br>    priority_queue<int,vector<int>, greater<int> &gt;q;  //通过操作，按照元素从小到大的顺序出队</p>
+<p>2、自定义优先级：</p>
+<pre><code>struct cmp {     
+　　operator bool ()(int x, int y)     
+　　{        
+　　　　 return　x &gt; y; // x小的优先级高       
+        //也可以写成其他方式，如： return p[x] &gt; p[y];表示p[i]小的优先级高
+　　}
+};
+priority_queue&lt;int, vector&lt;int&gt;, cmp&gt;q;    //定义方法
+//其中，第二个参数为容器类型。第三个参数为比较函数。
+</code></pre><p>3、结构体声明方式：</p>
+<pre><code>struct node {     
+　　int x, y;     
+　　friend bool operator &lt; (node a, node b)     
+　　{         
+　　　　return a.x &gt; b.x;    //结构体中，x小的优先级高     
+　　}
+};
+priority_queue&lt;node&gt;q;   //定义方法
+//在该结构中，y为值, x为优先级。
+//通过自定义operator&lt;操作符来比较元素中的优先级。
+//在重载“&lt;”时，最好不要重载“&gt;”，可能会发生编译错误
+</code></pre>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
                 
-
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/12/07/remove_list_entry%EF%BC%88%E6%97%A0%E9%9C%80%20if%20%E9%80%BB%E8%BE%91%EF%BC%89/">
-        <p class="h4 index-header">remove_list_entry</p>
-        
-        
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">学习如何写有品味的代码...</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-07&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/study">study</a>&nbsp;
-          &nbsp;
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/12/06/hello-world/">
-        <p class="h4 index-header">Hello World</p>
-        
-        
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">first txt...</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-06&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-
-
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-
-              </div>
-            </div>
+                  <a class="hover-with-bg" href="/categories/study">study</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -301,6 +394,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -370,7 +468,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Despair is chief&nbsp;",
+        "STL队列&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
