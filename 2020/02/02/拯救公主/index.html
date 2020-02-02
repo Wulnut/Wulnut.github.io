@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/panda.png">
+  <link rel="icon" type="image/png" href="/img/panda.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="Wulnut">
+  <meta name="keywords" content="">
+  <title>拯救公主 ~ Wulnut</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/github-v2.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Wulnut</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/code.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Sunday, February 2nd 2020, 10:32 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>DFS训练题</p>
+<a id="more"></a>
+<h2 id="拯救公主"><a href="#拯救公主" class="headerlink" title="拯救公主"></a>拯救公主</h2><p>公主被恶人抓走，被关押在牢房的某个地方。牢房用 $ N \times M (N, M \le 200)N×M(N,M\le200) $ 的矩阵来表示。矩阵中的每项可以代表道路（@）、墙壁（#）、和守卫（x）。</p>
+<p>英勇的骑士（r）决定孤身一人去拯救公主（a）。我们假设拯救成功的表示是 “骑士到达了公主所在的位置”。由于在通往公主所在位置的道路中可能遇到守卫，骑士一旦遇到守卫，必须杀死守卫才能继续前进。</p>
+<p>现假设骑士可以向上、下、左、右四个方向移动，每移动一个位置需要 11 个单位时间，杀死一个守卫需要花费额外的 11 个单位时间。同时假设骑士足够强壮，有能力杀死所有的守卫。</p>
+<p>给定牢房矩阵，公主、骑士和守卫在矩阵中的位置，请你计算拯救行动成功需要花费最短时间。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>1、两个整数代表 $N$ 和 $M, (N, M \le 200)M,(N,M\le200)$.<br>2、随后 $N$ 行，每行有 $M$ 个字符。”@” 代表道路，”a” 代表公主，”r” 代表骑士，”x” 代表守卫, “#” 代表墙壁。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>如果拯救行动成功，输出一个整数，表示行动的最短时间。<br>如果不可能成功，输出 “Impossible”。</p>
+<h3 id="输入样例1"><a href="#输入样例1" class="headerlink" title="输入样例1"></a>输入样例1</h3><pre><code>7 8
+#@#####@
+#@a#@@r@
+#@@#x@@@
+@@#@@#@#
+#@@@##@@
+@#@@@@@@
+@@@@@@@@
+</code></pre><h3 id="输出样例1"><a href="#输出样例1" class="headerlink" title="输出样例1"></a>输出样例1</h3><pre><code>13
+</code></pre><h3 id="输入样例2"><a href="#输入样例2" class="headerlink" title="输入样例2"></a>输入样例2</h3><pre><code>13 40
+@x@@##x@#x@x#xxxx##@#x@x@@#x#@#x#@@x@#@x
+xx###x@x#@@##xx@@@#@x@@#x@xxx@@#x@#x@@x@
+#@x#@x#x#@@##@@x#@xx#xxx@@x##@@@#@x@@x@x
+@##x@@@x#xx#@@#xxxx#@@x@x@#@x@@@x@#@#x@#
+@#xxxxx##@@x##x@xxx@@#x@x####@@@x#x##@#@
+#xxx#@#x##xxxx@@#xx@@@x@xxx#@#xxx@x#####
+#x@xxxx#@x@@@@##@x#xx#xxx@#xx#@#####x#@x
+xx##@#@x##x##x#@x#@a#xx@##@#@##xx@#@@x@x
+x#x#@x@#x#@##@xrx@x#xxxx@##x##xx#@#x@xx@
+#x@@#@###x##x@x#@@#@@x@x@@xx@@@@##@@x@@x
+x#xx@x###@xxx#@#x#@@###@#@##@x#@x@#@@#@@
+#@#x@x#x#x###@x@@xxx####x@x##@x####xx#@x
+#x#@x#x######@@#x@#xxxx#xx@@@#xx#x#####@
+</code></pre><h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><pre><code>7
+</code></pre><h3 id="ans"><a href="#ans" class="headerlink" title="ans"></a>ans</h3><pre><code>//ac
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+char maze[205][205];
+bool vis[205][205];
+int dir[4][2] = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+int n, m;
+
+struct node {
+    int x;
+    int y;
+    int d;
+    node(int xx, int yy, int dd) : x(xx), y(yy), d(dd) {}
+    friend bool operator &lt; (node a, node b) {
+        return a.d &gt; b.d;
+    }
+};
+
+int bfs(int x, int y) {
+    priority_queue&lt;node&gt; q;
+    vis[x][y] = true;
+    q.push(node(x, y, 0));
+
+    while(!q.empty()) {
+        node now = q.top();
+        q.pop();
+
+        for (int i = 0; i &lt; 4; ++i) {
+            int tx = now.x + dir[i][0];
+            int ty = now.y + dir[i][1];
+
+            if (0 &gt; tx || tx &gt;= n || 0 &gt; ty || ty &gt;= m || maze[tx][ty] == &#39;#&#39; || vis[tx][ty])
+            continue;
+
+            if (maze[tx][ty] == &#39;a&#39;) {
+                return now.d + 1;
+            }
+            else if (maze[tx][ty] == &#39;x&#39;) {
+                vis[tx][ty] = true;
+                q.push(node(tx, ty, now.d + 2));
+            }
+            else{
+                vis[tx][ty] = true;
+                q.push(node(tx, ty, now.d + 1));
+            }
+
+        }
+    }
+
+    return -1;
+}
+
+int main(){
+    freopen(&quot;note.txt&quot;, &quot;r&quot;, stdin);
+    freopen(&quot;ans.txt&quot;, &quot;w&quot;, stdout);
+
+    int i, j;
+    int ans = -1;
+
+    cin &gt;&gt; n &gt;&gt; m;
+    for (i = 0; i &lt; n; ++i) {
+        cin &gt;&gt; maze[i];
+    }
+
+    for (i = 0; i &lt; n; ++i) {
+        for (j = 0; j &lt; m; ++j) {
+            if (maze[i][j] == &#39;r&#39;){
+                break;
+            }
+        }
+        if (maze[i][j] == &#39;r&#39;) break;
+    }
+
+    ans = bfs(i, j);
+
+    if (ans == -1) {
+        cout &lt;&lt; &quot;Impossible&quot; &lt;&lt; endl;
+    }
+    else{
+        cout &lt;&lt; ans &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre><h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>这个题目的棋盘范围超过了100也就是说使用dfs算法是非常危险的方法，因为dfs的时间复杂度为$O(2^n)$而bfs的时间复杂度为$O(M<em>N)$所以使用dfs是会为超时的。<br>所以弃用dfs是必须的，一般再求最少问题时一般都是采用dfs算法使用。但是我们注意这个棋盘的范围超过了100。对于bfs来说<br>空间复杂度问题就显现的比较明显。如果采用一般的队列方式来存储帮助bfs的实现，时肯定不行的。此时就要记住。一般这种情况下求极值问题要求优化，我们就采用用<em>*优先队列</em></em>的方法。来进行优化。其实质上对空间复杂度的优化就是对时间复杂度的优化。要不断使用最优秀的数据结构来解决时间于内存上的算法优化问题。</p>
+<font color="#f4f4f4" weight="bold" size="32">To be continue</font>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98">训练题</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/BFS">BFS</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <p>copyright&copy 2019 - 2020</p>
+    <a href="http://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="http://www.wulnut.top/" target="_blank" rel="nofollow noopener"> <b>ash-bin</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+  <!-- 备案信息 -->
+  <a href="http://beian.miit.gov.cn/" target="_blank"
+     rel="nofollow noopener">鄂ICP证20001010号</a>
+  
+
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-155249740-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "拯救公主&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "true",
+      
+      icon: "#"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

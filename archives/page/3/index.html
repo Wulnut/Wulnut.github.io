@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Categories - 训练题 ~ Wulnut</title>
+  <title>Archives ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -135,35 +135,31 @@
                 
 
 <div class="list-group">
-<!--  <p class="h4">3 posts in total.</p>-->
+  <p class="h4">21 posts in total.</p>
   <hr>
-  
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/02/%E6%8B%AF%E6%95%91%E5%85%AC%E4%B8%BB/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">拯救公主</span>
-      <span style="float: right;">02-02</span>
-    </a>
-  
-    
-    <a href="/2020/01/26/%E8%B8%8F%E9%9D%92/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">踏青</span>
-      <span style="float: right;">01-26</span>
-    </a>
   
     
       
       <p class="h5">2019</p>
     
-    <a href="/2019/12/15/AC%EF%BC%881136%EF%BC%89/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">简单题（1136）</span>
-      <span style="float: right;">12-15</span>
+    <a href="/2019/12/06/hello-world/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Hello World</span>
+      <span style="float: right;">12-06</span>
     </a>
   
 </div>
 
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
               </div>
@@ -324,7 +320,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Category - 训练题&nbsp;",
+        "Archive&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

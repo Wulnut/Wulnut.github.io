@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Categories - 训练题 ~ Wulnut</title>
+  <title>Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -37,7 +37,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('/img/index.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -118,6 +118,10 @@
             
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
           
         </div>
       </div>
@@ -134,35 +138,46 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-<!--  <p class="h4">3 posts in total.</p>-->
-  <hr>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/12/06/hello-world/">
+        <p class="h4 index-header">Hello World</p>
+        
+        
+          
+          
+        
+        <div class="index-excerpt" style="max-height: none;">
+          <div class="index-text mb-1">first txt...</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-06&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </span>
+  </nav>
   
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/02/%E6%8B%AF%E6%95%91%E5%85%AC%E4%B8%BB/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">拯救公主</span>
-      <span style="float: right;">02-02</span>
-    </a>
-  
-    
-    <a href="/2020/01/26/%E8%B8%8F%E9%9D%92/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">踏青</span>
-      <span style="float: right;">01-26</span>
-    </a>
-  
-    
-      
-      <p class="h5">2019</p>
-    
-    <a href="/2019/12/15/AC%EF%BC%881136%EF%BC%89/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">简单题（1136）</span>
-      <span style="float: right;">12-15</span>
-    </a>
-  
-</div>
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -324,7 +339,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Category - 训练题&nbsp;",
+        "Despair is chief&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
