@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Categories ~ Wulnut</title>
+  <title>背包九讲 ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -37,7 +37,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -105,7 +105,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('/img/code.png')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -115,6 +115,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Monday, February 10th 2020, 9:00 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    265 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -126,22 +161,112 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>著名的背包问题</p>
+<a id="more"></a>
+<p>[toc]</p>
+<h2 id="01背包问题"><a href="#01背包问题" class="headerlink" title="01背包问题"></a>01背包问题</h2><p>有 $N$ 件物品和一个容量是 $V$ 的背包。每件物品只能使用一次。</p>
+<p>第 $i$ 件物品的体积是 $v_i$，价值是 $w_i$。</p>
+<p>求解将哪些物品装入背包，可使这些物品的总体积不超过背包容量，且总价值最大。<br>输出最大价值。</p>
+<p><strong>输入格式</strong></p>
+<p>第一行两个整数，$N$，$V$，用空格隔开，分别表示物品数量和背包容积。</p>
+<p>接下来有 $N$ 行，每行两个整数 $v_i$,$w_i$，用空格隔开，分别表示第 $i$ 件物品的体积和价值。</p>
+<p><strong>输出格式</strong><br>输出一个整数，表示最大价值。</p>
+<p><strong>数据范围</strong></p>
+<p>$0 &lt; N$, $V \leq 1000$</p>
+<p>$0 &lt; v_i$, $w_i \leq 1000$</p>
+<p><strong>输入样例</strong></p>
+<pre><code>4 5
+1 2
+2 4
+3 4
+4 5
+</code></pre><p><strong>输出样例</strong></p>
+<pre><code>8
+</code></pre><h2 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h2><h2 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h2><h2 id="混合背包问题"><a href="#混合背包问题" class="headerlink" title="混合背包问题"></a>混合背包问题</h2><h2 id="二维费用的背包问题"><a href="#二维费用的背包问题" class="headerlink" title="二维费用的背包问题"></a>二维费用的背包问题</h2><h2 id="分组背包问题"><a href="#分组背包问题" class="headerlink" title="分组背包问题"></a>分组背包问题</h2><h2 id="背包问题求方案数"><a href="#背包问题求方案数" class="headerlink" title="背包问题求方案数"></a>背包问题求方案数</h2><h2 id="求背包问题的方案"><a href="#求背包问题的方案" class="headerlink" title="求背包问题的方案"></a>求背包问题的方案</h2><h2 id="有依赖的背包问题"><a href="#有依赖的背包问题" class="headerlink" title="有依赖的背包问题"></a>有依赖的背包问题</h2>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
                 
-
-<ul class="category-tree-list"><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/Notes/">Notes</a><span class="category-tree-list-count">5</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/study/">study</a><span class="category-tree-list-count">14</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98/">训练题</a><span class="category-tree-list-count">3</span><ul class="category-tree-list-child"><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98/BFS/">BFS</a><span class="category-tree-list-count">1</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98/DFS/">DFS</a><span class="category-tree-list-count">1</span></li></ul></li></ul>
-
-
-              </div>
-            </div>
+                  <a class="hover-with-bg" href="/categories/study">study</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -226,6 +351,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -295,7 +425,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Category&nbsp;",
+        "背包九讲&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
