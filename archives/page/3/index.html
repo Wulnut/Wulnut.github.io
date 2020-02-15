@@ -13,6 +13,8 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
@@ -91,6 +93,14 @@
           
           <li class="nav-item">
             <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">Links</a>
           </li>
         
         
@@ -253,19 +263,6 @@
   <a href="http://beian.miit.gov.cn/" target="_blank"
      rel="nofollow noopener">鄂ICP证20001010号</a>
   
-    <a
-      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
-      rel="nofollow noopener"
-      class="police-beian"
-      target="_blank"
-    >
-      <span class="police-beian-sep">&nbsp;|&nbsp;</span>
-      
-        <img src="/img/police_beian.png" srcset="/img/loading.gif" />
-      
-      <span>京公网安备12345678号</span>
-    </a>
-  
 
 
 
@@ -376,6 +373,8 @@
     anchors.options = {
       placement: "right",
       visible: "true",
+      
+      icon: "#"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
