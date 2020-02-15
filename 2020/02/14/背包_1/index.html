@@ -13,6 +13,8 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
@@ -25,7 +27,7 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
-  <link rel="stylesheet" href="/lib/prettify/github-v2.min.css"  >
+  <link rel="stylesheet" href="/lib/prettify/github-va.min.css"  >
 
 <link rel="stylesheet" href="/css/main.css"  >
 
@@ -104,10 +106,9 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background"
+    <div class="view intro-2" id="background" false
          style="background: url('/img/backpack.jpeg')no-repeat center center;
-           background-size: cover;
-           background-attachment: fixed;">
+           background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
           <div class="container text-center white-text fadeInUp">
@@ -317,14 +318,14 @@
   
     <!-- 不蒜子统计PV -->
     
-    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
-          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
   
   
     <!-- 不蒜子统计UV -->
     
-    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
-            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
   
   <br>
 
@@ -334,6 +335,19 @@
   <!-- 备案信息 -->
   <a href="http://beian.miit.gov.cn/" target="_blank"
      rel="nofollow noopener">鄂ICP证20001010号</a>
+  
+    <a
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+      rel="nofollow noopener"
+      class="police-beian"
+      target="_blank"
+    >
+      <span class="police-beian-sep">&nbsp;|&nbsp;</span>
+      
+        <img src="/img/police_beian.png" srcset="/img/loading.gif" />
+      
+      <span>京公网安备12345678号</span>
+    </a>
   
 
 
@@ -363,7 +377,7 @@
 
 
 
-  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
 
 
 
@@ -451,8 +465,6 @@
       placement: "right",
       visible: "true",
       
-      icon: "#"
-      
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
     var res = [];
@@ -515,6 +527,7 @@
     <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
 
   
+
 
 
 

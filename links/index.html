@@ -18,7 +18,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>remove_list_entry ~ Wulnut</title>
+  <title>Links ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -106,7 +106,7 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
+    <div class="view intro-2" id="background" parallax=true
          style="background: url('/img/default.png')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
@@ -116,41 +116,6 @@
               
             </span>
 
-            
-              <br>
-              
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Saturday, December 7th 2019, 1:12 pm
-                </p>
-              
-
-              <p>
-                
-                  
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
-                    798 字
-                  </span>&nbsp;
-                
-
-                
-                  
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
-                      3 分钟
-                  </span>&nbsp;
-                
-
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
-                
-              </p>
             
           </div>
 
@@ -162,184 +127,56 @@
 
   <main>
     
-      
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <p>学习如何写有品味的代码</p>
-<a id="more"></a>
-<h1 id="remove-list-entry（无需-if-逻辑）"><a href="#remove-list-entry（无需-if-逻辑）" class="headerlink" title="remove_list_entry（无需 if 逻辑）"></a>remove_list_entry（无需 if 逻辑）</h1><p>
-&emsp;&emsp;这是期TED里面的内容，内容是采访linux的之父Linus Torvalds。<br>&emsp;&emsp;Linus Torvalds两次改变了技术，第一次是Linux内核，它帮助互联网的发展，第二次是Git，全球开发者使用的源代码管理系统。在一次TED的采访中，Torvalds以极其开放的态度讨论了他独特的工作方式和性格特点。Torvalds说：“我不是一个空想家，我是一名工程师，我非常乐意跟梦想家在一起，他们行走四方，仰望苍穹，看着满天星辰说，“我想到那儿去。”但我是低头看路的那种人，我只想填好眼前这个坑，不让自己掉进去，这就是我。”
-
-***
-</p>
-<p>&emsp;&emsp;在聊天中CA问道了一个关于代码品味的的问题，这个问题其实很有意思，对于很多写代码的人来说，有好的代码风格和代码品味就好比有了一种审美品味一样。就好比在写代码时你的缩进习惯一样。</p>
-
-<blockquote>
-<p>第一段代码</p>
-</blockquote>
-<pre><code>remove_list_entry(entry)
-{
-    prev = NULL;
-    walk = head;
-​
-    // Walk the list
-​
-    while (walk != entry)
-    {
-        prev = walk;
-        walk = walk-&gt;next;
-    }
-
-    // Remove the entry by updating the 
-    // head or the previous entry
-    if(!prev)
-    {
-        head = entry-&gt;next;
-    }
-    else
-    {
-        prev-&gt;next = entry-&gt;next;
-    } 
-}
-</code></pre><blockquote>
-<p>第二段代码</p>
-</blockquote>
-<pre><code>remove_list_entry(entry)
-{
-    // The &quot;indirect&quot; pointer points to the
-    // *address* of the thing we&#39;ll update
-    indirect = &amp;head;
-​
-    // Walk the list, looking for the thing that
-    // points to the entry we want to remove 
-    while ((*indirect) != entry))
-    {
-        indirect = &amp;(*indirect)-&gt;next;
-    }
-​
-    // .. and just remove it
-    *indirect = entry-&gt;next;
-}
-</code></pre><font color="red" size="2px">这里我注释一下哈，这两段代码都是伪码。所以看起来有点奇怪</font>
-
-<p>&emsp;&emsp;看起来这两段代码功能上都一样的但是，第一段的最后用了一个if和一个else目的在于处理特殊情况，但是第二段代码很简洁没有if和else来处理特殊情况，这是一种很有意思且巧妙的思想同样<b>Dummy Node链表</b>也是一种处理方式，在这里不讨论，后面我回专门来说这种链表。</p>
-
-<pre><code>Node *head, *prev, *walk;
-void remove_list_entry(Node* entry)
-{
-    prev = NULL;
-
-    // walk 这一变量名，十分巧妙，
-    // 变量命名的不二法门就是对应其物理（实际）意义
-    walk = head;
-
-    while (walk != entry)
-    {
-        prev = walk;
-        walk = walk-&gt;next;
-    }
-
-    // 也即没有执行 while 循环，walk == entry，entry == head
-    if (!prev)
-        head = entry-&gt;next;
-    else
-        prev-&gt;next = entry-&gt;next;
-
-}
-</code></pre><pre><code>void remove_list_entry(Node* entry)
-{
-    Node **indirect;
-    indirect = &amp;head;
-    while ((*indirect) != entry)
-        indirect = &amp;(*indirect)-&gt;next;
-    *indirect = entry-&gt;next;
-}
-</code></pre><font color="#24495e" size="2"><p>&emsp;&emsp;这是两段代码的表准形式</p></font>
-
-<p>&emsp;&emsp;为什么要区分是头指针呢，因为整个程序的逻辑是找到被删除指针的前一个指针，如果被删除的指针为头指针，显然其没有前一个指针。
-显然这种的代码不具很好的 taste，话说 Jobs 也很爱讲 taste（Windows 最大的特点就是 has no taste）。<b>这两段代码的显著区别就是第二段代码省略了 if 语句，</b>对头指针和前一个指针做了统一化处理。
-头指针没有前一个指针，但有自己的地址，自己的地址自然还是指向自己。</p>
-            <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
-                <i class="iconfont icon-inbox"></i>
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
                 
-                  <a class="hover-with-bg" href="/categories/study">study</a>
-                  &nbsp;
-                
-              </span>&nbsp;&nbsp;
-            
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
+
+<div class="row links">
+  
+    <div class="card link-card col-lg-4 col-md-6 col-sm-12">
+      <div class="card-body">
+        
+        
+        <a href="https://fluid-dev.github.io/hexo-fluid-docs/" target="_blank" rel="noopener">
+          <h5 class="card-title link-card-title">Fluid Docs</h5>
+          <p class="card-text link-card-text">主题使用指南</p>
+        </a>
+      </div>
+    </div>
+  
+    <div class="card link-card col-lg-4 col-md-6 col-sm-12">
+      <div class="card-body">
+        
+        
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">
+          <h5 class="card-title link-card-title">Fluid Repo</h5>
+          <p class="card-text link-card-text">主题 GitHub 仓库</p>
+        </a>
+      </div>
+    </div>
+  
+    <div class="card link-card col-lg-4 col-md-6 col-sm-12">
+      <div class="card-body">
+        
+        
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/Changelog.md" target="_blank" rel="noopener">
+          <h5 class="card-title link-card-title">Fluid Changelog</h5>
+          <p class="card-text link-card-text">主题更新日志</p>
+        </a>
+      </div>
+    </div>
+  
+</div>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-    <div id="tocbot"></div>
-  </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script>
-    var notify = 'true' === true;
-    var verify = 'true' === true;
-    var oldLoad = window.onload;
-    window.onload = function () {
-      new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        avatar: "retro",
-        meta: ['nick', 'mail', 'link'],
-        pageSize: "10",
-      });
-      oldLoad && oldLoad();
-    };
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
-    
-  </div>
-</div>
-
     
   </main>
 
@@ -437,11 +274,6 @@ void remove_list_entry(Node* entry)
 
 
 
-  
-    <script src="/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
-
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -511,7 +343,7 @@ void remove_list_entry(Node* entry)
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "remove_list_entry&nbsp;",
+        "Links&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
