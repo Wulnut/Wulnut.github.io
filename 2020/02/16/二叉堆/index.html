@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>docker的基本操作 ~ Wulnut</title>
+  <title>二叉堆 ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/docker_banner.png')no-repeat center center;
+         style="background: url('/img/backpack.jpeg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -128,7 +128,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Friday, January 10th 2020, 10:58 pm
+                  Sunday, February 16th 2020, 9:08 pm
                 </p>
               
 
@@ -137,7 +137,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    387 字
+                    564 字
                   </span>&nbsp;
                 
 
@@ -145,7 +145,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -178,48 +178,69 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>在Linux运维中我们经常会用到docker，docker通过丰富的镜像软件可以为我们的服务操作带来方便</p>
+            <p>堆的种类有很多这里我们讨论的时最大堆和最小堆</p>
 <a id="more"></a>
-<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><p>&emsp;&emsp;首先Docker要求CentOS系统的内核版本高于 3.10 ，通过 uname -r 命令查看你当前的内核版本是否支持安装docker。<br>如果内核版本过低就更新一下系统内核</p>
-<pre><code>yum update
-</code></pre><p>然后安装需要的软件包，yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
-<pre><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-</code></pre><p>设置yum源：</p>
-<pre><code>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-</code></pre><p><img src="/img/docker操作_6.png" srcset="/img/loading.gif" alt=" "></p>
-<p>我们可以查看所有仓库中所有docker版本，并选择特定版本安装：</p>
-<pre><code>yum list docker-ce --showduplicates | sort -r
-</code></pre><p><img src="/img/docker操作_5.png" srcset="/img/loading.gif" alt=" "></p>
-<p>做好这些前提准备之后我们就可以安装docker了</p>
-<pre><code>sudo yum install docker-ce-17.12.0.ce
-</code></pre><p>启动、设置开启开机启动</p>
-<pre><code>sudo systemctl start docker
-sudo systemctl enable docker
-</code></pre><p>完成上面的操作后验证安装是否成功(有client和service两部分表示docker安装启动都成功了):</p>
-<pre><code>docker version
-</code></pre><p><img src="/img/docker操作_4.png" srcset="/img/loading.gif" alt=" "></p>
-<p>查看docker启动状态：</p>
-<pre><code>systemctl status docker
-</code></pre><p><img src="/img/docker操作_3.png" srcset="/img/loading.gif" alt=" "></p>
-<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>查询docker安装过的包：<br><img src="/img/docker操作_2.png" srcset="/img/loading.gif" alt=""></p>
-<p>删除安装包：</p>
-<pre><code>yum remove docker-ce.x86_64 ddocker-ce-cli.x86_64 -y
-</code></pre><p>删除镜像/容器等:</p>
-<pre><code>rm -rf /var/lib/docker
-</code></pre><h2 id="然后我们还可可以删除容器的方法："><a href="#然后我们还可可以删除容器的方法：" class="headerlink" title="然后我们还可可以删除容器的方法："></a>然后我们还可可以删除容器的方法：</h2><ul>
-<li><p>先停止运行的容器：</p>
-<pre><code>  docker container stop [container-id]
-</code></pre></li>
-<li><p>然后删除容器：</p>
-</li>
+<h2 id="堆的结构"><a href="#堆的结构" class="headerlink" title="堆的结构"></a>堆的结构</h2><p>严格来说，堆也有不同种类。这是一种叫做二叉堆的数据结构，堆就是下图这样的二叉树。<br><img src="/img/堆的例子.png" srcset="/img/loading.gif" alt=""></p>
+<p>最小堆的性质是儿子的值一定不小于父亲的值。而最大堆的性质则于其相反儿子的值一定更不大于父亲的值。<br>除此之外，树的节点时按从上到下、从左到右的顺序紧凑排列的。</p>
+<p><img src="/img/插入数值.png" srcset="/img/loading.gif" alt=""><br>如上图所示，在向堆中插入数值时，首先在堆的末尾插入该数值，然后不断向上提升直到没有大小颠倒为止。</p>
+<p><img src="/img/取出最小值.png" srcset="/img/loading.gif" alt=""><br>如上图所示，从队中删除最小值时，首先把堆的最后一个节点的数值复制到根节点上，并且删除最后一个结点。然后不断向下<br>交换直到没有大小颠倒为止。在向下交换的过程中，如果有两个儿子，那么选择数值较小的儿子（如果儿子比自己小的话）进行交换。</p>
+<h2 id="堆的操作的复杂度"><a href="#堆的操作的复杂度" class="headerlink" title="堆的操作的复杂度"></a>堆的操作的复杂度</h2><p>堆的两种操作所花的时间都和数的深度成正比。因此，如果一共有$n$个元素，那么每个操作就可以在$o(log_n)$的时间内完成。</p>
+<h2 id="堆的实现"><a href="#堆的实现" class="headerlink" title="堆的实现"></a>堆的实现</h2><p>注意:</p>
+<ul>
+<li>左儿子的编号是自己的编号 $×2+1$</li>
+<li>右儿子的编号是自己的编号 $×2+2$</li>
 </ul>
-<pre><code>    docker container rm [container-id]
-</code></pre><ul>
-<li>最后删除镜像：<pre><code>  docker image rmi [image-id]
-</code></pre></li>
-</ul>
-<p>获取对应的 id 可以通过命令：<strong>docker container ls</strong>和 <strong>docker image ls</strong>。<br><img src="/img/docker操作_1.png" srcset="/img/loading.gif" alt=" "></p>
+<pre><code>  const int N = 10000;
+  int heap[N], sz;
 
+  void push(int x) {
+      //自己节点的编号
+      int i = sz ++;
+
+      while(i &gt; 0) {
+          // 父亲结点的编号
+          int p = (i = 1) &gt;&gt; 2;
+
+          //如果已经没有大小颠倒则退出
+          if (heap[p] &lt;= x) break;
+
+          //父亲节点的数值放下来，而把自己提上去
+          heap[i] = heap[p];
+          i = p;
+      }
+
+      heap[i] = x;
+  }
+
+  int pop() {
+
+      //最小值
+
+      int ret = heap[0];
+
+      //要提到根的数值
+      int x = heap[--sz];
+
+      //从根开始向下交换
+      int i = 0;
+      while ((i &lt;&lt; 2) + 1 &lt; sz) {
+          //比较儿子的值
+          int a = i * 2 + 1, b = i * 2 + 2;
+          if (b &lt; sz &amp;&amp; heap[b] &lt; heap[a]) a = b;
+
+          //如果已经没有大小颠倒则退出
+          if (heap[a] &gt;= x) break;
+
+          //把儿子的数值提上来
+          heap[i] = heap[a];
+          i = a;
+      }
+
+      heap[i] = x;
+
+      return ret;
+  }
+</code></pre>
             <hr>
           </div>
           <br>
@@ -229,11 +250,20 @@ sudo systemctl enable docker
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/Notes">Notes</a>
+                  <a class="hover-with-bg" href="/categories/study">study</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
             
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/C++">C++</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
+                
+              </span>
             
             </p>
             
@@ -453,7 +483,7 @@ sudo systemctl enable docker
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "docker的基本操作&nbsp;",
+        "二叉堆&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
