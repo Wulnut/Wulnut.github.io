@@ -182,6 +182,28 @@
   <h3 id="随便说说"><a href="#随便说说" class="headerlink" title="随便说说"></a>随便说说</h3><p>&emsp;&emsp;大学僧，在计院寺。终日扫小下来的code。喜欢折腾，所以大和尚要我去没事写点东西给后生们看。<br>我啥也不会就随便写写。大佬来我blog了一定要踩踩我，帮我指点一下。</p>
 <hr>
 <h3 id="友情连接"><a href="#友情连接" class="headerlink" title="友情连接"></a>友情连接</h3><p><a href="http://www.vsbf.fun/#" target="_blank" rel="noopener"><img src="http://www.vsbf.fun/wp-content/uploads/2019/01/v2-03ff36c5cdfec762e696c65bfcf9c163_hd.jpg" srcset="/img/loading.gif" alt=" " style="width:100px; height:100px; border-radius:50%; "></a>&emsp;&emsp;<a href="https://www.wmathor.com/" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/08/l2xtUO.jpg" srcset="/img/loading.gif" alt=" " style="width:100px; height:100px; border-radius:50%; "></a></p>
+<hr>
+<p>  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div><br>  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script></p>
+<p>  <script>
+    var notify = '<%= theme.valine.notify %>' === true;
+    var verify = '<%= theme.valine.verify %>' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz ",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: " retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script><br>  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments<br>      powered by Valine.</a></noscript></p>
 
 </div>
 
@@ -364,7 +386,7 @@
       placement: "right",
       visible: "true",
       
-      icon: "#"
+      icon: "🔗"
       
     };
     var el = "h1,h2,h3,h4,h5,h6".split(",");
