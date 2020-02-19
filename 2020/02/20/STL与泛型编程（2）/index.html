@@ -211,13 +211,13 @@ private:
 template &lt;class T, std::size_t n&gt; class Stack{...}
 </code></pre></li>
 <li><p>在类模板内部，T可以像其他函数类别一样(比如int , char等)定义成员变量和成员函数</p>
+</li>
+</ul>
 <pre><code>void Push(const T const&amp; element)
 int Pop(T&amp; element);
 int Top(T&amp; element) const;
 std::vector&lt;T&gt; m_Members;
 </code></pre></li>
-</ul>
-</li>
 </ul>
 
             <hr>

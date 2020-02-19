@@ -136,7 +136,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    926 字
+                    934 字
                   </span>&nbsp;
                 
 
@@ -276,11 +276,16 @@ Max(1, 2.0) //ERROR：第一参数的类别是int第二参数类别是double
 <ul>
 <li>函数模板也可以像普通函数一样被重载</li>
 <li>非模板函数可以和<strong>同名</strong>的模板函数共存</li>
-<li>编译器同通过函数模板参数推导来决定使用调用哪个函数<br>```<br>inline int const&amp; Max(const int const&amp; a, const int const&amp; b)</li>
+<li>编译器同通过函数模板参数推导来决定使用调用哪个函数</li>
 </ul>
-<p>template <typename T><br>inline T const&amp; Max(const T const&amp; a, T const&amp; b)</p>
-<p>template <typename T><br>inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp; c)<br>```</p>
-</li>
+<pre><code>inline int const&amp; Max(const int const&amp; a, const int const&amp; b)
+
+template &lt;typename T&gt;
+inline T const&amp; Max(const T const&amp; a, T const&amp; b)
+
+template &lt;typename T&gt;
+inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp; c)
+</code></pre></li>
 </ul>
 
             <hr>
