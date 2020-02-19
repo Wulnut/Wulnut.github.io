@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Categories - study ~ Wulnut</title>
+  <title>类模板与操作符重载 ~ Wulnut</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -37,7 +37,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -112,8 +112,8 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/category.jpg')no-repeat center center;
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/code.png')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -122,6 +122,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Thursday, February 20th 2020, 9:50 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    304 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -133,93 +168,142 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>简单了解模板观念</p>
+<a id="more"></a>
+<h1 id="C-类模板"><a href="#C-类模板" class="headerlink" title="C++类模板"></a>C++类模板</h1><ul>
+<li>与函数模板类似， 类页可以通过参数泛化，从而可以构建出一族不同类型的类实例</li>
+<li>类模板参数可以是某一类型或常量（仅限int或者enum）</li>
+</ul>
+<p>一个类模板的例子：Stack<T></p>
+<pre><code>const std::size_t DefaultStackSize = 1024;
+
+template &lt;typename T, std::size_t n = DefaultStackSize&gt;
+class Stack {
+public:
+    void Push(const T const&amp; element);
+    int Pop(T&amp; element);
+    int Top(T&amp; element) const;
+private:
+    std::vector&lt;T&gt; m_Members;
+    std::size_t m_nMaxSize = n;
+}
+</code></pre><ul>
+<li>T可以是任意类别</li>
+<li>模板实参也可以是一个int或enum的常量(此处是size_t, 本质是int类型)</li>
+<li>n是编译时定义的常量</li>
+<li>n可以有默认值</li>
+<li><p>size_t类别的成员变量可以用n初始化</p>
+</li>
+<li><p>类模板的声明</p>
+<ul>
+<li>声明类模板与申明函数模板类似</li>
+<li><p>关键字class和typename都可以用，但是还是更倾向于去使用typename</p>
+<pre><code>template &lt;typename T, std::size_t n&gt; class Stack{...}
+template &lt;class T, std::size_t n&gt; class Stack{...}
+</code></pre></li>
+<li><p>在类模板内部，T可以像其他函数类别一样(比如int , char等)定义成员变量和成员函数</p>
+<pre><code>void Push(const T const&amp; element)
+int Pop(T&amp; element);
+int Top(T&amp; element) const;
+std::vector&lt;T&gt; m_Members;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
                 
-
-<div class="list-group">
-<!--  <p class="h4">8 posts in total.</p>-->
-  <hr>
-  
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/2020/01/17/python_ex36/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">python学习笔记(3)</span>
-      <span style="float: right;">01-17</span>
-    </a>
-  
-    
-    <a href="/2020/01/16/python_ex35/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">python学习笔记(2)</span>
-      <span style="float: right;">01-16</span>
-    </a>
-  
-    
-    <a href="/2020/01/15/python_ex34/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">python学习笔记(1)</span>
-      <span style="float: right;">01-15</span>
-    </a>
-  
-    
-      
-      <p class="h5">2019</p>
-    
-    <a href="/2019/12/07/%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">线性表</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-    
-    <a href="/2019/12/07/%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">链式存储</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-    
-    <a href="/2019/12/07/%E9%93%BE%E8%A1%A8Dummy%20Node/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Dummy Node</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-    
-    <a href="/2019/12/07/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">二叉树遍历</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-    
-    <a href="/2019/12/07/remove_list_entry%EF%BC%88%E6%97%A0%E9%9C%80%20if%20%E9%80%BB%E8%BE%91%EF%BC%89/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">remove_list_entry</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-</div>
-
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/categories/study/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/categories/study/">1</a><span class="page-number current">2</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-
-              </div>
-            </div>
+                  <a class="hover-with-bg" href="/categories/study">study</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/C++">C++</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B">泛型编程</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -304,6 +388,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -373,7 +462,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Category - study&nbsp;",
+        "类模板与操作符重载&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
