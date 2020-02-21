@@ -4,6 +4,62 @@
   
   
   <entry>
+    <title>容器</title>
+    <link href="/2020/02/21/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(4)/"/>
+    <url>/2020/02/21/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(4)/</url>
+    
+    <content type="html"><![CDATA[<p>容器简介</p><a id="more"></a><h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><h3 id="概述"><a href="#概述" class="headerlink" title="- 概述"></a>- 概述</h3><ul><li>Vector是一个能够存放任意类型的动态数组</li><li>Vector的数据结构和操作与数组(array)类似，在内存中的表现形式是一段地址连续的空间</li><li>Vector与数组的区别在于，数组大小往往是定义是固定的(比如：char buffer[256]);Vec支持动态空间大小调整，随着空间的变化Vector内部会自动扩充内存空间</li><li>为了试用Vector，必须试用include指令包含该头文件,并通过std空间去访问：<pre><code>include &lt;vector&gt;int main() {  std :: vector v;}</code></pre></li></ul><h3 id="创建vector"><a href="#创建vector" class="headerlink" title="创建vector"></a>创建vector</h3><div class="table-container"><table><thead><tr><th>常用方式</th><th>代码</th></tr></thead><tbody><tr><td>创建一个T类型的空vector</td><td>std :: vector<T> v;</td></tr><tr><td>创建一个容器是n的T类型的vector</td><td>std :: vector<T> v(n);</td></tr><tr><td>创建一个容量是n的T类型的vector，并且都初始化为i</td><td>std :: vector<T> n(n, i);</td></tr><tr><td>创建一个已有v的拷贝</td><td>std :: vector<T> copyOfV(v);</td></tr><tr><td>荣国一个数组创建一个vector</td><td>int array[] = {1,2,3}; std :: vector<int> v(array, array + 10);</td></tr></tbody></table></div><h3 id="向vector添加元素"><a href="#向vector添加元素" class="headerlink" title="向vector添加元素"></a>向vector添加元素</h3><p>向vector添加元素的方法为调用其push_back()函数，表示将元素添加至其尾部：</p><pre><code>std :: vector &lt;std :: wstring&gt; v3;for (std :: size_t i = 0; i &lt; 10; ++ i) {    std :: wstringstream wss;    wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);    v3.push_back(wss.str());}</code></pre><h3 id="判断vector是否为空、获取vector大小"><a href="#判断vector是否为空、获取vector大小" class="headerlink" title="判断vector是否为空、获取vector大小"></a>判断vector是否为空、获取vector大小</h3><ul><li>如果要判断vector是否为空则调用empty()函数</li><li><p>如果要获取vector大小则调用size()函数</p><pre><code>std :: vector &lt;std :: wstring&gt; v3;bool isEmpty = v3.empty();int array[] = {1,2,3,4,5,6,7,8,9,10};std :: vector&lt;int&gt; v(array, array + 10)std :: size vSize = v.size();</code></pre></li></ul><h3 id="访问vector中元素"><a href="#访问vector中元素" class="headerlink" title="访问vector中元素"></a>访问vector中元素</h3><ul><li>要访问vector中的元素, 有两种方法：<ul><li>调用vector :: at()</li><li>调用vector :: operator[]</li></ul></li><li>两者的区别在于：<ul><li>operator[]提供了类似数组的存取方式，但不做边界的检查，有可能越界，但访问效率更高</li><li>at()进行边界检查，如果访问越界则抛出exception，但是访问效率不如operator[]</li></ul></li></ul><pre><code>std :: vector&lt;std::wstring&gt; v;v.reserve(10);for (std::size_t i = 0; i &lt; 3; ++ i) {    std :: wstringstream wss;    wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);    v.push_back(wss.str());}try {    std :: wstring wsz1 = v[5]; // not bounds checked -will not throw    std :: wstring wsz2 = v.at(5); // bounds checked -will throw if out of range}catch (const std :: exception&amp; ex) {    Console :: WriteLine(ex.what());}</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>study</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+      <tag>泛型编程</tag>
+      
+      <tag>容器</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>泛型编程</title>
+    <link href="/2020/02/21/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(3)/"/>
+    <url>/2020/02/21/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(3)/</url>
+    
+    <content type="html"><![CDATA[<p>泛型编程</p><a id="more"></a><h1 id="泛型编程-概观"><a href="#泛型编程-概观" class="headerlink" title="泛型编程-概观"></a>泛型编程-概观</h1><ul><li>泛型编程(Generic programming) 是一种编程方法，这种方法将类型(type)以一种to-be-specified-later的方式给出，等到需要调用的时候，再以参数方式，通过具体的、特定的类别实例化(instantiate)一个具体的方法或对象</li><li>泛型编程作为一种编程的想法或思想，不依赖具体的语言</li><li>大多数面向对象的语言(O O languages)都支持泛型编程，(只不过在C++种以模板的这种形式表现出来)比如：C++、C#、Java、Ada….</li><li>C++里面的泛型是通过<strong>模板</strong>以及相关性质表现出来</li></ul><h1 id="特性-Traits"><a href="#特性-Traits" class="headerlink" title="特性(Traits)"></a>特性(Traits)</h1><h2 id="什么是traits以及为什么使用traits？"><a href="#什么是traits以及为什么使用traits？" class="headerlink" title="- 什么是traits以及为什么使用traits？"></a>- 什么是traits以及为什么使用traits？</h2><p>  假设给定一个数组，计算数组种所有元素的和：<br>  A[0] | A[1] |…| A[n] &emsp;&emsp;$\sum_{k=0}^n A[k]$</p><ul><li><p>我们可以很直接地写出如下的计算函数:</p><pre><code>template &lt;typename T&gt; inline T Sigma(const T const* start, const T const* end) {    T total = T(); // suppose T() actually creates a zero value    //T()是一个构造函数目的将total初始化为0；    while (start != end) {        total += *start ++ ;    }    return total;}</code></pre></li><li><p>当我们使用char类型调用模板函数是，问题就来了：</p><pre><code>char szNames[] = &quot;abc&quot;;std :: size_t nLength = strlen(szNames);char* p = szNames;char* q = szNames + nLength;printf(&quot;sigma(ezNames) = %d\n&quot;, Sigma(p,q));</code></pre><script type="math/tex; mode=display">294 = 0x0126</script><script type="math/tex; mode=display">0000 | 0001 | 0010 | 0110</script><p>Char类型能hold住的最大值为0xFF = 255 也就是两个字节所以0010和0110可容纳的但是abc加起来<strong>大于255</strong>就溢出到溢出到1这个bit</p></li><li><p>调用Sigma(szNames)的结果是38( = 0x26)!而并不是所期望的值(97 + 98 + 99 = 294)</p></li><li>原因显而易见的：char无法存下这个294这个值</li><li>如果要得到正确的结果，我们就不得不强制使用int类型：<pre><code>int s = Sigma&lt;int&gt;(p,q);</code></pre></li><li>但是这种不必要的转换是完全可以避免的!</li><li>解决方法是：为每个Sigma函数的参数类型T创建一种关联(association)，关联的类别就是用来储存Sigma结果的类型</li><li>这种关联可以看作是类型T的一种特性(characteristic fo the type T),因为sigma函数返回值的类型叫做T的trait</li><li>T与其trait的关系推演如下：<br>T -&gt; association -&gt; characteristic of T -&gt; another type -&gt; trait</li><li>Traits可以实现为模板类，而关联(association)则是针对每个具体类型T的特化。在这个例子里我们将trait命名为SigmaTraits, 叫做traits模板(traits template)</li></ul><p>Traits实现：</p><pre><code>template &lt;typename T&gt;class SigmaTraits { };//可以人为的将返回的数值边得相对的大template &lt;&gt;class SigmaTraits&lt;char&gt; {public:    typedef int ReturnType;};template &lt;&gt;class SigmaTraits&lt;short&gt; {public:    typedef int ReturnType;};template &lt;&gt;class SigmaTraits&lt;int&gt; {public:    typedef long ReturnType;};template &lt;&gt;class SigmaTraits&lt;unsigned int&gt; {public:    typedef  unsigned long ReturnType;};template &lt;&gt;class SigmaTraits&lt;float&gt; {public:    typedef double ReturnType;};</code></pre><ul><li>模板类SigmaTraits叫做traits template， 它含有其参数类型T的一个特性(trait), 即ReturnType</li><li><p>现在Sigma函数可以改写成:</p><pre><code>template &lt;typename T&gt;inline typename SigmaTraits&lt;T&gt; :: ReturnType Sigma (const T const* start, const T const* end) {  typedef typename SigmaTraits&lt;T&gt; :: ReturnType ReturnType;  ReturnType s = ReturnType();  while (start != end) {      s += *start ++;  }  return s;}</code></pre></li></ul><h1 id="迭代器-iterator"><a href="#迭代器-iterator" class="headerlink" title="迭代器(iterator)"></a>迭代器(iterator)</h1><h2 id="什么是迭代器？"><a href="#什么是迭代器？" class="headerlink" title="什么是迭代器？"></a>什么是迭代器？</h2><p>迭代器是指针的泛化(generalization of pointers)</p><ul><li>迭代器本身就是一个对象，指向另外一个(可以被迭代的)对象</li><li>用来迭代一组对象，即如果迭代器指向一组对象种的某个元素，则通过increment以后它就可以指向下组对象中的下一个元素</li></ul><h2 id="在STL中迭代器是容器与算法之前的接口"><a href="#在STL中迭代器是容器与算法之前的接口" class="headerlink" title="在STL中迭代器是容器与算法之前的接口"></a>在STL中迭代器是容器与算法之前的接口</h2><ul><li>算法通常以迭代器作为输入参数</li><li>容器只要提供一种方式，可以让迭代器访问容器中的元素即可</li></ul><h2 id="迭代器的基本思想"><a href="#迭代器的基本思想" class="headerlink" title="迭代器的基本思想"></a>迭代器的基本思想</h2><ul><li>在STL中，迭代器最终要的思想就是分离算法和容器，使之不需要相互依赖</li><li><p>迭代器将算法和容器粘合(stick)在一起从而使得一种算法的实现可以运用到多种不同的容器上，如下面的例子,find算法接受一对迭代器，分别指向容器的开始位置和最终位置</p><pre><code>template &lt;typename _InIt, typename _Ty&gt;inline _InIt find(_InIt _First, _InIt _Last, const _Ty&amp; _Val) {    //find first matching _Val    for (; _First != _Last; ++_First) {        if (*_First == _Val)          break;    }    return (_First);}</code></pre><p>find算法对于不同的容器，比如vector, list, deque均适用：</p><pre><code>std :: vector&lt;int&gt; v(...);std :: list&lt;int&gt; l(...);std :: deque&lt;int&gt; d(...);std :: vector&lt;int&gt; :: iterator itv = std :: find(v.begin(), v.end(), elementToFind)std :: list&lt;int&gt; :: iterator itl = std :: find(l.begin(), l.end(), elementToFind)std :: deque&lt;int&gt; :: iterator it3 = std :: find(d.begin(), d.end(), elementToFind)</code></pre><p>每种容器都有其对应的迭代器</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>study</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+      <tag>泛型编程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>类模板与操作符重载</title>
     <link href="/2020/02/20/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B%EF%BC%882%EF%BC%89/"/>
     <url>/2020/02/20/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B%EF%BC%882%EF%BC%89/</url>

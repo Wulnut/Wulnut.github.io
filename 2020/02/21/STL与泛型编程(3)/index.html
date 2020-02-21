@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/panda.png">
+  <link rel="icon" type="image/png" href="/img/panda.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="Wulnut">
+  <meta name="keywords" content="">
+  <title>泛型编程 ~ Wulnut</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/github-va.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Wulnut</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">Links</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/code.png')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Friday, February 21st 2020, 3:48 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>泛型编程</p>
+<a id="more"></a>
+<h1 id="泛型编程-概观"><a href="#泛型编程-概观" class="headerlink" title="泛型编程-概观"></a>泛型编程-概观</h1><ul>
+<li>泛型编程(Generic programming) 是一种编程方法，这种方法将类型(type)以一种to-be-specified-later的方式给出，等到需要调用的时候，再以参数方式，通过具体的、特定的类别实例化(instantiate)一个具体的方法或对象</li>
+<li>泛型编程作为一种编程的想法或思想，不依赖具体的语言</li>
+<li>大多数面向对象的语言(O O languages)都支持泛型编程，(只不过在C++种以模板的这种形式表现出来)比如：C++、C#、Java、Ada….</li>
+<li>C++里面的泛型是通过<strong>模板</strong>以及相关性质表现出来</li>
+</ul>
+<h1 id="特性-Traits"><a href="#特性-Traits" class="headerlink" title="特性(Traits)"></a>特性(Traits)</h1><h2 id="什么是traits以及为什么使用traits？"><a href="#什么是traits以及为什么使用traits？" class="headerlink" title="- 什么是traits以及为什么使用traits？"></a>- 什么是traits以及为什么使用traits？</h2><p>  假设给定一个数组，计算数组种所有元素的和：<br>  A[0] | A[1] |…| A[n] &emsp;&emsp;$\sum_{k=0}^n A[k]$</p>
+<ul>
+<li><p>我们可以很直接地写出如下的计算函数:</p>
+<pre><code>template &lt;typename T&gt; 
+inline T Sigma(const T const* start, const T const* end) {
+    T total = T(); // suppose T() actually creates a zero value
+
+    //T()是一个构造函数目的将total初始化为0；
+
+    while (start != end) {
+        total += *start ++ ;
+    }
+
+    return total;
+}
+</code></pre></li>
+<li><p>当我们使用char类型调用模板函数是，问题就来了：</p>
+<pre><code>char szNames[] = &quot;abc&quot;;
+std :: size_t nLength = strlen(szNames);
+char* p = szNames;
+char* q = szNames + nLength;
+printf(&quot;sigma(ezNames) = %d\n&quot;, Sigma(p,q));
+</code></pre><script type="math/tex; mode=display">294 = 0x0126</script><script type="math/tex; mode=display">0000 | 0001 | 0010 | 0110</script><p>Char类型能hold住的最大值为0xFF = 255 也就是两个字节所以0010和0110可容纳的但是abc加起来<strong>大于255</strong>就溢出到溢出到1这个bit</p>
+</li>
+<li><p>调用Sigma(szNames)的结果是38( = 0x26)!而并不是所期望的值(97 + 98 + 99 = 294)</p>
+</li>
+<li>原因显而易见的：char无法存下这个294这个值</li>
+<li>如果要得到正确的结果，我们就不得不强制使用int类型：<pre><code>int s = Sigma&lt;int&gt;(p,q);
+</code></pre></li>
+<li>但是这种不必要的转换是完全可以避免的!</li>
+<li>解决方法是：为每个Sigma函数的参数类型T创建一种关联(association)，关联的类别就是用来储存Sigma结果的类型</li>
+<li>这种关联可以看作是类型T的一种特性(characteristic fo the type T),因为sigma函数返回值的类型叫做T的trait</li>
+<li>T与其trait的关系推演如下：<br>T -&gt; association -&gt; characteristic of T -&gt; another type -&gt; trait</li>
+<li>Traits可以实现为模板类，而关联(association)则是针对每个具体类型T的特化。在这个例子里我们将trait命名为SigmaTraits, 叫做traits模板(traits template)</li>
+</ul>
+<p>Traits实现：</p>
+<pre><code>template &lt;typename T&gt;
+class SigmaTraits { };
+//可以人为的将返回的数值边得相对的大
+
+template &lt;&gt;
+class SigmaTraits&lt;char&gt; {
+public:
+    typedef int ReturnType;
+};
+
+template &lt;&gt;
+class SigmaTraits&lt;short&gt; {
+public:
+    typedef int ReturnType;
+};
+
+template &lt;&gt;
+class SigmaTraits&lt;int&gt; {
+public:
+    typedef long ReturnType;
+};
+
+template &lt;&gt;
+class SigmaTraits&lt;unsigned int&gt; {
+public:
+    typedef  unsigned long ReturnType;
+};
+
+template &lt;&gt;
+class SigmaTraits&lt;float&gt; {
+public:
+    typedef double ReturnType;
+};
+</code></pre><ul>
+<li>模板类SigmaTraits叫做traits template， 它含有其参数类型T的一个特性(trait), 即ReturnType</li>
+<li><p>现在Sigma函数可以改写成:</p>
+<pre><code>template &lt;typename T&gt;
+inline typename SigmaTraits&lt;T&gt; :: ReturnType Sigma (const T const* start, const T const* end) {
+  typedef typename SigmaTraits&lt;T&gt; :: ReturnType ReturnType;
+
+  ReturnType s = ReturnType();
+
+  while (start != end) {
+      s += *start ++;
+  }
+
+  return s;
+}
+</code></pre></li>
+</ul>
+<h1 id="迭代器-iterator"><a href="#迭代器-iterator" class="headerlink" title="迭代器(iterator)"></a>迭代器(iterator)</h1><h2 id="什么是迭代器？"><a href="#什么是迭代器？" class="headerlink" title="什么是迭代器？"></a>什么是迭代器？</h2><p>迭代器是指针的泛化(generalization of pointers)</p>
+<ul>
+<li>迭代器本身就是一个对象，指向另外一个(可以被迭代的)对象</li>
+<li>用来迭代一组对象，即如果迭代器指向一组对象种的某个元素，则通过increment以后它就可以指向下组对象中的下一个元素</li>
+</ul>
+<h2 id="在STL中迭代器是容器与算法之前的接口"><a href="#在STL中迭代器是容器与算法之前的接口" class="headerlink" title="在STL中迭代器是容器与算法之前的接口"></a>在STL中迭代器是容器与算法之前的接口</h2><ul>
+<li>算法通常以迭代器作为输入参数</li>
+<li>容器只要提供一种方式，可以让迭代器访问容器中的元素即可</li>
+</ul>
+<h2 id="迭代器的基本思想"><a href="#迭代器的基本思想" class="headerlink" title="迭代器的基本思想"></a>迭代器的基本思想</h2><ul>
+<li>在STL中，迭代器最终要的思想就是分离算法和容器，使之不需要相互依赖</li>
+<li><p>迭代器将算法和容器粘合(stick)在一起从而使得一种算法的实现可以运用到多种不同的容器上，如下面的例子,find算法接受一对迭代器，分别指向容器的开始位置和最终位置</p>
+<pre><code>template &lt;typename _InIt, typename _Ty&gt;
+inline _InIt find(_InIt _First, _InIt _Last, const _Ty&amp; _Val) {
+    //find first matching _Val
+    for (; _First != _Last; ++_First) {
+        if (*_First == _Val)
+          break;
+    }
+
+    return (_First);
+}
+</code></pre><p>find算法对于不同的容器，比如vector, list, deque均适用：</p>
+<pre><code>std :: vector&lt;int&gt; v(...);
+std :: list&lt;int&gt; l(...);
+std :: deque&lt;int&gt; d(...);
+
+std :: vector&lt;int&gt; :: iterator itv = std :: find(v.begin(), v.end(), elementToFind)
+std :: list&lt;int&gt; :: iterator itl = std :: find(l.begin(), l.end(), elementToFind)
+std :: deque&lt;int&gt; :: iterator it3 = std :: find(d.begin(), d.end(), elementToFind)
+</code></pre><p>每种容器都有其对应的迭代器</p>
+</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/study">study</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/C++">C++</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B">泛型编程</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+  <p>copyright &copy 2019-2020</p>
+    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+  <!-- 备案信息 -->
+  <a href="http://beian.miit.gov.cn/" target="_blank"
+     rel="nofollow noopener">鄂ICP证20001010号</a>
+  
+
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-155249740-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "泛型编程&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "true",
+      
+      icon: "🔗"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+</body>
+</html>
