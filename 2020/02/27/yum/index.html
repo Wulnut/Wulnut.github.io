@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>拯救公主 ~ Wulnut&#39;s space</title>
+  <title>wget、yum、rpm、apt-get都是啥？ ~ Wulnut&#39;s space</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
 </nav>
 
     <div class="view intro-2" id="background" false
-         style="background: url('/img/code.png')no-repeat center center;
+         style="background: url('/img/yum.jfif')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -127,7 +127,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Sunday, February 2nd 2020, 10:32 pm
+                  Thursday, February 27th 2020, 5:11 pm
                 </p>
               
 
@@ -136,7 +136,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1k 字
+                    1.6k 字
                   </span>&nbsp;
                 
 
@@ -144,7 +144,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      6 分钟
                   </span>&nbsp;
                 
 
@@ -177,125 +177,124 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>BFS训练题</p>
+            <p>简略介绍wget、yum、rpm、apt-get。<br>详细了解yum</p>
 <a id="more"></a>
-<h2 id="拯救公主"><a href="#拯救公主" class="headerlink" title="拯救公主"></a>拯救公主</h2><p>公主被恶人抓走，被关押在牢房的某个地方。牢房用 $ N \times M (N, M \le 200)N×M(N,M\le200) $ 的矩阵来表示。矩阵中的每项可以代表道路（@）、墙壁（#）、和守卫（x）。</p>
-<p>英勇的骑士（r）决定孤身一人去拯救公主（a）。我们假设拯救成功的表示是 “骑士到达了公主所在的位置”。由于在通往公主所在位置的道路中可能遇到守卫，骑士一旦遇到守卫，必须杀死守卫才能继续前进。</p>
-<p>现假设骑士可以向上、下、左、右四个方向移动，每移动一个位置需要 11 个单位时间，杀死一个守卫需要花费额外的 11 个单位时间。同时假设骑士足够强壮，有能力杀死所有的守卫。</p>
-<p>给定牢房矩阵，公主、骑士和守卫在矩阵中的位置，请你计算拯救行动成功需要花费最短时间。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>1、两个整数代表 $N$ 和 $M, (N, M \le 200)M,(N,M\le200)$.<br>2、随后 $N$ 行，每行有 $M$ 个字符。”@” 代表道路，”a” 代表公主，”r” 代表骑士，”x” 代表守卫, “#” 代表墙壁。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>如果拯救行动成功，输出一个整数，表示行动的最短时间。<br>如果不可能成功，输出 “Impossible”。</p>
-<h3 id="输入样例1"><a href="#输入样例1" class="headerlink" title="输入样例1"></a>输入样例1</h3><pre><code>7 8
-#@#####@
-#@a#@@r@
-#@@#x@@@
-@@#@@#@#
-#@@@##@@
-@#@@@@@@
-@@@@@@@@
-</code></pre><h3 id="输出样例1"><a href="#输出样例1" class="headerlink" title="输出样例1"></a>输出样例1</h3><pre><code>13
-</code></pre><h3 id="输入样例2"><a href="#输入样例2" class="headerlink" title="输入样例2"></a>输入样例2</h3><pre><code>13 40
-@x@@##x@#x@x#xxxx##@#x@x@@#x#@#x#@@x@#@x
-xx###x@x#@@##xx@@@#@x@@#x@xxx@@#x@#x@@x@
-#@x#@x#x#@@##@@x#@xx#xxx@@x##@@@#@x@@x@x
-@##x@@@x#xx#@@#xxxx#@@x@x@#@x@@@x@#@#x@#
-@#xxxxx##@@x##x@xxx@@#x@x####@@@x#x##@#@
-#xxx#@#x##xxxx@@#xx@@@x@xxx#@#xxx@x#####
-#x@xxxx#@x@@@@##@x#xx#xxx@#xx#@#####x#@x
-xx##@#@x##x##x#@x#@a#xx@##@#@##xx@#@@x@x
-x#x#@x@#x#@##@xrx@x#xxxx@##x##xx#@#x@xx@
-#x@@#@###x##x@x#@@#@@x@x@@xx@@@@##@@x@@x
-x#xx@x###@xxx#@#x#@@###@#@##@x#@x@#@@#@@
-#@#x@x#x#x###@x@@xxx####x@x##@x####xx#@x
-#x#@x#x######@@#x@#xxxx#xx@@@#xx#x#####@
-</code></pre><h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><pre><code>7
-</code></pre><h3 id="ans"><a href="#ans" class="headerlink" title="ans"></a>ans</h3><pre><code>//ac
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-char maze[205][205];
-bool vis[205][205];
-int dir[4][2] = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
-int n, m;
-
-struct node {
-    int x;
-    int y;
-    int d;
-    node(int xx, int yy, int dd) : x(xx), y(yy), d(dd) {}
-    friend bool operator &lt; (node a, node b) {
-        return a.d &gt; b.d;
-    }
-};
-
-int bfs(int x, int y) {
-    priority_queue&lt;node&gt; q;
-    vis[x][y] = true;
-    q.push(node(x, y, 0));
-
-    while(!q.empty()) {
-        node now = q.top();
-        q.pop();
-
-        for (int i = 0; i &lt; 4; ++i) {
-            int tx = now.x + dir[i][0];
-            int ty = now.y + dir[i][1];
-
-            if (0 &gt; tx || tx &gt;= n || 0 &gt; ty || ty &gt;= m || maze[tx][ty] == &#39;#&#39; || vis[tx][ty])
-            continue;
-
-            if (maze[tx][ty] == &#39;a&#39;) {
-                return now.d + 1;
-            }
-            else if (maze[tx][ty] == &#39;x&#39;) {
-                vis[tx][ty] = true;
-                q.push(node(tx, ty, now.d + 2));
-            }
-            else{
-                vis[tx][ty] = true;
-                q.push(node(tx, ty, now.d + 1));
-            }
-
-        }
-    }
-
-    return -1;
-}
-
-int main(){
-    freopen(&quot;note.txt&quot;, &quot;r&quot;, stdin);
-    freopen(&quot;ans.txt&quot;, &quot;w&quot;, stdout);
-
-    int i, j;
-    int ans = -1;
-
-    cin &gt;&gt; n &gt;&gt; m;
-    for (i = 0; i &lt; n; ++i) {
-        cin &gt;&gt; maze[i];
-    }
-
-    for (i = 0; i &lt; n; ++i) {
-        for (j = 0; j &lt; m; ++j) {
-            if (maze[i][j] == &#39;r&#39;){
-                break;
-            }
-        }
-        if (maze[i][j] == &#39;r&#39;) break;
-    }
-
-    ans = bfs(i, j);
-
-    if (ans == -1) {
-        cout &lt;&lt; &quot;Impossible&quot; &lt;&lt; endl;
-    }
-    else{
-        cout &lt;&lt; ans &lt;&lt; endl;
-    }
-    return 0;
-}
-</code></pre><h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>&emsp;&emsp;这个题目的棋盘范围超过了100也就是说使用dfs算法是非常危险的方法，因为dfs的时间复杂度为 $O(2^n)$ 而bfs的时间复杂度为$O(M*N)$所以使用dfs是会为超时的。</p>
-<p>&emsp;&emsp;所以弃用dfs是必须的，一般再求最少问题时一般都是采用dfs算法使用。但是我们注意这个棋盘的范围超过了100。对于bfs来说<br>空间复杂度问题就显现的比较明显。如果采用一般的队列方式来存储帮助bfs的实现，时肯定不行的。此时就要记住。一般这种情况下求极值问题要求优化，我们就采用用<strong>优先队列</strong>的方法。来进行优化。其实质上对空间复杂度的优化就是对时间复杂度的优化。要不断使用最优秀的数据结构来解决时间于内存上的算法优化问题。</p>
-<font color="#f4f4f4" weight="bold" size="32">To be continue</font>
+<h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p><strong>wget</strong>:类似于迅雷，是一种<code>下载工具</code>，通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，并可以使用HTTP代理 名字是World Wide Web”与“get”的结合。</p>
+<h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><p><strong>yum</strong>: 是redhat, centos 系统下的<code>软件安装方式</code>，基于Linux,全称为 Yellow dog Updater, Modified,是一个在Fedora和RedHat以及CentOS中的Shell前端软件包管理器,基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包。</p>
+<h3 id="yum常用选项和参数"><a href="#yum常用选项和参数" class="headerlink" title="yum常用选项和参数"></a>yum常用选项和参数</h3><h4 id="列举包文件"><a href="#列举包文件" class="headerlink" title="列举包文件"></a>列举包文件</h4><hr>
+<pre><code>yum list #列出资源库中所有可以安装或更新的rpm包
+yum list updates　#列出资源库中所有可以更新的rpm包
+yum list installed　　#列出已经安装的所有的rpm包
+yum list extras　　#列出已经安装的但是不包含在官方资源库中的rpm包，例如安装了epel源的rpm包会列出来
+</code></pre><h4 id="列举资源信息"><a href="#列举资源信息" class="headerlink" title="列举资源信息"></a>列举资源信息</h4><hr>
+<pre><code>yum info　　#列出资源库中所有可以安装或更新的rpm包的信息
+yum info perl　　#列出perl包信息
+yum info perl*　　#列出perl开头的所有包的信息
+yum info updates　　#列出资源库中所有可以更新的rpm包的信息
+yum info installed　　#列出已经安装的所有的rpm包的信息
+yum info extras　　#列出已经安装的但是不包含在资源库中的rpm包的信息
+</code></pre><h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><hr>
+<pre><code>yum search perl　#搜索匹配特定字符的rpm包，在包名称、包描述等中搜索
+yum provides libstdc++.so.6　　#反查包含特定文件名的rpm包，查询命令用yum provides */ifconfig，查询文件无需*/ 也可用yum whatprovides
+</code></pre><h4 id="管理包"><a href="#管理包" class="headerlink" title="管理包"></a>管理包</h4><hr>
+<ul>
+<li>安装rpm包<pre><code>yum install perl　　#安装perl包
+yum install perl*　　#安装perl开头的包
+yum remove perl* 　　#会删除perl* 所有包，以及相关依赖的包
+</code></pre></li>
+<li>软件组件管理<pre><code>yum groupinstall &quot;Chinese Support&quot;　　#安装指定的组
+yum groupupdate &quot;Chinese Support&quot;　　#安装了的组成员软件包更新
+yum grouplist　　#安装了的组和可以安装的组一览显示
+yum groupremove &quot;Chinese Support&quot;　　#删除指定的组
+yum groupinfo &quot;Chinese Support&quot;　　#指定组所包含的软件包显示
+</code></pre><h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4></li>
+</ul>
+<hr>
+<pre><code>yum check-update　　#检查可更新的rpm包
+yum update　　#更新所有的rpm包
+yum update kernel kernel-source　　#更新指定的rpm包,如更新kernel和kernel source
+yum upgrade　　#大规模的版本升级,与yum update不同的是,连旧的淘汰的包也升级
+</code></pre><h4 id="清空缓存"><a href="#清空缓存" class="headerlink" title="清空缓存"></a>清空缓存</h4><hr>
+<pre><code>yum clean packages　　#清除暂存中rpm包文件
+yum clean headers　　#清除暂存中rpm头文件
+yum clean oldheaders　　#清除暂存中旧的rpm头文件
+yum clean all　　#清除暂存中旧的rpm头文件和包文件
+</code></pre><h4 id="简单参数"><a href="#简单参数" class="headerlink" title="简单参数"></a>简单参数</h4><pre><code> -q #静默执行
+ -t #忽略错误
+ -R[分钟] #设置等待时间
+ -y #自动应答yes
+ --skip-broken #忽略依赖问题
+ --nogpgcheck #忽略GPG验证
+</code></pre><h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><pre><code class="lang-rpm```:软件管理;">redhat的软件格式 ```rpm```  ```r=redhat
+</code></pre>
+<p><code>p=package</code>   <code>m=management</code><br>用于安装 卸载 <code>.rpm</code>软件</p>
+<p>串联下：<br>&emsp;&emsp;使用<code>wget</code>下载一个 <code>rpm</code>包, 然后用<code>rpm -ivh xxx.rpm</code> 安装这个软件，嫌麻烦的话，就可以直接用 <code>yum  install  sqoop</code> 来自动下载和安装依赖的 <code>rpm</code>软件。</p>
+<h2 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h2><p><code>apt-get</code>:是ubuntu下的一个软件安装方式，它是基于debain.</p>
+<h2 id="通过yum安装工具"><a href="#通过yum安装工具" class="headerlink" title="通过yum安装工具"></a>通过yum安装工具</h2><h3 id="在Centos上安装gcc"><a href="#在Centos上安装gcc" class="headerlink" title="在Centos上安装gcc"></a>在Centos上安装gcc</h3><p>安装gcc</p>
+<blockquote>
+<p>yum -y install gcc</p>
+</blockquote>
+<p>安装g++</p>
+<blockquote>
+<p>yum -y install gcc-c++  </p>
+</blockquote>
+<h3 id="在Centos上安装目录生成树工具tree"><a href="#在Centos上安装目录生成树工具tree" class="headerlink" title="在Centos上安装目录生成树工具tree"></a>在Centos上安装目录生成树工具tree</h3><p>安装tree</p>
+<blockquote>
+<p>yum -y install tree</p>
+</blockquote>
+<p>同通过tree工具可以很快的查看目录树</p>
+<h4 id="关于tree命令选项"><a href="#关于tree命令选项" class="headerlink" title="关于tree命令选项"></a>关于tree命令选项</h4><ul>
+<li><code>-a</code> 显示所有文件和目录。</li>
+<li><code>-A</code> 使用ASNI绘图字符显示树状图而非以ASCII字符组合。</li>
+<li><code>-C</code> 在文件和目录清单加上色彩，便于区分各种类型。</li>
+<li><code>-d</code> 显示目录名称而非内容。</li>
+<li><code>-D</code> 列出文件或目录的更改时间。W</li>
+<li><code>-f</code> 在每个文件或目录之前，显示完整的相对路径名称。</li>
+<li><code>-F</code> 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上”*”,”/”,”=”,”@”,”|”号。</li>
+<li><code>-g</code> 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。</li>
+<li><code>-i</code> 不以阶梯状列出文件或目录名称。</li>
+<li><code>-I</code>&lt;范本样式&gt; 不显示符合范本样式的文件或目录名称。</li>
+<li><code>-l</code> 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。</li>
+<li><code>-n</code> 不在文件和目录清单加上色彩。</li>
+<li><code>-N</code> 直接列出文件和目录名称，包括控制字符。</li>
+<li><code>-p</code> 列出权限标示。</li>
+<li><code>-P</code>&lt;范本样式&gt; 只显示符合范本样式的文件或目录名称。</li>
+<li><code>-q</code> 用”?”号取代控制字符，列出文件和目录名称。</li>
+<li><code>-s</code> 列出文件或目录大小。</li>
+<li><code>-t</code> 用文件和目录的更改时间排序。</li>
+<li><code>-u</code> 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。</li>
+<li><code>-x</code> 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。</li>
+</ul>
+<h4 id="在Centos下安装git"><a href="#在Centos下安装git" class="headerlink" title="在Centos下安装git"></a>在Centos下安装git</h4><p>首先检查机器上是否有git</p>
+<blockquote>
+<p>git —version</p>
+</blockquote>
+<p>如果出现了版本号则说明有<code>git</code>，如果是<code>bash：git：no found command</code>则说明没有<code>git</code>。</p>
+<p>如果没有git工具：</p>
+<blockquote>
+<p>yum info git #查看<code>yum</code>源中的<code>git</code>版本<br>yum -y install git #安装git</p>
+</blockquote>
+<p>当出现<code>complete！</code>就表明安装完成</p>
+<h4 id="在Centos下升级vim"><a href="#在Centos下升级vim" class="headerlink" title="在Centos下升级vim"></a>在Centos下升级vim</h4><h5 id="检查机器上是否有vim"><a href="#检查机器上是否有vim" class="headerlink" title="检查机器上是否有vim"></a>检查机器上是否有vim</h5><blockquote>
+<p>rpm -qa|grep vim</p>
+<p>如果以安装则会显示<br>vim-minimal-7.4.629-6.el7.x86_64<br>vim-filesystem-7.4.629-6.el7.x86_64<br>vim-enhanced-7.4.629-6.el7.x86_64<br>vim-common-7.4.629-6.el7.x86_64<br>vim-X11-7.4.629-6.el7.x86_64</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>如果缺少了其中某个，比如说： vim-enhanced这个包少了，则执行：<br>yum -y install vim-enhanced</p>
+</blockquote>
+<p>它会自动下载安装。如果上面三个包一个都没有显示，则直接输入命令：   </p>
+<blockquote>
+<p>yum -y install vim*</p>
+</blockquote>
+<h5 id="检查vim版本"><a href="#检查vim版本" class="headerlink" title="检查vim版本"></a>检查vim版本</h5><blockquote>
+<p>vim —version</p>
+</blockquote>
+<p>如果想升级更高版本的vim</p>
+<pre><code>sudo yum remove vim -y # 移除旧版本
+sudo yum install ncurses-devel python-devel -y # 安装必要组件
+git clone https://github.com/vim/vim.git  #下载源码编译安装
+cd vim/src
+./configure --with-features=huge --enable-pythoninterp=yes --enable-cscope --enable-fontset --with-python-config-dir=/usr/lib64/python2.7/config --enable-python3interp=yes --with-python-config-dir=/usr/lib/python3.6/config --enable-multibyte --prefix=/usr/local/vim/ # 根据自己实际情况设置编译参数
+make -j2 &amp;&amp; make install
+</code></pre>
             <hr>
           </div>
           <br>
@@ -305,10 +304,7 @@ int main(){
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98">训练题</a>
-                  &nbsp;
-                
-                  <a class="hover-with-bg" href="/categories/BFS">BFS</a>
+                  <a class="hover-with-bg" href="/categories/Linux">Linux</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -317,11 +313,9 @@ int main(){
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/C++">C++</a>
+                  <a class="hover-with-bg" href="/tags/Centos">Centos</a>
                 
-                  <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95">算法</a>
-                
-                  <a class="hover-with-bg" href="/tags/acm">acm</a>
+                  <a class="hover-with-bg" href="/tags/ubuntu">ubuntu</a>
                 
               </span>
             
@@ -543,7 +537,7 @@ int main(){
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "拯救公主&nbsp;",
+        "wget、yum、rpm、apt-get都是啥？&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
