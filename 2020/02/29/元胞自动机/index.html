@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Archives ~ Wulnut&#39;s space</title>
+  <title>cellular automata ~ Wulnut&#39;s space</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -37,7 +37,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -112,8 +112,8 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/archive.jpg')no-repeat center center;
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/Gospers_glider_gun.gif')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -122,6 +122,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Saturday, February 29th 2020, 9:02 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -133,65 +168,146 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">34 posts in total.</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/12/07/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">二叉树遍历</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-    
-    <a href="/2019/12/07/MinGW%E8%B0%83%E8%AF%95%E5%91%BD%E4%BB%A4/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MinGw如何调试？</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-    
-    <a href="/2019/12/07/remove_list_entry%EF%BC%88%E6%97%A0%E9%9C%80%20if%20%E9%80%BB%E8%BE%91%EF%BC%89/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">remove_list_entry</span>
-      <span style="float: right;">12-07</span>
-    </a>
-  
-    
-    <a href="/2019/12/06/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <span style="float: right;">12-06</span>
-    </a>
-  
-</div>
 
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-              </div>
-            </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>元胞自动机(cellular automata，CA) 是一种时间、空间、状态都离散，空间相互作用和时间因果关系为局部的网格动力学<br>模型，具有模拟复杂系统时空演化过程的能</p>
+<a id="more"></a>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>元胞自动机是一个空间和状态都是离散的模型。该模型可以用一个四元组表示：</p>
+<script type="math/tex; mode=display">C=(L_a, S, N_n, f)</script><p>其中：</p>
+<ul>
+<li>$S$表示细胞状态，是一个有限的、离散的状态集合；</li>
+<li>$L_a$表示元胞空间，$a$是一个整数，表示细胞空间的维数；</li>
+<li>$N$表示领域内元素的组合，$n$表示邻居的个数</li>
+<li>$f$表示状态转移函数，即状态转移规则</li>
+</ul>
+<h2 id="对于一个元胞，在空间位置上与它相邻的元胞称为它的邻元-有时也称作邻居-。"><a href="#对于一个元胞，在空间位置上与它相邻的元胞称为它的邻元-有时也称作邻居-。" class="headerlink" title="对于一个元胞，在空间位置上与它相邻的元胞称为它的邻元(有时也称作邻居)。"></a>对于一个元胞，在空间位置上与它相邻的元胞称为它的<strong>邻元</strong>(有时也称作邻居)。</h2><p>邻域和邻元的定义可以是多样的</p>
+<p>下图为一维CA网格邻域定义<br><img src="/img/一维CA网格.png" srcset="/img/loading.gif" alt=" "></p>
+<p>下图为二维CA网格邻域定义<br><img src="/img/二维CA网格.png" srcset="/img/loading.gif" alt=" "></p>
+<p>每个元胞有若干个状态，如：</p>
+<ul>
+<li>物理系统：（分子）固态，液态</li>
+<li>生物系统：（细胞）死or活</li>
+<li>社会系统： （个人）相信与不相信谎言</li>
+<li>政治系统： （国家）战争与妥协…</li>
+</ul>
+<hr>
+<p>&emsp;&emsp;在各种CA模型中，每个等份（单元格）代表一个元胞，CA的网格可以有不同的形式(维数，大小)。</p>
+<ul>
+<li>一维的CA模型是将直线分成若干相同的等份；</li>
+<li>二维的CA模型是将一个平面分成许多正方形、六边形或三角行的网格（最常见的是将其划分成正方形）；</li>
+<li>三位的CA模型将空间划分成许多立体网格。</li>
+</ul>
+<p><img src="/img/一维CA模型.png" srcset="/img/loading.gif" alt=" "> &emsp;&emsp; <img src="/img/二维CA模型.png" srcset="/img/loading.gif" alt=" "></p>
+<hr>
+<p>根据每个元胞及邻元的不同状态，由于状态更新规则决定这个元胞下一个时刻的状态。</p>
+<p>序号$i$个体在$t=1,\dots,n$时刻的状态:</p>
+<script type="math/tex; mode=display">S_t^{t+1}=f(S_i^t,N^t)=f(S_i^t,S_1^t,S_2^t,\dots,S_n^t)</script><p>其中$S_i^t,S_1^t,S_2^t,\dots,S_n^t$为个体$i$的邻元在$t$时刻的状态。</p>
+<hr>
+<p>规则可以是确定型的，也可以是随机型的。对于一个一维的CA，一个细胞具有两种可能的状态如生or死，相信或者不相信等等，表示为0or1.<br>如果规则一：我使用下图的左边的邻元定义<br>定义其状态更新规则：当一个个体的两个邻元都活或都死，该个体在下一时刻为死；反之，他的状态在下一时刻变为活。<br><img src="/img/规则表.png" srcset="/img/loading.gif" alt=" "></p>
+<p>再如规则二：我仍然使用当前左边邻元定义，但重新定义其状态<br>更新规则为：当个体的两个邻元都活或都死，该个体再下一时刻<strong>改变状态</strong>;反之，<strong>该个体的状态在下一时刻保持不变</strong>。<br><img src="/img/规则表（2）.png" srcset="/img/loading.gif" alt=" "></p>
+<hr>
+<p>模型的构建</p>
+<p>考虑以下问题：</p>
+<ul>
+<li>确定系统中有那些个体，如何分类？</li>
+<li>个体有几种状态，分别是什么；</li>
+<li>个体所处空间形式，是一位，二维还是多为；</li>
+<li>个体的邻元形式及个数，这与网格形式及交互群体规模有关</li>
+<li>根据个体状态、网格形式及邻元，确定个体状态的演变规则。<br>此外，还需确定：</li>
+<li>系统中的个体与单元格是否一致。<br>简单的、经典的CA模型中，单元格与个体不加区分，每个单位格就是一个个体，个体始终在单元格中，个体的状态即为单元格的状态。但在一些复杂系统中，尤其在个体可以移动的系统中，将个体与单元格区分更为方便。</li>
+<li>系统中是否离散事件。<br>采用CA模型描述的系统，每个时刻都需根据规则确定伟哥元胞的状态。除此之外，有的系统中某些个体会在特定时刻（有条件或无条件）发生状态变化，此时可以采用离散时间仿真方法，将该时刻列入事件表，根据事件表处理该类事件。</li>
+</ul>
+<font color="#f4f4f4"><a href="https://wenku.baidu.com/view/86050cb9aeaad1f347933f28.html" target="_blank" rel="noopener">推荐</a>
+</font>
+<font color="#f4f4f4">
+python 库中pandas 如果使用 pip install pandas 可以能会无法下载。如果无法下载则使用
+</font>
+```
+pip --default-time=100 install pandas
+```
+<font color="#f4f4f4">这行命令，可以进行下载。</font>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/mathematical-modeling">mathematical-modeling</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -276,6 +392,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -345,7 +466,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Archive&nbsp;",
+        "cellular automata&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
