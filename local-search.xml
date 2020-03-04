@@ -249,25 +249,6 @@
   
   
   <entry>
-    <title>2020 mcm/icm LaTeX写作</title>
-    <link href="/2020/02/15/mcm-icm/"/>
-    <url>/2020/02/15/mcm-icm/</url>
-    
-    <content type="html"><![CDATA[<p>mcm/icm 2020新版美赛LaTeX模板 </p><a id="more"></a><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>&emsp;&emsp;2020年因为武汉疫情的原因，原定于2月14日的mcm/icm比赛采用了两个时间两次给的方式，今天上午我也看了一下题，D题的数据相对比较好搜集，作为一名游戏玩家，我觉得可以从EA的FIFA球员数据库种收取数据。虽然说我的建模能力很垃圾啊。但是搜集数据和LaTeX的写作是我能给我们这个团队做出贡献的方式。所以我就做一些利索能及的事就对了。</p><h2 id="说说LaTeX"><a href="#说说LaTeX" class="headerlink" title="说说LaTeX"></a>说说LaTeX</h2><p>&emsp;&emsp;LaTeX是我开始学习写markdown的时候就了解的一种排版方式，寒假这段时间我也好好学习了一下。<br>一开始觉得美赛要不要用word写但是想到要插入公式，解决排版问题使用LaTeX还是方便的多。因为在比赛之前我也尝试自己<br>按照之前获奖文章自己做一个美赛模板。</p><p><img src="/img/mcm_model_1.png" srcset="/img/loading.gif" alt=""></p><p>但是在比赛之前听过2020年的比赛写作排版有变动，一开始还有点慌。然后今天上官网看了一下。发现官方给了一个模板<br><img src="/img/mcm_code.png" srcset="/img/loading.gif" alt=""><br>我一开始还以为是一个.tex文件谁知道，是这个…</p><p>我运行了一下就是这个效果（我注明一下，我把红色字体改成了黑色）</p><p><img src="/img/mcm_model.png" srcset="/img/loading.gif" alt=""></p><p>效果还不错，嘿嘿。感觉这个还专门给了一个模板，可能是为了要人们知道今年的变化吧。但是我觉得应该是因为大多数中国学生，撰写论文的格式都不标准，所以今年专门给了一个word和LaTeX模板来共大家用。统一一下格式，让看论文的老师也能好看一点。</p><p>自习看了一下模板里面内容，注释也很清楚。生怕学生不会用。一开始我还在想怎么加一个content，谁知人家这个模板很贴心，已经将目录给你写好了。（只不过是注释掉了）</p><p><img src="/img/content.png" srcset="/img/loading.gif" alt=""></p><p>2020和2019版的模板我也分享给大家，有需自戳。</p><ul style:"color=#336699"><li><a href="/temp/mcm-icm2020模板.zip" download="2020mcm-icm模板">2020</a></li><li><a href="/temp/mcm-icm2019模板.zip" download="2019mcm-icm模板">2019</a></li></ul><font color="#f4f4f4" weight="bold" size="32">To be continue</font>]]></content>
-    
-    
-    <categories>
-      
-      <category>mathematical-modeling</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>背包九讲(完全背包)</title>
     <link href="/2020/02/14/%E8%83%8C%E5%8C%85_1/"/>
     <url>/2020/02/14/%E8%83%8C%E5%8C%85_1/</url>
