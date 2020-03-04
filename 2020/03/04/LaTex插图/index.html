@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>cellular automata ~ Wulnut&#39;s space</title>
+  <title>使用LaTex编写流程图 ~ Wulnut&#39;s space</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
 </nav>
 
     <div class="view intro-2" id="background" false
-         style="background: url('/img/CA_rule30s.png')no-repeat center center;
+         style="background: url('/img/math.jpeg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -127,7 +127,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Saturday, February 29th 2020, 9:02 pm
+                  Wednesday, March 4th 2020, 8:50 pm
                 </p>
               
 
@@ -136,7 +136,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.1k 字
+                    583 字
                   </span>&nbsp;
                 
 
@@ -144,7 +144,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -177,63 +177,113 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>元胞自动机(cellular automata，CA) 是一种时间、空间、状态都离散，空间相互作用和时间因果关系为局部的网格动力学<br>模型，具有模拟复杂系统时空演化过程的能</p>
+            <p>简单介绍如何使用$\LaTeX$进行流程图的绘制</p>
 <a id="more"></a>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>元胞自动机是一个空间和状态都是离散的模型。该模型可以用一个四元组表示：</p>
-<script type="math/tex; mode=display">C=(L_a, S, N_n, f)</script><p>其中：</p>
-<ul>
-<li>$S$表示细胞状态，是一个有限的、离散的状态集合；</li>
-<li>$L_a$表示元胞空间，$a$是一个整数，表示细胞空间的维数；</li>
-<li>$N$表示领域内元素的组合，$n$表示邻居的个数</li>
-<li>$f$表示状态转移函数，即状态转移规则</li>
-</ul>
-<h2 id="对于一个元胞，在空间位置上与它相邻的元胞称为它的邻元-有时也称作邻居-。"><a href="#对于一个元胞，在空间位置上与它相邻的元胞称为它的邻元-有时也称作邻居-。" class="headerlink" title="对于一个元胞，在空间位置上与它相邻的元胞称为它的邻元(有时也称作邻居)。"></a>对于一个元胞，在空间位置上与它相邻的元胞称为它的<strong>邻元</strong>(有时也称作邻居)。</h2><p>邻域和邻元的定义可以是多样的</p>
-<p>下图为一维CA网格邻域定义<br><img src="/img/一维CA网格.png" srcset="/img/loading.gif" alt=" "></p>
-<p>下图为二维CA网格邻域定义<br><img src="/img/二维CA网格.png" srcset="/img/loading.gif" alt=" "></p>
-<p>每个元胞有若干个状态，如：</p>
-<ul>
-<li>物理系统：（分子）固态，液态</li>
-<li>生物系统：（细胞）死or活</li>
-<li>社会系统： （个人）相信与不相信谎言</li>
-<li>政治系统： （国家）战争与妥协…</li>
-</ul>
-<hr>
-<p>&emsp;&emsp;在各种CA模型中，每个等份（单元格）代表一个元胞，CA的网格可以有不同的形式(维数，大小)。</p>
-<ul>
-<li>一维的CA模型是将直线分成若干相同的等份；</li>
-<li>二维的CA模型是将一个平面分成许多正方形、六边形或三角行的网格（最常见的是将其划分成正方形）；</li>
-<li>三位的CA模型将空间划分成许多立体网格。</li>
-</ul>
-<p><img src="/img/一维CA模型.png" srcset="/img/loading.gif" alt=" "> &emsp;&emsp; <img src="/img/二维CA模型.png" srcset="/img/loading.gif" alt=" "></p>
-<hr>
-<p>根据每个元胞及邻元的不同状态，由于状态更新规则决定这个元胞下一个时刻的状态。</p>
-<p>序号$i$个体在$t=1,\dots,n$时刻的状态:</p>
-<script type="math/tex; mode=display">S_t^{t+1}=f(S_i^t,N^t)=f(S_i^t,S_1^t,S_2^t,\dots,S_n^t)</script><p>其中$S_i^t,S_1^t,S_2^t,\dots,S_n^t$为个体$i$的邻元在$t$时刻的状态。</p>
-<hr>
-<p>规则可以是确定型的，也可以是随机型的。对于一个一维的CA，一个细胞具有两种可能的状态如生or死，相信或者不相信等等，表示为0or1.<br>如果规则一：我使用下图的左边的邻元定义<br>定义其状态更新规则：当一个个体的两个邻元都活或都死，该个体在下一时刻为死；反之，他的状态在下一时刻变为活。<br><img src="/img/规则表.png" srcset="/img/loading.gif" alt=" "></p>
-<p>再如规则二：我仍然使用当前左边邻元定义，但重新定义其状态<br>更新规则为：当个体的两个邻元都活或都死，该个体再下一时刻<strong>改变状态</strong>;反之，<strong>该个体的状态在下一时刻保持不变</strong>。<br><img src="/img/规则表（2）.png" srcset="/img/loading.gif" alt=" "></p>
-<hr>
-<p>模型的构建</p>
-<p>考虑以下问题：</p>
-<ul>
-<li>确定系统中有那些个体，如何分类？</li>
-<li>个体有几种状态，分别是什么；</li>
-<li>个体所处空间形式，是一位，二维还是多为；</li>
-<li>个体的邻元形式及个数，这与网格形式及交互群体规模有关</li>
-<li>根据个体状态、网格形式及邻元，确定个体状态的演变规则。<br>此外，还需确定：</li>
-<li>系统中的个体与单元格是否一致。<br>简单的、经典的CA模型中，单元格与个体不加区分，每个单位格就是一个个体，个体始终在单元格中，个体的状态即为单元格的状态。但在一些复杂系统中，尤其在个体可以移动的系统中，将个体与单元格区分更为方便。</li>
-<li>系统中是否离散事件。<br>采用CA模型描述的系统，每个时刻都需根据规则确定伟哥元胞的状态。除此之外，有的系统中某些个体会在特定时刻（有条件或无条件）发生状态变化，此时可以采用离散时间仿真方法，将该时刻列入事件表，根据事件表处理该类事件。</li>
-</ul>
-<font color="#f4f4f4"><a href="https://wenku.baidu.com/view/86050cb9aeaad1f347933f28.html" target="_blank" rel="noopener">推荐</a>
-</font>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="/img/流程图.png" srcset="/img/loading.gif" alt=" "></p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>\documentclass[UTF8]{ctexart}
+\usepackage{tikz} %%主要宏包
+\usetikzlibrary{shapes,arrows}
+
+\begin{document}
+\pagestyle{empty} % 无页眉页脚
+
+\tikzstyle{startstop} = [rectangle,rounded corners, minimum width=3cm,minimum height=1cm,text centered, draw=black,fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle = 70,trapezium right angle=110,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=blue!30]
+\tikzstyle{process} = [rectangle,minimum width=3cm,minimum height=1cm,text centered,text width =3cm,draw=black,fill=orange!30]
+\tikzstyle{decision} = [diamond,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=green!30]
+\tikzstyle{arrow} = [thick,-&gt;,&gt;=stealth]
+
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Start};
+\node (input1) [io,below of=start] {Input};
+\node (process1) [process,below of=input1] {Process 1};
+\node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};
+\node (process2a) [process,below of=decision1,yshift=-0.5cm] {Process 2aaaaaa aaaaaaa aaaa};
+\node (process2b) [process,right of =decision1,xshift=2cm] {Process 2b};
+\node (out1) [io,below of=process2a] {Output};
+\node (stop) [startstop,below of=out1] {Stop};
+
+\draw [arrow] (start) -- (input1);
+\draw [arrow] (input1) -- (process1);
+\draw [arrow] (process1) -- (decision1);
+\draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);
+\draw [arrow] (decision1) -- node[anchor=south] {no} (process2b);
+\draw [arrow] (process2b) |- (process1);
+\draw [arrow] (process2a) -- (out1);
+\draw [arrow] (out1) -- (stop);
+\end{tikzpicture}
+
+\end{document}
+</code></pre><h2 id="using-package"><a href="#using-package" class="headerlink" title="using package"></a>using package</h2><p>$\LaTeX$中绘图均要引入<code>tikz</code>宏包</p>
+<pre><code>\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+</code></pre><h2 id="对节点node进行定义"><a href="#对节点node进行定义" class="headerlink" title="对节点node进行定义"></a>对节点node进行定义</h2><pre><code>\tikzstyle{process} = [rectangle,minimum width=3cm,minimum height=1cm,text centered,text width =3cm,draw=black,fill=orange!30]
+</code></pre><h3 id="节点形状"><a href="#节点形状" class="headerlink" title="节点形状"></a>节点形状</h3><pre><code>rectangle:矩形，可加圆角(rounded corners)
+trapezium:平行四边形
+diamond:菱形
+</code></pre><h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><pre><code>minimum width
+minimum height
+</code></pre><h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><pre><code>text centered:文本居中
+</code></pre><h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><pre><code>text width=3cm:文本超过3cm时会自动换行
+</code></pre><h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><pre><code>draw
+</code></pre><h3 id="填充颜色"><a href="#填充颜色" class="headerlink" title="填充颜色"></a>填充颜色</h3><pre><code>fill
+</code></pre><h2 id="对箭头进行定义"><a href="#对箭头进行定义" class="headerlink" title="对箭头进行定义"></a>对箭头进行定义</h2><pre><code>tikzstyle{arrow} = [thick,-&gt;,&gt;=stealth]
+</code></pre><h3 id="线粗"><a href="#线粗" class="headerlink" title="线粗"></a>线粗</h3><pre><code>thick:粗
+thin:细
+</code></pre><h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><pre><code>-&gt;:反向箭头
+&lt;-:正向箭头
+&lt;-&gt;:双向箭头
+</code></pre><h3 id="虚线"><a href="#虚线" class="headerlink" title="虚线"></a>虚线</h3><pre><code>dashed
+</code></pre><h3 id="箭头形状"><a href="#箭头形状" class="headerlink" title="箭头形状"></a>箭头形状</h3><pre><code class="lang-&gt;=stealth```">
+## 创建节点
+
+    \node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};
 
 
-<font color="#f4f4f4">
-python 库中pandas 如果使用 pip install pandas 可以能会无法下载。如果无法下载则使用
-</font>
+### name
 
-<pre><code>pip --default-time=100 install pandas
-</code></pre><font color="#f4f4f4">这行命令，可以进行下载。</font>
+    (decision1):这个节点的name，后面需要用这个name调用这个节点。
+
+### 属性
+
+    decision：需要调用的节点的属性
+
+### 位置
+
+    below of=process1：定义节点的位置
+    left of:
+    right of:
+
+### 偏移,对位置进行微调
+
+    yshift:
+    xshift:
+
+### title
+
+    {Decession 1}:结果显示的标题
+
+
+## 画箭头
+
+    \draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);
+
+
+### 属性
+```[arrow]:需要调用的箭头的属性
+</code></pre>
+<pre><code class="lang-(decision1)：箭头的其实位置```">```(process2a)：箭头的末端位置
+</code></pre>
+<h3 id="线型"><a href="#线型" class="headerlink" title="线型"></a>线型</h3><pre><code>--：直线
+|-：先竖线后横线
+-|：向横线后竖线
+</code></pre><h3 id="文字：如果需要在箭头上添加文字"><a href="#文字：如果需要在箭头上添加文字" class="headerlink" title="文字：如果需要在箭头上添加文字"></a>文字：如果需要在箭头上添加文字</h3><p><code>{yes}:需要添加的文字</code></p>
+<h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><pre><code>[anchor=east]：
+[anchor=south]：
+[anchor=west]：
+[anchor=north]：
+[anchor=center]：
+</code></pre>
             <hr>
           </div>
           <br>
@@ -243,7 +293,7 @@ python 库中pandas 如果使用 pip install pandas 可以能会无法下载。�
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/mathematical-modeling">mathematical-modeling</a>
+                  <a class="hover-with-bg" href="/categories/LaTex">LaTex</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -252,9 +302,9 @@ python 库中pandas 如果使用 pip install pandas 可以能会无法下载。�
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/mathematical">mathematical</a>
+                  <a class="hover-with-bg" href="/tags/LaTex">LaTex</a>
                 
-                  <a class="hover-with-bg" href="/tags/python">python</a>
+                  <a class="hover-with-bg" href="/tags/mathematical">mathematical</a>
                 
               </span>
             
@@ -476,7 +526,7 @@ python 库中pandas 如果使用 pip install pandas 可以能会无法下载。�
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "cellular automata&nbsp;",
+        "使用LaTex编写流程图&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,

@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>使用LaTex编写流程图</title>
+    <link href="/2020/03/04/LaTex%E6%8F%92%E5%9B%BE/"/>
+    <url>/2020/03/04/LaTex%E6%8F%92%E5%9B%BE/</url>
+    
+    <content type="html"><![CDATA[<p>简单介绍如何使用$\LaTeX$进行流程图的绘制</p><a id="more"></a><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="/img/流程图.png" srcset="/img/loading.gif" alt=" "></p><h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>\documentclass[UTF8]{ctexart}\usepackage{tikz} %%主要宏包\usetikzlibrary{shapes,arrows}\begin{document}\pagestyle{empty} % 无页眉页脚\tikzstyle{startstop} = [rectangle,rounded corners, minimum width=3cm,minimum height=1cm,text centered, draw=black,fill=red!30]\tikzstyle{io} = [trapezium, trapezium left angle = 70,trapezium right angle=110,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=blue!30]\tikzstyle{process} = [rectangle,minimum width=3cm,minimum height=1cm,text centered,text width =3cm,draw=black,fill=orange!30]\tikzstyle{decision} = [diamond,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=green!30]\tikzstyle{arrow} = [thick,-&gt;,&gt;=stealth]\begin{tikzpicture}[node distance=2cm]\node (start) [startstop] {Start};\node (input1) [io,below of=start] {Input};\node (process1) [process,below of=input1] {Process 1};\node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};\node (process2a) [process,below of=decision1,yshift=-0.5cm] {Process 2aaaaaa aaaaaaa aaaa};\node (process2b) [process,right of =decision1,xshift=2cm] {Process 2b};\node (out1) [io,below of=process2a] {Output};\node (stop) [startstop,below of=out1] {Stop};\draw [arrow] (start) -- (input1);\draw [arrow] (input1) -- (process1);\draw [arrow] (process1) -- (decision1);\draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);\draw [arrow] (decision1) -- node[anchor=south] {no} (process2b);\draw [arrow] (process2b) |- (process1);\draw [arrow] (process2a) -- (out1);\draw [arrow] (out1) -- (stop);\end{tikzpicture}\end{document}</code></pre><h2 id="using-package"><a href="#using-package" class="headerlink" title="using package"></a>using package</h2><p>$\LaTeX$中绘图均要引入<code>tikz</code>宏包</p><pre><code>\usepackage{tikz}\usetikzlibrary{shapes.geometric, arrows}</code></pre><h2 id="对节点node进行定义"><a href="#对节点node进行定义" class="headerlink" title="对节点node进行定义"></a>对节点node进行定义</h2><pre><code>\tikzstyle{process} = [rectangle,minimum width=3cm,minimum height=1cm,text centered,text width =3cm,draw=black,fill=orange!30]</code></pre><h3 id="节点形状"><a href="#节点形状" class="headerlink" title="节点形状"></a>节点形状</h3><pre><code>rectangle:矩形，可加圆角(rounded corners)trapezium:平行四边形diamond:菱形</code></pre><h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><pre><code>minimum widthminimum height</code></pre><h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><pre><code>text centered:文本居中</code></pre><h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><pre><code>text width=3cm:文本超过3cm时会自动换行</code></pre><h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><pre><code>draw</code></pre><h3 id="填充颜色"><a href="#填充颜色" class="headerlink" title="填充颜色"></a>填充颜色</h3><pre><code>fill</code></pre><h2 id="对箭头进行定义"><a href="#对箭头进行定义" class="headerlink" title="对箭头进行定义"></a>对箭头进行定义</h2><pre><code>tikzstyle{arrow} = [thick,-&gt;,&gt;=stealth]</code></pre><h3 id="线粗"><a href="#线粗" class="headerlink" title="线粗"></a>线粗</h3><pre><code>thick:粗thin:细</code></pre><h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><pre><code>-&gt;:反向箭头&lt;-:正向箭头&lt;-&gt;:双向箭头</code></pre><h3 id="虚线"><a href="#虚线" class="headerlink" title="虚线"></a>虚线</h3><pre><code>dashed</code></pre><h3 id="箭头形状"><a href="#箭头形状" class="headerlink" title="箭头形状"></a>箭头形状</h3><pre><code class="lang-&gt;=stealth```">## 创建节点    \node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};### name    (decision1):这个节点的name，后面需要用这个name调用这个节点。### 属性    decision：需要调用的节点的属性### 位置    below of=process1：定义节点的位置    left of:    right of:### 偏移,对位置进行微调    yshift:    xshift:### title    {Decession 1}:结果显示的标题## 画箭头    \draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);### 属性```[arrow]:需要调用的箭头的属性</code></pre><pre><code class="lang-(decision1)：箭头的其实位置```">```(process2a)：箭头的末端位置</code></pre><h3 id="线型"><a href="#线型" class="headerlink" title="线型"></a>线型</h3><pre><code>--：直线|-：先竖线后横线-|：向横线后竖线</code></pre><h3 id="文字：如果需要在箭头上添加文字"><a href="#文字：如果需要在箭头上添加文字" class="headerlink" title="文字：如果需要在箭头上添加文字"></a>文字：如果需要在箭头上添加文字</h3><p><code>{yes}:需要添加的文字</code></p><h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><pre><code>[anchor=east]：[anchor=south]：[anchor=west]：[anchor=north]：[anchor=center]：</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>LaTex</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LaTex</tag>
+      
+      <tag>mathematical</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>cellular automata</title>
     <link href="/2020/02/29/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
     <url>/2020/02/29/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/</url>
@@ -20,9 +47,9 @@
     
     <tags>
       
-      <tag>python</tag>
-      
       <tag>mathematical</tag>
+      
+      <tag>python</tag>
       
     </tags>
     
@@ -241,6 +268,35 @@
       <tag>C++</tag>
       
       <tag>数据结构</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2020 mcm/icm LaTeX写作</title>
+    <link href="/2020/02/15/mcm-icm/"/>
+    <url>/2020/02/15/mcm-icm/</url>
+    
+    <content type="html"><![CDATA[<p>mcm/icm 2020新版美赛$\LaTeX$模板 </p><a id="more"></a><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>&emsp;&emsp;2020年因为武汉疫情的原因，原定于2月14日的mcm/icm比赛采用了两个时间两次给的方式，今天上午我也看了一下题，D题的数据相对比较好搜集，作为一名游戏玩家，我觉得可以从EA的FIFA球员数据库种收取数据。虽然说我的建模能力很垃圾啊。但是搜集数据和LaTeX的写作是我能给我们这个团队做出贡献的方式。所以我就做一些利索能及的事就对了。</p><h2 id="说说LaTeX"><a href="#说说LaTeX" class="headerlink" title="说说LaTeX"></a>说说LaTeX</h2><p>&emsp;&emsp;LaTeX是我开始学习写markdown的时候就了解的一种排版方式，寒假这段时间我也好好学习了一下。<br>一开始觉得美赛要不要用word写但是想到要插入公式，解决排版问题使用LaTeX还是方便的多。因为在比赛之前我也尝试自己<br>按照之前获奖文章自己做一个美赛模板。</p><p><img src="/img/mcm_model_1.png" srcset="/img/loading.gif" alt=""></p><p>但是在比赛之前听过2020年的比赛写作排版有变动，一开始还有点慌。然后今天上官网看了一下。发现官方给了一个模板<br><img src="/img/mcm_code.png" srcset="/img/loading.gif" alt=""><br>我一开始还以为是一个.tex文件谁知道，是这个…</p><p>我运行了一下就是这个效果（我注明一下，我把红色字体改成了黑色）</p><p><img src="/img/mcm_model.png" srcset="/img/loading.gif" alt=""></p><p>效果还不错，嘿嘿。感觉这个还专门给了一个模板，可能是为了要人们知道今年的变化吧。但是我觉得应该是因为大多数中国学生，撰写论文的格式都不标准，所以今年专门给了一个word和LaTeX模板来共大家用。统一一下格式，让看论文的老师也能好看一点。</p><p>自习看了一下模板里面内容，注释也很清楚。生怕学生不会用。一开始我还在想怎么加一个content，谁知人家这个模板很贴心，已经将目录给你写好了。（只不过是注释掉了）</p><p><img src="/img/content.png" srcset="/img/loading.gif" alt=""></p><p>2020和2019版的模板我也分享给大家，有需自戳。</p><ul style:"color=#336699"><li><a href="/temp/mcm-icm2020模板.zip" download="2020mcm-icm模板">2020</a></li><li><a href="/temp/mcm-icm2019模板.zip" download="2019mcm-icm模板">2019</a></li></ul><font color="#f4f4f4" weight="bold" size="32">To be continue</font>]]></content>
+    
+    
+    <categories>
+      
+      <category>mathematical-modeling</category>
+      
+      <category>LaTex</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LaTex</tag>
+      
+      <tag>mathematical</tag>
       
     </tags>
     
