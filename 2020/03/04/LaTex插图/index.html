@@ -136,7 +136,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    583 字
+                    574 字
                   </span>&nbsp;
                 
 
@@ -234,51 +234,25 @@ thin:细
 &lt;-:正向箭头
 &lt;-&gt;:双向箭头
 </code></pre><h3 id="虚线"><a href="#虚线" class="headerlink" title="虚线"></a>虚线</h3><pre><code>dashed
-</code></pre><h3 id="箭头形状"><a href="#箭头形状" class="headerlink" title="箭头形状"></a>箭头形状</h3><pre><code class="lang-&gt;=stealth```">
-## 创建节点
-
-    \node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};
-
-
-### name
-
-    (decision1):这个节点的name，后面需要用这个name调用这个节点。
-
-### 属性
-
-    decision：需要调用的节点的属性
-
-### 位置
-
-    below of=process1：定义节点的位置
-    left of:
-    right of:
-
-### 偏移,对位置进行微调
-
-    yshift:
-    xshift:
-
-### title
-
-    {Decession 1}:结果显示的标题
-
-
-## 画箭头
-
-    \draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);
-
-
-### 属性
-```[arrow]:需要调用的箭头的属性
+</code></pre><h3 id="箭头形状"><a href="#箭头形状" class="headerlink" title="箭头形状"></a>箭头形状</h3><pre><code>&gt;=stealth
+</code></pre><h2 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h2><pre><code>\node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};
+</code></pre><h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3><pre><code>(decision1):这个节点的name，后面需要用这个name调用这个节点。
+</code></pre><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>decision：需要调用的节点的属性
+</code></pre><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><pre><code>below of=process1：定义节点的位置
+left of:
+right of:
+</code></pre><h3 id="偏移-对位置进行微调"><a href="#偏移-对位置进行微调" class="headerlink" title="偏移,对位置进行微调"></a>偏移,对位置进行微调</h3><pre><code>yshift:
+xshift:
+</code></pre><h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><pre><code>{Decession 1}:结果显示的标题
+</code></pre><h2 id="画箭头"><a href="#画箭头" class="headerlink" title="画箭头"></a>画箭头</h2><pre><code>\draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);
+</code></pre><h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><pre><code class="lang-[arrow]:需要调用的箭头的属性```">```(decision1)：箭头的其实位置
 </code></pre>
-<pre><code class="lang-(decision1)：箭头的其实位置```">```(process2a)：箭头的末端位置
+<pre><code class="lang-(process2a)：箭头的末端位置```">### 线型
 </code></pre>
-<h3 id="线型"><a href="#线型" class="headerlink" title="线型"></a>线型</h3><pre><code>--：直线
-|-：先竖线后横线
--|：向横线后竖线
-</code></pre><h3 id="文字：如果需要在箭头上添加文字"><a href="#文字：如果需要在箭头上添加文字" class="headerlink" title="文字：如果需要在箭头上添加文字"></a>文字：如果需要在箭头上添加文字</h3><p><code>{yes}:需要添加的文字</code></p>
-<h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><pre><code>[anchor=east]：
+<p>—：直线<br>|-：先竖线后横线<br>-|：向横线后竖线</p>
+<pre><code>### 文字：如果需要在箭头上添加文字
+```{yes}:需要添加的文字
+</code></pre><h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><pre><code>[anchor=east]：
 [anchor=south]：
 [anchor=west]：
 [anchor=north]：
@@ -302,9 +276,9 @@ thin:细
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/LaTex">LaTex</a>
-                
                   <a class="hover-with-bg" href="/tags/mathematical">mathematical</a>
+                
+                  <a class="hover-with-bg" href="/tags/LaTex">LaTex</a>
                 
               </span>
             
