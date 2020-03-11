@@ -13,24 +13,28 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>背包九讲(完全背包) ~ Wulnut&#39;s space</title>
+  <title>背包九讲(完全背包) ~Wulnut&#39;s space</title>
 
-  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
-<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
-<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
-<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
-  <link rel="stylesheet" href="/lib/prettify/github-va.min.css"  >
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
 
-<link rel="stylesheet" href="/css/main.css"  >
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
 
 
 </head>
@@ -112,8 +116,8 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" false
-         style="background: url('/img/backpack.jpeg')no-repeat center center;
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/backpack.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -123,38 +127,30 @@
             </span>
 
             
-              <br>
               
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                   Friday, February 14th 2020, 11:08 pm
                 </p>
               
 
-              <p>
+              <p class="mt-1">
                 
                   
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
                     79 字
-                  </span>&nbsp;
+                  </span>
                 
 
                 
                   
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
                       1 分钟
-                  </span>&nbsp;
+                  </span>
                 
 
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
                 
               </p>
             
@@ -174,10 +170,12 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <p>著名的背包问题:完全背包问题</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <p>著名的背包问题:完全背包问题</p>
 <a id="more"></a>
 <font color="#f4f4f4" weight="bold" size="32">内容施工中...</font>
 
@@ -204,57 +202,38 @@
 
 <li>有依赖的背包问题</li>
 </ul>
+            </div>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-              <span>
+            <div>
+              <p>
+                
+                  <span>
                 <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/study/">study</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
                 
-                  <a class="hover-with-bg" href="/categories/study">study</a>
-                  &nbsp;
                 
-              </span>&nbsp;&nbsp;
-            
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-    <div id="tocbot"></div>
-  </div>
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
 
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
-  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
   <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
-  <script>
-    var notify = 'true' === true;
-    var verify = 'true' === true;
+  <script type="text/javascript">
+    var notify = 'true' === 'true';
+    var verify = 'true' === 'true';
     var oldLoad = window.onload;
     window.onload = function () {
       new Valine({
@@ -264,7 +243,7 @@
         app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
         app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
         placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        avatar: "retro",
+        avatar: "/retro",
         meta: ['nick', 'mail', 'link'],
         pageSize: "10",
       });
@@ -275,9 +254,27 @@
       powered by Valine.</a></noscript>
 
 
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
+
 
     
   </main>
@@ -312,69 +309,102 @@
 </div>
   
 
+  
+
+  
+
   <footer class="mt-5">
   <div class="text-center py-3">
-  <p>copyright &copy 2019-2020</p>
+    <div>
+    <p>copyright &copy 2019-2020</p>
     <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
     <i class="iconfont icon-love"></i>
     <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    <br>
-
+    </div>
     
-  
-    <!-- 不蒜子统计PV -->
-    
-    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
-          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
-  
-  
-    <!-- 不蒜子统计UV -->
-    
-    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
-            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
-  
-  <br>
-
-
 
     
   <!-- 备案信息 -->
-  <a href="http://beian.miit.gov.cn/" target="_blank"
-     rel="nofollow noopener">鄂ICP证20001010号</a>
-  
-
-
-
-    <!-- cnzz Analytics icon -->
+  <div>
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">鄂ICP证20001010号</a>
     
 
+
+    
   </div>
 </footer>
 
 <!-- SCRIPTS -->
-<script src="/lib/jquery/jquery.min.js" ></script>
-<script src="/lib/popper/popper.min.js" ></script>
-<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
-<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
-<script src="/js/main.js" ></script>
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
 
 
-  <script src="/js/lazyload.js" ></script>
+  <script  src="/js/lazyload.js" ></script>
 
 
 
   
-    <script src="/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
 
 
 
-  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
 
 
 
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 <!-- Plugins -->
@@ -382,7 +412,7 @@
 
   
     <!-- Baidu Analytics -->
-    <script>
+    <script defer>
       var _hmt = _hmt || [];
       (function () {
         var hm = document.createElement("script");
@@ -395,7 +425,7 @@
 
   
     <!-- Google Analytics -->
-    <script>
+    <script defer>
       (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
@@ -417,12 +447,11 @@
 
   
 
-  <!-- cnzz Analytics -->
   
 
 
 
-  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
   <script>
     $(document).ready(function () {
       $('pre').addClass('prettyprint  ');
@@ -432,7 +461,7 @@
 
 
 
-  <script src="/lib/typed/typed.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
     var typed = new Typed('#subtitle', {
       strings: [
@@ -452,11 +481,11 @@
 
 
 
-  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
   <script>
     anchors.options = {
       placement: "right",
-      visible: "true",
+      visible: "hover",
       
       icon: "🔗"
       
@@ -471,7 +500,7 @@
 
 
 
-  <script src="/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
   <script>
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
@@ -483,7 +512,7 @@
 
 
 
-  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
   <script>
     $("#post img:not(.no-zoom img, img[no-zoom])").each(
       function () {
@@ -519,14 +548,11 @@
 
     </script>
 
-    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
 
   
 
 
-
-  
-  
 
 
 
