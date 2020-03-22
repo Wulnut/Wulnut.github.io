@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/panda.png">
+  <link rel="icon" type="image/png" href="/img/panda.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Wulnut">
+  <meta name="keywords" content="">
+  <title>vscode小技巧 ~Wulnut&#39;s space</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Wulnut's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">Links</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/vscode.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Thursday, March 19th 2020, 4:36 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    949 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      3 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <p>vscode 快捷键</p>
+<a id="more"></a>
+<h1 id="常见快捷键"><a href="#常见快捷键" class="headerlink" title="常见快捷键"></a>常见快捷键</h1><h1 id="如果懒"><a href="#如果懒" class="headerlink" title="如果懒"></a>如果懒</h1><p>不想看我bb就直接这样做就直接⬇；</p>
+<p>ctrl k + ctrl s = 打开快捷键一览表。</p>
+<p>在这里面、你可以查看、搜索、修改快捷键。</p>
+<h2 id="列出当前可执行的动作"><a href="#列出当前可执行的动作" class="headerlink" title="列出当前可执行的动作"></a>列出当前可执行的动作</h2><pre><code>显示 Errors或 Warnings，也可以 Ctrl+Shift+M:跳转到行数，也可以 Ctrl+G 直接进入
+
+跳转到 symbol（搜索变量或者函数），也可以 Ctrl+Shift+O 直接进入
+
+根据分类跳转 symbol，查找属性或函数，也可以 Ctrl+Shift+O 后输入&quot; : &quot;进入
+
+根据名字查找 symbol，也可以 Ctrl+T
+</code></pre><p>代码行向左或向右缩进:   Ctrl+[ 、 Ctrl+]</p>
+<p>复制或剪切当前行/当前选中内容:   Ctrl+C 、 Ctrl+V</p>
+<p>代码格式化:   Shift+Alt+F</p>
+<p>向上或向下移动一行:   Alt+Up 或 Alt+Down</p>
+<p>向上或向下复制一行:   Shift+Alt+Up 或 Shift+Alt+Down</p>
+<p>在当前行下方插入一行:   Ctrl+Enter</p>
+<p>在当前行上方插入一行:   Ctrl+Shift+Enter</p>
+<p>Ctrl+Shift+P,F1 展示全局命令面板</p>
+<p>Ctrl+P 快速打开最近打开的文件</p>
+<p>Ctrl+Shift+N 打开新的编辑器窗口</p>
+<p>Ctrl+Shift+W 关闭编辑器</p>
+<p>Ctrl + X 剪切</p>
+<p>Ctrl + C 复制</p>
+<p>Alt + up/down 移动行上下</p>
+<p>Shift + Alt up/down 在当前行上下复制当前行</p>
+<p>Ctrl + Shift + K 删除行</p>
+<p>Ctrl + Enter 在当前行下插入新的一行</p>
+<p>Ctrl + Shift + Enter 在当前行上插入新的一行</p>
+<p>Ctrl + Shift + | 匹配花括号的闭合处，跳转</p>
+<p>Ctrl + ] 或 [ 行缩进</p>
+<p>Home 光标跳转到行头</p>
+<p>End 光标跳转到行尾</p>
+<p>Ctrl + Home 跳转到页头</p>
+<p>Ctrl + End 跳转到页尾</p>
+<p>Ctrl + up/down 行视图上下偏移</p>
+<p>Alt + PgUp/PgDown 屏视图上下偏移</p>
+<p>Ctrl + Shift + [ 折叠区域代码</p>
+<p>Ctrl + Shift + ] 展开区域代码</p>
+<p>Ctrl + / 添加关闭行注释</p>
+<p>Shift + Alt +A 块区域注释</p>
+<p>Alt + Z 添加关闭词汇包含</p>
+<h2 id="导航快捷键"><a href="#导航快捷键" class="headerlink" title="导航快捷键"></a>导航快捷键</h2><p>Ctrl + T 列出所有符号</p>
+<p>Ctrl + G 跳转行</p>
+<p>Ctrl + P 跳转文件</p>
+<p>Ctrl + Shift + O 跳转到符号处</p>
+<p>Ctrl + Shift + M 或 Ctrl + J 打开问题展示面板</p>
+<p>F8 跳转到下一个错误或者警告</p>
+<p>Shift + F8 跳转到上一个错误或者警告</p>
+<p>Ctrl + Shift + Tab 切换到最近打开的文件</p>
+<p>Alt + left / right 向后、向前</p>
+<p>Ctrl + M 进入用Tab来移动焦点</p>
+<p>Ctrl + F 查询</p>
+<p>Ctrl + H 替换</p>
+<p>F3 / Shift + F3 查询下一个/上一个</p>
+<p>Alt + Enter 选中所有出现在查询中的</p>
+<p>Ctrl + D 匹配当前选中的词汇或者行，再次选中-可操作</p>
+<h2 id="多行光标快捷键"><a href="#多行光标快捷键" class="headerlink" title="多行光标快捷键"></a>多行光标快捷键</h2><p>Alt + Click 插入光标-支持多个</p>
+<p>Ctrl + Alt + up/down 上下插入光标-支持多个</p>
+<p>Ctrl + U 撤销最后一次光标操作</p>
+<p>Shift + Alt + I 插入光标到选中范围内所有行结束符</p>
+<p>Ctrl + I 选中当前行</p>
+<p>Ctrl + Shift + L 选择所有出现在当前选中的行-操作</p>
+<p>Ctrl + F2 选择所有出现在当前选中的词汇-操作</p>
+<p>Shift + Alt + right 从光标处扩展选中全行</p>
+<p>Shift + Alt + left 收缩选择区域</p>
+<p>Shift + Alt + (drag mouse) 鼠标拖动区域，同时在多个行结束符插入光标</p>
+<p>Ctrl + Shift + Alt + (Arrow Key) 也是插入多行光标的<code>[方向键控制]</code></p>
+<p>Ctrl + Shift + Alt + PgUp/PgDown 也是插入多行光标的<code>[整屏生效]</code></p>
+<p>Esc Esc 连续按两次Esc键取消多行光标</p>
+<p>Shift + Alt + F 格式化代码</p>
+<p>F12 跳转到定义处</p>
+<p>Alt + F12 代码片段显示定义</p>
+<p>Ctrl + K F12 在其他窗口打开定义处</p>
+<p>Ctrl + . 快速修复部分可以修复的语法错误</p>
+<p>Shift + F12 显示所有引用</p>
+<p>F2 重命名符号</p>
+<p>Ctrl + Shift + . / , 替换下个值</p>
+<h2 id="编辑器管理快捷键"><a href="#编辑器管理快捷键" class="headerlink" title="编辑器管理快捷键"></a>编辑器管理快捷键</h2><p>Ctrl + F4, Ctrl + W 关闭编辑器</p>
+<p>Ctrl + |切割编辑窗口</p>
+<p>Ctrl + 1/2/3 切换焦点在不同的切割窗口</p>
+<p>Ctrl + Shift + PgUp/PgDown 切换标签页的位置</p>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/vscode/">vscode</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vscode/">vscode</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script type="text/javascript">
+    var notify = 'true' === 'true';
+    var verify = 'true' === 'true';
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "/retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+    <p>copyright &copy 2019-2020</p>
+    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+    </div>
+    
+
+    
+  <!-- 备案信息 -->
+  <div>
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">鄂ICP证20001010号</a>
+    
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-155249740-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vscode小技巧&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "🔗"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

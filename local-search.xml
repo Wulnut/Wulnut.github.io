@@ -4,6 +4,75 @@
   
   
   <entry>
+    <title>Largest Rectangle in Histogram</title>
+    <link href="/2020/03/21/MaximalRectangle/"/>
+    <url>/2020/03/21/MaximalRectangle/</url>
+    
+    <content type="html"><![CDATA[<p>Largest Rectangle in Histogram解析</p><a id="more"></a><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>&emsp;&emsp;给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p><p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p><p><img src="/img/rectangle(2" srcset="/img/loading.gif" alt=" ">.png)</p><p>以上是柱状图的示例，其中每个柱子的宽度为 1，给定的高度为 [2,1,5,6,2,3]。</p><p><img src="/img/rectangle(1" srcset="/img/loading.gif" alt=" ">.png)</p><p>图中阴影部分为所能勾勒出的最大矩形面积，其面积为 10 个单位。</p><blockquote><p>示例:</p><p>输入: [2,1,5,6,2,3]</p><p>输出: 10</p></blockquote><h2 id="先来看一个例子"><a href="#先来看一个例子" class="headerlink" title="先来看一个例子"></a>先来看一个例子</h2><p><img src="/img/rectangle.png" srcset="/img/loading.gif" alt=" "></p><p>height的内容是 [5,6,7,8,3]，特点是除了最后一个，前面全部保持递增，且最后一个立柱的高度小于前面所有立柱高度。</p><p>对于这种特点的柱状图，如果使用上面所说的“挨个使用每一个柱状图的高度作为矩形的高度，求面积”的方法，还需要用嵌套循环吗？</p><p>我们知道除了最后一个，从第一个到倒数第二个立柱的高度都在升高，那么如果挨个使用每一个柱的高度作为矩形的高度，那么依次能得到的矩形的宽度就可以直接算出<br>来：使用5作为高度可以使用前四个立柱组成 $4\times5$的矩形，高度6可以组成$3\times6$的矩形… 因此只需要遍历一次，选出最大面积即可。</p><p>对于这种类型的柱状图，最大矩形面积的时间复杂度是O(n)。</p><p>我们将这种特点的柱状图称为“波峰图”。</p><p>从而算法设计步骤：</p><p>(1) 在height尾部添加一个0，也就是一个高度为0的立柱。作用是在最后也能凑成上面提的那种“波峰图”。</p><p>(2) 定义了一个stack，然后遍历时如果height[i] 大于stack.top()，进栈。反之，出栈直到栈顶元素小于height[i]。</p><p>由于出栈的这些元素高度都是递增的，我们可以求出这些立柱中所围成的最大矩形。更妙的是，由于这些被弹出的立柱处于“波峰”之上(比如弹出i 到 i+k，那么所有这些<br>立柱的高度都高于 i-1和 i+k+1的高度)，因此，如果我们使用之前所提的“左右延伸找立柱”的思路解，以这些立柱的高度作为整个矩形的高度时，左右延伸出的矩形所包<br>含的立柱不会超出这段“波峰”，因为波峰外的立柱高度都比他们低。“波峰图”其实就是求解最大矩形的“孤岛”，它不会干扰到外部。</p><p>(3) 由于比height[i]大的元素都出完了，height[i]又比栈顶元素大了，因此再次进栈。如此往复，直到遍历到最后那个高度为0的柱，触发最后的弹出以及最后一次面积<br>的计算，此后stack为空。</p><p>(4) 返回面积最大值。</p><p>栈中存的不是高度，而是height的索引，这样做的好处是不会影响宽度的计算，索引值相减 = 宽度。</p><h2 id="但是对于面积的计算，还需要再多少几句"><a href="#但是对于面积的计算，还需要再多少几句" class="headerlink" title="但是对于面积的计算，还需要再多少几句"></a>但是对于面积的计算，还需要再多少几句</h2><p><img src="/img/rectangle(3" srcset="/img/loading.gif" alt=" ">.png)</p><p>矩形的面积=高*宽。<br>我们的发现，在这个分支情况下，我们已经知道高为2了，那么宽度如何求呢？<br>通过观察，我们发现矩形的左边沿是左边第一个高比2小的柱子，右边沿是右边第一个高比2小的柱子（将高为3的柱子的右面看作还有一个高为0的柱子）<br>如此它的宽度是$6-（1+1）=4$</p><h2 id="如何寻找柱子的左右边"><a href="#如何寻找柱子的左右边" class="headerlink" title="如何寻找柱子的左右边"></a>如何寻找柱子的左右边</h2><p>我们已经说了，左边沿是左边第一小与本柱子高的柱子的右边，右边沿也是同理。<br>这正好可以用单调栈。<br>当第i个柱子进栈时，如果栈顶柱子（此处记作柱子A）的高度低于或等于第i个柱子，则第i个柱子进栈；<br>如果高于第i个柱子，则出栈，并计算以柱子A为高的矩形最大面积。</p><ul><li>高度：就是柱子A的高度</li><li>右边沿：正好是i（由于单调栈的性质，第i个柱子就是右边第一个矮于A的柱子）</li><li>左边沿：单调栈中紧邻A的柱子。（如果A已经出栈，那么左边沿就是A出栈后的栈顶）而且是该柱子的右边，所以要+1.</li></ul><p>因此，完全覆盖第index个柱子的最大矩形的面积如下（stk是单调栈）</p><pre><code>maxArea=heights[index]*(i - (stk.top() +1))</code></pre><p>还有一种情况。当A出栈后，单调栈为空时，那就是说明，A的左边没有比它矮的。左边沿就可以到0.</p><pre><code>maxArea=heights[index]*(stk.empty()? i:(i - stk.top() -1)))</code></pre><p>可能你还有点不明白就是，那实际代码是怎么计算的？其实自习想一下就明白了，因为是取得top元素进行计算所以计算是从右边逐渐往左边延伸。所以当整个栈排空的时候<br>也就计算了距离右边最远的边界。</p><h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p><strong>栈实现：</strong></p><pre><code>int largeRectangleArea(vector&lt;int&gt;&amp; h) {    stack&lt;int&gt; s;    h.push_back(0);    int sum = 0;    for (int i = 0; i &lt; h.size(); ++ i) {        if (s.empty() || h[i] &gt; h[s.top()]) s.push(i);        else {            int tmp = s.top();            s.pop();            sum = max(sum, h[tmp] * (s.empty() ? i : i - s.top() - 1));            i --;        }    }    return sum;}</code></pre><p><strong>分治解法：</strong></p><pre><code>    int largestRectangleArea(vector&lt;int&gt;&amp; heights) {        if(heights.empty()) return 0;        return maxArea(heights,0,(int)heights.size()-1);    }    int maxArea(vector&lt;int&gt;&amp; heights,int start, int end){        if(start &gt; end)            return 0;        int minIndex=start;        bool sorted = true;        for(int i=start+1;i&lt;=end;++i){            if(heights[i]&lt;heights[i-1])                sorted=false;            if(heights[i] &lt; heights[minIndex]){                minIndex=i;            }         }        if(sorted){//如果有序则不需要再作进一步的分治            int mx=0;            for(int i=start;i&lt;=end;++i)            mx = max(mx,(end-i+1)*heights[i]);            return mx;        }        return max( (end-start+1)*heights[minIndex],                max( maxArea(heights,start, minIndex-1),maxArea(heights,minIndex+1, end) ) );//分治    }</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>训练题</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vscode小技巧</title>
+    <link href="/2020/03/19/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <url>/2020/03/19/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    
+    <content type="html"><![CDATA[<p>vscode 快捷键</p><a id="more"></a><h1 id="常见快捷键"><a href="#常见快捷键" class="headerlink" title="常见快捷键"></a>常见快捷键</h1><h1 id="如果懒"><a href="#如果懒" class="headerlink" title="如果懒"></a>如果懒</h1><p>不想看我bb就直接这样做就直接⬇；</p><p>ctrl k + ctrl s = 打开快捷键一览表。</p><p>在这里面、你可以查看、搜索、修改快捷键。</p><h2 id="列出当前可执行的动作"><a href="#列出当前可执行的动作" class="headerlink" title="列出当前可执行的动作"></a>列出当前可执行的动作</h2><pre><code>显示 Errors或 Warnings，也可以 Ctrl+Shift+M:跳转到行数，也可以 Ctrl+G 直接进入跳转到 symbol（搜索变量或者函数），也可以 Ctrl+Shift+O 直接进入根据分类跳转 symbol，查找属性或函数，也可以 Ctrl+Shift+O 后输入&quot; : &quot;进入根据名字查找 symbol，也可以 Ctrl+T</code></pre><p>代码行向左或向右缩进:   Ctrl+[ 、 Ctrl+]</p><p>复制或剪切当前行/当前选中内容:   Ctrl+C 、 Ctrl+V</p><p>代码格式化:   Shift+Alt+F</p><p>向上或向下移动一行:   Alt+Up 或 Alt+Down</p><p>向上或向下复制一行:   Shift+Alt+Up 或 Shift+Alt+Down</p><p>在当前行下方插入一行:   Ctrl+Enter</p><p>在当前行上方插入一行:   Ctrl+Shift+Enter</p><p>Ctrl+Shift+P,F1 展示全局命令面板</p><p>Ctrl+P 快速打开最近打开的文件</p><p>Ctrl+Shift+N 打开新的编辑器窗口</p><p>Ctrl+Shift+W 关闭编辑器</p><p>Ctrl + X 剪切</p><p>Ctrl + C 复制</p><p>Alt + up/down 移动行上下</p><p>Shift + Alt up/down 在当前行上下复制当前行</p><p>Ctrl + Shift + K 删除行</p><p>Ctrl + Enter 在当前行下插入新的一行</p><p>Ctrl + Shift + Enter 在当前行上插入新的一行</p><p>Ctrl + Shift + | 匹配花括号的闭合处，跳转</p><p>Ctrl + ] 或 [ 行缩进</p><p>Home 光标跳转到行头</p><p>End 光标跳转到行尾</p><p>Ctrl + Home 跳转到页头</p><p>Ctrl + End 跳转到页尾</p><p>Ctrl + up/down 行视图上下偏移</p><p>Alt + PgUp/PgDown 屏视图上下偏移</p><p>Ctrl + Shift + [ 折叠区域代码</p><p>Ctrl + Shift + ] 展开区域代码</p><p>Ctrl + / 添加关闭行注释</p><p>Shift + Alt +A 块区域注释</p><p>Alt + Z 添加关闭词汇包含</p><h2 id="导航快捷键"><a href="#导航快捷键" class="headerlink" title="导航快捷键"></a>导航快捷键</h2><p>Ctrl + T 列出所有符号</p><p>Ctrl + G 跳转行</p><p>Ctrl + P 跳转文件</p><p>Ctrl + Shift + O 跳转到符号处</p><p>Ctrl + Shift + M 或 Ctrl + J 打开问题展示面板</p><p>F8 跳转到下一个错误或者警告</p><p>Shift + F8 跳转到上一个错误或者警告</p><p>Ctrl + Shift + Tab 切换到最近打开的文件</p><p>Alt + left / right 向后、向前</p><p>Ctrl + M 进入用Tab来移动焦点</p><p>Ctrl + F 查询</p><p>Ctrl + H 替换</p><p>F3 / Shift + F3 查询下一个/上一个</p><p>Alt + Enter 选中所有出现在查询中的</p><p>Ctrl + D 匹配当前选中的词汇或者行，再次选中-可操作</p><h2 id="多行光标快捷键"><a href="#多行光标快捷键" class="headerlink" title="多行光标快捷键"></a>多行光标快捷键</h2><p>Alt + Click 插入光标-支持多个</p><p>Ctrl + Alt + up/down 上下插入光标-支持多个</p><p>Ctrl + U 撤销最后一次光标操作</p><p>Shift + Alt + I 插入光标到选中范围内所有行结束符</p><p>Ctrl + I 选中当前行</p><p>Ctrl + Shift + L 选择所有出现在当前选中的行-操作</p><p>Ctrl + F2 选择所有出现在当前选中的词汇-操作</p><p>Shift + Alt + right 从光标处扩展选中全行</p><p>Shift + Alt + left 收缩选择区域</p><p>Shift + Alt + (drag mouse) 鼠标拖动区域，同时在多个行结束符插入光标</p><p>Ctrl + Shift + Alt + (Arrow Key) 也是插入多行光标的<code>[方向键控制]</code></p><p>Ctrl + Shift + Alt + PgUp/PgDown 也是插入多行光标的<code>[整屏生效]</code></p><p>Esc Esc 连续按两次Esc键取消多行光标</p><p>Shift + Alt + F 格式化代码</p><p>F12 跳转到定义处</p><p>Alt + F12 代码片段显示定义</p><p>Ctrl + K F12 在其他窗口打开定义处</p><p>Ctrl + . 快速修复部分可以修复的语法错误</p><p>Shift + F12 显示所有引用</p><p>F2 重命名符号</p><p>Ctrl + Shift + . / , 替换下个值</p><h2 id="编辑器管理快捷键"><a href="#编辑器管理快捷键" class="headerlink" title="编辑器管理快捷键"></a>编辑器管理快捷键</h2><p>Ctrl + F4, Ctrl + W 关闭编辑器</p><p>Ctrl + |切割编辑窗口</p><p>Ctrl + 1/2/3 切换焦点在不同的切割窗口</p><p>Ctrl + Shift + PgUp/PgDown 切换标签页的位置</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>vscode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vscode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++笔记</title>
+    <link href="/2020/03/18/C++note/"/>
+    <url>/2020/03/18/C++note/</url>
+    
+    <content type="html"><![CDATA[<p>记录C++中遇到的问题</p><a id="more"></a><h2 id="关于auto"><a href="#关于auto" class="headerlink" title="关于auto"></a>关于auto</h2><p>(1)auto</p><p>auto即 for(auto x:range)  这样会拷贝一份range元素，而不会改变range中元素；</p><p>但是！（重点)  使用for(auto x:vector<bool>)时得到一个proxy class,操作时会改变vector<bool>本身元素。应用：for(bool x:vector<bool>)</p><p>(2)auto&amp;</p><p>当需要修改range中元素，用for(auto&amp; x:range)</p><p>当vector<bool>返回临时对象，使用auto&amp;会编译错误，临时对象不能绑在non-const l-value reference （左值引用）需使用auto&amp;&amp;,初始化右值时也可捕获</p><p>(3)const auto&amp;   </p><p>当只想读取range中元素时，使用const auto&amp;,如：for(const auto&amp;x:range),它不会进行拷贝，也不会修改range   </p><p>(4)const auto</p><p>当需要拷贝元素，但不可修改拷贝出来的值时，使用 for(const auto x:range)，避免拷贝开销.</p><hr><p>当我们在遍历容器的时候</p><pre><code>for(auto i : vec){std::cout &lt;&lt;i &lt;&lt;std::endl;}</code></pre><p>但我知道这不必要的——不必要,因为我只需要打印 vec ——复制的值</p><p>编辑 : vec的每个元素，所以我可以这样做</p><pre><code>for(auto &amp;i : vec){std::cout &lt;&lt;i &lt;&lt;std::endl;}</code></pre><p>但是我想确保 vec的值从未被修改并遵守 const-correctness，所以我可以：</p><pre><code>for(const auto &amp;i : vec){std::cout &lt;&lt;i &lt;&lt;std::endl;}</code></pre><p>我的问题是:如果我只需要看看一些容器的值,不会最后循环( const auto &amp;i ) 总是首选由于增加effieciency没有额外的副本(编辑 : vec的每个元素？</p><pre><code>T//I&#39;m copying thisT&amp;//I&#39;m modifying thisconst T&amp;//I&#39;m reading this</code></pre><p>这些是你的”默认值”。当 T 是基本类型( 内置) 时，你通常只需要恢复 const T ( 无引用)，因为副本比别名更便宜。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>study</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>滴滴~</title>
     <link href="/2020/03/15/20%E5%B2%81/"/>
     <url>/2020/03/15/20%E5%B2%81/</url>

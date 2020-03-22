@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/panda.png">
+  <link rel="icon" type="image/png" href="/img/panda.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Wulnut">
+  <meta name="keywords" content="">
+  <title>Largest Rectangle in Histogram ~Wulnut&#39;s space</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Wulnut's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">Links</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/math.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Saturday, March 21st 2020, 3:42 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    1.5k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      5 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <p>Largest Rectangle in Histogram解析</p>
+<a id="more"></a>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>&emsp;&emsp;给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<p><img src="/img/rectangle(2" srcset="/img/loading.gif" alt=" ">.png)</p>
+<p>以上是柱状图的示例，其中每个柱子的宽度为 1，给定的高度为 [2,1,5,6,2,3]。</p>
+<p><img src="/img/rectangle(1" srcset="/img/loading.gif" alt=" ">.png)</p>
+<p>图中阴影部分为所能勾勒出的最大矩形面积，其面积为 10 个单位。</p>
+<blockquote>
+<p>示例:</p>
+<p>输入: [2,1,5,6,2,3]</p>
+<p>输出: 10</p>
+</blockquote>
+<h2 id="先来看一个例子"><a href="#先来看一个例子" class="headerlink" title="先来看一个例子"></a>先来看一个例子</h2><p><img src="/img/rectangle.png" srcset="/img/loading.gif" alt=" "></p>
+<p>height的内容是 [5,6,7,8,3]，特点是除了最后一个，前面全部保持递增，且最后一个立柱的高度小于前面所有立柱高度。</p>
+<p>对于这种特点的柱状图，如果使用上面所说的“挨个使用每一个柱状图的高度作为矩形的高度，求面积”的方法，还需要用嵌套循环吗？</p>
+<p>我们知道除了最后一个，从第一个到倒数第二个立柱的高度都在升高，那么如果挨个使用每一个柱的高度作为矩形的高度，那么依次能得到的矩形的宽度就可以直接算出<br>来：使用5作为高度可以使用前四个立柱组成 $4\times5$的矩形，高度6可以组成$3\times6$的矩形… 因此只需要遍历一次，选出最大面积即可。</p>
+<p>对于这种类型的柱状图，最大矩形面积的时间复杂度是O(n)。</p>
+<p>我们将这种特点的柱状图称为“波峰图”。</p>
+<p>从而算法设计步骤：</p>
+<p>(1) 在height尾部添加一个0，也就是一个高度为0的立柱。作用是在最后也能凑成上面提的那种“波峰图”。</p>
+<p>(2) 定义了一个stack，然后遍历时如果height[i] 大于stack.top()，进栈。反之，出栈直到栈顶元素小于height[i]。</p>
+<p>由于出栈的这些元素高度都是递增的，我们可以求出这些立柱中所围成的最大矩形。更妙的是，由于这些被弹出的立柱处于“波峰”之上(比如弹出i 到 i+k，那么所有这些<br>立柱的高度都高于 i-1和 i+k+1的高度)，因此，如果我们使用之前所提的“左右延伸找立柱”的思路解，以这些立柱的高度作为整个矩形的高度时，左右延伸出的矩形所包<br>含的立柱不会超出这段“波峰”，因为波峰外的立柱高度都比他们低。“波峰图”其实就是求解最大矩形的“孤岛”，它不会干扰到外部。</p>
+<p>(3) 由于比height[i]大的元素都出完了，height[i]又比栈顶元素大了，因此再次进栈。如此往复，直到遍历到最后那个高度为0的柱，触发最后的弹出以及最后一次面积<br>的计算，此后stack为空。</p>
+<p>(4) 返回面积最大值。</p>
+<p>栈中存的不是高度，而是height的索引，这样做的好处是不会影响宽度的计算，索引值相减 = 宽度。</p>
+<h2 id="但是对于面积的计算，还需要再多少几句"><a href="#但是对于面积的计算，还需要再多少几句" class="headerlink" title="但是对于面积的计算，还需要再多少几句"></a>但是对于面积的计算，还需要再多少几句</h2><p><img src="/img/rectangle(3" srcset="/img/loading.gif" alt=" ">.png)</p>
+<p>矩形的面积=高*宽。<br>我们的发现，在这个分支情况下，我们已经知道高为2了，那么宽度如何求呢？<br>通过观察，我们发现矩形的左边沿是左边第一个高比2小的柱子，右边沿是右边第一个高比2小的柱子（将高为3的柱子的右面看作还有一个高为0的柱子）<br>如此它的宽度是$6-（1+1）=4$</p>
+<h2 id="如何寻找柱子的左右边"><a href="#如何寻找柱子的左右边" class="headerlink" title="如何寻找柱子的左右边"></a>如何寻找柱子的左右边</h2><p>我们已经说了，左边沿是左边第一小与本柱子高的柱子的右边，右边沿也是同理。<br>这正好可以用单调栈。<br>当第i个柱子进栈时，如果栈顶柱子（此处记作柱子A）的高度低于或等于第i个柱子，则第i个柱子进栈；<br>如果高于第i个柱子，则出栈，并计算以柱子A为高的矩形最大面积。</p>
+<ul>
+<li>高度：就是柱子A的高度</li>
+<li>右边沿：正好是i（由于单调栈的性质，第i个柱子就是右边第一个矮于A的柱子）</li>
+<li>左边沿：单调栈中紧邻A的柱子。（如果A已经出栈，那么左边沿就是A出栈后的栈顶）而且是该柱子的右边，所以要+1.</li>
+</ul>
+<p>因此，完全覆盖第index个柱子的最大矩形的面积如下（stk是单调栈）</p>
+<pre><code>maxArea=heights[index]*(i - (stk.top() +1))
+</code></pre><p>还有一种情况。当A出栈后，单调栈为空时，那就是说明，A的左边没有比它矮的。左边沿就可以到0.</p>
+<pre><code>maxArea=heights[index]*(stk.empty()? i:(i - stk.top() -1)))
+</code></pre><p>可能你还有点不明白就是，那实际代码是怎么计算的？其实自习想一下就明白了，因为是取得top元素进行计算所以计算是从右边逐渐往左边延伸。所以当整个栈排空的时候<br>也就计算了距离右边最远的边界。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p><strong>栈实现：</strong></p>
+<pre><code>int largeRectangleArea(vector&lt;int&gt;&amp; h) {
+    stack&lt;int&gt; s;
+    h.push_back(0);
+    int sum = 0;
+
+    for (int i = 0; i &lt; h.size(); ++ i) {
+        if (s.empty() || h[i] &gt; h[s.top()]) s.push(i);
+
+        else {
+            int tmp = s.top();
+            s.pop();
+            sum = max(sum, h[tmp] * (s.empty() ? i : i - s.top() - 1));
+            i --;
+        }
+    }
+
+    return sum;
+}
+</code></pre><p><strong>分治解法：</strong></p>
+<pre><code>    int largestRectangleArea(vector&lt;int&gt;&amp; heights) {
+        if(heights.empty()) return 0;
+        return maxArea(heights,0,(int)heights.size()-1);
+    }
+
+    int maxArea(vector&lt;int&gt;&amp; heights,int start, int end){
+        if(start &gt; end)
+            return 0;
+        int minIndex=start;
+        bool sorted = true;
+        for(int i=start+1;i&lt;=end;++i){
+            if(heights[i]&lt;heights[i-1])
+                sorted=false;
+            if(heights[i] &lt; heights[minIndex]){
+                minIndex=i;
+            } 
+        }
+        if(sorted){//如果有序则不需要再作进一步的分治
+            int mx=0;
+            for(int i=start;i&lt;=end;++i)
+            mx = max(mx,(end-i+1)*heights[i]);
+            return mx;
+        }
+        return max( (end-start+1)*heights[minIndex],
+                max( maxArea(heights,start, minIndex-1),maxArea(heights,minIndex+1, end) ) );//分治
+    }
+</code></pre>
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98/">训练题</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script type="text/javascript">
+    var notify = 'true' === 'true';
+    var verify = 'true' === 'true';
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        avatar: "/retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+    <p>copyright &copy 2019-2020</p>
+    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+    </div>
+    
+
+    
+  <!-- 备案信息 -->
+  <div>
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">鄂ICP证20001010号</a>
+    
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-155249740-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Largest Rectangle in Histogram&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "🔗"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
