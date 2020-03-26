@@ -139,7 +139,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    448 字
+                    837 字
                   </span>
                 
 
@@ -147,7 +147,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分钟
+                      3 分钟
                   </span>
                 
 
@@ -206,6 +206,71 @@ std::cout &lt;&lt;i &lt;&lt;std::endl;
 T&amp;//I&#39;m modifying this
 const T&amp;//I&#39;m reading this
 </code></pre><p>这些是你的”默认值”。当 T 是基本类型( 内置) 时，你通常只需要恢复 const T ( 无引用)，因为副本比别名更便宜。</p>
+<h1 id="对vector进行排序"><a href="#对vector进行排序" class="headerlink" title="对vector进行排序"></a>对vector进行排序</h1><p>源码：</p>
+<pre><code>#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+
+vector&lt;int&gt; vec;
+//比较函数，这里的元素类型要与vector存储的类型一致
+bool compare(int a,int b)
+{
+return a&lt;b; //升序排列
+}
+
+std::sort(vec.begin(),vec.end(),compare);
+</code></pre><blockquote>
+<p>注意：由于sort()函数如果不声明比较函数就是默认升序，从小到大。</p>
+</blockquote>
+<h2 id="利用标准库函数find-对vector进行查找"><a href="#利用标准库函数find-对vector进行查找" class="headerlink" title="利用标准库函数find()对vector进行查找"></a>利用标准库函数find()对vector进行查找</h2><pre><code>vector&lt;int&gt; vec;
+int a=10;
+vector&lt;int&gt;::iterator it=find(vec.begin(),vector.end(),a);
+</code></pre><h2 id="构造类型在vector中的排序与查找"><a href="#构造类型在vector中的排序与查找" class="headerlink" title="构造类型在vector中的排序与查找"></a>构造类型在vector中的排序与查找</h2><p>&emsp;&emsp;将构造类型，比如struct的对象存储在vector中，查找时，需要重载等于运算符（operator==），具体实现参考如下代码。</p>
+<pre><code>struct Element {
+public:
+    int a;
+    int b;
+
+    Element(int a,int b){
+        this-&gt;a = a;
+        this-&gt;b = b;
+    };
+
+    bool operator == (const Element&amp; ele){
+        return a == ele.a &amp;&amp; b == ele.b;
+    };
+};
+
+//自定义比较函数
+bool compare(const Element&amp; left,const Element&amp; right){
+    return left.a &lt; right.a; //升序排列
+}
+
+//重载输出操作符&lt;&lt;，格式化输出Element
+ostream&amp; operator &lt;&lt; (ostream&amp; coutU,const Element&amp; ele){
+    coutU &lt;&lt; &quot;a:&quot; &lt;&lt; ele.a &lt;&lt; &quot;,b:&quot; &lt;&lt; ele.b;
+    return coutU;
+}
+
+int main() {
+    vector&lt;Element&gt; vecEle;
+    vecEle.push_back(Element(4,4));
+    vecEle.push_back(Element(1,1));
+    vecEle.push_back(Element(2,2));
+    vecEle.push_back(Element(3,3));
+
+    //sort
+    std::sort(vecEle.begin(),vecEle.end(),compare);
+    for(int i=0; i&lt;vecEle.size(); ++ i) {
+        cout &lt;&lt; vecEle[i] &lt;&lt; endl;
+    }
+
+    //查找Element(4,4)
+    vector&lt;Element&gt;::iterator it = find(vecEle.begin(),vecEle.end(),Element(4,4));
+    cout &lt;&lt; &quot;found &quot; &lt;&lt; *it &lt;&lt; endl;
+}
+</code></pre><blockquote>
+<p>程序输出：<br>a:1,b:1<br>a:2,b:2<br>a:3,b:3<br>a:4,b:4<br>found a:4,b:4</p>
+</blockquote>
 
             </div>
             <hr>
