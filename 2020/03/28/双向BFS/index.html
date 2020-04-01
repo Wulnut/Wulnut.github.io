@@ -139,7 +139,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1.8k 字
+                    2.6k 字
                   </span>
                 
 
@@ -147,7 +147,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      7 分钟
+                      11 分钟
                   </span>
                 
 
@@ -188,7 +188,136 @@
 </ul>
 <p><img src="/img/BFS.png" srcset="/img/loading.gif" alt=" "></p>
 <p>当两种颜色相遇的时候，说明两个方向的搜索树遇到一起，这个时候就搜到了答案。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a herf = "https://leetcode-cn.com/problems/word-ladder/">力扣第127题：单词接龙</a></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>简单理入门：</p>
+<p><strong>问题描述</strong>：<br>一个迷宫由$R$行$C$列格子组成，有的格子里有障碍物，不能走；有的格子是空地，可以走。<br>给定一个迷宫，求从左上角走到右下角最少需要走多少步(数据保证一定能走到)。只能在水平方向或垂直方向走，不能斜着走。</p>
+<p><strong>输入</strong></p>
+<p>第一行是两个整数，$Ｒ$和$Ｃ$，代表迷宫的长和宽。$（1≤R，C≤40)$<br>接下来是$Ｒ$行，每行$Ｃ$个字符，代表整个迷宫。<br>空地格子用‘.’表示，有障碍物的格子用‘#’表示。<br>迷宫左上角和右下角都是‘.’。</p>
+<p><strong>输出</strong></p>
+<p>输出从左上角走到右下角至少要经过多少步（即至少要经过多少个空地格子）。计算步数要包括起点和终点</p>
+<p><strong>输入样例</strong></p>
+<pre><code>5 5
+..###
+#....
+#.#.#
+#.#.#
+#.#..
+</code></pre><p><strong>输出样例</strong></p>
+<pre><code>9
+</code></pre><p><strong>普通BFS：</strong></p>
+<pre><code class="lang-c++">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+using namespace std;
+const int INF = 100000; 
+const int MAX = 101;
+typedef pair&lt;int, int&gt; P;
+char map[MAX][MAX];
+int d[MAX][MAX];//表示起点到各个位置的最短距离 
+int sx, sy, gx, gy;//表示起点和终点坐标 
+int n, m;
+int dx[4] = {1, 0, -1, 0};
+int dy[4] = {0, 1, 0,- 1};
+
+bool Check(int x, int y) {
+    if(x&gt;=0 &amp;&amp; x&lt;n &amp;&amp; y&gt;=0 &amp;&amp; y&lt;m &amp;&amp; d[x][y]==INF &amp;&amp; map[x][y]!=&#39;#&#39;)
+        return true;
+    else return false;
+} 
+
+int bfs() {
+    queue&lt;P&gt; que;
+    for(int i = 0; i &lt; n; i++)
+        for(int j = 0; j &lt; m; j++)
+            d[i][j] = INF;    
+    que.push(P(sx, sy));
+    d[sx][sy] = 0;
+    while(!que.empty()) {
+        P p = que.front(); 
+        que.pop();
+        if(p.first == gx &amp;&amp; p.second == gy)
+            break;
+        for(int i = 0; i &lt; 4; i++) {
+            int nx = p.first + dx[i];
+            int ny = p.second + dy[i];
+            if(Check(nx, ny)) {
+                que.push(P(nx,ny));
+                d[nx][ny] = d[p.first][p.second] + 1;
+            }
+        }
+    }
+    return d[gx][gy]; 
+}
+
+int main() {
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 0; i &lt; n; i++)
+        for(int j = 0; j &lt; m; j++)
+            cin &gt;&gt; map[i][j];
+    sx = 0, sy = 0;
+    gx = n-1, gy = m-1;
+    int res = bfs(); 
+    cout &lt;&lt; res+1 &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<p><strong>双向BFS</strong>：</p>
+<pre><code class="lang-c++">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#define P pair&lt;int, int&gt;
+using namespace std;
+//记录下当前状态, 从前往后搜索值为1，从后往前搜索值为2，如果某状态下，当前节点和准备扩展节点的状态相加为3，说明相遇
+queue &lt;P&gt; q1, q2; 
+int r, c, ans, dis[45][45], vst[45][45];
+int dx[4] = {-1, 0, 1, 0};
+int dy[4] = {0, 1, 0, -1};
+char m[45][45];
+
+void dbfs() {
+    bool flag;
+    q1.push(P(1, 1)), dis[1][1] = 1, vst[1][1] = 1; //从前搜
+    q2.push(P(r, c)), dis[r][c] = 1, vst[r][c] = 2; //从后搜
+    while(!q1.empty() &amp;&amp; !q2.empty()) {
+        int x0, y0;
+        if(q1.size() &gt; q2.size()) { //每次扩展搜索树小的队列 flag=1扩展前搜的队列，flag=0扩展后搜的队列
+            x0 = q2.front().first, y0 = q2.front().second;
+            q2.pop();
+            flag = 0;
+        }else {
+            x0 = q1.front().first, y0 = q1.front().second;
+            q1.pop();
+            flag = 1;
+        }
+        for(int i = 0; i &lt; 4; i++) {
+            int nx = x0 + dx[i];
+            int ny = y0 + dy[i];
+            if(nx &gt;= 1 &amp;&amp; nx &lt;= r &amp;&amp; ny &gt;= 1 &amp;&amp; ny &lt;= c &amp;&amp; m[nx][ny] == &#39;.&#39;) {
+                if(!dis[nx][ny]) {
+                    dis[nx][ny] = dis[x0][y0] + 1;
+                    vst[nx][ny] = vst[x0][y0];
+                    if(flag) q1.push(P(nx, ny));
+                    else q2.push(P(nx, ny));
+                }else {
+                    if(vst[x0][y0] + vst[nx][ny]== 3) { //相遇
+                        ans = dis[nx][ny] + dis[x0][y0];
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    cin &gt;&gt; r &gt;&gt; c;
+    for(int i = 1; i &lt;= r; i++)
+        for(int j = 1; j &lt;= c; j++)
+            cin &gt;&gt; m[i][j];
+    dbfs(); 
+    cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<p><a herf = "https://leetcode-cn.com/problems/word-ladder/">力扣第127题：单词接龙</a></p>
 <p>给定两个单词（<em>beginWord</em> 和 <em>endWord</em>）和一个字典，找到从 <em>beginWord</em> 到 <em>endWord</em> 的最短转换序列的长度。转换需遵循如下规则：</p>
 <ol>
 <li>每次转换只能改变一个字母。</li>
@@ -352,6 +481,7 @@ wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quo
 <li><strong>unordered_map函数</strong>：unordered_map函数不进行排序二内部采用了哈希表的数据结构在搜索的时候时间复杂度为$O(1)$，但是在特殊情况下时间复杂度就会退化为$O(n)$</li>
 </ul>
 <p>因此如果你想要一个具有排序后的数据的话，通常可以选择map这种类型。或者想要打印具有一定顺序的元素。如果你只想记录数据而不是想要将数据进行排序的话，那么就可以选择unordered_map这种数据结构。</p>
+<p><a herf="https://blog.csdn.net/weixin_43501684/article/details/90147421">.</a></p>
 
             </div>
             <hr>
