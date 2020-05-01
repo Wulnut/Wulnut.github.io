@@ -19,20 +19,21 @@
   <meta name="keywords" content="">
   <title>Wulnut&#39;s space</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -60,49 +61,55 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/links/">Links</a>
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              Links</a>
           </li>
         
         
@@ -120,7 +127,7 @@
          style="background: url('/img/index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -131,7 +138,7 @@
 
           
             <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
+              <i class="iconfont icon-arrowdown"></i>
             </div>
           
         </div>
@@ -142,7 +149,7 @@
   <main>
     
       <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
+        <div class="py-5" id="board"
           style=margin-top:0>
           
           <div class="container">
@@ -154,44 +161,44 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/" target="_self">
-          <img src="/img/OIP.jfif" srcset="/img/loading.gif" alt="快速幂"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/OIP.jfif" srcset="/img/loading.gif" alt="快速幂">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">
-        <p class="h4 index-header">快速幂</p>
+      <a class="index-header" href="/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
+
+      <a href="/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="index-excerpt">
+        
+        
+          
+        
+        <div>二叉树有多种遍历的方式我们简单总结一下</div>
       </a>
 
-      <a href="/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-01
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">二叉树有多种遍历的方式我们简单总结一下...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-01&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/study/">study</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/study/">study</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/C/">C++</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+          </div>
         
       </div>
     </div>
@@ -200,46 +207,46 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/28/%E5%8F%8C%E5%90%91BFS/" target="_self">
-          <img src="/img/acm.png" srcset="/img/loading.gif" alt="双向BFS"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/acm.png" srcset="/img/loading.gif" alt="双向BFS">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/28/%E5%8F%8C%E5%90%91BFS/">
-        <p class="h4 index-header">双向BFS</p>
+      <a class="index-header" href="/2020/03/28/%E5%8F%8C%E5%90%91BFS/">双向BFS</a>
+
+      <a href="/2020/03/28/%E5%8F%8C%E5%90%91BFS/" class="index-excerpt">
+        
+        
+          
+        
+        <div>值得思考的实现</div>
       </a>
 
-      <a href="/2020/03/28/%E5%8F%8C%E5%90%91BFS/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-28
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">值得思考的实现...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/study/">study</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/study/">study</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/C/">C++</a>&nbsp;
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+            
+          </div>
         
       </div>
     </div>
@@ -248,46 +255,46 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/27/lower_bound%E5%87%BD%E6%95%B0/" target="_self">
-          <img src="/img/code.png" srcset="/img/loading.gif" alt="cellular automata"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/code.png" srcset="/img/loading.gif" alt="cellular automata">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/27/lower_bound%E5%87%BD%E6%95%B0/">
-        <p class="h4 index-header">cellular automata</p>
+      <a class="index-header" href="/2020/03/27/lower_bound%E5%87%BD%E6%95%B0/">cellular automata</a>
+
+      <a href="/2020/03/27/lower_bound%E5%87%BD%E6%95%B0/" class="index-excerpt">
+        
+        
+          
+        
+        <div>STL函数，内部用二分查找实现</div>
       </a>
 
-      <a href="/2020/03/27/lower_bound%E5%87%BD%E6%95%B0/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-27
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">STL函数，内部用二分查找实现...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-27&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/study/">study</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/study/">study</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/C/">C++</a>&nbsp;
-          
-            <a href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/">泛型编程</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+              <a href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/">泛型编程</a>
+            
+          </div>
         
       </div>
     </div>
@@ -296,44 +303,44 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/26/AC%E9%80%89%E8%AE%B2/" target="_self">
-          <img src="/img/acm.png" srcset="/img/loading.gif" alt="杂题选讲"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/acm.png" srcset="/img/loading.gif" alt="杂题选讲">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/26/AC%E9%80%89%E8%AE%B2/">
-        <p class="h4 index-header">杂题选讲</p>
+      <a class="index-header" href="/2020/03/26/AC%E9%80%89%E8%AE%B2/">杂题选讲</a>
+
+      <a href="/2020/03/26/AC%E9%80%89%E8%AE%B2/" class="index-excerpt">
+        
+        
+          
+        
+        <div>最近AC题目的分析</div>
       </a>
 
-      <a href="/2020/03/26/AC%E9%80%89%E8%AE%B2/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-26
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">最近AC题目的分析...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-26&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/study/">study</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/study/">study</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/C/">C++</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+          </div>
         
       </div>
     </div>
@@ -342,38 +349,36 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/21/MaximalRectangle/" target="_self">
-          <img src="/img/rectangle.png" srcset="/img/loading.gif" alt="Largest Rectangle in Histogram"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/rectangle.png" srcset="/img/loading.gif" alt="Largest Rectangle in Histogram">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/21/MaximalRectangle/">
-        <p class="h4 index-header">Largest Rectangle in Histogram</p>
+      <a class="index-header" href="/2020/03/21/MaximalRectangle/">Largest Rectangle in Histogram</a>
+
+      <a href="/2020/03/21/MaximalRectangle/" class="index-excerpt">
+        
+        
+          
+        
+        <div>Largest Rectangle in Histogram解析</div>
       </a>
 
-      <a href="/2020/03/21/MaximalRectangle/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-21
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">Largest Rectangle in Histogram解析...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98/">训练题</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%AD%E7%BB%83%E9%A2%98/">训练题</a>
+            
+          </div>
         
         
       </div>
@@ -383,44 +388,44 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/19/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/" target="_self">
-          <img src="/img/vscode-banner.jpg" srcset="/img/loading.gif" alt="vscode小技巧"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/vscode-banner.jpg" srcset="/img/loading.gif" alt="vscode小技巧">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/19/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-        <p class="h4 index-header">vscode小技巧</p>
+      <a class="index-header" href="/2020/03/19/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/">vscode小技巧</a>
+
+      <a href="/2020/03/19/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="index-excerpt">
+        
+        
+          
+        
+        <div>vscode 快捷键</div>
       </a>
 
-      <a href="/2020/03/19/vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-19
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">vscode 快捷键...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-19&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/vscode/">vscode</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/vscode/">vscode</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/vscode/">vscode</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vscode/">vscode</a>
+            
+          </div>
         
       </div>
     </div>
@@ -429,44 +434,44 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/18/C++note/" target="_self">
-          <img src="/img/WordArt3.jpeg" srcset="/img/loading.gif" alt="C++笔记"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/WordArt3.jpeg" srcset="/img/loading.gif" alt="C++笔记">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/18/C++note/">
-        <p class="h4 index-header">C++笔记</p>
+      <a class="index-header" href="/2020/03/18/C++note/">C++笔记</a>
+
+      <a href="/2020/03/18/C++note/" class="index-excerpt">
+        
+        
+          
+        
+        <div>记录C++中遇到的问题</div>
       </a>
 
-      <a href="/2020/03/18/C++note/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-18
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">记录C++中遇到的问题...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-18&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/study/">study</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/study/">study</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/C/">C++</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+          </div>
         
       </div>
     </div>
@@ -475,25 +480,21 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/15/20%E5%B2%81/" target="_self">
-          <img src="/img/20-1.png" srcset="/img/loading.gif" alt="滴滴~"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/20-1.png" srcset="/img/loading.gif" alt="滴滴~">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/15/20%E5%B2%81/">
-        <p class="h4 index-header">滴滴~</p>
-      </a>
+      <a class="index-header" href="/2020/03/15/20%E5%B2%81/">滴滴~</a>
 
-      <a href="/2020/03/15/20%E5%B2%81/">
+      <a href="/2020/03/15/20%E5%B2%81/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
+        <div>
 
 
 迈入二十大关
@@ -504,24 +505,29 @@
 
 $\ldots$
 </div>
-        </div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-15&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/day/">day</a>&nbsp;
-          &nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-15
+          </div>
         
         
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/day/">day</a>&nbsp;
-          
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/day/">day</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/day/">day</a>
+            
+          </div>
         
       </div>
     </div>
@@ -530,44 +536,44 @@ $\ldots$
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/10/%E7%AC%AC%E4%B8%80%E6%AC%A1/" target="_self">
-          <img src="/img/%E6%BB%91%E9%93%81%E5%8D%A2.jpg" srcset="/img/loading.gif" alt="忆第一次美赛"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/%E6%BB%91%E9%93%81%E5%8D%A2.jpg" srcset="/img/loading.gif" alt="忆第一次美赛">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/10/%E7%AC%AC%E4%B8%80%E6%AC%A1/">
-        <p class="h4 index-header">忆第一次美赛</p>
+      <a class="index-header" href="/2020/03/10/%E7%AC%AC%E4%B8%80%E6%AC%A1/">忆第一次美赛</a>
+
+      <a href="/2020/03/10/%E7%AC%AC%E4%B8%80%E6%AC%A1/" class="index-excerpt">
+        
+        
+          
+        
+        <div>这不仅仅只是一次比赛那么简单</div>
       </a>
 
-      <a href="/2020/03/10/%E7%AC%AC%E4%B8%80%E6%AC%A1/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-10
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">这不仅仅只是一次比赛那么简单...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-10&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/mathematical-modeling/">mathematical-modeling</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/mathematical-modeling/">mathematical-modeling</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/mathematical/">mathematical</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/mathematical/">mathematical</a>
+            
+          </div>
         
       </div>
     </div>
@@ -576,46 +582,46 @@ $\ldots$
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto">
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/05/mcm%E5%86%99%E4%BD%9C/" target="_self">
-          <img src="/img/%E8%AE%BA%E6%96%87%E5%88%86%E6%9E%90.PNG" srcset="/img/loading.gif" alt="mcm写作基本流程"
-               class="index-img img-fluid rounded index-thumbnails">
+          <img src="/img/%E8%AE%BA%E6%96%87%E5%88%86%E6%9E%90.PNG" srcset="/img/loading.gif" alt="mcm写作基本流程">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/05/mcm%E5%86%99%E4%BD%9C/">
-        <p class="h4 index-header">mcm写作基本流程</p>
+      <a class="index-header" href="/2020/03/05/mcm%E5%86%99%E4%BD%9C/">mcm写作基本流程</a>
+
+      <a href="/2020/03/05/mcm%E5%86%99%E4%BD%9C/" class="index-excerpt">
+        
+        
+          
+        
+        <div>美赛的基本写作流程</div>
       </a>
 
-      <a href="/2020/03/05/mcm%E5%86%99%E4%BD%9C/">
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-05
+          </div>
         
         
-          
-          
-        
-        <div class="index-excerpt" style="max-height: none;">
-          <div class="index-text mb-1">美赛的基本写作流程...</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-05&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/LaTex/">LaTex</a>
+            
+          </div>
         
         
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/LaTex/">LaTex</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/LaTex/">LaTex</a>&nbsp;
-          
-            <a href="/tags/mathematical/">mathematical</a>&nbsp;
-          
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/LaTex/">LaTex</a>
+            
+              <a href="/tags/mathematical/">mathematical</a>
+            
+          </div>
         
       </div>
     </div>
@@ -623,14 +629,14 @@ $\ldots$
 
 
 
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
   <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
       ele.href += '#board';
     }
   </script>
@@ -646,8 +652,8 @@ $\ldots$
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -692,9 +698,10 @@ $\ldots$
     
   <!-- 备案信息 -->
   <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank"
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
+  </div>
 
 
     
@@ -703,9 +710,7 @@ $\ldots$
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
 
@@ -715,7 +720,8 @@ $\ldots$
 
 
 
-  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -764,15 +770,7 @@ $\ldots$
 
   
 
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
+  
 
 
 
@@ -820,52 +818,20 @@ $\ldots$
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
-  </script>
 
 
 
-  
 
-  
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-          }
-      });
 
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
 
-    </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
-
-  
 
 
 

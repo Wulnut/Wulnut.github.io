@@ -17,22 +17,23 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>容器 ~Wulnut&#39;s space</title>
+  <title>容器 ~ Wulnut&#39;s space</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -60,49 +61,55 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/links/">Links</a>
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              Links</a>
           </li>
         
         
@@ -120,7 +127,7 @@
          style="background: url('/img/code.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -128,31 +135,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Saturday, February 22nd 2020, 9:50 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-22 21:50">
+                    February 22, 2020 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     1.2k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      4 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    16
+                     分钟
                   </span>
                 
 
                 
-              </p>
+              </div>
             
           </div>
 
@@ -171,21 +183,21 @@
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
+        <div class="py-5" id="board">
           <div class="post-content mx-auto" id="post">
             
-            <div class="markdown-body">
+            <article class="markdown-body">
               <p>容器简介</p>
 <a id="more"></a>
 <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><h3 id="概述"><a href="#概述" class="headerlink" title="- 概述"></a>- 概述</h3><ul>
 <li>Vector是一个能够存放任意类型的动态数组</li>
 <li>Vector的数据结构和操作与数组(array)类似，在内存中的表现形式是一段地址连续的空间</li>
 <li>Vector与数组的区别在于，数组大小往往是定义是固定的(比如：char buffer[256]);Vec支持动态空间大小调整，随着空间的变化Vector内部会自动扩充内存空间</li>
-<li>为了试用Vector，必须试用include指令包含该头文件,并通过std空间去访问：<pre><code>include &lt;vector&gt;
-int main() {
-  std :: vector v;
-}
-</code></pre></li>
+<li>为了试用Vector，必须试用include指令包含该头文件,并通过std空间去访问：<pre><code class="hljs plain">include &lt;vector&gt;
+int main() &#123;
+    std :: vector v;
+&#125;</code></pre>
+</li>
 </ul>
 <h3 id="创建vector"><a href="#创建vector" class="headerlink" title="创建vector"></a>创建vector</h3><div class="table-container">
 <table>
@@ -219,23 +231,21 @@ int main() {
 </tbody>
 </table>
 </div>
-<h3 id="向vector添加元素"><a href="#向vector添加元素" class="headerlink" title="向vector添加元素"></a>向vector添加元素</h3><p>向vector添加元素的方法为调用其push_back()函数，表示将元素添加至其尾部：</p>
-<pre><code>std :: vector &lt;std :: wstring&gt; v3;
-for (std :: size_t i = 0; i &lt; 10; ++ i) {
+<h3 id="向vector添加元素"><a href="#向vector添加元素" class="headerlink" title="向vector添加元素"></a>向vector添加元素</h3><p>向vector添加元素的方法为调用其push_back()函数，表示将元素添加至其尾部：<br><pre><code class="hljs plain">std :: vector &lt;std :: wstring&gt; v3;
+for (std :: size_t i &#x3D; 0; i &lt; 10; ++ i) &#123;
     std :: wstringstream wss;
     wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);
     v3.push_back(wss.str());
-}
-</code></pre><h3 id="判断vector是否为空、获取vector大小"><a href="#判断vector是否为空、获取vector大小" class="headerlink" title="判断vector是否为空、获取vector大小"></a>判断vector是否为空、获取vector大小</h3><ul>
+&#125;</code></pre></p>
+<h3 id="判断vector是否为空、获取vector大小"><a href="#判断vector是否为空、获取vector大小" class="headerlink" title="判断vector是否为空、获取vector大小"></a>判断vector是否为空、获取vector大小</h3><ul>
 <li>如果要判断vector是否为空则调用empty()函数</li>
-<li><p>如果要获取vector大小则调用size()函数</p>
-<pre><code>std :: vector &lt;std :: wstring&gt; v3;
-bool isEmpty = v3.empty();
+<li>如果要获取vector大小则调用size()函数<pre><code class="hljs plain">std :: vector &lt;std :: wstring&gt; v3;
+bool isEmpty &#x3D; v3.empty();
 
-int array[] = {1,2,3,4,5,6,7,8,9,10};
+int array[] &#x3D; &#123;1,2,3,4,5,6,7,8,9,10&#125;;
 std :: vector&lt;int&gt; v(array, array + 10)
-std :: size vSize = v.size();
-</code></pre></li>
+std :: size vSize &#x3D; v.size();</code></pre>
+</li>
 </ul>
 <h3 id="访问vector中元素"><a href="#访问vector中元素" class="headerlink" title="访问vector中元素"></a>访问vector中元素</h3><ul>
 <li>要访问vector中的元素, 有两种方法：<ul>
@@ -249,50 +259,45 @@ std :: size vSize = v.size();
 </ul>
 </li>
 </ul>
-<pre><code>std :: vector&lt;std::wstring&gt; v;
+<pre><code class="hljs plain">std :: vector&lt;std::wstring&gt; v;
 v.reserve(10);
-for (std::size_t i = 0; i &lt; 3; ++ i) {
+for (std::size_t i &#x3D; 0; i &lt; 3; ++ i) &#123;
     std :: wstringstream wss;
     wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);
     v.push_back(wss.str());
-}
+&#125;
 
-try {
-    std :: wstring wsz1 = v[5]; // not bounds checked -will not throw
-    std :: wstring wsz2 = v.at(5); // bounds checked -will throw if out of range
-}
-catch (const std :: exception&amp; ex) {
+try &#123;
+    std :: wstring wsz1 &#x3D; v[5]; &#x2F;&#x2F; not bounds checked -will not throw
+    std :: wstring wsz2 &#x3D; v.at(5); &#x2F;&#x2F; bounds checked -will throw if out of range
+&#125;
+catch (const std :: exception&amp; ex) &#123;
     Console :: WriteLine(ex.what());
-}
-</code></pre><h3 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h3><ul>
+&#125;</code></pre>
+<h3 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h3><ul>
 <li>clear：清除一整个vector</li>
 <li>pop_back：弹出vector为元素</li>
-<li><p>erase:删除vector中某一位置的元素</p>
-<ul>
-<li>用法一：指定iterator删除某一元素<pre><code>std :: vector&lt;int&gt; :: const_iterator it = v.begin();
-v.erase(it + 1); // erase the second element in the Vector
-</code></pre></li>
+<li>erase:删除vector中某一位置的元素<ul>
+<li>用法一：指定iterator删除某一元素<pre><code class="hljs plain">std :: vector&lt;int&gt; :: const_iterator it &#x3D; v.begin();
+v.erase(it + 1); &#x2F;&#x2F; erase the second element in the Vector</code></pre></li>
 <li>用法二：通过某一条件函数找到vector中需要删除的元素。所谓条件函数是一个按照用户定义的条件返回true/false的函数对象。我们以remove_if为例说明。</li>
 <li>remove_if函数定义在algorithm中，故需要include<algorithm></li>
-<li><p>定义筛选器：一个一元函数对象(unary_function),关键在于重载operator()</p>
-<pre><code>struct ContainsString : public std :: unary_function &lt;std :: wstring, bool&gt; {
-  ContainsString (const std::wstring&amp; wszMatch) : m_wszMatch(wszMatch) {}
+<li>定义筛选器：一个一元函数对象(unary_function),关键在于重载operator()<pre><code class="hljs plain">struct ContainsString : public std :: unary_function &lt;std :: wstring, bool&gt; &#123;
+    ContainsString (const std::wstring&amp; wszMatch) : m_wszMatch(wszMatch) &#123;&#125;
 
-  bool operator()(const std :: wstring&amp; wszStringToMatch) const {
-      //注意因为它重载了()所以可以当一个函数来用
-      return (wszStringToMatch.find(m_wszMatch) != 1);
-  }
+    bool operator()(const std :: wstring&amp; wszStringToMatch) const &#123;
+        &#x2F;&#x2F;注意因为它重载了()所以可以当一个函数来用
+        return (wszStringToMatch.find(m_wszMatch) !&#x3D; 1);
+    &#125;
 
-  std :: wstring m_wszMatch;
-}
-</code></pre></li>
-<li>在erase函数中调用remove_if执行删除:<pre><code>v.erase (std :: remove_if (
-  v.begin(),
-  v.end(),
-  ContainsString (L&quot;C++&quot;)
+    std :: wstring m_wszMatch;
+&#125;</code></pre></li>
+<li>在erase函数中调用remove_if执行删除:<pre><code class="hljs plain">v.erase (std :: remove_if (
+    v.begin(),
+    v.end(),
+    ContainsString (L&quot;C++&quot;)
 ),
-v.end());
-</code></pre></li>
+  v.end());</code></pre></li>
 <li>remove_if是不是真正remove了vector中的元素呢？<br>remove_if其实真正的做的事针对ContainsString条件对给出了erase函数需要操作的iterator位置。</li>
 </ul>
 </li>
@@ -306,21 +311,21 @@ v.end());
 </ul>
 </li>
 <li>Deque采用了与vector不同的内存管理方式：大块分配内存</li>
-<li>为了试用deque，必须用include质量包含如下文件，并通过std命名空间访问：<pre><code>#include &lt;deque&gt;
-int main() {
-  std :: deque dq;
-}
-</code></pre><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2></li>
+<li>为了试用deque，必须用include质量包含如下文件，并通过std命名空间访问：<pre><code class="hljs plain">#include &lt;deque&gt;
+int main() &#123;
+    std :: deque dq;
+&#125;</code></pre>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2></li>
 </ul>
 </li>
 <li>概述<ul>
 <li>List是一个能够存放任意类型的双向链表(double linked list)</li>
 <li>可以向List中接入一个子链表(sub-list)</li>
-<li>为了使用List，必须使用include指令包含如下文件，并通过std命名空间去访问：<pre><code>#include &lt;list&gt;
-int main() {
-  std :: list l;
-}
-</code></pre></li>
+<li>为了使用List，必须使用include指令包含如下文件，并通过std命名空间去访问：<pre><code class="hljs plain">#include &lt;list&gt;
+int main() &#123;
+    std :: list l;
+&#125;</code></pre>
+</li>
 </ul>
 </li>
 </ul>
@@ -364,22 +369,21 @@ int main() {
 </li>
 </ul>
 
-            </div>
+            </article>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/study/">study</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/C/">C++</a>
                     
@@ -387,11 +391,35 @@ int main() {
                     
                       <a class="hover-with-bg" href="/tags/%E5%AE%B9%E5%99%A8/">容器</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
                 <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/02/26/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD%E5%90%AC%E5%8A%9B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">每日英语听力</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/21/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(3)/">
+                        <span class="hidden-mobile">泛型编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
               
             </div>
 
@@ -401,26 +429,27 @@ int main() {
                 
                 
   <div id="vcomments"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
 
   <script type="text/javascript">
-    var notify = 'true' === 'true';
-    var verify = 'true' === 'true';
-    var oldLoad = window.onload;
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
         app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
         placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
@@ -435,9 +464,8 @@ int main() {
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div id="tocbot"></div>
 </div>
 
@@ -453,8 +481,8 @@ int main() {
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -499,9 +527,10 @@ int main() {
     
   <!-- 备案信息 -->
   <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank"
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
+  </div>
 
 
     
@@ -510,9 +539,7 @@ int main() {
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
 
@@ -521,33 +548,12 @@ int main() {
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var post = $('#post');
-      var toc = $('#toc');
-      var tocLimMax = post.offset().top + post.height() - navHeight;
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
 
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -557,15 +563,13 @@ int main() {
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
-      var offset = $('#board-ctn').css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
     });
   </script>
 
@@ -573,7 +577,8 @@ int main() {
 
 
 
-  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -622,15 +627,7 @@ int main() {
 
   
 
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
+  
 
 
 
@@ -678,20 +675,22 @@ int main() {
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -699,29 +698,44 @@ int main() {
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
 
@@ -729,6 +743,17 @@ int main() {
 
 
 
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

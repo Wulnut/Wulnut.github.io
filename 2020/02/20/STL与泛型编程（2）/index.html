@@ -17,22 +17,23 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>类模板与操作符重载 ~Wulnut&#39;s space</title>
+  <title>类模板与操作符重载 ~ Wulnut&#39;s space</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -60,49 +61,55 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/links/">Links</a>
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              Links</a>
           </li>
         
         
@@ -120,7 +127,7 @@
          style="background: url('/img/code.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -128,31 +135,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Thursday, February 20th 2020, 9:50 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-20 21:50">
+                    February 20, 2020 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
                     1.1k 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      4 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    15
+                     分钟
                   </span>
                 
 
                 
-              </p>
+              </div>
             
           </div>
 
@@ -171,30 +183,29 @@
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
+        <div class="py-5" id="board">
           <div class="post-content mx-auto" id="post">
             
-            <div class="markdown-body">
+            <article class="markdown-body">
               <p>简单了解模板观念</p>
 <a id="more"></a>
 <h1 id="C-类模板"><a href="#C-类模板" class="headerlink" title="C++类模板"></a>C++类模板</h1><ul>
 <li>与函数模板类似， 类页可以通过参数泛化，从而可以构建出一族不同类型的类实例</li>
 <li>类模板参数可以是某一类型或常量（仅限int或者enum）</li>
 </ul>
-<p>一个类模板的例子：Stack<T></p>
-<pre><code>const std::size_t DefaultStackSize = 1024;
+<p>一个类模板的例子：Stack<T><br><pre><code class="hljs plain">const std::size_t DefaultStackSize &#x3D; 1024;
 
-template &lt;typename T, std::size_t n = DefaultStackSize&gt;
-class Stack {
+template &lt;typename T, std::size_t n &#x3D; DefaultStackSize&gt;
+class Stack &#123;
 public:
     void Push(const T const&amp; element);
     int Pop(T&amp; element);
     int Top(T&amp; element) const;
 private:
     std::vector&lt;T&gt; m_Members;
-    std::size_t m_nMaxSize = n;
-};
-</code></pre><ul>
+    std::size_t m_nMaxSize &#x3D; n;
+&#125;;</code></pre></p>
+<ul>
 <li>T可以是任意类别</li>
 <li>模板实参也可以是一个int或enum的常量(此处是size_t, 本质是int类型)</li>
 <li>n是编译时定义的常量</li>
@@ -204,77 +215,72 @@ private:
 <h2 id="类模板的声明"><a href="#类模板的声明" class="headerlink" title="- 类模板的声明"></a>- 类模板的声明</h2><ul>
 <li>声明类模板与申明函数模板类似</li>
 <li><p>关键字class和typename都可以用，但是还是更倾向于去使用typename</p>
-<pre><code>template &lt;typename T, std::size_t n&gt; class Stack{...}
-template &lt;class T, std::size_t n&gt; class Stack{...}
-</code></pre></li>
+<pre><code class="hljs plain">template &lt;typename T, std::size_t n&gt; class Stack&#123;...&#125;
+template &lt;class T, std::size_t n&gt; class Stack&#123;...&#125;</code></pre>
+</li>
 <li><p>在类模板内部，T可以像其他函数类别一样(比如int , char等)定义成员变量和成员函数</p>
-<pre><code>void Push(const T const&amp; element)
+<pre><code class="hljs plain">void Push(const T const&amp; element)
 int Pop(T&amp; element);
 int Top(T&amp; element) const;
-std::vector&lt;T&gt; m_Members;
-</code></pre></li>
-<li>除了Copy constructor 之外，如果在类模板中需要使用到这个类本身，比如定义operator，那么就应该医用其完整的定义(Stack<T,n>)而不是省略类别T。<pre><code>template &lt;typename T, std::size_t n&gt;
-class Stack{
-public:
-    ...
-    Stack (Stack&lt;T,n&gt; const&amp;); //copy constructor
-    Stack&lt;T&gt;&amp; operator = (Stack&lt;T,n&gt; const&amp;); // assignment operator
-    ...
-}
-</code></pre></li>
+std::vector&lt;T&gt; m_Members;</code></pre></li>
+<li>除了Copy constructor 之外，如果在类模板中需要使用到这个类本身，比如定义operator，那么就应该医用其完整的定义(Stack<T,n>)而不是省略类别T。<pre><code class="hljs plain">template &lt;typename T, std::size_t n&gt;
+class Stack&#123;
+  public:
+      ...
+      Stack (Stack&lt;T,n&gt; const&amp;); &#x2F;&#x2F;copy constructor
+      Stack&lt;T&gt;&amp; operator &#x3D; (Stack&lt;T,n&gt; const&amp;); &#x2F;&#x2F; assignment operator
+      ...
+&#125;</code></pre>
+</li>
 </ul>
 <h2 id="类模板的实现"><a href="#类模板的实现" class="headerlink" title="- 类模板的实现"></a>- 类模板的实现</h2><ul>
 <li><p>要定义一个类模板的成员函数，则要指明其是一个模板函数</p>
 <p>Push函数：</p>
-<pre><code>template &lt;typename T, std::size_t nMaxSize&gt;
-void Stack&lt;T, nMaxSize&gt; :: Push(const T const&amp; element) {
-    if (m_Members.size() &gt;= m_nMaxSize) {
-        // error handing...
+<pre><code class="hljs plain">template &lt;typename T, std::size_t nMaxSize&gt;
+void Stack&lt;T, nMaxSize&gt; :: Push(const T const&amp; element) &#123;
+    if (m_Members.size() &gt;&#x3D; m_nMaxSize) &#123;
+        &#x2F;&#x2F; error handing...
         return ;
-    }
+    &#125;
 
     m_Members.push_back(element);
-}
-</code></pre><p>Pop函数：</p>
-<pre><code>template &lt;typename T, std :: size_t nMaxSize&gt;
-int Stack&lt;T, nMaxSize&gt; :: Pop(T&amp; element) {
-    if (m_Members.empty()) {
+&#125;</code></pre>
+<p>Pop函数：</p>
+<pre><code class="hljs plain">template &lt;typename T, std :: size_t nMaxSize&gt;
+int Stack&lt;T, nMaxSize&gt; :: Pop(T&amp; element) &#123;
+    if (m_Members.empty()) &#123;
         return 0;
-    }
+    &#125;
 
-    element = m_Members.back(); // we have to first store the back element
-    m_Members.pop_back(); // because pop_back of a vector removes
-    return 1; // the last element but doesn&#39;t return it
-}
-</code></pre><p>Top函数：</p>
-<pre><code>template &lt;typename T, std :: size_t nMaxSize&gt;
-int Stack&lt;T, nMaxSize&gt; :: Top(T&amp; element) const {
-    if (m_Members.empty()) {
+    element &#x3D; m_Members.back(); &#x2F;&#x2F; we have to first store the back element
+    m_Members.pop_back(); &#x2F;&#x2F; because pop_back of a vector removes
+    return 1; &#x2F;&#x2F; the last element but doesn&#39;t return it
+&#125;</code></pre>
+<p>Top函数：</p>
+<pre><code class="hljs plain">template &lt;typename T, std :: size_t nMaxSize&gt;
+int Stack&lt;T, nMaxSize&gt; :: Top(T&amp; element) const &#123;
+    if (m_Members.empty()) &#123;
         return 0;
-    }
+    &#125;
 
-    element = m_Members.back();
+    element &#x3D; m_Members.back();
     return 1;
-}
-</code></pre></li>
+&#125;</code></pre>
+</li>
 </ul>
 <h2 id="使用类模板"><a href="#使用类模板" class="headerlink" title="- 使用类模板"></a>- 使用类模板</h2><ul>
 <li>Stack<int> stack：定义了一类型为int的Stack， 大小为默认值</li>
 <li>Stack<int, 100> stack：定义了一个类型为int, 大小为100的Stack</li>
-<li>将100个元素Push到Stack中<pre><code>for (int i = 0; i &lt; 100; ++ i) {
+<li>将100个元素Push到Stack中<pre><code class="hljs plain">for (int i &#x3D; 0; i &lt; 100; ++ i) &#123;
     stack.Push(i);
-}
-</code></pre></li>
-<li>Pop出Stack顶部元素:<pre><code>int element
-stack.Pop(element);
-</code></pre></li>
-<li>获取Stack顶部元素:<pre><code>stack.Top(element);
-</code></pre></li>
-<li><p>Stack的stack定义:</p>
-<pre><code>Stack&lt;Stack&lt;int&gt; &gt;intStackStack; // 最右边要加一个空格
+&#125;</code></pre></li>
+<li>Pop出Stack顶部元素:<pre><code class="hljs plain">int element
+stack.Pop(element);</code></pre></li>
+<li>获取Stack顶部元素:<pre><code class="hljs plain">stack.Top(element);</code></pre></li>
+<li>Stack的stack定义:<pre><code class="hljs plain">Stack&lt;Stack&lt;int&gt; &gt;intStackStack; &#x2F;&#x2F; 最右边要加一个空格
 
-Stack&lt;Stack&lt;int&gt;&gt; intStackStack; // ERROR: &gt;&gt; is not allowed
-</code></pre></li>
+Stack&lt;Stack&lt;int&gt;&gt; intStackStack; &#x2F;&#x2F; ERROR: &gt;&gt; is not allowed</code></pre>
+</li>
 </ul>
 <h2 id="类模板特化-specializations"><a href="#类模板特化-specializations" class="headerlink" title="- 类模板特化(specializations)"></a>- 类模板特化(specializations)</h2><ul>
 <li>允许对一个类模板的某些模板参数类型做特化</li>
@@ -284,43 +290,38 @@ Stack&lt;Stack&lt;int&gt;&gt; intStackStack; // ERROR: &gt;&gt; is not allowed
 </ul>
 </li>
 <li>特化一个类模板的时候也意味着需要特化其所有参数的成员的类型</li>
-<li><p>如果要特化一个类，那么做法为：</p>
-<ul>
+<li>如果要特化一个类，那么做法为：<ul>
 <li>声明一个带template&lt;&gt;的类， 即空参数列表</li>
-<li><p>在类名后紧跟的尖括号中显式指明类别，例如：</p>
-<pre><code> template&lt;&gt;
- class Stack&lt;std::wstring&gt; {
+<li>在类名后紧跟的尖括号中显式指明类别，例如： <pre><code class="hljs plain">template&lt;&gt;
+class Stack&lt;std::wstring&gt; &#123;
 
- }
-</code></pre></li>
+&#125;</code></pre></li>
 </ul>
 </li>
-<li><p>特化后的具体体现可以和柱模板的实现不一样，比如以下的特化增加了一个成员函数，并采用list作元素存取的实现</p>
-<pre><code>template &lt;&gt;
-class Stack &lt;std :: wstring&gt; {
-public:
-    void SetStackStack(const std :: size_t n) {m_nMaxSize = n;}
-    // 添加一个新的成员函数
+<li>特化后的具体体现可以和柱模板的实现不一样，比如以下的特化增加了一个成员函数，并采用list作元素存取的实现<pre><code class="hljs plain">template &lt;&gt;
+class Stack &lt;std :: wstring&gt; &#123;
+  public:
+      void SetStackStack(const std :: size_t n) &#123;m_nMaxSize &#x3D; n;&#125;
+      &#x2F;&#x2F; 添加一个新的成员函数
 
-    std :: size_t CurrentSize() const {return m_Members.size();}
+      std :: size_t CurrentSize() const &#123;return m_Members.size();&#125;
 
-    void Push(const std :: wstring const&amp; element);
-    int Pop(std :: wstring const&amp; element);
-    int Top(std :: wstring const&amp; element) const;
-private:
-    std :: size_t m_nMaxSize;
-    std :: list &lt;std :: wstring&gt; m_Members;
-    //采用list作为Stack的内部实现，取代了主模板中用vector实现的方式
-};
-</code></pre></li>
+      void Push(const std :: wstring const&amp; element);
+      int Pop(std :: wstring const&amp; element);
+      int Top(std :: wstring const&amp; element) const;
+  private:
+      std :: size_t m_nMaxSize;
+      std :: list &lt;std :: wstring&gt; m_Members;
+      &#x2F;&#x2F;采用list作为Stack的内部实现，取代了主模板中用vector实现的方式
+&#125;;</code></pre>
+</li>
 </ul>
 <h2 id="偏特化-Partial-specialization"><a href="#偏特化-Partial-specialization" class="headerlink" title="- 偏特化(Partial specialization)"></a>- 偏特化(Partial specialization)</h2><p>….不做了解，中间会产生二义性…晚点再说。</p>
 <h2 id="默认模板实参"><a href="#默认模板实参" class="headerlink" title="- 默认模板实参"></a>- 默认模板实参</h2><ul>
-<li>类似函数的默认参数，对于类模板而言也可以定义其模板参数的默认值，这些值就叫做<strong>默认模板参数</strong><pre><code>template &lt;typename T, typename TContainer = std :: vector&lt;T&gt;&gt;
-class Stack {
+<li>类似函数的默认参数，对于类模板而言也可以定义其模板参数的默认值，这些值就叫做<strong>默认模板参数</strong><pre><code class="hljs plain">template &lt;typename T, typename TContainer &#x3D; std :: vector&lt;T&gt;&gt;
+class Stack &#123;
     private : TContainer m_Container;
-}
-</code></pre></li>
+&#125;</code></pre></li>
 <li>Stack<int> intStack: 使用默认的vector作为实参</li>
 <li>Stack<std :: wstring, std :: list <std :: wstring> &gt; wstrStack: 指定使用list作为容器而非默认的vector</li>
 </ul>
@@ -333,19 +334,16 @@ class Stack {
 <h2 id="操作符重载的一般规则"><a href="#操作符重载的一般规则" class="headerlink" title="- 操作符重载的一般规则"></a>- 操作符重载的一般规则</h2><ul>
 <li>不可以用operator定义一种新的操作符，比如<em>* ,因为没有两个</em>的操作符</li>
 <li>对于内置类别(built-in type)， 不能再用operator重载</li>
-<li><p>操作符重载的两种情况：</p>
-<ul>
+<li>操作符重载的两种情况：<ul>
 <li>静态成员函数</li>
-<li><p>静态全局函数(如果该全集函数需要访问类的private或protected成员，则必须声明为friend成员)</p>
-<pre><code>class ComplexType {
-  public: 
-    //non-static member
-    ComplexType operator &lt; (ComplexType&amp; );
+<li>静态全局函数(如果该全集函数需要访问类的private或protected成员，则必须声明为friend成员)<pre><code class="hljs plain">class ComplexType &#123;
+    public: 
+      &#x2F;&#x2F;non-static member
+      ComplexType operator &lt; (ComplexType&amp; );
 
-    //global functions
-    friend ComplexType operator + (int, ComplexType&amp; );
-}
-</code></pre></li>
+      &#x2F;&#x2F;global functions
+      friend ComplexType operator + (int, ComplexType&amp; );
+&#125;</code></pre></li>
 <li>一元操作符(Unary operators)如果声明为成员函数，则没有参数。如果声明为全局函数则有一个参数</li>
 <li>二元操作符(Binary operator)如果声明为成员函数，则有一个参数。如果声明为全局函数，则有两个参数</li>
 <li>如果一个操作符技能够用作一元操作，又能用作二元操作(&amp;, *, +, -)，则可以分别被重载</li>
@@ -355,32 +353,55 @@ class Stack {
 </li>
 </ul>
 
-            </div>
+            </article>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/study/">study</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/C/">C++</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/">泛型编程</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
                 <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/02/21/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(3)/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">泛型编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/19/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B%EF%BC%881%EF%BC%89/">
+                        <span class="hidden-mobile">模板观念与函数模板</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
               
             </div>
 
@@ -390,26 +411,27 @@ class Stack {
                 
                 
   <div id="vcomments"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
 
   <script type="text/javascript">
-    var notify = 'true' === 'true';
-    var verify = 'true' === 'true';
-    var oldLoad = window.onload;
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
         app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
         placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
@@ -424,9 +446,8 @@ class Stack {
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div id="tocbot"></div>
 </div>
 
@@ -442,8 +463,8 @@ class Stack {
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -488,9 +509,10 @@ class Stack {
     
   <!-- 备案信息 -->
   <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank"
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
+  </div>
 
 
     
@@ -499,9 +521,7 @@ class Stack {
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
 
@@ -510,33 +530,12 @@ class Stack {
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var post = $('#post');
-      var toc = $('#toc');
-      var tocLimMax = post.offset().top + post.height() - navHeight;
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
 
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -546,15 +545,13 @@ class Stack {
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
-      var offset = $('#board-ctn').css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
     });
   </script>
 
@@ -562,7 +559,8 @@ class Stack {
 
 
 
-  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -611,15 +609,7 @@ class Stack {
 
   
 
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
+  
 
 
 
@@ -667,20 +657,22 @@ class Stack {
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -688,29 +680,44 @@ class Stack {
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
 
@@ -718,6 +725,17 @@ class Stack {
 
 
 
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

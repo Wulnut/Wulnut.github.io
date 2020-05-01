@@ -17,22 +17,23 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>模板观念与函数模板 ~Wulnut&#39;s space</title>
+  <title>模板观念与函数模板 ~ Wulnut&#39;s space</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -60,49 +61,55 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/links/">Links</a>
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              Links</a>
           </li>
         
         
@@ -120,7 +127,7 @@
          style="background: url('/img/code.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -128,31 +135,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Wednesday, February 19th 2020, 9:50 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-02-19 21:50">
+                    February 19, 2020 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    934 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    946 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      3 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    11
+                     分钟
                   </span>
                 
 
                 
-              </p>
+              </div>
             
           </div>
 
@@ -171,10 +183,10 @@
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
+        <div class="py-5" id="board">
           <div class="post-content mx-auto" id="post">
             
-            <div class="markdown-body">
+            <article class="markdown-body">
               <p>简单了解模板观念</p>
 <a id="more"></a>
 <h1 id="C-模板简介"><a href="#C-模板简介" class="headerlink" title="C++模板简介"></a>C++模板简介</h1><ul>
@@ -187,27 +199,24 @@
 </ul>
 </li>
 </ul>
-<p>int 型</p>
-<pre><code>  int Max(int a, int b) {
-      return (a &gt; b) ? a : b;
-  }
-</code></pre><p>long型</p>
-<pre><code>  long Max(long a, long b) {
-      return (a &gt; b) ? a : b;
-  }
-</code></pre><p>char型</p>
-<pre><code>  char Max(char a, char b) {
-      return (a &gt; b) ? a : b;
-  }
-</code></pre><ul>
+<p>int 型<br><pre><code class="hljs plain">int Max(int a, int b) &#123;
+    return (a &gt; b) ? a : b;
+&#125;</code></pre></p>
+<p>long型<br><pre><code class="hljs plain">long Max(long a, long b) &#123;
+    return (a &gt; b) ? a : b;
+&#125;</code></pre></p>
+<p>char型<br><pre><code class="hljs plain">char Max(char a, char b) &#123;
+    return (a &gt; b) ? a : b;
+&#125;</code></pre></p>
+<ul>
 <li><p>一个简单的例子</p>
 <ul>
 <li><p>如果使用模板，则可以省去一堆代码，从而将代码原型缩减到非常简介的表达：</p>
-<pre><code>template &lt;typename T&gt; 
-T Max(T a, T b) {
-   return (a &gt; b) ? a : b;
-}
-</code></pre></li>
+<pre><code class="hljs plain">template &lt;typename T&gt; 
+T Max(T a, T b) &#123;
+    return (a &gt; b) ? a : b;
+&#125;</code></pre>
+</li>
 </ul>
 </li>
 <li><p>C++ 主要有两种类型的模板：</p>
@@ -220,98 +229,99 @@ T Max(T a, T b) {
 <ul>
 <li>模板的声明(declaration)其实并未给出一个函数或类的完全定义(definition)，只是提供了一个函数或类的语法框架(syntactical skeleton)</li>
 <li><p>实例化时指从模板够检出一个真正的函数或类的过程，比如：</p>
-<pre><code>   template &lt;typename T&gt;
-   struct Object{....}
-</code></pre></li>
-<li>可以用来构建诸如Object<int>, Object<char>, Object<int*>, Object<MyClass*>等等不同类别的具体实例</li>
-</ul>
-</li>
-<li><p>实例化有两种类型：</p>
-<ul>
-<li><strong>显式</strong>实例化-在代码中明确指定要正对哪位类别进行实例化</li>
-<li><strong>隐式</strong>实例化-在首次使用时根据具体情况一种合适的型别惊醒实例化</li>
-</ul>
-</li>
-</ul>
-<h2 id="C-函数模板"><a href="#C-函数模板" class="headerlink" title="C++函数模板"></a>C++函数模板</h2><ul>
-<li>什么时函数模板？<ul>
-<li><strong>函数模板</strong>是参数化的一族函数(a family of functions)</li>
-<li>通过函数模板，可以定义一系列函数，这些函数都是基于同一代码，但是可以用作在不同类别的参数上</li>
-</ul>
-</li>
-</ul>
-<pre><code>template &lt;typename T&gt;
-inline T Max(const T&amp; a, const T&amp; b) {
-    return (a &gt; b) ? a : b;
-}
-</code></pre><ul>
-<li><p>定义函数模板</p>
-<ul>
-<li>定义一个函数模板，反水数中较大一个，该函数有两个参数：(a,b)</li>
-<li>参数类别未定，以模板参数T表示</li>
-<li>模板参数由关键字typename引入</li>
-<li>也可以使用class代替typename来定义类型参数</li>
-<li>从语法上讲使用class和使用typename没有区别</li>
-<li>单从语义上，class可能会导致误区，即只有类才能作为类别参数；而事实上T所以表达的意思不仅仅只针对类，任何类别都可以</li>
-</ul>
-</li>
-<li><p>参数推导</p>
-<ul>
-<li>模板参数是有传递给模板函数的实参所决定的</li>
-<li>不允许自动类型转换：每个T必须严格匹配<pre><code>Max(1, 2) //两次实参的类型都是int
-Max(1, 2.0) //ERROR：第一参数的类别是int第二参数类别是double
-</code></pre></li>
-<li>一般有两种处理这种错误的方法：<ol>
-<li>用static_cast<double>或者强制转换参数类型以使两者匹配<pre><code>Max(static_cast&lt;double&gt;(1),2.0)
-</code></pre></li>
-<li>显示指定T的类别<pre><code>Max&lt;double&gt;(1, 2.0)
-</code></pre></li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>函数模板重载</p>
-<ul>
-<li>函数模板也可以像普通函数一样被重载</li>
-<li>非模板函数可以和<strong>同名</strong>的模板函数共存</li>
-<li>编译器同通过函数模板参数推导来决定使用调用哪个函数</li>
-</ul>
-<pre><code>inline int const&amp; Max(const int const&amp; a, const int const&amp; b)
+   <pre><code class="hljs plain">        template &lt;typename T&gt;
+        struct Object&#123;....&#125;
+        &#96;&#96;&#96;           
+   - 可以用来构建诸如Object&lt;int&gt;, Object&lt;char&gt;, Object&lt;int*&gt;, Object&lt;MyClass*&gt;等等不同类别的具体实例
 
-template &lt;typename T&gt;
-inline T const&amp; Max(const T const&amp; a, T const&amp; b)
-
-template &lt;typename T&gt;
-inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp; c)
-</code></pre></li>
+- 实例化有两种类型：
+  - **显式**实例化-在代码中明确指定要正对哪位类别进行实例化
+  - **隐式**实例化-在首次使用时根据具体情况一种合适的型别惊醒实例化
+  
+## C++函数模板
+- 什么时函数模板？
+  - **函数模板**是参数化的一族函数(a family of functions)
+  - 通过函数模板，可以定义一系列函数，这些函数都是基于同一代码，但是可以用作在不同类别的参数上</code></pre>
+<p>template <typename T><br>inline T Max(const T&amp; a, const T&amp; b) {<br>return (a &gt; b) ? a : b;<br>}</p>
+<pre><code class="hljs plain">- 定义函数模板
+  - 定义一个函数模板，反水数中较大一个，该函数有两个参数：(a,b)
+  - 参数类别未定，以模板参数T表示
+  - 模板参数由关键字typename引入
+  - 也可以使用class代替typename来定义类型参数
+  - 从语法上讲使用class和使用typename没有区别
+  - 单从语义上，class可能会导致误区，即只有类才能作为类别参数；而事实上T所以表达的意思不仅仅只针对类，任何类别都可以
+  
+- 参数推导
+  - 模板参数是有传递给模板函数的实参所决定的
+  - 不允许自动类型转换：每个T必须严格匹配</code></pre>
+<p>Max(1, 2) //两次实参的类型都是int<br>Max(1, 2.0) //ERROR：第一参数的类别是int第二参数类别是double</p>
+<pre><code class="hljs plain">- 一般有两种处理这种错误的方法：
+   1. 用static_cast&lt;double&gt;或者强制转换参数类型以使两者匹配</code></pre>
+<p>Max(static_cast<double>(1),2.0)</p>
+<pre><code class="hljs plain">1. 显示指定T的类别</code></pre>
+<p>Max<double>(1, 2.0)</p>
+<pre><code class="hljs plain">
+- 函数模板重载
+  - 函数模板也可以像普通函数一样被重载
+  - 非模板函数可以和**同名**的模板函数共存
+  - 编译器同通过函数模板参数推导来决定使用调用哪个函数</code></pre>
+<p>inline int const&amp; Max(const int const&amp; a, const int const&amp; b)</p>
+</li>
+</ul>
+<p>template <typename T><br>inline T const&amp; Max(const T const&amp; a, T const&amp; b)</p>
+<p>template <typename T><br>inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp; c)<br>```</p>
+</li>
 </ul>
 
-            </div>
+            </article>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/study/">study</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/C/">C++</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/">泛型编程</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
                 <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/02/20/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B%EF%BC%882%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">类模板与操作符重载</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/16/%E4%BA%8C%E5%8F%89%E5%A0%86/">
+                        <span class="hidden-mobile">二叉堆</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
               
             </div>
 
@@ -321,26 +331,27 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
                 
                 
   <div id="vcomments"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
 
   <script type="text/javascript">
-    var notify = 'true' === 'true';
-    var verify = 'true' === 'true';
-    var oldLoad = window.onload;
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
         app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
         placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
@@ -355,9 +366,8 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div id="tocbot"></div>
 </div>
 
@@ -373,8 +383,8 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -419,9 +429,10 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
     
   <!-- 备案信息 -->
   <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank"
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
+  </div>
 
 
     
@@ -430,9 +441,7 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
 
@@ -441,33 +450,12 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var post = $('#post');
-      var toc = $('#toc');
-      var tocLimMax = post.offset().top + post.height() - navHeight;
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
 
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -477,15 +465,13 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
-      var offset = $('#board-ctn').css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
     });
   </script>
 
@@ -493,7 +479,8 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
 
 
 
-  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -542,15 +529,7 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
 
   
 
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
+  
 
 
 
@@ -598,20 +577,22 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -619,29 +600,44 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
 
@@ -649,6 +645,17 @@ inline T const&amp; Max(const T const&amp; a, T const&amp; b, const T const&amp;
 
 
 
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

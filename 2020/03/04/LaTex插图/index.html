@@ -17,22 +17,23 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>使用LaTex编写流程图 ~Wulnut&#39;s space</title>
+  <title>使用LaTex编写流程图 ~ Wulnut&#39;s space</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -60,49 +61,55 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/links/">Links</a>
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              Links</a>
           </li>
         
         
@@ -120,7 +127,7 @@
          style="background: url('/img/math.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -128,31 +135,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Wednesday, March 4th 2020, 8:50 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-03-04 20:50">
+                    March 4, 2020 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    574 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    679 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      2 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    11
+                     分钟
                   </span>
                 
 
                 
-              </p>
+              </div>
             
           </div>
 
@@ -171,61 +183,61 @@
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
+        <div class="py-5" id="board">
           <div class="post-content mx-auto" id="post">
             
-            <div class="markdown-body">
+            <article class="markdown-body">
               <p>简单介绍如何使用$\LaTeX$进行流程图的绘制</p>
 <a id="more"></a>
 <h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="/img/流程图.png" srcset="/img/loading.gif" alt=" "></p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code>\documentclass[UTF8]{ctexart}
-\usepackage{tikz} %%主要宏包
-\usetikzlibrary{shapes,arrows}
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre><code class="hljs plain">\documentclass[UTF8]&#123;ctexart&#125;
+\usepackage&#123;tikz&#125; %%主要宏包
+\usetikzlibrary&#123;shapes,arrows&#125;
 
-\begin{document}
-\pagestyle{empty} % 无页眉页脚
+\begin&#123;document&#125;
+\pagestyle&#123;empty&#125; % 无页眉页脚
 
-\tikzstyle{startstop} = [rectangle,rounded corners, minimum width=3cm,minimum height=1cm,text centered, draw=black,fill=red!30]
-\tikzstyle{io} = [trapezium, trapezium left angle = 70,trapezium right angle=110,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=blue!30]
-\tikzstyle{process} = [rectangle,minimum width=3cm,minimum height=1cm,text centered,text width =3cm,draw=black,fill=orange!30]
-\tikzstyle{decision} = [diamond,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=green!30]
-\tikzstyle{arrow} = [thick,-&gt;,&gt;=stealth]
+\tikzstyle&#123;startstop&#125; &#x3D; [rectangle,rounded corners, minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered, draw&#x3D;black,fill&#x3D;red!30]
+\tikzstyle&#123;io&#125; &#x3D; [trapezium, trapezium left angle &#x3D; 70,trapezium right angle&#x3D;110,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,draw&#x3D;black,fill&#x3D;blue!30]
+\tikzstyle&#123;process&#125; &#x3D; [rectangle,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,text width &#x3D;3cm,draw&#x3D;black,fill&#x3D;orange!30]
+\tikzstyle&#123;decision&#125; &#x3D; [diamond,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,draw&#x3D;black,fill&#x3D;green!30]
+\tikzstyle&#123;arrow&#125; &#x3D; [thick,-&gt;,&gt;&#x3D;stealth]
 
-\begin{tikzpicture}[node distance=2cm]
-\node (start) [startstop] {Start};
-\node (input1) [io,below of=start] {Input};
-\node (process1) [process,below of=input1] {Process 1};
-\node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};
-\node (process2a) [process,below of=decision1,yshift=-0.5cm] {Process 2aaaaaa aaaaaaa aaaa};
-\node (process2b) [process,right of =decision1,xshift=2cm] {Process 2b};
-\node (out1) [io,below of=process2a] {Output};
-\node (stop) [startstop,below of=out1] {Stop};
+\begin&#123;tikzpicture&#125;[node distance&#x3D;2cm]
+\node (start) [startstop] &#123;Start&#125;;
+\node (input1) [io,below of&#x3D;start] &#123;Input&#125;;
+\node (process1) [process,below of&#x3D;input1] &#123;Process 1&#125;;
+\node (decision1) [decision,below of&#x3D;process1,yshift&#x3D;-0.5cm] &#123;Decession 1&#125;;
+\node (process2a) [process,below of&#x3D;decision1,yshift&#x3D;-0.5cm] &#123;Process 2aaaaaa aaaaaaa aaaa&#125;;
+\node (process2b) [process,right of &#x3D;decision1,xshift&#x3D;2cm] &#123;Process 2b&#125;;
+\node (out1) [io,below of&#x3D;process2a] &#123;Output&#125;;
+\node (stop) [startstop,below of&#x3D;out1] &#123;Stop&#125;;
 
 \draw [arrow] (start) -- (input1);
 \draw [arrow] (input1) -- (process1);
 \draw [arrow] (process1) -- (decision1);
-\draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);
-\draw [arrow] (decision1) -- node[anchor=south] {no} (process2b);
+\draw [arrow] (decision1) -- node[anchor&#x3D;east] &#123;yes&#125; (process2a);
+\draw [arrow] (decision1) -- node[anchor&#x3D;south] &#123;no&#125; (process2b);
 \draw [arrow] (process2b) |- (process1);
 \draw [arrow] (process2a) -- (out1);
 \draw [arrow] (out1) -- (stop);
-\end{tikzpicture}
+\end&#123;tikzpicture&#125;
 
-\end{document}
-</code></pre><h2 id="using-package"><a href="#using-package" class="headerlink" title="using package"></a>using package</h2><p>$\LaTeX$中绘图均要引入<code>tikz</code>宏包</p>
-<pre><code>\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-</code></pre><h2 id="对节点node进行定义"><a href="#对节点node进行定义" class="headerlink" title="对节点node进行定义"></a>对节点node进行定义</h2><pre><code>\tikzstyle{process} = [rectangle,minimum width=3cm,minimum height=1cm,text centered,text width =3cm,draw=black,fill=orange!30]
-</code></pre><h3 id="节点形状"><a href="#节点形状" class="headerlink" title="节点形状"></a>节点形状</h3><pre><code>rectangle:矩形，可加圆角(rounded corners)
+\end&#123;document&#125;</code></pre>
+<h2 id="using-package"><a href="#using-package" class="headerlink" title="using package"></a>using package</h2><p>$\LaTeX$中绘图均要引入<code>tikz</code>宏包</p>
+<pre><code class="hljs plain">\usepackage&#123;tikz&#125;
+\usetikzlibrary&#123;shapes.geometric, arrows&#125;</code></pre>
+<h2 id="对节点node进行定义"><a href="#对节点node进行定义" class="headerlink" title="对节点node进行定义"></a>对节点node进行定义</h2><pre><code class="hljs plain">\tikzstyle&#123;process&#125; &#x3D; [rectangle,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,text width &#x3D;3cm,draw&#x3D;black,fill&#x3D;orange!30]</code></pre>
+<h3 id="节点形状"><a href="#节点形状" class="headerlink" title="节点形状"></a>节点形状</h3><pre><code class="hljs plain">rectangle:矩形，可加圆角(rounded corners)
 trapezium:平行四边形
-diamond:菱形
-</code></pre><h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><pre><code>minimum width
-minimum height
-</code></pre><h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><pre><code>text centered:文本居中
-</code></pre><h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><pre><code>text width=3cm:文本超过3cm时会自动换行
-</code></pre><h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><pre><code>draw
-</code></pre><h3 id="填充颜色"><a href="#填充颜色" class="headerlink" title="填充颜色"></a>填充颜色</h3><pre><code>fill
-</code></pre><h2 id="对箭头进行定义"><a href="#对箭头进行定义" class="headerlink" title="对箭头进行定义"></a>对箭头进行定义</h2><pre><code>tikzstyle{arrow} = [thick,-&gt;,&gt;=stealth]
+diamond:菱形</code></pre>
+<h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><pre><code class="hljs plain">minimum width
+minimum height</code></pre>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><pre><code class="hljs plain">text centered:文本居中</code></pre>
+<h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><pre><code class="hljs plain">text width&#x3D;3cm:文本超过3cm时会自动换行</code></pre>
+<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><pre><code class="hljs plain">draw</code></pre>
+<h3 id="填充颜色"><a href="#填充颜色" class="headerlink" title="填充颜色"></a>填充颜色</h3><pre><code class="hljs plain">fill</code></pre>
+<h2 id="对箭头进行定义"><a href="#对箭头进行定义" class="headerlink" title="对箭头进行定义"></a>对箭头进行定义</h2><pre><code>tikzstyle{arrow} = [thick,-&gt;,&gt;=stealth]
 </code></pre><h3 id="线粗"><a href="#线粗" class="headerlink" title="线粗"></a>线粗</h3><pre><code>thick:粗
 thin:细
 </code></pre><h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><pre><code>-&gt;:反向箭头
@@ -243,45 +255,65 @@ right of:
 xshift:
 </code></pre><h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><pre><code>{Decession 1}:结果显示的标题
 </code></pre><h2 id="画箭头"><a href="#画箭头" class="headerlink" title="画箭头"></a>画箭头</h2><pre><code>\draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);
-</code></pre><h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><pre><code class="lang-[arrow]:需要调用的箭头的属性```">```(decision1)：箭头的其实位置
-</code></pre>
-<pre><code class="lang-(process2a)：箭头的末端位置```">### 线型
-</code></pre>
-<p>—：直线<br>|-：先竖线后横线<br>-|：向横线后竖线</p>
-<pre><code>### 文字：如果需要在箭头上添加文字
-```{yes}:需要添加的文字
-</code></pre><h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><pre><code>[anchor=east]：
+</code></pre><h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><pre><code class="hljs [arrow]:需要调用的箭头的属性```">&#96;&#96;&#96;(decision1)：箭头的其实位置</code></pre>
+<pre><code class="hljs (process2a)：箭头的末端位置```">### 线型</code></pre>
+<p>—：直线<br>|-：先竖线后横线<br>-|：向横线后竖线<br><pre><code class="hljs plain">### 文字：如果需要在箭头上添加文字
+&#96;&#96;&#96;&#123;yes&#125;:需要添加的文字</code></pre></p>
+<h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><pre><code>[anchor=east]：
 [anchor=south]：
 [anchor=west]：
 [anchor=north]：
 [anchor=center]：
 </code></pre>
-            </div>
+            </article>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/LaTex/">LaTex</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/LaTex/">LaTex</a>
                     
                       <a class="hover-with-bg" href="/tags/mathematical/">mathematical</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
                 <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/05/mcm%E5%86%99%E4%BD%9C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mcm写作基本流程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/29/%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA/">
+                        <span class="hidden-mobile">cellular automata</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
               
             </div>
 
@@ -291,26 +323,27 @@ xshift:
                 
                 
   <div id="vcomments"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
 
   <script type="text/javascript">
-    var notify = 'true' === 'true';
-    var verify = 'true' === 'true';
-    var oldLoad = window.onload;
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
         app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
         placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
@@ -325,9 +358,8 @@ xshift:
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div id="tocbot"></div>
 </div>
 
@@ -343,8 +375,8 @@ xshift:
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -389,9 +421,10 @@ xshift:
     
   <!-- 备案信息 -->
   <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank"
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
+  </div>
 
 
     
@@ -400,9 +433,7 @@ xshift:
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
 
@@ -411,33 +442,12 @@ xshift:
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var post = $('#post');
-      var toc = $('#toc');
-      var tocLimMax = post.offset().top + post.height() - navHeight;
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
 
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -447,15 +457,13 @@ xshift:
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
-      var offset = $('#board-ctn').css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
     });
   </script>
 
@@ -463,7 +471,8 @@ xshift:
 
 
 
-  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -512,15 +521,7 @@ xshift:
 
   
 
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
+  
 
 
 
@@ -568,20 +569,22 @@ xshift:
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -589,29 +592,44 @@ xshift:
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
 
@@ -619,6 +637,17 @@ xshift:
 
 
 
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

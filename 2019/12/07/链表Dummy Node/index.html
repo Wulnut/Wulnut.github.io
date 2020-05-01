@@ -17,22 +17,23 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>Dummy Node ~Wulnut&#39;s space</title>
+  <title>Dummy Node ~ Wulnut&#39;s space</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -60,49 +61,55 @@
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
           </li>
         
           
           
           
-          
           <li class="nav-item">
-            <a class="nav-link" href="/links/">Links</a>
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              Links</a>
           </li>
         
         
@@ -120,7 +127,7 @@
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -128,31 +135,36 @@
 
             
               
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Saturday, December 7th 2019, 1:13 pm
-                </p>
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2019-12-07 13:13">
+                    December 7, 2019 pm
+                  </time>
+                </div>
               
 
-              <p class="mt-1">
+              <div class="mt-1">
                 
                   
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    842 字
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    986 字
                   </span>
                 
 
                 
                   
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      4 分钟
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    15
+                     分钟
                   </span>
                 
 
                 
-              </p>
+              </div>
             
           </div>
 
@@ -171,10 +183,10 @@
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
+        <div class="py-5" id="board">
           <div class="post-content mx-auto" id="post">
             
-            <div class="markdown-body">
+            <article class="markdown-body">
               <p>值得思考的实现</p>
 <a id="more"></a>
 <h1 id="链表Dummy-Node"><a href="#链表Dummy-Node" class="headerlink" title="链表Dummy Node"></a>链表Dummy Node</h1><h2 id="（一）Partition-List"><a href="#（一）Partition-List" class="headerlink" title="（一）Partition List"></a>（一）Partition List</h2><p><a href="https://leetcode.com/problems/partition-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/partition-list/description/</a></p>
@@ -185,112 +197,109 @@
 第一次犯错：忘记将又指针的尾部指向null;</font>
 
 <p>代码：</p>
-<pre><code>class Solution {
-    public ListNode partition(ListNode head, int x) {
-         if (head == null) {
-            return head;
-        }
-
-        ListNode leftDummy = new ListNode(0);
-        ListNode rightDummy = new ListNode(0);
-        ListNode left = leftDummy;
-        ListNode right = rightDummy;
-
-        while (head != null) {
-            if (head.val &gt;= x) {
-                right.next = head;
-                right = right.next;
-            } else {
-                left.next = head;
-                left = left.next;
-            }
-            head = head.next;
-        }
-        right.next = null;
-        left.next = rightDummy.next;
-        return leftDummy.next;
-    }
-}
-</code></pre><h2 id="（二）-Merge-Two-Sorted-Lists"><a href="#（二）-Merge-Two-Sorted-Lists" class="headerlink" title="（二） Merge Two Sorted Lists"></a>（二） Merge Two Sorted Lists</h2><p><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/" target="_blank" rel="noopener">https://leetcode.com/problems/merge-two-sorted-lists/description/</a></p>
+<pre><code class="hljs plain">class Solution &#123;
+    public ListNode partition(ListNode head, int x) &#123;
+         if (head &#x3D;&#x3D; null) &#123;
+            return head;
+        &#125;
+        
+        ListNode leftDummy &#x3D; new ListNode(0);
+        ListNode rightDummy &#x3D; new ListNode(0);
+        ListNode left &#x3D; leftDummy;
+        ListNode right &#x3D; rightDummy;
+        
+        while (head !&#x3D; null) &#123;
+            if (head.val &gt;&#x3D; x) &#123;
+                right.next &#x3D; head;
+                right &#x3D; right.next;
+            &#125; else &#123;
+                left.next &#x3D; head;
+                left &#x3D; left.next;
+            &#125;
+            head &#x3D; head.next;
+        &#125;
+        right.next &#x3D; null;
+        left.next &#x3D; rightDummy.next;
+        return leftDummy.next;
+    &#125;
+&#125;</code></pre>
+<h2 id="（二）-Merge-Two-Sorted-Lists"><a href="#（二）-Merge-Two-Sorted-Lists" class="headerlink" title="（二） Merge Two Sorted Lists"></a>（二） Merge Two Sorted Lists</h2><p><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/" target="_blank" rel="noopener">https://leetcode.com/problems/merge-two-sorted-lists/description/</a></p>
 <font color="red">AC！</font>
 
 <p><b>题目：将两个顺序链表合并成一个顺序链表；</b></p>
 <font color="#435d6c" size="3px">解答：依次比较两个链表里的值大小进行排列；</font>
 
-<p>改进：当一个链表指针指向null，另一个链表还没时，可以直接将重新排列的链表尾指向当前指针：</p>
-<pre><code>
-           if (l1 != null) {
+<p>改进：当一个链表指针指向null，另一个链表还没时，可以直接将重新排列的链表尾指向当前指针：<br><pre><code class="hljs plain">
+           if (l1 !&#x3D; null) &#123;
 
-           head.next = l1;
+           head.next &#x3D; l1;
 
-           } else {
+           &#125; else &#123;
 
-           head.next = l2;
+           head.next &#x3D; l2;
 
-          }
-</code></pre><p>代码：</p>
-<pre><code>
-class Solution {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0);
-        ListNode head = dummy;
-
-        while (l2 != null &amp;&amp; l1 != null) {
-            if (l1.val &lt;= l2.val) {
-                head.next = l1;
-                l1 = l1.next;
-            } else {
-                head.next = l2;
-                l2 = l2.next;
-            }
-            head = head.next;
-        } 
-        while (l1 != null) {
-            head.next = l1;
-            l1 = l1.next;
-            head = head.next;
-        }
-        while (l2 != null) {
-            head.next = l2;
-            l2 = l2.next;
-            head = head.next;
-        }
-        head.next = null;
-        return dummy.next;
-    }
-}
-</code></pre><h2 id="（三）swap-two-nodes-in-linked-list"><a href="#（三）swap-two-nodes-in-linked-list" class="headerlink" title="（三）swap two nodes in linked list"></a>（三）swap two nodes in linked list</h2><p><a href="https://leetcode.com/problems/swap-nodes-in-pairs/description/" target="_blank" rel="noopener">https://leetcode.com/problems/swap-nodes-in-pairs/description/</a></p>
+          &#125;</code></pre></p>
+<p>代码：<br><pre><code class="hljs plain">
+class Solution &#123;
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;
+        ListNode dummy &#x3D; new ListNode(0);
+        ListNode head &#x3D; dummy;
+        
+        while (l2 !&#x3D; null &amp;&amp; l1 !&#x3D; null) &#123;
+            if (l1.val &lt;&#x3D; l2.val) &#123;
+                head.next &#x3D; l1;
+                l1 &#x3D; l1.next;
+            &#125; else &#123;
+                head.next &#x3D; l2;
+                l2 &#x3D; l2.next;
+            &#125;
+            head &#x3D; head.next;
+        &#125; 
+        while (l1 !&#x3D; null) &#123;
+            head.next &#x3D; l1;
+            l1 &#x3D; l1.next;
+            head &#x3D; head.next;
+        &#125;
+        while (l2 !&#x3D; null) &#123;
+            head.next &#x3D; l2;
+            l2 &#x3D; l2.next;
+            head &#x3D; head.next;
+        &#125;
+        head.next &#x3D; null;
+        return dummy.next;
+    &#125;
+&#125;</code></pre></p>
+<h2 id="（三）swap-two-nodes-in-linked-list"><a href="#（三）swap-two-nodes-in-linked-list" class="headerlink" title="（三）swap two nodes in linked list"></a>（三）swap two nodes in linked list</h2><p><a href="https://leetcode.com/problems/swap-nodes-in-pairs/description/" target="_blank" rel="noopener">https://leetcode.com/problems/swap-nodes-in-pairs/description/</a></p>
 <font color="red" >AC！</font>
 
 <p><b>题目：两两交换链表中节点位置。</b>如：$1-&gt;2-&gt;4-&gt;5-&gt;6$ 转变为: $2-&gt;1-&gt;5-&gt;4-&gt;6$</p>
 <font color="#435d6c" size="3px">解答：使用两个指针遍历链表；</font>
 
-<p>代码：</p>
-<pre><code>class Solution {
-    public ListNode swapPairs(ListNode head) {
-        if (head == null) {
-            return head;
-        }
-
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode headNext = head.next;
-        ListNode headPrev = dummy;
-
-        while (head != null &amp;&amp; headNext != null) {
-            headPrev.next = headNext;
-            head.next = headNext.next;
-            headNext.next = head;
-            headPrev = head;
-            head = head.next;
-            if (head != null) {
-                headNext = head.next;
-            }
-        }
-        return dummy.next;
-    }
-}
-</code></pre><h2 id="（四）reorder-list"><a href="#（四）reorder-list" class="headerlink" title="（四）reorder list"></a>（四）reorder list</h2><p><a href="https://leetcode.com/problems/reorder-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/reorder-list/description/</a></p>
+<p>代码：<br><pre><code class="hljs plain">class Solution &#123;
+    public ListNode swapPairs(ListNode head) &#123;
+        if (head &#x3D;&#x3D; null) &#123;
+            return head;
+        &#125;
+        
+        ListNode dummy &#x3D; new ListNode(0);
+        dummy.next &#x3D; head;
+        ListNode headNext &#x3D; head.next;
+        ListNode headPrev &#x3D; dummy;
+        
+        while (head !&#x3D; null &amp;&amp; headNext !&#x3D; null) &#123;
+            headPrev.next &#x3D; headNext;
+            head.next &#x3D; headNext.next;
+            headNext.next &#x3D; head;
+            headPrev &#x3D; head;
+            head &#x3D; head.next;
+            if (head !&#x3D; null) &#123;
+                headNext &#x3D; head.next;
+            &#125;
+        &#125;
+        return dummy.next;
+    &#125;
+&#125;</code></pre></p>
+<h2 id="（四）reorder-list"><a href="#（四）reorder-list" class="headerlink" title="（四）reorder list"></a>（四）reorder list</h2><p><a href="https://leetcode.com/problems/reorder-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/reorder-list/description/</a></p>
 <p><b>题目：给定一个单链表：</b>$L0-&gt;L1-&gt;…-&gt;Ln-1-&gt;Ln,$</p>
 <pre><code>      重新排序后为：$L0-&gt;Ln-&gt;L1-&gt;Ln-1-&gt;L2-&gt;Ln-2-&gt;...$
 </code></pre><font color="#435d6c" size="3px">解答：
@@ -299,87 +308,108 @@ class Solution {
 
 第二次犯错：忘记考虑链表头和prevTail重合的情况（偶数链表）。</font>
 
-<p>代码：</p>
-<pre><code>class Solution {
-    public void reorderList(ListNode head) {
-        while (head != null &amp;&amp; head.next != null) {
-            ListNode prevTail = head;
-            while (prevTail.next.next != null) {
-                prevTail = prevTail.next;
-            }
-            ListNode tail = prevTail.next;
-            if (head.next == tail) {
-                break;
-            } 
-            tail.next = head.next;
-            head.next = tail;
-            head = head.next.next;
-            prevTail.next = null;
-        }
-    }
-}
-</code></pre><h2 id="（四）Rotate-List"><a href="#（四）Rotate-List" class="headerlink" title="（四）Rotate List"></a>（四）Rotate List</h2><p><a href="https://leetcode.com/problems/rotate-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/rotate-list/description/</a></p>
+<p>代码：<br><pre><code class="hljs plain">class Solution &#123;
+    public void reorderList(ListNode head) &#123;
+        while (head !&#x3D; null &amp;&amp; head.next !&#x3D; null) &#123;
+            ListNode prevTail &#x3D; head;
+            while (prevTail.next.next !&#x3D; null) &#123;
+                prevTail &#x3D; prevTail.next;
+            &#125;
+            ListNode tail &#x3D; prevTail.next;
+            if (head.next &#x3D;&#x3D; tail) &#123;
+                break;
+            &#125; 
+            tail.next &#x3D; head.next;
+            head.next &#x3D; tail;
+            head &#x3D; head.next.next;
+            prevTail.next &#x3D; null;
+        &#125;
+    &#125;
+&#125;</code></pre></p>
+<h2 id="（四）Rotate-List"><a href="#（四）Rotate-List" class="headerlink" title="（四）Rotate List"></a>（四）Rotate List</h2><p><a href="https://leetcode.com/problems/rotate-list/description/" target="_blank" rel="noopener">https://leetcode.com/problems/rotate-list/description/</a></p>
 <p><strong>题目：将链表尾部的k个节点移到链表头部；</strong></p>
 <font color="#435d6c" size="3px">解答：每次将链表最后一个节点移动至链表头，移动k次；</font>
 
 <p>第一次犯错：（超时）先遍历链表，得到链表长度length，循环只需执行 k%length 次；</p>
-<p>代码：</p>
-<pre><code>class Solution {
-    public ListNode rotateRight(ListNode head, int k) {
+<p>代码：<br><pre><code class="hljs plain">class Solution &#123;
+    public ListNode rotateRight(ListNode head, int k) &#123;
 
 
-        ListNode tail = head;
-        int length = 0;
+        ListNode tail &#x3D; head;
+        int length &#x3D; 0;
+        
+        while (tail !&#x3D; null ) &#123;
+            length++;
+            tail &#x3D; tail.next;
+        &#125;
+        
+        if (length &#x3D;&#x3D; 0 || length &#x3D;&#x3D; 1) &#123;
+            return head;
+        &#125;
+        
+        for (int i &#x3D; 0; i &lt; k % length; i++) &#123;
+            ListNode preTail &#x3D; head;
+            while (preTail !&#x3D; null &amp;&amp; preTail.next !&#x3D; null &amp;&amp; preTail.next.next !&#x3D; null) &#123;
+                preTail &#x3D; preTail.next;
+            &#125;
+            tail &#x3D; preTail.next;
+            tail.next &#x3D; head;
+            preTail.next &#x3D; null;
+            head &#x3D; tail;
+        &#125;
+        return head;
+    &#125;
+&#125;</code></pre></p>
 
-        while (tail != null ) {
-            length++;
-            tail = tail.next;
-        }
-
-        if (length == 0 || length == 1) {
-            return head;
-        }
-
-        for (int i = 0; i &lt; k % length; i++) {
-            ListNode preTail = head;
-            while (preTail != null &amp;&amp; preTail.next != null &amp;&amp; preTail.next.next != null) {
-                preTail = preTail.next;
-            }
-            tail = preTail.next;
-            tail.next = head;
-            preTail.next = null;
-            head = tail;
-        }
-        return head;
-    }
-}
-</code></pre>
-            </div>
+            </article>
             <hr>
             <div>
-              <p>
+              <div class="post-metas mb-3">
                 
-                  <span>
-                <i class="iconfont icon-inbox"></i>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
                       <a class="hover-with-bg" href="/categories/study/">study</a>
-                      &nbsp;
                     
-                  </span>&nbsp;&nbsp;
+                  </div>
                 
                 
-                  <span>
-                <i class="iconfont icon-tag"></i>
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/C/">C++</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
                     
-                  </span>
+                  </div>
                 
-              </p>
+              </div>
               
                 <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/07/%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">链式存储</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/07/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/">
+                        <span class="hidden-mobile">二叉树遍历</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
               
             </div>
 
@@ -389,26 +419,27 @@ class Solution {
                 
                 
   <div id="vcomments"></div>
-  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
 
   <script type="text/javascript">
-    var notify = 'true' === 'true';
-    var verify = 'true' === 'true';
-    var oldLoad = window.onload;
+    var oldLoadVa = window.onload;
     window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
       new Valine({
-        el: '#vcomments',
-        notify: notify,
-        verify: verify,
+        el: "#vcomments",
         app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
         app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
         placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        avatar: "/retro",
-        meta: ['nick', 'mail', 'link'],
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
         pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
       });
-      oldLoad && oldLoad();
     };
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
@@ -423,9 +454,8 @@ class Solution {
     </div>
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div id="tocbot"></div>
 </div>
 
@@ -441,8 +471,8 @@ class Solution {
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -487,9 +517,10 @@ class Solution {
     
   <!-- 备案信息 -->
   <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank"
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
+  </div>
 
 
     
@@ -498,9 +529,7 @@ class Solution {
 
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
 <script  src="/js/main.js" ></script>
 
 
@@ -509,33 +538,12 @@ class Solution {
 
 
   
-  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var post = $('#post');
-      var toc = $('#toc');
-      var tocLimMax = post.offset().top + post.height() - navHeight;
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
 
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
       tocbot.init({
         tocSelector: '#tocbot',
         contentSelector: '.post-content',
@@ -545,15 +553,13 @@ class Solution {
         listClass: 'tocbot-list',
         isCollapsedClass: 'tocbot-is-collapsed',
         collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
         scrollSmooth: true,
+        headingsOffset: -boardTop
       });
       if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
+        $('#toc').css('visibility', 'visible');
       }
-      var offset = $('#board-ctn').css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
     });
   </script>
 
@@ -561,7 +567,8 @@ class Solution {
 
 
 
-  <script defer src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
 
@@ -610,15 +617,7 @@ class Solution {
 
   
 
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  ');
-      prettyPrint();
-    })
-  </script>
+  
 
 
 
@@ -666,20 +665,22 @@ class Solution {
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
   <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
       function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
         $(this).wrap(element);
       }
     );
@@ -687,29 +688,44 @@ class Solution {
 
 
 
+
+
   
 
   
     <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
           }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
+        }
+      };
     </script>
 
-    <script  src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
 
   
 
@@ -717,6 +733,17 @@ class Solution {
 
 
 
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 
