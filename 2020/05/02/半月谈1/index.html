@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="">
-  <title>快速幂 ~ Wulnut&#39;s space</title>
+  <title>第一期半月谈 ~ Wulnut&#39;s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -124,7 +124,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/code.png') no-repeat center center;
+         style="background: url('/img/bby1.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -137,8 +137,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-04-01 17:10">
-                    April 1, 2020 pm
+                  <time datetime="2020-05-02 22:42">
+                    May 2, 2020 pm
                   </time>
                 </div>
               
@@ -148,7 +148,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.1k 字
+                    1.6k 字
                   </span>
                 
 
@@ -158,7 +158,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    14
+                    17
                      分钟
                   </span>
                 
@@ -187,95 +187,43 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>二叉树有多种遍历的方式我们简单总结一下</p>
+              <p>这是是我对现在的简单思考</p>
 <a id="more"></a>
-<h1 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h1><p>问题描述：</p>
-<p>&emsp;&emsp;求$A^B$的最后三位数的整数。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>如果我们直接通过循环的方法来解决我们会发现</p>
-<pre><code class="hljs c++">	<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;
-        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;
-        
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= power; ++ i) &#123;
-            result = result * base;
-      &#125;
-        <span class="hljs-keyword">return</span> result % <span class="hljs-number">1000</span>;
+<p>&emsp;&emsp;现在是5月1号，距离上次更新博客已经很久了。因为在家上课，所以时间非常自由。因为想参加一下蓝桥杯，来看看自己的专业水平到底怎么样。所以就慢慢开始准备学习算法起来了。</p>
+<h2 id="蓝桥"><a href="#蓝桥" class="headerlink" title="蓝桥"></a>蓝桥</h2><p>&emsp;&emsp;在学习算法的过程种，我慢慢的对我自己的真实能有了比较全面的了解。从简单的基本算法开始到数据结构到图论</p>
+<script type="math/tex; mode=display">基本算法\rightarrow 数据结构 \rightarrow 图论 \rightarrow \dots</script><p>说实话没得一步是简单的，是真的举步维艰。基本算法中的枚举、模拟、递归、分治$\dots$ 我感觉我到现在都没有真正学会其中的思想，每天坚持通过训练的方式来提高自己的对一些算法的理解，但是半天下来可能也就做了一两个题目，有时候思路开阔可能也就三四个，但是大部分时间也就是一两个的样子。可能是在家的原因，调板子没啥效率。但是这种挫败感是太真实了，随着渐渐对这种方向的深入了解。也就慢慢的明白自己知道东西实在是太少了，不断的从一些教学视频里面慢慢的学习前人总结出的经验。</p>
+<p>但是这确实很可笑，你感觉你学会了一种算法，但是题目给你变一变，你就立马懵逼了。如果说做算法题可以类比成你高中的数学题的话，可能就是你题型见的不够多，总结的很少导致的。但这也是困难所在，虽然算法就那么多你这么能正真理解一个题目到底想怎么考你去使用这个算法是十分困难的。就拿前缀和为例</p>
+<pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100</span>;
+<span class="hljs-keyword">int</span> arr[N];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i) <span class="hljs-built_in">cin</span> &gt;&gt; arr[i], arr[i] += arr[i - <span class="hljs-number">1</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i) <span class="hljs-built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="hljs-string">' '</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-<p>如果给出$base = 2$ $power = 100$ 的时候我们就就会发现函数$f(x) = a^{b}$是一个指数函数后期的增长速度是非常快的所以我们需要对此进行优化。</p>
-<h3 id="取模运算"><a href="#取模运算" class="headerlink" title="取模运算"></a>取模运算</h3><p>取模运算有以下 性质：</p>
-<ol>
-<li><p>$(a + b)\%c = ((a\%C) + (b\%c))\%c$</p>
-</li>
-<li><p>$(a<em>b)\%c = ((a\%c)</em>(b\%c))\%c$</p>
-</li>
-<li><p>$(a - b)\%c = ((a\%c)-(b\%c))\%c$</p>
-<p>总成依据话就是，在取模运算的时候我们在中间过程每次都取模，在得出答案之后我们再取一次模。</p>
-<p>我们通过性质性质2来优化我们的代码：</p>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i &lt;= power; ++ i) &#123;
-        result *= base;
-        result %= <span class="hljs-number">1000</span>;
+<p>前缀和就是那样很简单，就是一个arr[i] = arr[i - 1] + arr[i];的一个公式，在仔细看看其实是就是前$N$项求和，但是它有什么用？怎么用？可以干啥一般都是怎么处理的。</p>
+<p>完完全全就需要你自己去总结思考，但是可能这种小技巧也只会出现在你解决某个题目中的一个小步骤中，但是有些人总是能把这种小技巧玩的出神入化，来降低时间复杂度。这就要看各位对这种技巧的理解了，没人能帮助你。</p>
+<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>在知乎上经常能看到有人发这样的问题，“大神都是如何刷leetcode的”。我才这样的问这样问题的人都是一些为了找工作而去刷题的人。因为正真的大佬早已经在ACM类比赛中把算法这东西玩的炉火纯青了，你可能还在第一层，人家已经到了第五层了。其中有个人的回答很是亮眼，他说：你把打好的青春都浪费在刷LeetCode上那你为什么不把那些时间去研究一下新技术，学习一下技术的底层实现呢？看到一个题目思考了10分钟还没思路那就去看题解理解这个题目，花费那么长时间浪费在这上面不那么值得。就像郭杰瑞那期视频一样老郭做了江苏高考英语试卷但是到最后结果和大家想的一样，错了很多，是他英语差吗不是，那是人家的母语那是什么是缺乏这方面的训练。也就是说为什么我们刚开始学算法的时候为什么会那么痛苦，没有接收相关的训练很难一开始就上手完成的很好，针对的训练是至关重要的。</p>
+<p>但是我反观一下自己，把大把的时间花在学习这些东西上是否也是一种浪费？当然不是，那是我以后吃饭的东西花费时间在这上面怎么算是浪费呢？但是我觉得我缺走上了歧途，什么歧途？</p>
+<p>C++:</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mian</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Hello World"</span>;
+&#125;</code></pre>
+<p>Java:</p>
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">public</span> <span class="hljs-title">Hello</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args)</span> </span>&#123;
+        System.out.println(<span class="hljs-string">"Hello World"</span>);
     &#125;
-    <span class="hljs-keyword">return</span> result % <span class="hljs-number">1000</span>;
 &#125;</code></pre>
-<p>通过这样的运算优化，我们发现这种取模运算中如果我们中间进行取模的话是可以防止出现溢出的情况的。</p>
-</li>
-</ol>
-<h2 id="快速幂-1"><a href="#快速幂-1" class="headerlink" title="快速幂"></a>快速幂</h2><p>&emsp;&emsp;快速幂算法能帮我们算出指数非常大的幂，传统的求幂算法之所以时间复杂度非常高（为O(指数n)），就是因为当指数n非常大的时候，需要执行的循环操作次数也非常大。所以我们快速幂算法的核心思想就是每一步都把指数分成两半，而相应的底数做平方运算。这样不仅能把非常大的指数给不断变小，所需要执行的循环次数也变小，而最后表示的结果却一直不会变。从而达到快速计算的目的。</p>
-<p>例如：</p>
-<p>$3^{10} = 3\times3\times3\times3\times3\times3\times3\times3\times3\times3$</p>
-<p>我们可以尽可能的将其指数降下来，来简化运算。</p>
-<p>$3^{10} = (3\times3)\times(3\times3)\times(3\times3)\times(3\times3)\times(3\times3)$</p>
-<p>$3^{10} = (3\times3)^5$</p>
-<p>其实这种方法也在平常也是十分常见的，比如我们向计算$2^4$我们肯定不会一个一个的乘$2$我们一般都会去直接计算$4\times4$从而快速的计算出结果，其实两者的关系是一样的。</p>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> base, <span class="hljs-keyword">int</span> power)</span> </span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = base;
-    
-    whlie (power &gt; <span class="hljs-number">0</span>) &#123;
-        <span class="hljs-keyword">if</span> (power % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;
-            <span class="hljs-comment">//如果指数为偶数</span>
-            power /= <span class="hljs-number">2</span>;<span class="hljs-comment">//把指数缩小为一半</span>
-            base = base * base % <span class="hljs-number">1000</span>;<span class="hljs-comment">//底数变大成原来的平方</span>
-        &#125; <span class="hljs-keyword">else</span> &#123;
-             <span class="hljs-comment">//如果指数为奇数</span>
-            power = power - <span class="hljs-number">1</span>;<span class="hljs-comment">//把指数减去1，使其变成一个偶数</span>
-            result = result * base % <span class="hljs-number">1000</span>;<span class="hljs-comment">//此时记得要把指数为奇数时分离出来的底数的一次方收集好</span>
-            power /= <span class="hljs-number">2</span>;<span class="hljs-comment">//此时指数为偶数，可以继续执行操作</span>
-            base = base * base % <span class="hljs-number">1000</span>;
-        &#125;
-    &#125;
-    
-    <span class="hljs-keyword">return</span> result;
-&#125;</code></pre>
-<h2 id="最终优化"><a href="#最终优化" class="headerlink" title="最终优化"></a>最终优化</h2><p>&emsp;&emsp;我们知到判断奇偶性除了使用 $\%$看其余数是否为$0$ $or$ $1$来进行判断之外，我们还可以通过位运算来进行计算，例如：power&amp;1。因为如果power为偶数，则其二进制表示的最后一位一定是0；如果power是奇数，则其二进制表示的最后一位一定是1。将他们分别与1的二进制做“与”运算，得到的就是power二进制最后一位的数字了，是0则为偶数，是1则为奇数。例如5是奇数，则5&amp;1=1；而6是偶数，则6&amp;1=0；因此奇偶数的判断就可以用“位运算”来替换了。</p>
-<p>&emsp;&emsp;同样对于除以$2$的运算我们也可以使用位运算来进行优化power /= 2可以使用右移power = power &gt;&gt; 1实现，右移动1就是除以2，如果右移2就是除以4，同理左移就是乘，左移1就是乘以2左移2就是乘以4；</p>
-<pre><code class="hljs c++">
-<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">while</span> (power &gt; <span class="hljs-number">0</span>) &#123;
-        <span class="hljs-keyword">if</span> (power &amp; <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//此处等价于if(power%2==1)</span>
-            result = result * base % <span class="hljs-number">1000</span>;
-        &#125;
-        power &gt;&gt;= <span class="hljs-number">1</span>;<span class="hljs-comment">//此处等价于power=power/2</span>
-        base = (base * base) % <span class="hljs-number">1000</span>;
-    &#125;
-    <span class="hljs-keyword">return</span> result;
-&#125;</code></pre>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>求$m^k$ $\% $ $p$ 时间复杂度为$O(logk)$</p>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> p)</span> </span>&#123;
-    <span class="hljs-keyword">int</span> res = <span class="hljs-number">1</span> % p, t = m;
-    
-    <span class="hljs-keyword">while</span> (k) &#123;
-        
-        <span class="hljs-comment">//如果为奇数</span>
-        <span class="hljs-keyword">if</span> (k &amp;  <span class="hljs-number">1</span>) res = res * t % p;
-        
-        t = t * t % p;
-        k &gt;&gt; <span class="hljs-number">1</span>;
-    &#125;
-    
-    <span class="hljs-keyword">return</span> res;
-&#125;</code></pre>
+<p>Python:</p>
+<pre><code class="hljs python">print(<span class="hljs-string">"Hello World"</span>)</code></pre>
+<p>JavaScript:</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello World"</span>);</code></pre>
+<p>我现在会四种语言来写出Hello World这个词，说明我了解了很多不同种类的编程语言但是，我确实不明白为什么我们要一开始去写一个Hello World。是因为他简单？其实并不是，学习编程每个人的目的是不同的，为什么现在社会上有那么多培训班，在短短是几个星期里面就能教出一个人去公司里面上班每个月拿着一两万的工资？因为现在很多东西被模式化了，</p>
+<p>UADC(update, add, delete, create)这样的模式几乎符合任何情况，并不是人们想的通过编程来改变世界。如果说你被这种混口饭吃的想法所束缚，那你的发展也就那样的。那科班生和培训班的人也就没什么两样的了，科班生不只是有很多时间去打磨自己的能力，更多的是有时间去创造。这些语言归根到底是一种我们所特有的一种工具，而这种工具用来帮助我们把现实生活中的一些常见问题给抽象出来我们通过算法来反复重复的解决这种问题来方便我们。这才是我们的学习的正真目的，为什么说各个行业都需要会写程序的人，但是这些领域有时候又和计算机专业完全不沾边。但是就有人能去创造它方便行业快速发展，而这就是创造力。而不是仅仅的为了那一两行算法代码。这也是为什么说我<strong>没趣、死板、不懂审美</strong>$\dots$ 的原因。</p>
+<p>被这种看起来死板的东西所束缚了，不能走出这种圈子，去学习了解更多的东西来正真成就自己。</p>
+<p>$未完\dots$</p>
 
             </article>
             <hr>
@@ -285,7 +233,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/study/">study</a>
+                      <a class="hover-with-bg" href="/categories/%E5%8D%8A%E6%9C%88%E8%B0%88/">半月谈</a>
                     
                   </div>
                 
@@ -293,7 +241,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                      <a class="hover-with-bg" href="/tags/%E5%9B%9E%E5%BF%86%EF%BC%8C%E6%9D%82%E8%B0%88/">回忆，杂谈</a>
                     
                   </div>
                 
@@ -306,18 +254,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/05/02/%E5%8D%8A%E6%9C%88%E8%B0%881/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第一期半月谈</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/03/28/%E5%8F%8C%E5%90%91BFS/">
-                        <span class="hidden-mobile">双向BFS</span>
+                      <a href="/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">
+                        <span class="hidden-mobile">快速幂</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -540,7 +482,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "快速幂&nbsp;",
+        "第一期半月谈&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
