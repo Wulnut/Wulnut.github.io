@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/panda.png">
+  <link rel="icon" type="image/png" href="/img/panda.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个普普通通的，知识于思想分享破站。虽然不成熟但是记录了我的成长过程">
+  <meta name="author" content="Wulnut">
+  <meta name="keywords" content="Wulnut,垃圾桶,ash-bin,美赛">
+  <title>快速幂 ~ Wulnut&#39;s space</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Wulnut's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              首页</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              归档</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              分类</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              标签</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              关于</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">
+              <i class="iconfont icon-link-fill"></i>
+              友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/read.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-12 16:50">
+                    2020年5月12日 下午
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.5k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    21
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>快读的一些方法</p>
+<a id="more"></a>
+<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>在做数据结构、算法题的时候会遇见比较大的数，有的时候数据大小已经超过了int所能储存的范围，这样的大数如果比较多情况下如果使用普通的输入或者输出，超时就可能会发生，如果出现这样的错误，在算法时间复杂度没有问题的前提下出现这样的问题是非常令人头疼的一件事情。</p>
+<p>这里我将从Java和C++两中语言入手，在减少这样的问题出现</p>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><p>一、StreamTokenizer实现快速输入</p>
+<p>需要的jar包</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="hljs-keyword">import</span> java.io.StreamTokenizer;</code></pre>
+<p>定义如下：</p>
+<pre><code class="hljs java">StreamTokenizer st =<span class="hljs-keyword">new</span> StreamTokenizer(<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in)));</code></pre>
+<p>StreamTokenizer只能接收数字或字母，如果输入除空格和回车以外的字符（如：!@#$%^&amp;*()[]{})无法识别，会显示null</p>
+<p>StreamTokenizer可以<strong>获取输入</strong>流并根据空格和回车分割成Token（标记），用nextToken方法读取下一个标记 </p>
+<p>如果标记是字符串，用st.sval获取标记，如果是数字用st.nval获取标记，st.navl是double类型</p>
+<p>示例</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="hljs-keyword">import</span> java.io.StreamTokenizer;
+
+<span class="hljs-comment">//import java.io.*;</span>
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+        StreamTokenizer st =<span class="hljs-keyword">new</span> StreamTokenizer(<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in)));
+        st.nextToken();
+        String s=st.sval;
+        System.out.println(s);
+        st.nextToken();
+        <span class="hljs-keyword">double</span> n=st.nval;
+        System.out.println(n);
+        <span class="hljs-comment">/**输入内容
+         * hollow 1233
+         * 输出内容
+         * hollow
+         * 1233.0
+         */</span>
+        
+    &#125;
+ 
+&#125;</code></pre>
+<p>二、BufferedReader实现快速输入读一行</p>
+<p>需要导入的jar</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;</code></pre>
+<p>定义：</p>
+<pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));</code></pre>
+<p>常用方法：</p>
+<pre><code class="hljs java">inBuff.readLine()<span class="hljs-comment">//读取一行内容，返回字符串</span></code></pre>
+<p>实例：</p>
+<pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
+        String s=inBuff.readLine();
+        System.out.println(<span class="hljs-string">"有问题吗"</span>+s+<span class="hljs-string">"没有吧"</span>);
+        <span class="hljs-comment">/**
+         * 输出内容
+         * hollow world!
+         * 有问题吗hollow world!没有吧
+         */</span></code></pre>
+<p>三、PrintWriter实现快速输出</p>
+<p>需要的jar包</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
+<span class="hljs-keyword">import</span> java.io.PrintWriter;</code></pre>
+<p>定义如下：</p>
+<pre><code class="hljs java">PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));</code></pre>
+<p>常用方法：</p>
+<pre><code class="hljs java"><span class="hljs-comment">// 输出分为两步：</span>
+<span class="hljs-comment">// 1、先通过print()或println()方法把需要输出的内容放入缓冲区，</span>
+<span class="hljs-comment">// 2、然后通过flush()将缓冲区的内容输出到控制台</span>
+
+print(需要输出的内容)<span class="hljs-comment">//不换行输出，只是把需要的内容放入缓冲，</span>
+println(需要输出的内容)<span class="hljs-comment">//换行输出</span>
+flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输出到控制台，</span></code></pre>
+<p>示例：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> CCPC;
+
+<span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
+<span class="hljs-keyword">import</span> java.io.PrintWriter;
+
+<span class="hljs-comment">//import java.io.*;</span>
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));
+        String s=<span class="hljs-string">"hollow world"</span>;
+        <span class="hljs-keyword">int</span> i=<span class="hljs-number">12344</span>;
+        out.print(s+<span class="hljs-string">" "</span>+i);
+        out.flush();
+        <span class="hljs-comment">/**
+         * 输出内容
+         * hollow world 12344
+         */</span>
+    &#125;
+&#125;</code></pre>
+<p>一个例子<br><strong>一般建议使用BufferedRead()</strong><br><pre><code class="hljs java"><span class="hljs-comment">// https://www.acwing.com/problem/content/790/</span>
+<span class="hljs-comment">// 使用BufferedReader读入的方法</span>
+
+<span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ex4</span> </span>&#123;
+    <span class="hljs-comment">// 全局变量</span>
+<span class="hljs-comment">//    static int N = 100010;  // 数据规模为 10w</span>
+<span class="hljs-comment">//    static int[] arr = new int[N];</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+        BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
+        <span class="hljs-comment">// parseInt将字符串转为int</span>
+        <span class="hljs-comment">// parseDouble将字符转为double</span>
+        <span class="hljs-keyword">int</span> n = Integer.parseInt(reader.readLine());
+        String[] arrStr = reader.readLine().split(<span class="hljs-string">" "</span>);
+        <span class="hljs-keyword">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++ i) &#123;
+            arr[i] = Integer.parseInt(arrStr[i]);
+        &#125;
+        reader.close();
+
+        <span class="hljs-keyword">long</span> ans = mergesort(arr, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>);
+
+        System.out.println(ans);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">long</span> <span class="hljs-title">mergesort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+        <span class="hljs-keyword">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">long</span> res = mergesort(arr, l, mid) + mergesort(arr,mid + <span class="hljs-number">1</span>, r);
+
+        <span class="hljs-keyword">int</span>[] temp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[r - l + <span class="hljs-number">1</span>];
+        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>, i = l, j = mid + <span class="hljs-number">1</span>;
+
+        <span class="hljs-keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r) &#123;
+            <span class="hljs-keyword">if</span> (arr[i] &lt;= arr[j]) temp[k ++] = arr[i ++];
+            <span class="hljs-keyword">else</span> &#123;
+                res += mid - i + <span class="hljs-number">1</span>;
+                temp[k ++] = arr[j ++];
+            &#125;
+        &#125;
+
+        <span class="hljs-keyword">while</span> (i &lt;= mid) temp[k ++] = arr[i ++];
+        <span class="hljs-keyword">while</span> (j &lt;=   r) temp[k ++] = arr[j ++];
+
+        <span class="hljs-keyword">for</span> (i = l, j = <span class="hljs-number">0</span>; i &lt;= r; i ++, j ++) &#123;
+            arr[i] = temp[j];
+        &#125;
+
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></p>
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="getchar读入"><a href="#getchar读入" class="headerlink" title="getchar读入"></a>getchar读入</h3><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span>
+</span>&#123;
+    <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span> , ch = getchar();
+    <span class="hljs-keyword">while</span>( !<span class="hljs-built_in">isdigit</span>( ch ) ) ch = getchar();
+    <span class="hljs-keyword">while</span>( <span class="hljs-built_in">isdigit</span>( ch ) ) x = x * <span class="hljs-number">10</span> + ch - <span class="hljs-string">'0'</span> , ch = getchar();
+    <span class="hljs-keyword">return</span> x;
+&#125;</code></pre>
+<p>用时28.74s</p>
+<h3 id="fread读入优化"><a href="#fread读入优化" class="headerlink" title="fread读入优化"></a>fread读入优化</h3><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">io</span>
+&#123;</span>
+    <span class="hljs-keyword">char</span> ibuf[<span class="hljs-number">900</span> &lt;&lt; <span class="hljs-number">20</span>] , * s;
+    io()
+    &#123;
+        fread( s = ibuf , <span class="hljs-number">1</span> , <span class="hljs-number">900</span> &lt;&lt; <span class="hljs-number">20</span> , <span class="hljs-built_in">stdin</span> );
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span>
+    </span>&#123;
+        <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>( * s &lt; <span class="hljs-number">48</span> ) s++;
+        <span class="hljs-keyword">while</span>( * s &gt; <span class="hljs-number">32</span> )
+            u = u * <span class="hljs-number">10</span> + * s++ - <span class="hljs-number">48</span>;
+        <span class="hljs-keyword">return</span> u;
+    &#125;
+&#125; ip;</code></pre>
+<p>用时1.535s</p>
+<h3 id="当然如果觉得以上的方法比较麻烦可以："><a href="#当然如果觉得以上的方法比较麻烦可以：" class="headerlink" title="当然如果觉得以上的方法比较麻烦可以："></a>当然如果觉得以上的方法比较麻烦可以：</h3><pre><code class="hljs c++"><span class="hljs-built_in">std</span>::ios::sync_with_stdio(<span class="hljs-literal">false</span>);</code></pre>
+<p>通过对cin和cout的解除绑定可以达到和scanf于printf一样的速度有时候会更快</p>
+<h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><p><strong>cout</strong></p>
+<p>用时102.2s</p>
+<p><strong>printf</strong></p>
+<p>用时27.36s</p>
+<p><strong>puts（直接当字符串输出）</strong></p>
+<p>用时2.001s</p>
+<h3 id="putchar输出优化"><a href="#putchar输出优化" class="headerlink" title="putchar输出优化"></a>putchar输出优化</h3><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span>
+</span>&#123;
+    <span class="hljs-keyword">if</span>(x&lt;<span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'-'</span>);
+        x=-x;
+    &#125;
+    <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">9</span>)
+        <span class="hljs-built_in">print</span>(x/<span class="hljs-number">10</span>);
+    <span class="hljs-built_in">putchar</span>(x%<span class="hljs-number">10</span>+<span class="hljs-string">'0'</span>);
+&#125;</code></pre>
+<p>用时3.339s</p>
+<h3 id="fwrite输出优化"><a href="#fwrite输出优化" class="headerlink" title="fwrite输出优化"></a>fwrite输出优化</h3><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span> &gt;
+    <span class="hljs-title">inline</span> <span class="hljs-title">void</span> <span class="hljs-title">print</span>( <span class="hljs-title">register</span> <span class="hljs-title">T</span> <span class="hljs-title">u</span> )
+    &#123;</span>
+        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> * q = a;
+        <span class="hljs-keyword">if</span>( !u ) * t++ = <span class="hljs-number">48</span>;
+        <span class="hljs-keyword">else</span>
+        &#123;
+            <span class="hljs-keyword">if</span>( u &lt; <span class="hljs-number">0</span> )
+                * t++ = <span class="hljs-number">45</span> , u *= <span class="hljs-number">-1</span>;
+            <span class="hljs-keyword">while</span>( u ) * q++ = u % <span class="hljs-number">10</span> + <span class="hljs-number">48</span> , u /= <span class="hljs-number">10</span>;
+            <span class="hljs-keyword">while</span>( q != a )
+                * t++ = * --q;
+        &#125;
+    &#125;</code></pre>
+<p>用时0.6653s</p>
+<p><strong>由此可以看出，fwrite对比其他读入方式有极大的差距</strong></p>
+<p>不过由于一般输出量都比较小，所以输出优化意义不大</p>
+<h2 id="inline-define-register"><a href="#inline-define-register" class="headerlink" title="inline,define,register"></a>inline,define,register</h2><p>register就是把东西放到寄存器里面</p>
+<p>比如for( int i = 1 ; i &lt;= n ; i++ )</p>
+<p>可以写成for( register int i = 1 ; i &lt;= n ; i++ )</p>
+<p>但是这个不一定有用，因为这个int可能编译器会帮你放寄存器里面</p>
+<p><strong>for register short可能比for register int慢，因为short的寄存器更少..</strong><br><strong>大家for循环里面还是int比较好</strong></p>
+<p>register在大部分情况下（特别是开了O2的时候）并没有明显的优化效果，如果加错了反而可能负优化</p>
+<p>如果一个简单函数调用次数很多，属于瓶颈，调用时的传参可能会大大影响程序效率</p>
+<p>这种情况下可以把这个函数给inline掉</p>
+<p>inline就是把一个函数内联，可以减少跳转和传参的代价</p>
+<p>但是如果这个函数过于复杂，可能并不会inline，可以考虑<strong>attribute</strong> ( ( always_inline ) )或者手动展开，或者define掉（注意define别爆炸）</p>
+<p>参考博客：</p>
+<ul>
+<li><a href="https://blog.csdn.net/qq_40079933/article/details/79419065" target="_blank" rel="noopener">https://blog.csdn.net/qq_40079933/article/details/79419065</a></li>
+<li><a href="https://www.luogu.com.cn/blog/user3296/oi-zhong-jian-dan-di-chang-shuo-you-hua" target="_blank" rel="noopener">https://www.luogu.com.cn/blog/user3296/oi-zhong-jian-dan-di-chang-shuo-you-hua</a></li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/study/">study</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/05/scenes1/">
+                        <span class="hidden-mobile">Text Format</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
+
+  <script type="text/javascript">
+    var oldLoadVa = window.onload;
+    window.onload = function () {
+      oldLoadVa && oldLoadVa();
+
+      new Valine({
+        el: "#vcomments",
+        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+        path: window.location.pathname,
+        avatar: "retro",
+        meta: ["nick","mail","link"],
+        pageSize: "10",
+        lang: "zh-CN",
+        highlight: true,
+        recordIP: false,
+        serverURLs: "",
+      });
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+    <p>copyright &copy 2019-2020</p>
+    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+    </div>
+    
+
+    
+  <!-- 备案信息 -->
+  <div>
+    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+       rel="nofollow noopener">鄂ICP证20001010号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-155249740-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "快速幂&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "🔗"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+</body>
+</html>
