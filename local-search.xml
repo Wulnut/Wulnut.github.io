@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>逻辑规则总结</title>
+    <link href="/2020/05/23/logist/"/>
+    <url>/2020/05/23/logist/</url>
+    
+    <content type="html"><![CDATA[<p>简单总结逻辑推理规则与规律</p><a id="more"></a><h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>&emsp;&emsp;由于数字逻辑种得推理规则与离散数学中得推理规则几乎是一模一样得。<br>对此讲有关逻辑推理部分进行总结。</p><h1 id="数字逻辑与离散数学"><a href="#数字逻辑与离散数学" class="headerlink" title="数字逻辑与离散数学"></a>数字逻辑与离散数学</h1><div class="table-container"><table><thead><tr><th>数字逻辑</th><th>离散数学</th></tr></thead><tbody><tr><td>或：$A$ $\cdot$  $B$</td><td>或：$A \and B$</td></tr><tr><td>与: $A+B$</td><td>与：$A \or B$</td></tr><tr><td>非:   $\overline{A}$</td><td>非：$\neg A$</td></tr></tbody></table></div><h1 id="基本公式"><a href="#基本公式" class="headerlink" title="基本公式"></a>基本公式</h1><h2 id="基本公理"><a href="#基本公理" class="headerlink" title="基本公理"></a>基本公理</h2><ul><li>交换律：$A + B = B + A$   $or$  $A \cdot B = B \cdot A$</li><li>结合率：$(A + B)+C = A+(A+B)$   $or$   $(A \cdot B) \cdot C = A \cdot (B \cdot C)$</li><li>分配率：$A + (B \cdot C) = (A + B) \cdot (A + C)$    $or$   $A \cdot(B + C) = A \cdot B + A \cdot C$</li><li>$0-1$律：$A + 0 = A$  $or$  $A \cdot 1 = A$  $or$  $A + 1 = 1$  $or$  $A \cdot 0 = 0$</li><li>互补律：$\overline{A} + A = 1$  $or$  $\overline{A} \cdot A = 0$</li></ul><h2 id="基本定理"><a href="#基本定理" class="headerlink" title="基本定理"></a>基本定理</h2><ul><li>定理1： $0 + 0 = 0$ 、$0 + 1 = 1$、 $1 + 0 = 1$、 $1 + 1 = 1$、$0 \cdot 0 = 0$、$0 \cdot 1 = 0$、 $1 \cdot 0 = 0$、 $1 \cdot 1 = 1$</li><li>重叠律： $A + A = A$   $or$  $A \cdot A = A$</li><li>吸收率： $A + A \cdot B = A$  $or$  $A \cdot(A + B) = A$</li><li>消因子法: $A + \overline{A} \cdot B = A + B$  $or$  $A \cdot(\overline{A} + B) = A \cdot B$</li><li>并项法： $A \cdot B + A \cdot \overline{B} = A$  $or$  $(A + B) \cdot (A + \overline{B}) = A$</li><li>消项法： $A \cdot B + \overline{A} \cdot C + B \cdot C = A \cdot B + \overline{A} \cdot C$  $or$  $(A + B) \cdot (\overline{A} + C) \cdot(B + C) = (A + B) \cdot (\overline{A} + C)$</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>study</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>快读</title>
     <link href="/2020/05/12/%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%85%A5/"/>
     <url>/2020/05/12/%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%85%A5/</url>
