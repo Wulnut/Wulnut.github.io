@@ -17,7 +17,7 @@
   <meta name="description" content="一个普普通通的，知识于思想分享破站。虽然不成熟但是记录了我的成长过程">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="Wulnut,垃圾桶,ash-bin,美赛">
-  <title>半年记 ~ Wulnut`s space</title>
+  <title>如何配置与安装maven ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -124,7 +124,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/halfyear6.jpg') no-repeat center center;
+         style="background: url('/img/apache.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -137,8 +137,8 @@
               
                 <div class="mt-3 post-meta">
                   <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-07-02 22:43">
-                    2020年7月2日 晚上
+                  <time datetime="2020-07-11 17:30">
+                    2020年7月11日 下午
                   </time>
                 </div>
               
@@ -148,7 +148,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    2k 字
+                    606 字
                   </span>
                 
 
@@ -158,7 +158,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    20
+                    8
                      分钟
                   </span>
                 
@@ -187,56 +187,186 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>简单的总结一下这荒废的半个学期</p>
+              <p>介绍以下如何安装与配置maven</p>
 <a id="more"></a>
-<h1 id="一切都是要从蝙蝠说起"><a href="#一切都是要从蝙蝠说起" class="headerlink" title="一切都是要从蝙蝠说起"></a>一切都是要从蝙蝠说起</h1><p>&emsp;&emsp;由于2019年起的一只蝙蝠，我们的生活出现了天翻地覆的变化。在家隔离遵守防疫要求，争取不给国家添乱。在家度过了我最为魔幻的一个寒假，虽然在家但是我丝毫没感受到无聊，相反还发生了很多有趣的事情，我觉得我有必要对期间发生的经过找时间好好记录一下。</p>
-<h2 id="这可能是高中时所期盼的"><a href="#这可能是高中时所期盼的" class="headerlink" title="这可能是高中时所期盼的"></a>这可能是高中时所期盼的</h2><p>&emsp;&emsp;上高中的时候总想着能在大学过的舒服，还能有超长的假期，每次在寒暑假结束的时候大家总会调侃：“嗯你假期余额已不足请及时充值”。不过很对不这个恐怖故事真的出现了.</p>
+<h1 id="一、-安装本地Maven"><a href="#一、-安装本地Maven" class="headerlink" title="一、 安装本地Maven"></a>一、 安装本地Maven</h1><ol>
+<li><p>进入<a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">Apache maven官网</a>下载maven</p>
+</li>
+<li><p>点击左侧Download </p>
+</li>
+</ol>
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="/img/halfyear2.jpg" srcset="/img/loading.gif">
+    src="/img/maven_download.png" srcset="/img/loading.gif">
     <br>
     <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">恐怖故事</div>
+    padding: 2px;">下载</div>
 </center>
 
-<p>&emsp;&emsp;虽然没有上图那么恐怖，但是我寒假确实涨了不少这一涨就是一个学期。线下教学也随之敲定转为线上。刚开始上网课，还每天幻想<br>嗯等等3月份学校就会要我们回去了。但是在一次和周老师的聊天中得知广东那边的学校可能会在6月底开学，一开始对这个差异的消息还是还保持着<br>怀疑态度，每天上课老师也在和我们预测学校会在什么时候开学，武汉什么时候解封这样的话题。但是慢慢的，随着北师大说今年上半年不开学、听<br>到华科的朋友说他们辅导员发长文警告那些期待等回学校再补课的同学要好好学习的截图，时我才意识到今年武汉上边年不开学，可能是真的了做好打持久战的准备是一定的了。<br>&emsp;&emsp;果然随着所有课程全部转入线上教学的开始，上半年在家学习也就真的出现了。但是我对线上教学有着强烈的抵触情绪，根本没有想跟着老师的节奏好好在家里学习本学期既定的课程，“我上不了985，我看985的网课还不行么”这句话虽然搞笑，但确十分真实。线上上课老师和学校也是绞尽脑汁，督促学生好好在线上学习，不要逃课。可是呢？有些老师总喜欢用着骗三岁小孩的话来骗我们，制定了一些十分好笑的条条框框，什么早自习打卡啊、晚自习打卡啊等等吧。打完卡再去睡觉然后等到开课在起床这样操作，不用说也有人会做。但是有些人就是爱与面子，说自己按时打卡学习早读，晚自习。当然我也认识真正这样做的人。为此我也背上了逃早自这样的搞笑的名号。嗯大三了我看大家谁，睡得香~<br>&emsp;&emsp;虽然说我不想听老师线上的讲课，但是我又害怕错过一些知识。说白了就是“贱”，上网课就挂在那里假惺惺的听老师的讲课然后把声音调到最小，自己看各大名校的网课视频。这也算是我在名校学习了吧Hhhh。不得不说中科大概率真香，听课真如醍醐灌顶一样，想我基础这么差的，在学习玩之后也能明白个八九不离十，还有翁恺的程序课，不说了质量真的高，比上课讲所谓的算法题要实在的多，带你一步一步实现一个小小的项目，并学习其中的一些关键词和用法。比上课听理论，缺乏实践要来的实在的多，虽然不能说我做题一定能做对，但是我用一定用的恰到好处。<br>&emsp;&emsp;当然也是由于课程安排的原因周么也就只能休息一天，不过我大部分时间也是花在了学习网课上了，其实去完成自己的兴趣也是极少<br>并没有我想的那种可以搞搞别的事情，学习一下新的知识。也不知道该怎么形容，新的看的眼馋，旧也不想丢。两手抓，最终还是没干成一样。</p>
-<h2 id="在家时间过的真的很快"><a href="#在家时间过的真的很快" class="headerlink" title="在家时间过的真的很快"></a>在家时间过的真的很快</h2><p>&emsp;&emsp;不得不说在家学习的时间过的真的很快虽然天天在上课，但是循环往复时间也就一下没了。到了5月份参加了一些无聊的比赛，每天熬夜到深夜，感觉自己很充实每天都很忙，要做好多事情。但是呢其实我啥也没干成，自己还累的够呛。感觉那段时间自己写了7、8万字，每天都在对着键盘打字。因为时间紧迫，外加上学长的催促。就想机器一样每天都在赶工期完成以下我都不知道我在干什么的东西。(退坑了退坑了，后面不能再参加了)<br>&emsp;&emsp;晃一晃这个学期就没几周了，扫清了比赛的事情之后就是专心的学习，我尝试认真的听老师上课，但是我还是放弃了。上一次课3、4<br>个小时的煎熬，虽然老师讲的很拖沓，但是知识含量太高一下子真的接受不了。还是自己看吧….</p>
-<p><center>
+<ol>
+<li><p>点击这个连接然后下载</p>
+<center>
+ <img style="border-radius: 0.3125em;
+ box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+ src="/img/maven_download2.png" srcset="/img/loading.gif">
+ <br>
+ <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+ display: inline-block;
+ color: #999;
+ padding: 2px;">下载</div>
+</center>
+</li>
+<li><p>下载完成之后，任意找一个文件夹存入然后解压</p>
+</li>
+<li>然后就开始配置环境变量了<ul>
+<li>系统变量：MAVEN_HOME = ..\apache-maven-3.63</li>
+<li>系统变量：path: %MAVEN_HOME%\bin</li>
+</ul>
+</li>
+</ol>
+<center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="/img/halfyear3.jpg" srcset="/img/loading.gif">
+    src="/img/maven_path.png" srcset="/img/loading.gif">
     <br>
     <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">恐怖故事</div>
-</center><br>&emsp;&emsp;当然这🐕学习通，真是想个毒瘤一样。学习通上的成堆的视频，都要计入平时分今年平时分还是55开(上香)。我也就开始了疯狂的补补课模式，可能是我高估了学校期末考试的难度。总感觉自己的掌握程度不够，在文库找题做，针对知识点练习一下。我也很离奇的开始梳理知识结构因为我是真的觉得学的知识很乱，感觉没有形成知识体系。但是目前来说到现在我都没有形成知识体系。</p>
-<h2 id="都是大佬"><a href="#都是大佬" class="headerlink" title="都是大佬"></a>都是大佬</h2><p>&emsp;&emsp;也就预习了尽一个月吧，中途周末实在是不行听课，就开车出去玩了一下。还是很开心的~然后就开始期末考试了，有人就喜欢🐕叫</p>
-<p><center>
-    <img style="border-radius: 0.3125em;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="/img/halfyear4.jpg" srcset="/img/loading.gif">
-    <br>
-    <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">恐怖故事</div>
-</center><br>当然我也是个儒雅随和的人，不和他计较。有冇搞错，管你咩事。我也在每次出成绩之后问了一下谁是最高分，我也没有听到你的名字呀。还专门买课本，在我这种垃圾面前卖弄自己了解到的知识。知识也分高低贵贱？</p>
-<p><center>
-    <img style="border-radius: 0.3125em;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="/img/halfyear5.jpg" srcset="/img/loading.gif">
-    <br>
-    <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">恐怖故事</div>
-</center><br>&emsp;&emsp;我也很庆幸我有一些很要好的朋友，和三个优秀的室友。虽然各有专攻但是大家在一起交流总是很快乐的。在不断学习的过程中，有人愿你和你解释交流，我觉得是一件很美好的事情。而不是自己守着自己所谓的优势，谦卑谦卑再谦卑。这也是我慢慢明白的，不是因为你知道的有多少，懂得有多少。我才会说你牛逼是大佬，你出来溜溜交流一下，光说不练假把式嘛，这一下子便高判立下。这个月我也感觉自己实在是浮躁，以前都说我浮躁，但是我总是不明白浮躁到是为什么。这个假期我也好像慢慢明白理解所谓的浮躁。脚踏实地，似乎才是最难实现的东西。为了一些论文<br>每天忙活，似乎还不如早点开始学习专业方向。认真学习一下什么是机器学习。复制百度百科我们谁都会。</p>
-<p>&emsp;&emsp;先就说到这吧</p>
+    padding: 2px;">配置变量</div>
+</center>
 
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="/img/maven_path2.png" srcset="/img/loading.gif">
+    <br>
+    <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">配置变量</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="/img/maven_path3.png" srcset="/img/loading.gif">
+    <br>
+    <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">配置变量</div>
+</center>
+
+
+<h1 id="二、配置settings文件"><a href="#二、配置settings文件" class="headerlink" title="二、配置settings文件"></a>二、配置settings文件</h1><ol>
+<li>在你放置maven文件的文件夹里找到conf文件夹然后可以在conf文件夹中找到setting文件</li>
+<li>找到第52行，这里是设置maven默认的默认本地仓库。<center>
+ <img style="border-radius: 0.3125em;
+ box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+ src="/img/maven_repo.png" srcset="/img/loading.gif">
+ <br>
+ <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+ display: inline-block;
+ color: #999;
+ padding: 2px;">配置</div>
+</center>
+
+
+</li>
+</ol>
+<ol>
+<li>我们复制第53行</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>/path/to/local/repo<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span></code></pre>
+<p>将它拿到注释外并将中间的内容改成你需要的路径，如图</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>F:/repository<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span></code></pre>
+<p>注意这个repository需要自己建,这里的路径随便设置，注意这里是正斜杠</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="/img/maven_repo2.png" srcset="/img/loading.gif">
+    <br>
+    <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">配置</div>
+</center>
+
+<ol>
+<li>因为国外的服务器下载jar包很慢所以我们改为阿里云服务器（大约在150行左右），这两个仓库只用选一个(根据大家反馈建议使用第一个，第二个在有的版本可能会出现warning)</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 阿里云仓库 --&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>alimaven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>aliyun maven<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+       <span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--或者--&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>*<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Nexus aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span></code></pre>
+<ol>
+<li><p>如图，要夹在两个mirrors标签之间</p>
+<center>
+ <img style="border-radius: 0.3125em;
+ box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+ src="/img/maven_repo3.png" srcset="/img/loading.gif">
+ <br>
+ <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+ display: inline-block;
+ color: #999;
+ padding: 2px;">配置</div>
+</center>
+</li>
+<li><p>在最后配置jdk，也要夹在两个profiles标签之间</p>
+</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- java版本 --&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>jdk-1.8<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">activation</span>&gt;</span>
+	    <span class="hljs-tag">&lt;<span class="hljs-name">activeByDefault</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">activeByDefault</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">jdk</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">jdk</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">activation</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.compilerVersion</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span></code></pre>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="/img/maven_repo4.png" srcset="/img/loading.gif">
+    <br>
+    <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">配置</div>
+</center>
+
+<ol>
+<li>配置完成，在命令行输入mvn help:system测试，看到下载链接里面是ailiyun的链接表示配置成功</li>
+</ol>
+<p>最后，如果你使用的idea作为Java的IDE， 我们是可以将idea的maven仓库设置为本地仓库。<br>File -&gt; Build, Execution, Deployment -&gt; Maven修在下面两个参数就可以了。</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="/img/maven_idea.png" srcset="/img/loading.gif">
+    <br>
+    <div style="font-size: 12px; color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">配置</div>
+</center>
             </article>
             <hr>
             <div>
@@ -245,7 +375,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/day/">day</a>
+                      <a class="hover-with-bg" href="/categories/Notes/">Notes</a>
                     
                   </div>
                 
@@ -253,7 +383,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/day/">day</a>
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
                     
                   </div>
                 
@@ -266,18 +396,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/11/maven%E9%85%8D%E7%BD%AE/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何配置与安装maven</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/05/25/sql%E8%AE%AD%E7%BB%83/">
-                        <span class="hidden-mobile">SQL入门训练题</span>
+                      <a href="/2020/07/02/%E5%8D%8A%E5%B9%B4%E8%AE%B0/">
+                        <span class="hidden-mobile">半年记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -500,7 +624,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "半年记&nbsp;",
+        "如何配置与安装maven&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
