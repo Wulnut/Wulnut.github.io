@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>将hexo博客搭建到服务器上 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/bg-2.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-01-08 17:33">
-                    2020年1月8日 下午
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-08 17:33" pubdate>
+        2020年1月8日 下午
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.5k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    18
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,9 +215,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">将hexo博客搭建到服务器上</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>将hexo 博客搭建到github是一件十分简单得事情，但是在GitHub page中使用你得博客时难免会遇见速度慢、域名不宜与他人分享等等问题，所以当你准备把你网站搭建到服务时就可能遇见很多问题，那我就给大家分享我得在搭建时得心得。</p>
 <a id="more"></a>
 <h1 id="服务器准备阶段"><a href="#服务器准备阶段" class="headerlink" title="服务器准备阶段"></a>服务器准备阶段</h1><p>&emsp;&emsp;国内的服务器有很多，阿里云、百度云、腾讯云、牛七云等等。这些服务器都是大厂的旗下的服务器，所以稳定性还是可以保证的，我选择的是阿里云的学生版一年114元。一核2G的内存价格还是很良心的，如果你想要更低的价格，那某宝应该有适合你的选择。一般国内的互联网公司使用的服务器操作系统主要是Centos。选择Centos作为操作系统即可。当你购买服务之后，阿里会给你一个内网和外网的地址。外网地址就是我们使用浏览器可以查询到的地址，也是我们后面会主要使用到的地址。当然IP地址是不容易记住的我们需要购买一下域名，阿里云很方面都是一站式的。然后就是网站的备案，如果你网站使用的是国内的服务器，是需要备案的，如果你不备案，你的网站时无法访问的。备案的时间时比较长的过程和程序也相对比较麻烦。在这里大家注意一点就是，如果你的备案地址写的是你的学校，那么你就要将你的地址精确到你寝室的楼栋和房间号。
@@ -197,32 +230,32 @@
 &emsp;&emsp;Nginx (engine x) 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 服务器。。 本例演示 CentOS 7 下安装和配置 Nginx 的基本步骤。
 </p>
 
-<h2 id="步骤1：添加yum源"><a href="#步骤1：添加yum源" class="headerlink" title="步骤1：添加yum源"></a>步骤1：添加yum源</h2><pre><code>$ sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
-</code></pre><p>安装完yum源之后，可以查看一下。</p>
-<pre><code>repo id                                 repo name                                                              status
+<h2 id="步骤1：添加yum源"><a href="#步骤1：添加yum源" class="headerlink" title="步骤1：添加yum源"></a>步骤1：添加yum源</h2><div class="hljs"><pre><code>$ sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+</code></pre></div><p>安装完yum源之后，可以查看一下。</p>
+<div class="hljs"><pre><code>repo id                                 repo name                                                              status
 base/7/x86_64                           CentOS-7                                                               10,097
 epel/x86_64                             Extra Packages for Enterprise Linux 7 - x86_64                         13,510
 extras/7/x86_64                         CentOS-7                                                                  307
 nginx/x86_64                            nginx repo                                                                170
 updates/7/x86_64                        CentOS-7                                                                1,010
 repolist: 25,094
-</code></pre><p>可以发现<font width="bolder" color="red">nginx repo</font>已经安装到本机了</p>
+</code></pre></div><p>可以发现<font width="bolder" color="red">nginx repo</font>已经安装到本机了</p>
 <h2 id="步骤2：安装"><a href="#步骤2：安装" class="headerlink" title="步骤2：安装"></a>步骤2：安装</h2><p>yum 安装 Nginx，非常简单，一条命令。</p>
-<pre><code>$ sudo yum install nginx
-</code></pre><h2 id="步骤-3-配置-Nginx-服务"><a href="#步骤-3-配置-Nginx-服务" class="headerlink" title="步骤 3: 配置 Nginx 服务"></a>步骤 3: 配置 Nginx 服务</h2><p>设置开机启动</p>
-<pre><code>$ sudo systemctl enable nginx
-</code></pre><p>启动服务</p>
-<pre><code>$ sudo systemctl start nginx
-</code></pre><p>停止服务</p>
-<pre><code>$ sudo systemctl restart nginx
-</code></pre><p>重新加载，因为一般重新配置之后，不希望重启服务，这时可以使用重新加载。</p>
-<pre><code>$ sudo systemctl reload nginx
-</code></pre><p>到这里我们输入我们服务器外网的网址就可以看到<strong>nginx welcome</strong>的欢迎界面。此时就说明你的nginx已经安装完成了。</p>
+<div class="hljs"><pre><code>$ sudo yum install nginx
+</code></pre></div><h2 id="步骤-3-配置-Nginx-服务"><a href="#步骤-3-配置-Nginx-服务" class="headerlink" title="步骤 3: 配置 Nginx 服务"></a>步骤 3: 配置 Nginx 服务</h2><p>设置开机启动</p>
+<div class="hljs"><pre><code>$ sudo systemctl enable nginx
+</code></pre></div><p>启动服务</p>
+<div class="hljs"><pre><code>$ sudo systemctl start nginx
+</code></pre></div><p>停止服务</p>
+<div class="hljs"><pre><code>$ sudo systemctl restart nginx
+</code></pre></div><p>重新加载，因为一般重新配置之后，不希望重启服务，这时可以使用重新加载。</p>
+<div class="hljs"><pre><code>$ sudo systemctl reload nginx
+</code></pre></div><p>到这里我们输入我们服务器外网的网址就可以看到<strong>nginx welcome</strong>的欢迎界面。此时就说明你的nginx已经安装完成了。</p>
 <h1 id="在服务器上安装git"><a href="#在服务器上安装git" class="headerlink" title="在服务器上安装git"></a>在服务器上安装git</h1><p><P><br>&emsp;&emsp;当我们把nginx安装到我们的服务器之后，下一步就是安装git。如果之前你已经搭建过hexo博客并且已经将博客搭建在GitHub上时后面的步骤你将会稍微比较熟悉。<br>&lt;/p&gt;</p>
-<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><pre><code>git --version // 如无，则安装
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><div class="hljs"><pre><code>git --version // 如无，则安装
 yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
 yum install -y git
-</code></pre><h2 id="创建用户并配置其仓库"><a href="#创建用户并配置其仓库" class="headerlink" title="创建用户并配置其仓库"></a>创建用户并配置其仓库</h2><pre><code>useradd git
+</code></pre></div><h2 id="创建用户并配置其仓库"><a href="#创建用户并配置其仓库" class="headerlink" title="创建用户并配置其仓库"></a>创建用户并配置其仓库</h2><div class="hljs"><pre><code>useradd git
 passwd git // 设置密码
 su git // 这步很重要，不切换用户后面会很麻烦
 cd /home/git/
@@ -231,29 +264,29 @@ mkdir repos &amp;&amp; cd repos
 git init --bare blog.git // 创建一个裸露的仓库
 cd blog.git/hooks
 vi post-receive // 创建 hook 钩子函数，输入了内容如下
-</code></pre><pre><code class="hljs plain">#!&#x2F;bin&#x2F;sh
-git --work-tree&#x3D;&#x2F;home&#x2F;git&#x2F;projects&#x2F;blog --git-dir&#x3D;&#x2F;home&#x2F;git&#x2F;repos&#x2F;blog.git checkout -f</code></pre>
+</code></pre></div><div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span>
+git --work-tree=/home/git/projects/blog --git-dir=/home/git/repos/blog.git checkout -f</code></pre></div>
 <p>添加完毕后修改权限</p>
-<pre><code>chmod +x post-receive
+<div class="hljs"><pre><code>chmod +x post-receive
 exit // 退出到 root 登录
 chown -R git:git /home/git/repos/blog.git // 添加权限
-</code></pre><h2 id="测试git仓库是否可用，另找空白文件夹"><a href="#测试git仓库是否可用，另找空白文件夹" class="headerlink" title="测试git仓库是否可用，另找空白文件夹"></a>测试git仓库是否可用，另找空白文件夹</h2><pre><code>git clone git@server_ip:/home/git/repos/blog.git
-</code></pre><p>如果能把空仓库拉下来，就说明 git 仓库搭建成功了</p>
+</code></pre></div><h2 id="测试git仓库是否可用，另找空白文件夹"><a href="#测试git仓库是否可用，另找空白文件夹" class="headerlink" title="测试git仓库是否可用，另找空白文件夹"></a>测试git仓库是否可用，另找空白文件夹</h2><div class="hljs"><pre><code>git clone git@server_ip:/home/git/repos/blog.git
+</code></pre></div><p>如果能把空仓库拉下来，就说明 git 仓库搭建成功了</p>
 <h2 id="Git配置仓库"><a href="#Git配置仓库" class="headerlink" title="Git配置仓库"></a>Git配置仓库</h2><p>&emsp;&emsp;这一部分主要目的是让我们个人的电脑可以通过ssh方式连接到云服务器，然后我们就可以通过命令行方式将我们的博客Po到服务器上。操作如下： 安装git: yum install git 配置git用户 adduser git 修改用户权限:
 </p>
 
-<pre><code>chmod 740 /etc/sudoers
+<div class="hljs"><pre><code>chmod 740 /etc/sudoers
 vi /etc/sudoers
-</code></pre><pre><code class="hljs plain">找到这个位置添加下面这句话 git ALL&#x3D;(ALL) ALL</code></pre>
+</code></pre></div><div class="hljs"><pre><code class="hljs ada">找到这个位置添加下面这句话 git <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>) <span class="hljs-keyword">ALL</span></code></pre></div>
 <p><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93d76b9d87178?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt=" "></p>
 <p>保存退出后 将sudoers文件权限改回原样</p>
-<pre><code>chmod 400 /etc/sudoers
-</code></pre><p>切换到git用户，然后在~目录下创建.ssh文件夹</p>
-<pre><code>        su git
+<div class="hljs"><pre><code>chmod 400 /etc/sudoers
+</code></pre></div><p>切换到git用户，然后在~目录下创建.ssh文件夹</p>
+<div class="hljs"><pre><code>        su git
         cd ~
         mkdir .ssh
         cd .ssh
-</code></pre><p><strong>生成公钥密钥文件</strong>(重点)</p>
+</code></pre></div><p><strong>生成公钥密钥文件</strong>(重点)</p>
 <font color="red" size="bolder">ssh-keygen</font>
 
 <p><strong>此时在目录下就会有两个文件，分别是</strong></p>
@@ -263,16 +296,16 @@ vi /etc/sudoers
 <font color="red" size="bolder">cp id_rsa.pub authorized_keys</font>
 
 <p><strong>这样目录下就会有一个authorized_keys文件，它和id_rsa.pub一模一样。<br>最后我们修改它的权限</strong></p>
-<pre><code>chmod 600 ~/.ssh/authorized_keys
+<div class="hljs"><pre><code>chmod 600 ~/.ssh/authorized_keys
 chmod 700 ~/.ssh
-</code></pre><p>&emsp;&emsp;但是大家一定要注意在远程连接服务其之前，我们一定要先对我能的服务器进行设置。<br>在root用户下修改 <strong>/etc/ssh/sshd_config</strong> 文件中的<strong>PasswordAuthentication no改为PasswordAuthentication yes</strong> 并保存。<br><img src="https://img.alicdn.com/tfs/TB1B8ELgHsTMeJjSszgXXacpFXa-799-554.png" srcset="/img/loading.gif" alt=" "><br>输入如下命令<strong>sudo service sshd restart</strong>重启SSH服务,就可以重新使用账号密码连接服务器了。<br><img src="https://img.alicdn.com/tfs/TB1OjQ_gMMPMeJjy1XbXXcwxVXa-812-264.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p>&emsp;&emsp;但是大家一定要注意在远程连接服务其之前，我们一定要先对我能的服务器进行设置。<br>在root用户下修改 <strong>/etc/ssh/sshd_config</strong> 文件中的<strong>PasswordAuthentication no改为PasswordAuthentication yes</strong> 并保存。<br><img src="https://img.alicdn.com/tfs/TB1B8ELgHsTMeJjSszgXXacpFXa-799-554.png" srcset="/img/loading.gif" alt=" "><br>输入如下命令<strong>sudo service sshd restart</strong>重启SSH服务,就可以重新使用账号密码连接服务器了。<br><img src="https://img.alicdn.com/tfs/TB1OjQ_gMMPMeJjy1XbXXcwxVXa-812-264.png" srcset="/img/loading.gif" alt=" "></p>
 <p>&emsp;&emsp;然后我们在<strong>自己的电脑上自己的电脑上自己的电脑上</strong>（重要的事说三遍），打开cmd，使用ssh方式连接我们的云服务器。<br>     <img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93d7a77735c4d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt=" "></p>
 <p>最后当你远程连接上你的服务器时，就会出现<br><img src="/img/服务器-4.png" srcset="/img/loading.gif" alt=" "></p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>&emsp;&emsp;我们需要更改hexo博客的根目录下的_config.yml文件将最后一行的的repo：后面改成 </p>
-<pre><code>git@这里写服务器外网IP:/home/git/repos/blog.git
-</code></pre><p>之后大家就可以来尝试用hexo clean &amp; hexo g &amp; hexo d 来部署大家的博客了。<br><img src="/img/服务器-2.png" srcset="/img/loading.gif" alt=" "></p>
+<div class="hljs"><pre><code>git@这里写服务器外网IP:/home/git/repos/blog.git
+</code></pre></div><p>之后大家就可以来尝试用hexo clean &amp; hexo g &amp; hexo d 来部署大家的博客了。<br><img src="/img/服务器-2.png" srcset="/img/loading.gif" alt=" "></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -287,11 +320,11 @@ chmod 700 ~/.ssh
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/01/09/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
@@ -300,8 +333,8 @@ chmod 700 ~/.ssh
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2019/12/26/%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91/">
@@ -310,47 +343,45 @@ chmod 700 ~/.ssh
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -409,17 +440,17 @@ chmod 700 ~/.ssh
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -432,14 +463,31 @@ chmod 700 ~/.ssh
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -448,7 +496,7 @@ chmod 700 ~/.ssh
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -464,62 +512,6 @@ chmod 700 ~/.ssh
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -646,6 +638,41 @@ chmod 700 ~/.ssh
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

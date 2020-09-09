@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>cellular automata ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/OIP.jfif') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-27 20:14">
-                    2020年3月27日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-27 20:14" pubdate>
+        2020年3月27日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.1k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    14
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,106 +215,108 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">cellular automata</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>STL函数，内部用二分查找实现</p>
 <a id="more"></a>
 <h1 id="有关lower-bound-函数的使用"><a href="#有关lower-bound-函数的使用" class="headerlink" title="有关lower_bound()函数的使用"></a>有关lower_bound()函数的使用</h1><p>lower_bound()函数需要加载头文件#include<algorithm>,其基本用途是查找有序区间中第一个大于或等于某给定值的元素的位置，其中排序规则可以通过二元关系来表示。</p>
-<pre><code class="hljs C++">函数原型：
-<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-title">class</span> <span class="hljs-title">Type</span>&gt;
-   <span class="hljs-title">ForwardIterator</span> <span class="hljs-title">lower_bound</span>(
-      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">First</span>, 
-      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">Last</span>,
-      <span class="hljs-title">const</span> <span class="hljs-title">Type</span>&amp; _<span class="hljs-title">Val</span>
-   );</span>
-<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-title">class</span> <span class="hljs-title">Type</span>, <span class="hljs-title">class</span> <span class="hljs-title">BinaryPredicate</span>&gt;
-   <span class="hljs-title">ForwardIterator</span> <span class="hljs-title">lower_bound</span>(
-      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">First</span>, 
-      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">Last</span>,
-      <span class="hljs-title">const</span> <span class="hljs-title">Type</span>&amp; _<span class="hljs-title">Val</span>,
-      <span class="hljs-title">BinaryPredicate</span> _<span class="hljs-title">Comp</span>
-   );</span>传入参数说明：
+<div class="hljs"><pre><code class="hljs C++">函数原型：
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-title">class</span> <span class="hljs-title">Type</span>&gt;</span>
+<span class="hljs-class">   <span class="hljs-title">ForwardIterator</span> <span class="hljs-title">lower_bound</span>(</span>
+<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">First</span>, </span>
+<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">Last</span>,</span>
+<span class="hljs-class">      <span class="hljs-title">const</span> <span class="hljs-title">Type</span>&amp; _<span class="hljs-title">Val</span></span>
+<span class="hljs-class">   );</span>
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-title">class</span> <span class="hljs-title">Type</span>, <span class="hljs-title">class</span> <span class="hljs-title">BinaryPredicate</span>&gt;</span>
+<span class="hljs-class">   <span class="hljs-title">ForwardIterator</span> <span class="hljs-title">lower_bound</span>(</span>
+<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">First</span>, </span>
+<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">Last</span>,</span>
+<span class="hljs-class">      <span class="hljs-title">const</span> <span class="hljs-title">Type</span>&amp; _<span class="hljs-title">Val</span>,</span>
+<span class="hljs-class">      <span class="hljs-title">BinaryPredicate</span> _<span class="hljs-title">Comp</span></span>
+<span class="hljs-class">   );</span>传入参数说明：
    
 _First 要查找区间的起始位置
 _Last 要查找区间的结束位置
 _Val 给定用来查找的值
-_Comp 自定义的表示小于关系的函数对象，根据某个元素是否满足小于关系而返回<span class="hljs-literal">true</span>或者<span class="hljs-literal">false</span></code></pre>
+_Comp 自定义的表示小于关系的函数对象，根据某个元素是否满足小于关系而返回<span class="hljs-literal">true</span>或者<span class="hljs-literal">false</span></code></pre></div>
 <h2 id="函数介绍"><a href="#函数介绍" class="headerlink" title="函数介绍"></a>函数介绍</h2><p>例如，有如下序列：<br>$a[i]={12,15,17,19,20,22,23,26,29,35,40,51}$;<br>用值21调用lower_bound(),返回一个指向22的iterator。用值22调用lower_bound(),也返回一个指向22的iterator。第一个版本使用底层 &lt; (小于)操作符，第二个版本根据comp进行排序和比较。</p>
 <p>lower_bound(k)返回一个迭代器，指向键不小于k的第一个元素</p>
 <p>upper_bound(k)返回一个迭代器，指向键大于k的第一个元素</p>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>调用lower_bound之前必须确定序列为有序序列，否则调用出错。第一个版本排序根据底层的 &lt;(小于)操作符，第二个版本根据comp进行排序。</p>
-<h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><pre><code class="hljs C++">
+<h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><div class="hljs"><pre><code class="hljs C++">
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/sdtc++.h&gt; </span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>; 
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v; 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> 
-</span>&#123; 
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>
+<span class="hljs-function"></span>&#123; 
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">4</span>; i++) 
     v.push_back(<span class="hljs-number">2</span> * i);<span class="hljs-comment">//注意此时v中的元素本身就是有序的 </span>
-  <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = lower_bound(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), <span class="hljs-number">3</span>); 
+  <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = lower_bound(v.begin(), v.end(), <span class="hljs-number">3</span>); 
   <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-built_in">endl</span>; 
   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; 
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>上面的例子是针对容器的，注意返回的是距离元素3最近的指针it，输出的是*it结果为元素4，假如我想得到位置而非具体的元素应该怎么办呢？这里有一个指针偏移的技巧，只需要减去起始位置的指针即可，代码如下：</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;  </span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;  </span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;  </span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;  </span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;  
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v;  
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>  
-</span>&#123;  
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>  </span>
+<span class="hljs-function"></span>&#123;  
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">4</span>; i++)  
         v.push_back(<span class="hljs-number">2</span> * i);<span class="hljs-comment">//注意此时v中的元素本身就是有序的  </span>
     <span class="hljs-comment">//vector&lt;int&gt;::iterator it = lower_bound(v.begin(), v.end(), 3);  </span>
-    <span class="hljs-keyword">int</span> pos = lower_bound(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), <span class="hljs-number">3</span>)-v.<span class="hljs-built_in">begin</span>();  
+    <span class="hljs-keyword">int</span> pos = lower_bound(v.begin(), v.end(), <span class="hljs-number">3</span>)-v.begin();  
     <span class="hljs-built_in">cout</span> &lt;&lt; pos&lt;&lt; <span class="hljs-built_in">endl</span>;  
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>结果和容器的时候是一样的。</p>
 <p>对于4个参数的情形，最后一个参数的自己定义的表示大小关系函数的对象，常用的逆序可以加载头文件#include<functional>,里边有一个greater<int>()函数即可对逆序求最近位置。假如说像上边一样元素为2 4 6 8，逆序则是8 6 4 2，那么求距离3最近表示的是与3最近的小于等于3的元素，输出结果则是元素2了，代码如下：</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt; </span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt; </span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt; </span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt; </span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;functional&gt; </span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>; 
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v; 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>  
-</span>&#123; 
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>  </span>
+<span class="hljs-function"></span>&#123; 
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">4</span>; i &gt;<span class="hljs-number">0</span>; i--) 
     v.push_back(<span class="hljs-number">2</span> * i);<span class="hljs-comment">//注意此时v中的元素本身就是有序的 </span>
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = lower_bound(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), <span class="hljs-number">3</span>,greater&lt;<span class="hljs-keyword">int</span>&gt;()); 
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = lower_bound(v.begin(), v.end(), <span class="hljs-number">3</span>,greater&lt;<span class="hljs-keyword">int</span>&gt;()); 
     <span class="hljs-built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="hljs-built_in">endl</span>; 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; 
-&#125;</code></pre>
+&#125;</code></pre></div>
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>我们知道map容器是根据键值进行排序的</p>
 <p>lower_bound(k)返回一个迭代器，指向键不小于k的第一个元素</p>
 <p>upper_bound(k)返回一个迭代器，指向键大于k的第一个元素</p>
 <p>这两个函数常用于multimap容器，用来获取某个键对应的所有元素</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
-</span>&#123;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
     <span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt; m;
-    m.insert(make_pair((<span class="hljs-built_in">string</span>)<span class="hljs-string">"China"</span>,<span class="hljs-number">1</span>));
-    m.insert(make_pair((<span class="hljs-built_in">string</span>)<span class="hljs-string">"China"</span>,<span class="hljs-number">2</span>));
-    m.insert(make_pair((<span class="hljs-built_in">string</span>)<span class="hljs-string">"China"</span>,<span class="hljs-number">3</span>));
-    m.insert(make_pair((<span class="hljs-built_in">string</span>)<span class="hljs-string">"English"</span>,<span class="hljs-number">1</span>));
-    m.insert(make_pair((<span class="hljs-built_in">string</span>)<span class="hljs-string">"English"</span>,<span class="hljs-number">2</span>));
-    <span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator it = m.<span class="hljs-built_in">begin</span>();
-    <span class="hljs-keyword">while</span>(it != m.<span class="hljs-built_in">end</span>())
+    m.insert(<span class="hljs-built_in">make_pair</span>((<span class="hljs-built_in">string</span>)<span class="hljs-string">&quot;China&quot;</span>,<span class="hljs-number">1</span>));
+    m.insert(<span class="hljs-built_in">make_pair</span>((<span class="hljs-built_in">string</span>)<span class="hljs-string">&quot;China&quot;</span>,<span class="hljs-number">2</span>));
+    m.insert(<span class="hljs-built_in">make_pair</span>((<span class="hljs-built_in">string</span>)<span class="hljs-string">&quot;China&quot;</span>,<span class="hljs-number">3</span>));
+    m.insert(<span class="hljs-built_in">make_pair</span>((<span class="hljs-built_in">string</span>)<span class="hljs-string">&quot;English&quot;</span>,<span class="hljs-number">1</span>));
+    m.insert(<span class="hljs-built_in">make_pair</span>((<span class="hljs-built_in">string</span>)<span class="hljs-string">&quot;English&quot;</span>,<span class="hljs-number">2</span>));
+    <span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator it = m.begin();
+    <span class="hljs-keyword">while</span>(it != m.end())
     &#123;
-        <span class="hljs-built_in">cout</span>&lt;&lt;it-&gt;first&lt;&lt;<span class="hljs-string">" "</span>&lt;&lt;it-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;
+        <span class="hljs-built_in">cout</span>&lt;&lt;it-&gt;first&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;it-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;
         it++;
     &#125;
     <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-built_in">endl</span>;
-    <span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator it1 = m.lower_bound(<span class="hljs-string">"China"</span>),it2 = m.upper_bound(<span class="hljs-string">"China"</span>);
-    <span class="hljs-built_in">cout</span>&lt;&lt;it1-&gt;first&lt;&lt;<span class="hljs-string">" "</span>&lt;&lt;it1-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;
-    <span class="hljs-built_in">cout</span>&lt;&lt;it2-&gt;first&lt;&lt;<span class="hljs-string">" "</span>&lt;&lt;it2-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator it1 = m.lower_bound(<span class="hljs-string">&quot;China&quot;</span>),it2 = m.upper_bound(<span class="hljs-string">&quot;China&quot;</span>);
+    <span class="hljs-built_in">cout</span>&lt;&lt;it1-&gt;first&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;it1-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span>&lt;&lt;it2-&gt;first&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;it2-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -307,11 +340,11 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/03/28/%E5%8F%8C%E5%90%91BFS/">
@@ -320,8 +353,8 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/03/26/AC%E9%80%89%E8%AE%B2/">
@@ -330,47 +363,45 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -429,17 +460,17 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -452,14 +483,31 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -468,7 +516,7 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -484,62 +532,6 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -666,6 +658,41 @@ _Comp 自定义的表示小于关系的函数对象，根据某个元素是否�
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

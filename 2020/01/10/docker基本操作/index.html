@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>docker的基本操作 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/docker_banner.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-01-10 22:58">
-                    2020年1月10日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-10 22:58" pubdate>
+        2020年1月10日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    387 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      387 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    5
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,52 +215,54 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">docker的基本操作</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>在Linux运维中我们经常会用到docker，docker通过丰富的镜像软件可以为我们的服务操作带来方便</p>
 <a id="more"></a>
 <h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><p>&emsp;&emsp;首先Docker要求CentOS系统的内核版本高于 3.10 ，通过 uname -r 命令查看你当前的内核版本是否支持安装docker。<br>如果内核版本过低就更新一下系统内核</p>
-<pre><code>yum update
-</code></pre><p>然后安装需要的软件包，yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
-<pre><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-</code></pre><p>设置yum源：</p>
-<pre><code>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-</code></pre><p><img src="/img/docker操作_6.png" srcset="/img/loading.gif" alt=" "></p>
+<div class="hljs"><pre><code>yum update
+</code></pre></div><p>然后安装需要的软件包，yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
+<div class="hljs"><pre><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre></div><p>设置yum源：</p>
+<div class="hljs"><pre><code>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre></div><p><img src="/img/docker操作_6.png" srcset="/img/loading.gif" alt=" "></p>
 <p>我们可以查看所有仓库中所有docker版本，并选择特定版本安装：</p>
-<pre><code>yum list docker-ce --showduplicates | sort -r
-</code></pre><p><img src="/img/docker操作_5.png" srcset="/img/loading.gif" alt=" "></p>
+<div class="hljs"><pre><code>yum list docker-ce --showduplicates | sort -r
+</code></pre></div><p><img src="/img/docker操作_5.png" srcset="/img/loading.gif" alt=" "></p>
 <p>做好这些前提准备之后我们就可以安装docker了</p>
-<pre><code>sudo yum install docker-ce-17.12.0.ce
-</code></pre><p>启动、设置开启开机启动</p>
-<pre><code>sudo systemctl start docker
+<div class="hljs"><pre><code>sudo yum install docker-ce-17.12.0.ce
+</code></pre></div><p>启动、设置开启开机启动</p>
+<div class="hljs"><pre><code>sudo systemctl start docker
 sudo systemctl enable docker
-</code></pre><p>完成上面的操作后验证安装是否成功(有client和service两部分表示docker安装启动都成功了):</p>
-<pre><code>docker version
-</code></pre><p><img src="/img/docker操作_4.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p>完成上面的操作后验证安装是否成功(有client和service两部分表示docker安装启动都成功了):</p>
+<div class="hljs"><pre><code>docker version
+</code></pre></div><p><img src="/img/docker操作_4.png" srcset="/img/loading.gif" alt=" "></p>
 <p>查看docker启动状态：</p>
-<pre><code>systemctl status docker
-</code></pre><p><img src="/img/docker操作_3.png" srcset="/img/loading.gif" alt=" "></p>
+<div class="hljs"><pre><code>systemctl status docker
+</code></pre></div><p><img src="/img/docker操作_3.png" srcset="/img/loading.gif" alt=" "></p>
 <h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>查询docker安装过的包：<br><img src="/img/docker操作_2.png" srcset="/img/loading.gif" alt=""></p>
 <p>删除安装包：</p>
-<pre><code>yum remove docker-ce.x86_64 ddocker-ce-cli.x86_64 -y
-</code></pre><p>删除镜像/容器等:</p>
-<pre><code>rm -rf /var/lib/docker
-</code></pre><h2 id="然后我们还可可以删除容器的方法："><a href="#然后我们还可可以删除容器的方法：" class="headerlink" title="然后我们还可可以删除容器的方法："></a>然后我们还可可以删除容器的方法：</h2><ul>
+<div class="hljs"><pre><code>yum remove docker-ce.x86_64 ddocker-ce-cli.x86_64 -y
+</code></pre></div><p>删除镜像/容器等:</p>
+<div class="hljs"><pre><code>rm -rf /var/lib/docker
+</code></pre></div><h2 id="然后我们还可可以删除容器的方法："><a href="#然后我们还可可以删除容器的方法：" class="headerlink" title="然后我们还可可以删除容器的方法："></a>然后我们还可可以删除容器的方法：</h2><ul>
 <li><p>先停止运行的容器：</p>
-<pre><code class="hljs plain">docker container stop [container-id]</code></pre>
+<div class="hljs"><pre><code class="hljs sql">docker container <span class="hljs-keyword">stop</span> [<span class="hljs-keyword">container</span>-<span class="hljs-keyword">id</span>]</code></pre></div>
 </li>
 <li><p>然后删除容器：</p>
 </li>
 </ul>
-<pre><code class="hljs plain">docker container rm [container-id]</code></pre>
+<div class="hljs"><pre><code class="hljs axapta">docker <span class="hljs-keyword">container</span> rm [<span class="hljs-keyword">container</span>-id]</code></pre></div>
 <ul>
-<li>最后删除镜像：<pre><code class="hljs plain">docker image rmi [image-id]</code></pre>
+<li>最后删除镜像：<div class="hljs"><pre><code class="hljs arduino">docker <span class="hljs-built_in">image</span> rmi [<span class="hljs-built_in">image</span>-id]</code></pre></div>
 </li>
 </ul>
 <p>获取对应的 id 可以通过命令：<strong>docker container ls</strong>和 <strong>docker image ls</strong>。<br><img src="/img/docker操作_1.png" srcset="/img/loading.gif" alt=" "></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -253,11 +286,11 @@ sudo systemctl enable docker
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/01/15/python_ex34/">
@@ -266,8 +299,8 @@ sudo systemctl enable docker
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/01/09/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
@@ -276,47 +309,45 @@ sudo systemctl enable docker
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -375,17 +406,17 @@ sudo systemctl enable docker
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -398,14 +429,31 @@ sudo systemctl enable docker
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -414,7 +462,7 @@ sudo systemctl enable docker
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -430,62 +478,6 @@ sudo systemctl enable docker
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -612,6 +604,41 @@ sudo systemctl enable docker
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

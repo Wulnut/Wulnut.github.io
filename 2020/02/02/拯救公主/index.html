@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>拯救公主 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/code.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-02 22:32">
-                    2020年2月2日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-02 22:32" pubdate>
+        2020年2月2日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    15
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,9 +215,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">拯救公主</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>BFS训练题</p>
 <a id="more"></a>
 <h2 id="拯救公主"><a href="#拯救公主" class="headerlink" title="拯救公主"></a>拯救公主</h2><p>公主被恶人抓走，被关押在牢房的某个地方。牢房用 $ N \times M (N, M \le 200)N×M(N,M\le200) $ 的矩阵来表示。矩阵中的每项可以代表道路（@）、墙壁（#）、和守卫（x）。</p>
@@ -195,7 +228,7 @@
 <p>给定牢房矩阵，公主、骑士和守卫在矩阵中的位置，请你计算拯救行动成功需要花费最短时间。</p>
 <h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>1、两个整数代表 $N$ 和 $M, (N, M \le 200)M,(N,M\le200)$.<br>2、随后 $N$ 行，每行有 $M$ 个字符。”@” 代表道路，”a” 代表公主，”r” 代表骑士，”x” 代表守卫, “#” 代表墙壁。</p>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>如果拯救行动成功，输出一个整数，表示行动的最短时间。<br>如果不可能成功，输出 “Impossible”。</p>
-<h3 id="输入样例1"><a href="#输入样例1" class="headerlink" title="输入样例1"></a>输入样例1</h3><pre><code>7 8
+<h3 id="输入样例1"><a href="#输入样例1" class="headerlink" title="输入样例1"></a>输入样例1</h3><div class="hljs"><pre><code>7 8
 #@#####@
 #@a#@@r@
 #@@#x@@@
@@ -203,8 +236,8 @@
 #@@@##@@
 @#@@@@@@
 @@@@@@@@
-</code></pre><h3 id="输出样例1"><a href="#输出样例1" class="headerlink" title="输出样例1"></a>输出样例1</h3><pre><code>13
-</code></pre><h3 id="输入样例2"><a href="#输入样例2" class="headerlink" title="输入样例2"></a>输入样例2</h3><pre><code>13 40
+</code></pre></div><h3 id="输出样例1"><a href="#输出样例1" class="headerlink" title="输出样例1"></a>输出样例1</h3><div class="hljs"><pre><code>13
+</code></pre></div><h3 id="输入样例2"><a href="#输入样例2" class="headerlink" title="输入样例2"></a>输入样例2</h3><div class="hljs"><pre><code>13 40
 @x@@##x@#x@x#xxxx##@#x@x@@#x#@#x#@@x@#@x
 xx###x@x#@@##xx@@@#@x@@#x@xxx@@#x@#x@@x@
 #@x#@x#x#@@##@@x#@xx#xxx@@x##@@@#@x@@x@x
@@ -218,61 +251,61 @@ x#x#@x@#x#@##@xrx@x#xxxx@##x##xx#@#x@xx@
 x#xx@x###@xxx#@#x#@@###@#@##@x#@x@#@@#@@
 #@#x@x#x#x###@x@@xxx####x@x##@x####xx#@x
 #x#@x#x######@@#x@#xxxx#xx@@@#xx#x#####@
-</code></pre><h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><pre><code>7
-</code></pre><h3 id="ans"><a href="#ans" class="headerlink" title="ans"></a>ans</h3><pre><code>//ac
+</code></pre></div><h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><div class="hljs"><pre><code>7
+</code></pre></div><h3 id="ans"><a href="#ans" class="headerlink" title="ans"></a>ans</h3><div class="hljs"><pre><code>//ac
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 char maze[205][205];
 bool vis[205][205];
-int dir[4][2] = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+int dir[4][2] = &#123;&#123;-1, 0&#125;, &#123;0, -1&#125;, &#123;1, 0&#125;, &#123;0, 1&#125;&#125;;
 int n, m;
 
-struct node {
+struct node &#123;
     int x;
     int y;
     int d;
-    node(int xx, int yy, int dd) : x(xx), y(yy), d(dd) {}
-    friend bool operator &lt; (node a, node b) {
+    node(int xx, int yy, int dd) : x(xx), y(yy), d(dd) &#123;&#125;
+    friend bool operator &lt; (node a, node b) &#123;
         return a.d &gt; b.d;
-    }
-};
+    &#125;
+&#125;;
 
-int bfs(int x, int y) {
+int bfs(int x, int y) &#123;
     priority_queue&lt;node&gt; q;
     vis[x][y] = true;
     q.push(node(x, y, 0));
 
-    while(!q.empty()) {
+    while(!q.empty()) &#123;
         node now = q.top();
         q.pop();
 
-        for (int i = 0; i &lt; 4; ++i) {
+        for (int i = 0; i &lt; 4; ++i) &#123;
             int tx = now.x + dir[i][0];
             int ty = now.y + dir[i][1];
 
             if (0 &gt; tx || tx &gt;= n || 0 &gt; ty || ty &gt;= m || maze[tx][ty] == &#39;#&#39; || vis[tx][ty])
             continue;
 
-            if (maze[tx][ty] == &#39;a&#39;) {
+            if (maze[tx][ty] == &#39;a&#39;) &#123;
                 return now.d + 1;
-            }
-            else if (maze[tx][ty] == &#39;x&#39;) {
+            &#125;
+            else if (maze[tx][ty] == &#39;x&#39;) &#123;
                 vis[tx][ty] = true;
                 q.push(node(tx, ty, now.d + 2));
-            }
-            else{
+            &#125;
+            else&#123;
                 vis[tx][ty] = true;
                 q.push(node(tx, ty, now.d + 1));
-            }
+            &#125;
 
-        }
-    }
+        &#125;
+    &#125;
 
     return -1;
-}
+&#125;
 
-int main(){
+int main()&#123;
     freopen(&quot;note.txt&quot;, &quot;r&quot;, stdin);
     freopen(&quot;ans.txt&quot;, &quot;w&quot;, stdout);
 
@@ -280,33 +313,33 @@ int main(){
     int ans = -1;
 
     cin &gt;&gt; n &gt;&gt; m;
-    for (i = 0; i &lt; n; ++i) {
+    for (i = 0; i &lt; n; ++i) &#123;
         cin &gt;&gt; maze[i];
-    }
+    &#125;
 
-    for (i = 0; i &lt; n; ++i) {
-        for (j = 0; j &lt; m; ++j) {
-            if (maze[i][j] == &#39;r&#39;){
+    for (i = 0; i &lt; n; ++i) &#123;
+        for (j = 0; j &lt; m; ++j) &#123;
+            if (maze[i][j] == &#39;r&#39;)&#123;
                 break;
-            }
-        }
+            &#125;
+        &#125;
         if (maze[i][j] == &#39;r&#39;) break;
-    }
+    &#125;
 
     ans = bfs(i, j);
 
-    if (ans == -1) {
+    if (ans == -1) &#123;
         cout &lt;&lt; &quot;Impossible&quot; &lt;&lt; endl;
-    }
-    else{
+    &#125;
+    else&#123;
         cout &lt;&lt; ans &lt;&lt; endl;
-    }
+    &#125;
     return 0;
-}
-</code></pre><h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>&emsp;&emsp;这个题目的棋盘范围超过了100也就是说使用dfs算法是非常危险的方法，因为dfs的时间复杂度为 $O(2^n)$ 而bfs的时间复杂度为$O(M*N)$所以使用dfs是会为超时的。</p>
+&#125;
+</code></pre></div><h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>&emsp;&emsp;这个题目的棋盘范围超过了100也就是说使用dfs算法是非常危险的方法，因为dfs的时间复杂度为 $O(2^n)$ 而bfs的时间复杂度为$O(M*N)$所以使用dfs是会为超时的。</p>
 <p>&emsp;&emsp;所以弃用dfs是必须的，一般再求最少问题时一般都是采用dfs算法使用。但是我们注意这个棋盘的范围超过了100。对于bfs来说<br>空间复杂度问题就显现的比较明显。如果采用一般的队列方式来存储帮助bfs的实现，时肯定不行的。此时就要记住。一般这种情况下求极值问题要求优化，我们就采用用<strong>优先队列</strong>的方法。来进行优化。其实质上对空间复杂度的优化就是对时间复杂度的优化。要不断使用最优秀的数据结构来解决时间于内存上的算法优化问题。</p>
 <font color="#f4f4f4" weight="bold" size="32">To be continue</font>
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -334,11 +367,11 @@ int main(){
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/02/02/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">
@@ -347,8 +380,8 @@ int main(){
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/01/26/%E8%B8%8F%E9%9D%92/">
@@ -357,47 +390,45 @@ int main(){
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -456,17 +487,17 @@ int main(){
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -479,14 +510,31 @@ int main(){
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -495,7 +543,7 @@ int main(){
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -511,62 +559,6 @@ int main(){
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -693,6 +685,41 @@ int main(){
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

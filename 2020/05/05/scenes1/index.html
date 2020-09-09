@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>Text Format ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/code.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-05 23:20">
-                    2020年5月5日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-05 23:20" pubdate>
+        2020年5月5日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    946 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      946 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    18
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,34 +215,36 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Text Format</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>manim 入门</p>
 <a id="more"></a>
-<h1 id="Text-format"><a href="#Text-format" class="headerlink" title="Text format"></a>Text format</h1><pre><code class="hljs 注意```:">
+<h1 id="Text-format"><a href="#Text-format" class="headerlink" title="Text format"></a>Text format</h1><div class="hljs"><pre><code class="hljs 注意```:">
 &#96;&#96;&#96;python3
-from big_ol_pile_of_manim_imports import *</code></pre>
+from big_ol_pile_of_manim_imports import *</code></pre></div>
 <p>在第一行</p>
-<h2 id="Programs"><a href="#Programs" class="headerlink" title="Programs"></a>Programs</h2><pre><code class="hljs python3">class WriteText(Scene): 
+<h2 id="Programs"><a href="#Programs" class="headerlink" title="Programs"></a>Programs</h2><div class="hljs"><pre><code class="hljs python3">class WriteText(Scene): 
     def construct(self): 
         text &#x3D; TextMobject(&quot;This is a regular text&quot;)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/WriteText.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class AddText(Scene): 
+<div class="hljs"><pre><code class="hljs python3">class AddText(Scene): 
     def construct(self): 
         text &#x3D; TextMobject(&quot;This is a regular text&quot;)
         self.add(text)
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/AddText.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class Formula(Scene): 
+<div class="hljs"><pre><code class="hljs python3">class Formula(Scene): 
     def construct(self): 
         formula &#x3D; TexMobject(&quot;This is a formula&quot;)
         self.play(Write(formula))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/Formula.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TypesOfText(Scene): 
+<div class="hljs"><pre><code class="hljs python3">class TypesOfText(Scene): 
     def construct(self): 
         typesOfText &#x3D; TextMobject(&quot;&quot;&quot;
             This is a regular text,
@@ -219,9 +252,9 @@ from big_ol_pile_of_manim_imports import *</code></pre>
             $$this is a formula$$
             &quot;&quot;&quot;)
         self.play(Write(typesOfText))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TipesOfText.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TypesOfText2(Scene): 
+<div class="hljs"><pre><code class="hljs python3">class TypesOfText2(Scene): 
     def construct(self): 
         typesOfText &#x3D; TextMobject(&quot;&quot;&quot;
             This is a regular text,
@@ -229,9 +262,9 @@ from big_ol_pile_of_manim_imports import *</code></pre>
             $$x^2+y^2&#x3D;a^2$$
             &quot;&quot;&quot;)
         self.play(Write(typesOfText))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TipesOfText2.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class DisplayFormula(Scene): 
+<div class="hljs"><pre><code class="hljs python3">class DisplayFormula(Scene): 
     def construct(self): 
         typesOfText &#x3D; TextMobject(&quot;&quot;&quot;
             This is a regular text,
@@ -239,65 +272,65 @@ from big_ol_pile_of_manim_imports import *</code></pre>
             $$x^2+y^2&#x3D;a^2$$
             &quot;&quot;&quot;)
         self.play(Write(typesOfText))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/DisplayFormula.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextInCenter(Scene):
+<div class="hljs"><pre><code class="hljs python3">class TextInCenter(Scene):
     def construct(self):
         text &#x3D; TextMobject(&quot;Text&quot;)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextInCenter.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextOnTopEdge(Scene):
+<div class="hljs"><pre><code class="hljs python3">class TextOnTopEdge(Scene):
     def construct(self):
         text &#x3D; TextMobject(&quot;Text&quot;)
         text.to_edge(UP)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextOnTopEdge.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextOnBottomEdge(Scene):
+<div class="hljs"><pre><code class="hljs python3">class TextOnBottomEdge(Scene):
     def construct(self):
         text &#x3D; TextMobject(&quot;Text&quot;)
         text.to_edge(DOWN)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextOnBottomEdge.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextOnRightEdge(Scene):
+<div class="hljs"><pre><code class="hljs python3">class TextOnRightEdge(Scene):
     def construct(self):
         text &#x3D; TextMobject(&quot;Text&quot;)
         text.to_edge(RIGHT)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextOnRightEdge.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextOnLeftEdge(Scene):
+<div class="hljs"><pre><code class="hljs python3">class TextOnLeftEdge(Scene):
     def construct(self):
         text &#x3D; TextMobject(&quot;Text&quot;)
         text.to_edge(LEFT)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextOnLeftEdge.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextInUpperRightCorner(Scene):
+<div class="hljs"><pre><code class="hljs python3">class TextInUpperRightCorner(Scene):
     def construct(self):
         text &#x3D; TextMobject(&quot;Text&quot;)
         text.to_edge(UP+RIGHT)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextInUpperRightCorner.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextInLowerLeftCorner(Scene): 
+<div class="hljs"><pre><code class="hljs python3">class TextInLowerLeftCorner(Scene): 
     def construct(self): 
         text &#x3D; TextMobject(&quot;Text&quot;) 
         text.to_edge(LEFT+DOWN)
         self.play(Write(text))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextInLowerLeftCorner.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class CustomPosition1(Scene):
+<div class="hljs"><pre><code class="hljs python3">class CustomPosition1(Scene):
     def construct(self):
         textM &#x3D; TextMobject(&quot;Text&quot;)
         textC &#x3D; TextMobject(&quot;Central text&quot;)
         textM.move_to(0.25*UP) 
         self.play(Write(textM),Write(textC))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/CustomPosition1.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class CustomPosition2(Scene):
+<div class="hljs"><pre><code class="hljs python3">class CustomPosition2(Scene):
     def construct(self):
         textM &#x3D; TextMobject(&quot;Text&quot;)
         textC &#x3D; TextMobject(&quot;Central text&quot;)
@@ -306,25 +339,25 @@ from big_ol_pile_of_manim_imports import *</code></pre>
         self.wait(1)
         textM.move_to(1*UP+1*RIGHT) 
         self.play(Write(textM))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/CustomPosition2.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class RelativePosition1(Scene):
+<div class="hljs"><pre><code class="hljs python3">class RelativePosition1(Scene):
     def construct(self):
         textM &#x3D; TextMobject(&quot;Text&quot;)
         textC &#x3D; TextMobject(&quot;Reference text&quot;)
         textM.next_to(textC,LEFT,buff&#x3D;1) 
         self.play(Write(textM),Write(textC))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/RelativePosition1.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class RelativePosition2(Scene):
+<div class="hljs"><pre><code class="hljs python3">class RelativePosition2(Scene):
     def construct(self):
         textM &#x3D; TextMobject(&quot;Text&quot;)
         textC &#x3D; TextMobject(&quot;Reference text&quot;)
         textM.shift(UP*0.1)
         self.play(Write(textM),Write(textC))
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/RelativePosition2.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class RotateObject(Scene):
+<div class="hljs"><pre><code class="hljs python3">class RotateObject(Scene):
     def construct(self):
         textM &#x3D; TextMobject(&quot;Text&quot;)
         textC &#x3D; TextMobject(&quot;Reference text&quot;)
@@ -340,16 +373,16 @@ from big_ol_pile_of_manim_imports import *</code></pre>
         textM.rotate(PI&#x2F;4)
         self.wait(2)
         textM.rotate(PI)
-        self.wait(2)</code></pre>
+        self.wait(2)</code></pre></div>
 <p><img src="/img/RotateObject.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class FlipObject(Scene):
+<div class="hljs"><pre><code class="hljs python3">class FlipObject(Scene):
     def construct(self):
         textM &#x3D; TextMobject(&quot;Text&quot;)
         textM.flip(UP)
         self.play(Write(textM))
-        self.wait(2)</code></pre>
+        self.wait(2)</code></pre></div>
 <p><img src="/img/MirrorObject.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class SizeTextOnLaTeX(Scene):
+<div class="hljs"><pre><code class="hljs python3">class SizeTextOnLaTeX(Scene):
     def construct(self):
         textHuge &#x3D; TextMobject(&quot;&#123;\\Huge Huge Text 012.\\#!?&#125; Text&quot;)
         texthuge &#x3D; TextMobject(&quot;&#123;\\huge huge Text 012.\\#!?&#125; Text&quot;)
@@ -372,9 +405,9 @@ from big_ol_pile_of_manim_imports import *</code></pre>
         textscriptsize.next_to(textfootnotesize,DOWN,buff&#x3D;0.1)
         texttiny.next_to(textscriptsize,DOWN,buff&#x3D;0.1)
         self.add(textHuge,texthuge,textLARGE,textLarge,textlarge,textNormal,textsmall,textfootnotesize,textscriptsize,texttiny)
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/SizeTextOnLaTeX.gif" srcset="/img/loading.gif" alt=" "></p>
-<pre><code class="hljs python3">class TextFonts(Scene):
+<div class="hljs"><pre><code class="hljs python3">class TextFonts(Scene):
     def construct(self):
         textNormal &#x3D; TextMobject(&quot;\\textrm&#123;Roman serif text 012.\\#!?&#125; Text&quot;)
         textItalic &#x3D; TextMobject(&quot;\\textit&#123;Italic text 012.\\#!?&#125; Text&quot;)
@@ -389,10 +422,10 @@ from big_ol_pile_of_manim_imports import *</code></pre>
         textSL.next_to(textBold,DOWN,buff&#x3D;.5)
         textSC.next_to(textSL,DOWN,buff&#x3D;.5)
         self.add(textNormal,textItalic,textTypewriter,textBold,textSL,textSC)
-        self.wait(3)</code></pre>
+        self.wait(3)</code></pre></div>
 <p><img src="/img/TextFonts.gif" srcset="/img/loading.gif" alt=" "></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -414,11 +447,11 @@ from big_ol_pile_of_manim_imports import *</code></pre>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/05/12/%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%85%A5/">
@@ -427,8 +460,8 @@ from big_ol_pile_of_manim_imports import *</code></pre>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/05/02/%E5%8D%8A%E6%9C%88%E8%B0%881/">
@@ -437,47 +470,45 @@ from big_ol_pile_of_manim_imports import *</code></pre>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -536,17 +567,17 @@ from big_ol_pile_of_manim_imports import *</code></pre>
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -559,14 +590,31 @@ from big_ol_pile_of_manim_imports import *</code></pre>
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -575,7 +623,7 @@ from big_ol_pile_of_manim_imports import *</code></pre>
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -591,62 +639,6 @@ from big_ol_pile_of_manim_imports import *</code></pre>
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -773,6 +765,41 @@ from big_ol_pile_of_manim_imports import *</code></pre>
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

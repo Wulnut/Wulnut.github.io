@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>python学习笔记(6) ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/python_study.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-01-20 21:50">
-                    2020年1月20日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-20 21:50" pubdate>
+        2020年1月20日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    902 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      902 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    11
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,16 +215,18 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">python学习笔记(6)</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>python入门学习</p>
 <a id="more"></a>
 <h3 id="3-修改列表元素"><a href="#3-修改列表元素" class="headerlink" title="3.修改列表元素"></a>3.修改列表元素</h3><p>列表创建之后，可以对列表中单个元素或指定范围元素(切片)进行修改，方法是：</p>
 <ol>
 <li>list[index] = newValue: 对指定索引index的列表元素进行修改</li>
 <li><p>list[::] = newList: 对指定方位的列表元素进行修改</p>
-<pre><code> list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code> list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
  list[0] = &quot;eee&quot;
 
@@ -202,7 +235,7 @@
  list[1:3] = [&quot;ggg&quot;,&quot;kkk&quot;]
 
  print(&quot;list:&quot;,list)
-</code></pre></li>
+</code></pre></div></li>
 </ol>
 <p>4.删除列表元素<br>列表创建后，可以根据需要使用列表函数，del语句或切片和删除指定袁术或所有元素。</p>
 <ol>
@@ -213,7 +246,7 @@
 <li>list.clear(): 删除列表中所有元素。</li>
 <li>list[::] = []: 对指定范围的列表元素进行</li>
 </ol>
-<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
     print(&quot;list:&quot;,list)
 
@@ -225,7 +258,7 @@
     #list[2:3] = []
 
     print(&quot;list:&quot;,list)
-</code></pre><p>list.remove(item)<br><img src="/img/list.remove.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p>list.remove(item)<br><img src="/img/list.remove.png" srcset="/img/loading.gif" alt=" "></p>
 <p>list.clear()<br><img src="/img/list.clear.png" srcset="/img/loading.gif" alt=" "></p>
 <p>list[::] = []<br><img src="/img/list[].png" srcset="/img/loading.gif" alt=" "></p>
 <h2 id="列表复制和删除"><a href="#列表复制和删除" class="headerlink" title="列表复制和删除"></a>列表复制和删除</h2><h3 id="1-列表复制"><a href="#1-列表复制" class="headerlink" title="1.列表复制"></a>1.列表复制</h3><p>列表复制有两种方法。</p>
@@ -233,24 +266,24 @@
 <li>list_copy = list.copy(): 列表浅复制。当列表list改变时，list_copy中的元素不会随之变化。</li>
 <li>list_copy = list: 列表复制。当列表list改变时，list_copy中的元素也会随之改变。</li>
 </ol>
-<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
     list_copy = list.copy()
 
     print(&quot;list:&quot;,list)
     print(&quot;list_copy:&quot;,list_copy)
-</code></pre><p><img src="/img/list.copy.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p><img src="/img/list.copy.png" srcset="/img/loading.gif" alt=" "></p>
 <h3 id="2-列表删除"><a href="#2-列表删除" class="headerlink" title="2.列表删除"></a>2.列表删除</h3><p>当列表不再使用后，可以使用del语句删除列表，其一般格式：</p>
-<pre><code>del 列表名
-</code></pre><p>del 可以索引删除也可以全部删除</p>
-<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code>del 列表名
+</code></pre></div><p>del 可以索引删除也可以全部删除</p>
+<div class="hljs"><pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
     print(&quot;list:&quot;,list)
 
     del list
 
     print(&quot;list:&quot;,list)
-</code></pre><p><img src="/img/del.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p><img src="/img/del.png" srcset="/img/loading.gif" alt=" "></p>
 <h2 id="列表运算"><a href="#列表运算" class="headerlink" title="列表运算"></a>列表运算</h2><ol>
 <li>+: 将多个列表组合成一个新的列表，新列表中的元素是多个元素的有序组合。</li>
 <li>*: 将整数n和列表相乘可以得到一个将原列表重复n次的新列表。</li>
@@ -267,8 +300,8 @@
 <li>list.count(key): 返回关键字key在列表中出现的次数</li>
 </ol>
 <h2 id="列表元素查找和排序"><a href="#列表元素查找和排序" class="headerlink" title="列表元素查找和排序"></a>列表元素查找和排序</h2><h3 id="1-列表元素查找"><a href="#1-列表元素查找" class="headerlink" title="1.列表元素查找"></a>1.列表元素查找</h3><p>list.index()函数用于查找并返回关键字在列表中第1次出现的位置，其一般格式为：</p>
-<pre><code>list.index(key)
-</code></pre><p>其中，key为要在列表中查找的元素。</p>
+<div class="hljs"><pre><code>list.index(key)
+</code></pre></div><p>其中，key为要在列表中查找的元素。</p>
 <h3 id="2-列表元素的排序"><a href="#2-列表元素的排序" class="headerlink" title="2.列表元素的排序"></a>2.列表元素的排序</h3><p>列表创建后，可以使用一下函数更具关键字对列表中的元素进行排序、倒序或临时排序。</p>
 <ol>
 <li>list.sort(): 对列表中的元素按照一定的规则进行排序</li>
@@ -276,7 +309,7 @@
 <li>sorted(list): 对列表list中的元素进行临时排序，返回副本。但是原列表中的元素次序不变</li>
 </ol>
 <font color="#f4f4f4" weight="bold" size="32">To be continue</font>
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -291,11 +324,11 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/01/21/python_ex40/">
@@ -304,8 +337,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/01/19/python_ex38/">
@@ -314,47 +347,45 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -413,17 +444,17 @@
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -436,14 +467,31 @@
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -452,7 +500,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -468,62 +516,6 @@
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -650,6 +642,41 @@
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

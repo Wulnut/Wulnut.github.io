@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>快读 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/read.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-05-12 16:50">
-                    2020年5月12日 下午
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-12 16:50" pubdate>
+        2020年5月12日 下午
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.5k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    21
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,26 +215,28 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">快读</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>快读的一些方法</p>
 <a id="more"></a>
 <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>在做数据结构、算法题的时候会遇见比较大的数，有的时候数据大小已经超过了int所能储存的范围，这样的大数如果比较多情况下如果使用普通的输入或者输出，超时就可能会发生，如果出现这样的错误，在算法时间复杂度没有问题的前提下出现这样的问题是非常令人头疼的一件事情。</p>
 <p>这里我将从Java和C++两中语言入手，在减少这样的问题出现</p>
 <h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><p>一、StreamTokenizer实现快速输入</p>
 <p>需要的jar包</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
 <span class="hljs-keyword">import</span> java.io.IOException;
 <span class="hljs-keyword">import</span> java.io.InputStreamReader;
-<span class="hljs-keyword">import</span> java.io.StreamTokenizer;</code></pre>
+<span class="hljs-keyword">import</span> java.io.StreamTokenizer;</code></pre></div>
 <p>定义如下：</p>
-<pre><code class="hljs java">StreamTokenizer st =<span class="hljs-keyword">new</span> StreamTokenizer(<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in)));</code></pre>
+<div class="hljs"><pre><code class="hljs java">StreamTokenizer st =<span class="hljs-keyword">new</span> StreamTokenizer(<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in)));</code></pre></div>
 <p>StreamTokenizer只能接收数字或字母，如果输入除空格和回车以外的字符（如：!@#$%^&amp;*()[]{})无法识别，会显示null</p>
 <p>StreamTokenizer可以<strong>获取输入</strong>流并根据空格和回车分割成Token（标记），用nextToken方法读取下一个标记 </p>
 <p>如果标记是字符串，用st.sval获取标记，如果是数字用st.nval获取标记，st.navl是double类型</p>
 <p>示例</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
 <span class="hljs-keyword">import</span> java.io.IOException;
 <span class="hljs-keyword">import</span> java.io.InputStreamReader;
 <span class="hljs-keyword">import</span> java.io.StreamTokenizer;
@@ -220,50 +253,50 @@
         st.nextToken();
         <span class="hljs-keyword">double</span> n=st.nval;
         System.out.println(n);
-        <span class="hljs-comment">/**输入内容
-         * hollow 1233
-         * 输出内容
-         * hollow
-         * 1233.0
-         */</span>
+        <span class="hljs-comment">/**输入内容</span>
+<span class="hljs-comment">         * hollow 1233</span>
+<span class="hljs-comment">         * 输出内容</span>
+<span class="hljs-comment">         * hollow</span>
+<span class="hljs-comment">         * 1233.0</span>
+<span class="hljs-comment">         */</span>
         
     &#125;
  
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>二、BufferedReader实现快速输入读一行</p>
 <p>需要导入的jar</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
 <span class="hljs-keyword">import</span> java.io.IOException;
-<span class="hljs-keyword">import</span> java.io.InputStreamReader;</code></pre>
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;</code></pre></div>
 <p>定义：</p>
-<pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));</code></pre>
+<div class="hljs"><pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));</code></pre></div>
 <p>常用方法：</p>
-<pre><code class="hljs java">inBuff.readLine()<span class="hljs-comment">//读取一行内容，返回字符串</span></code></pre>
+<div class="hljs"><pre><code class="hljs java">inBuff.readLine()<span class="hljs-comment">//读取一行内容，返回字符串</span></code></pre></div>
 <p>实例：</p>
-<pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
+<div class="hljs"><pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
         String s=inBuff.readLine();
-        System.out.println(<span class="hljs-string">"有问题吗"</span>+s+<span class="hljs-string">"没有吧"</span>);
-        <span class="hljs-comment">/**
-         * 输出内容
-         * hollow world!
-         * 有问题吗hollow world!没有吧
-         */</span></code></pre>
+        System.out.println(<span class="hljs-string">&quot;有问题吗&quot;</span>+s+<span class="hljs-string">&quot;没有吧&quot;</span>);
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * 输出内容</span>
+<span class="hljs-comment">         * hollow world!</span>
+<span class="hljs-comment">         * 有问题吗hollow world!没有吧</span>
+<span class="hljs-comment">         */</span></code></pre></div>
 <p>三、PrintWriter实现快速输出</p>
 <p>需要的jar包</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
-<span class="hljs-keyword">import</span> java.io.PrintWriter;</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
+<span class="hljs-keyword">import</span> java.io.PrintWriter;</code></pre></div>
 <p>定义如下：</p>
-<pre><code class="hljs java">PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));</code></pre>
+<div class="hljs"><pre><code class="hljs java">PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));</code></pre></div>
 <p>常用方法：</p>
-<pre><code class="hljs java"><span class="hljs-comment">// 输出分为两步：</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 输出分为两步：</span>
 <span class="hljs-comment">// 1、先通过print()或println()方法把需要输出的内容放入缓冲区，</span>
 <span class="hljs-comment">// 2、然后通过flush()将缓冲区的内容输出到控制台</span>
 
 print(需要输出的内容)<span class="hljs-comment">//不换行输出，只是把需要的内容放入缓冲，</span>
 println(需要输出的内容)<span class="hljs-comment">//换行输出</span>
-flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输出到控制台，</span></code></pre>
+flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输出到控制台，</span></code></pre></div>
 <p>示例：</p>
-<pre><code class="hljs java"><span class="hljs-keyword">package</span> CCPC;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> CCPC;
 
 <span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
 <span class="hljs-keyword">import</span> java.io.PrintWriter;
@@ -274,17 +307,17 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));
-        String s=<span class="hljs-string">"hollow world"</span>;
+        String s=<span class="hljs-string">&quot;hollow world&quot;</span>;
         <span class="hljs-keyword">int</span> i=<span class="hljs-number">12344</span>;
-        out.print(s+<span class="hljs-string">" "</span>+i);
+        out.print(s+<span class="hljs-string">&quot; &quot;</span>+i);
         out.flush();
-        <span class="hljs-comment">/**
-         * 输出内容
-         * hollow world 12344
-         */</span>
+        <span class="hljs-comment">/**</span>
+<span class="hljs-comment">         * 输出内容</span>
+<span class="hljs-comment">         * hollow world 12344</span>
+<span class="hljs-comment">         */</span>
     &#125;
-&#125;</code></pre>
-<p>一个例子<br><strong>一般建议使用BufferedRead()</strong><br><pre><code class="hljs java"><span class="hljs-comment">// https://www.acwing.com/problem/content/790/</span>
+&#125;</code></pre></div>
+<p>一个例子<br><strong>一般建议使用BufferedRead()</strong><br><div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// https://www.acwing.com/problem/content/790/</span>
 <span class="hljs-comment">// 使用BufferedReader读入的方法</span>
 
 <span class="hljs-keyword">import</span> java.io.BufferedReader;
@@ -300,7 +333,7 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
         <span class="hljs-comment">// parseInt将字符串转为int</span>
         <span class="hljs-comment">// parseDouble将字符转为double</span>
         <span class="hljs-keyword">int</span> n = Integer.parseInt(reader.readLine());
-        String[] arrStr = reader.readLine().split(<span class="hljs-string">" "</span>);
+        String[] arrStr = reader.readLine().split(<span class="hljs-string">&quot; &quot;</span>);
         <span class="hljs-keyword">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];
 
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++ i) &#123;
@@ -339,33 +372,34 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre></p>
-<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="getchar读入"><a href="#getchar读入" class="headerlink" title="getchar读入"></a>getchar读入</h3><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span>
-</span>&#123;
+&#125;
+</code></pre></div></p>
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="getchar读入"><a href="#getchar读入" class="headerlink" title="getchar读入"></a>getchar读入</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span> , ch = getchar();
     <span class="hljs-keyword">while</span>( !<span class="hljs-built_in">isdigit</span>( ch ) ) ch = getchar();
-    <span class="hljs-keyword">while</span>( <span class="hljs-built_in">isdigit</span>( ch ) ) x = x * <span class="hljs-number">10</span> + ch - <span class="hljs-string">'0'</span> , ch = getchar();
+    <span class="hljs-keyword">while</span>( <span class="hljs-built_in">isdigit</span>( ch ) ) x = x * <span class="hljs-number">10</span> + ch - <span class="hljs-string">&#x27;0&#x27;</span> , ch = getchar();
     <span class="hljs-keyword">return</span> x;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>用时28.74s</p>
-<h3 id="fread读入优化"><a href="#fread读入优化" class="headerlink" title="fread读入优化"></a>fread读入优化</h3><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">io</span>
-&#123;</span>
+<h3 id="fread读入优化"><a href="#fread读入优化" class="headerlink" title="fread读入优化"></a>fread读入优化</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">io</span></span>
+<span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">char</span> ibuf[<span class="hljs-number">900</span> &lt;&lt; <span class="hljs-number">20</span>] , * s;
     io()
     &#123;
         fread( s = ibuf , <span class="hljs-number">1</span> , <span class="hljs-number">900</span> &lt;&lt; <span class="hljs-number">20</span> , <span class="hljs-built_in">stdin</span> );
     &#125;
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span>
-    </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>
+<span class="hljs-function">    </span>&#123;
         <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">while</span>( * s &lt; <span class="hljs-number">48</span> ) s++;
         <span class="hljs-keyword">while</span>( * s &gt; <span class="hljs-number">32</span> )
             u = u * <span class="hljs-number">10</span> + * s++ - <span class="hljs-number">48</span>;
         <span class="hljs-keyword">return</span> u;
     &#125;
-&#125; ip;</code></pre>
+&#125; ip;</code></pre></div>
 <p>用时1.535s</p>
-<h3 id="当然如果觉得以上的方法比较麻烦可以："><a href="#当然如果觉得以上的方法比较麻烦可以：" class="headerlink" title="当然如果觉得以上的方法比较麻烦可以："></a>当然如果觉得以上的方法比较麻烦可以：</h3><pre><code class="hljs c++"><span class="hljs-built_in">std</span>::ios::sync_with_stdio(<span class="hljs-literal">false</span>);</code></pre>
+<h3 id="当然如果觉得以上的方法比较麻烦可以："><a href="#当然如果觉得以上的方法比较麻烦可以：" class="headerlink" title="当然如果觉得以上的方法比较麻烦可以："></a>当然如果觉得以上的方法比较麻烦可以：</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-built_in">std</span>::ios::sync_with_stdio(<span class="hljs-literal">false</span>);</code></pre></div>
 <p>通过对cin和cout的解除绑定可以达到和scanf于printf一样的速度有时候会更快</p>
 <h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><p><strong>cout</strong></p>
 <p>用时102.2s</p>
@@ -373,21 +407,21 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 <p>用时27.36s</p>
 <p><strong>puts（直接当字符串输出）</strong></p>
 <p>用时2.001s</p>
-<h3 id="putchar输出优化"><a href="#putchar输出优化" class="headerlink" title="putchar输出优化"></a>putchar输出优化</h3><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span>
-</span>&#123;
+<h3 id="putchar输出优化"><a href="#putchar输出优化" class="headerlink" title="putchar输出优化"></a>putchar输出优化</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">if</span>(x&lt;<span class="hljs-number">0</span>)
     &#123;
-        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'-'</span>);
+        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;-&#x27;</span>);
         x=-x;
     &#125;
     <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">9</span>)
-        <span class="hljs-built_in">print</span>(x/<span class="hljs-number">10</span>);
-    <span class="hljs-built_in">putchar</span>(x%<span class="hljs-number">10</span>+<span class="hljs-string">'0'</span>);
-&#125;</code></pre>
+        print(x/<span class="hljs-number">10</span>);
+    <span class="hljs-built_in">putchar</span>(x%<span class="hljs-number">10</span>+<span class="hljs-string">&#x27;0&#x27;</span>);
+&#125;</code></pre></div>
 <p>用时3.339s</p>
-<h3 id="fwrite输出优化"><a href="#fwrite输出优化" class="headerlink" title="fwrite输出优化"></a>fwrite输出优化</h3><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span> &gt;
-    <span class="hljs-title">inline</span> <span class="hljs-title">void</span> <span class="hljs-title">print</span>( <span class="hljs-title">register</span> <span class="hljs-title">T</span> <span class="hljs-title">u</span> )
-    &#123;</span>
+<h3 id="fwrite输出优化"><a href="#fwrite输出优化" class="headerlink" title="fwrite输出优化"></a>fwrite输出优化</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span> &gt;</span>
+<span class="hljs-class">    <span class="hljs-title">inline</span> <span class="hljs-title">void</span> <span class="hljs-title">print</span>( <span class="hljs-title">register</span> <span class="hljs-title">T</span> <span class="hljs-title">u</span> )</span>
+<span class="hljs-class">    &#123;</span>
         <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> * q = a;
         <span class="hljs-keyword">if</span>( !u ) * t++ = <span class="hljs-number">48</span>;
         <span class="hljs-keyword">else</span>
@@ -398,7 +432,7 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
             <span class="hljs-keyword">while</span>( q != a )
                 * t++ = * --q;
         &#125;
-    &#125;</code></pre>
+    &#125;</code></pre></div>
 <p>用时0.6653s</p>
 <p><strong>由此可以看出，fwrite对比其他读入方式有极大的差距</strong></p>
 <p>不过由于一般输出量都比较小，所以输出优化意义不大</p>
@@ -414,11 +448,11 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 <p>但是如果这个函数过于复杂，可能并不会inline，可以考虑<strong>attribute</strong> ( ( always_inline ) )或者手动展开，或者define掉（注意define别爆炸）</p>
 <p>参考博客：</p>
 <ul>
-<li><a href="https://blog.csdn.net/qq_40079933/article/details/79419065" target="_blank" rel="noopener">https://blog.csdn.net/qq_40079933/article/details/79419065</a></li>
-<li><a href="https://www.luogu.com.cn/blog/user3296/oi-zhong-jian-dan-di-chang-shuo-you-hua" target="_blank" rel="noopener">https://www.luogu.com.cn/blog/user3296/oi-zhong-jian-dan-di-chang-shuo-you-hua</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40079933/article/details/79419065">https://blog.csdn.net/qq_40079933/article/details/79419065</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/user3296/oi-zhong-jian-dan-di-chang-shuo-you-hua">https://www.luogu.com.cn/blog/user3296/oi-zhong-jian-dan-di-chang-shuo-you-hua</a></li>
 </ul>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -440,11 +474,11 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/05/23/logist/">
@@ -453,8 +487,8 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/05/05/scenes1/">
@@ -463,47 +497,45 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -562,17 +594,17 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -585,14 +617,31 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -601,7 +650,7 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -617,62 +666,6 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -799,6 +792,41 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

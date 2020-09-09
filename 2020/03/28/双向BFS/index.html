@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>双向BFS ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/queue(stl).jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-28 21:31">
-                    2020年3月28日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-28 21:31" pubdate>
+        2020年3月28日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    2.7k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.7k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    36
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      36
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,9 +215,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">双向BFS</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>值得思考的实现</p>
 <a id="more"></a>
 <h1 id="搜索-双向BFS"><a href="#搜索-双向BFS" class="headerlink" title="搜索-双向BFS"></a>搜索-双向BFS</h1><ul>
@@ -207,22 +240,22 @@
 <p><strong>输出</strong></p>
 <p>输出从左上角走到右下角至少要经过多少步（即至少要经过多少个空地格子）。计算步数要包括起点和终点</p>
 <p><strong>输入样例</strong></p>
-<pre><code class="hljs plain">5 5
+<div class="hljs"><pre><code class="hljs clean"><span class="hljs-number">5</span> <span class="hljs-number">5</span>
 ..###
 #....
 #.#.#
 #.#.#
-#.#..</code></pre>
+#.#..</code></pre></div>
 <p><strong>输出样例</strong></p>
-<pre><code class="hljs plain">9</code></pre>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">9</span></code></pre></div>
 <p><strong>普通BFS：</strong></p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">100000</span>; 
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX = <span class="hljs-number">101</span>;
-<span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; P;
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">pair</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; P;
 <span class="hljs-keyword">char</span> <span class="hljs-built_in">map</span>[MAX][MAX];
 <span class="hljs-keyword">int</span> d[MAX][MAX];<span class="hljs-comment">//表示起点到各个位置的最短距离 </span>
 <span class="hljs-keyword">int</span> sx, sy, gx, gy;<span class="hljs-comment">//表示起点和终点坐标 </span>
@@ -231,7 +264,7 @@
 <span class="hljs-keyword">int</span> dy[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,- <span class="hljs-number">1</span>&#125;;
 
 <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Check</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;
-	<span class="hljs-keyword">if</span>(x&gt;=<span class="hljs-number">0</span> &amp;&amp; x&lt;n &amp;&amp; y&gt;=<span class="hljs-number">0</span> &amp;&amp; y&lt;m &amp;&amp; d[x][y]==INF &amp;&amp; <span class="hljs-built_in">map</span>[x][y]!=<span class="hljs-string">'#'</span>)
+	<span class="hljs-keyword">if</span>(x&gt;=<span class="hljs-number">0</span> &amp;&amp; x&lt;n &amp;&amp; y&gt;=<span class="hljs-number">0</span> &amp;&amp; y&lt;m &amp;&amp; d[x][y]==INF &amp;&amp; <span class="hljs-built_in">map</span>[x][y]!=<span class="hljs-string">&#x27;#&#x27;</span>)
 		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 	<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 &#125; 
@@ -270,9 +303,9 @@
 	<span class="hljs-keyword">int</span> res = bfs(); 
 	<span class="hljs-built_in">cout</span> &lt;&lt; res+<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><strong>双向BFS</strong>：</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> P pair<span class="hljs-meta-string">&lt;int, int&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
@@ -289,7 +322,7 @@
 	q2.push(P(r, c)), dis[r][c] = <span class="hljs-number">1</span>, vst[r][c] = <span class="hljs-number">2</span>; <span class="hljs-comment">//从后搜</span>
 	<span class="hljs-keyword">while</span>(!q1.empty() &amp;&amp; !q2.empty()) &#123;
 		<span class="hljs-keyword">int</span> x0, y0;
-		<span class="hljs-keyword">if</span>(q1.<span class="hljs-built_in">size</span>() &gt; q2.<span class="hljs-built_in">size</span>()) &#123; <span class="hljs-comment">//每次扩展搜索树小的队列 flag=1扩展前搜的队列，flag=0扩展后搜的队列</span>
+		<span class="hljs-keyword">if</span>(q1.size() &gt; q2.size()) &#123; <span class="hljs-comment">//每次扩展搜索树小的队列 flag=1扩展前搜的队列，flag=0扩展后搜的队列</span>
 			x0 = q2.front().first, y0 = q2.front().second;
 			q2.pop();
 			flag = <span class="hljs-number">0</span>;
@@ -301,7 +334,7 @@
 		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) &#123;
 			<span class="hljs-keyword">int</span> nx = x0 + dx[i];
 			<span class="hljs-keyword">int</span> ny = y0 + dy[i];
-			<span class="hljs-keyword">if</span>(nx &gt;= <span class="hljs-number">1</span> &amp;&amp; nx &lt;= r &amp;&amp; ny &gt;= <span class="hljs-number">1</span> &amp;&amp; ny &lt;= c &amp;&amp; m[nx][ny] == <span class="hljs-string">'.'</span>) &#123;
+			<span class="hljs-keyword">if</span>(nx &gt;= <span class="hljs-number">1</span> &amp;&amp; nx &lt;= r &amp;&amp; ny &gt;= <span class="hljs-number">1</span> &amp;&amp; ny &lt;= c &amp;&amp; m[nx][ny] == <span class="hljs-string">&#x27;.&#x27;</span>) &#123;
 				<span class="hljs-keyword">if</span>(!dis[nx][ny]) &#123;
 					dis[nx][ny] = dis[x0][y0] + <span class="hljs-number">1</span>;
 					vst[nx][ny] = vst[x0][y0];
@@ -324,9 +357,9 @@
 		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= c; j++)
 			<span class="hljs-built_in">cin</span> &gt;&gt; m[i][j];
 	dbfs(); 
-	<span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-string">"\n"</span>;
+	<span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><a herf = "https://leetcode-cn.com/problems/word-ladder/">力扣第127题：单词接龙</a></p>
 <p>给定两个单词（<em>beginWord</em> 和 <em>endWord</em>）和一个字典，找到从 <em>beginWord</em> 到 <em>endWord</em> 的最短转换序列的长度。转换需遵循如下规则：</p>
 <ol>
@@ -342,26 +375,26 @@
 <li>你可以假设 <em>beginWord</em> 和 <em>endWord</em> 是非空的，且二者不相同。</li>
 </ul>
 <p><strong>示例 1:</strong></p>
-<pre><code class="hljs plain">输入:
-beginWord &#x3D; &quot;hit&quot;,
-endWord &#x3D; &quot;cog&quot;,
-wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]
+<div class="hljs"><pre><code class="hljs clean">输入:
+beginWord = <span class="hljs-string">&quot;hit&quot;</span>,
+endWord = <span class="hljs-string">&quot;cog&quot;</span>,
+wordList = [<span class="hljs-string">&quot;hot&quot;</span>,<span class="hljs-string">&quot;dot&quot;</span>,<span class="hljs-string">&quot;dog&quot;</span>,<span class="hljs-string">&quot;lot&quot;</span>,<span class="hljs-string">&quot;log&quot;</span>,<span class="hljs-string">&quot;cog&quot;</span>]
 
-输出: 5
+输出: <span class="hljs-number">5</span>
 
-解释: 一个最短转换序列是 &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,
-     返回它的长度 5。</code></pre>
+解释: 一个最短转换序列是 <span class="hljs-string">&quot;hit&quot;</span> -&gt; <span class="hljs-string">&quot;hot&quot;</span> -&gt; <span class="hljs-string">&quot;dot&quot;</span> -&gt; <span class="hljs-string">&quot;dog&quot;</span> -&gt; <span class="hljs-string">&quot;cog&quot;</span>,
+     返回它的长度 <span class="hljs-number">5</span>。</code></pre></div>
 <p><strong>示例 2:</strong></p>
-<pre><code class="hljs plain">输入:
-beginWord &#x3D; &quot;hit&quot;
-endWord &#x3D; &quot;cog&quot;
-wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]
+<div class="hljs"><pre><code class="hljs makefile"><span class="hljs-section">输入:</span>
+beginWord = <span class="hljs-string">&quot;hit&quot;</span>
+endWord = <span class="hljs-string">&quot;cog&quot;</span>
+wordList = [<span class="hljs-string">&quot;hot&quot;</span>,<span class="hljs-string">&quot;dot&quot;</span>,<span class="hljs-string">&quot;dog&quot;</span>,<span class="hljs-string">&quot;lot&quot;</span>,<span class="hljs-string">&quot;log&quot;</span>]
 
-输出: 0
+<span class="hljs-section">输出: 0</span>
 
-解释: endWord &quot;cog&quot; 不在字典中，所以无法进行转换。</code></pre>
+<span class="hljs-section">解释: endWord &quot;cog&quot; 不在字典中，所以无法进行转换。</span></code></pre></div>
 <p>&emsp;&emsp;如果只是单纯的使用BFS经行操作那么时间复杂度将会为$O(M\times N)$ $M$表示单词的长度, $N$表示单词列表中单词的个数.</p>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ladderLength</span><span class="hljs-params">(<span class="hljs-built_in">string</span> beginWord, <span class="hljs-built_in">string</span> endWord, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordList)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ladderLength</span><span class="hljs-params">(<span class="hljs-built_in">string</span> beginWord, <span class="hljs-built_in">string</span> endWord, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordList)</span> </span>&#123;
 
       <span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; s; <span class="hljs-comment">// 可以块数查找</span>
 
@@ -369,29 +402,29 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
       <span class="hljs-comment">// first 表示字符</span>
       <span class="hljs-comment">// second 表示走过的路长</span>
 
-      <span class="hljs-built_in">queue</span>&lt;pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;&gt; q;
-      q.push(make_pair(beginWord, <span class="hljs-number">1</span>));
+      <span class="hljs-built_in">queue</span>&lt;<span class="hljs-built_in">pair</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;&gt; q;
+      q.push(<span class="hljs-built_in">make_pair</span>(beginWord, <span class="hljs-number">1</span>));
 
       <span class="hljs-built_in">string</span> temp;
-      <span class="hljs-keyword">int</span> <span class="hljs-built_in">step</span>; <span class="hljs-comment">// 表示用暂时存贮走过的步子</span>
+      <span class="hljs-keyword">int</span> step; <span class="hljs-comment">// 表示用暂时存贮走过的步子</span>
 
       <span class="hljs-keyword">while</span> (!q.empty()) &#123;
           <span class="hljs-keyword">if</span> (q.front().first == endWord) <span class="hljs-keyword">return</span> q.front().second;
 
           temp = q.front().first;
-          <span class="hljs-built_in">step</span> = q.front().second;
+          step = q.front().second;
           q.pop();
 
           <span class="hljs-keyword">char</span> ch;
-          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= temp.<span class="hljs-built_in">size</span>(); ++ i) &#123;
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= temp.size(); ++ i) &#123;
               ch = temp[i];
 
-              <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> a = <span class="hljs-string">'a'</span>; a &lt; <span class="hljs-string">'z'</span>; ++ a) &#123;
+              <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> a = <span class="hljs-string">&#x27;a&#x27;</span>; a &lt; <span class="hljs-string">&#x27;z&#x27;</span>; ++ a) &#123;
                   <span class="hljs-keyword">if</span> (ch == a) <span class="hljs-keyword">continue</span>;
 
                   temp[i] = a;
-                  <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">find</span>(temp) != s.<span class="hljs-built_in">end</span>()) &#123; <span class="hljs-comment">// 这里表示如果找到了可以转换的两个单词，就把该数存放入队列里</span>
-                      q.push(make_pair(temp, <span class="hljs-built_in">step</span> + <span class="hljs-number">1</span>));
+                  <span class="hljs-keyword">if</span> (s.find(temp) != s.end()) &#123; <span class="hljs-comment">// 这里表示如果找到了可以转换的两个单词，就把该数存放入队列里</span>
+                      q.push(<span class="hljs-built_in">make_pair</span>(temp, step + <span class="hljs-number">1</span>));
                       s.erase(temp); <span class="hljs-comment">// 删掉结点的意思防止找到重复</span>
                   &#125;
 
@@ -401,7 +434,7 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
       &#125;
 
       <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-  &#125;</code></pre>
+  &#125;</code></pre></div>
 <p>如果使用双向BFS：</p>
 <ul>
 <li>$O(M \times N)$，其中 MM 是单词的长度 $N$是单词表中单词的总数。与单向搜索相同的是，找到所有的变换需要 $M \times N$ 次操作。但是搜索时间会被缩小一半，因为两个搜索会在中间某处相遇。</li>
@@ -423,10 +456,10 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
 <ul>
 <li>最短变换序列的长度就是中间节点在两边的层次之和。因此，我们可以在访问数组中记录节点的层次。</li>
 </ul>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dbfs</span><span class="hljs-params">(<span class="hljs-built_in">string</span> beginWord, <span class="hljs-built_in">string</span> endWord, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordList)</span> </span>&#123;
-       <span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; dict(wordList.<span class="hljs-built_in">begin</span>(), wordList.<span class="hljs-built_in">end</span>());
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dbfs</span><span class="hljs-params">(<span class="hljs-built_in">string</span> beginWord, <span class="hljs-built_in">string</span> endWord, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordList)</span> </span>&#123;
+       <span class="hljs-function"><span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; <span class="hljs-title">dict</span><span class="hljs-params">(wordList.begin(), wordList.end())</span></span>;
 
-       <span class="hljs-keyword">if</span> (dict.<span class="hljs-built_in">find</span>(beginWord) != dict.<span class="hljs-built_in">end</span>()) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+       <span class="hljs-keyword">if</span> (dict.find(beginWord) != dict.end()) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
        <span class="hljs-comment">//初始化</span>
        <span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; beginSet, endSet, tmp, visited;
@@ -435,33 +468,33 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
        <span class="hljs-keyword">int</span> len = <span class="hljs-number">1</span>;
 
        <span class="hljs-keyword">while</span> (!beginSet.empty() &amp;&amp; !endSet.empty()) &#123;
-           <span class="hljs-keyword">if</span> (beginSet.<span class="hljs-built_in">size</span>() &gt; endSet.<span class="hljs-built_in">size</span>()) &#123;
+           <span class="hljs-keyword">if</span> (beginSet.size() &gt; endSet.size()) &#123;
                tmp = beginSet;
                beginSet = endSet;
                endSet = tmp;
            &#125;
-           tmp.<span class="hljs-built_in">clear</span>();
+           tmp.clear();
 
-           <span class="hljs-keyword">for</span> (<span class="hljs-built_in">string</span> <span class="hljs-keyword">word</span> : beginSet) &#123;
-               <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">word</span>.<span class="hljs-built_in">size</span>(); ++ i) &#123;
-                   <span class="hljs-keyword">char</span> old = <span class="hljs-keyword">word</span>[i];
+           <span class="hljs-keyword">for</span> (<span class="hljs-built_in">string</span> word : beginSet) &#123;
+               <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; word.size(); ++ i) &#123;
+                   <span class="hljs-keyword">char</span> old = word[i];
 
-                   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> a = <span class="hljs-string">'a'</span>; a &lt; <span class="hljs-string">'z'</span>; ++ a) &#123;
+                   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> a = <span class="hljs-string">&#x27;a&#x27;</span>; a &lt; <span class="hljs-string">&#x27;z&#x27;</span>; ++ a) &#123;
                        <span class="hljs-keyword">if</span> (old == a) <span class="hljs-keyword">continue</span>;
 
-                       <span class="hljs-keyword">word</span>[i] = a;
+                       word[i] = a;
 
-                       <span class="hljs-keyword">if</span> (endSet.<span class="hljs-built_in">find</span>(<span class="hljs-keyword">word</span>) != endSet.<span class="hljs-built_in">end</span>()) &#123;
+                       <span class="hljs-keyword">if</span> (endSet.find(word) != endSet.end()) &#123;
                            <span class="hljs-keyword">return</span> len + <span class="hljs-number">1</span>;
                        &#125;
 
-                       <span class="hljs-keyword">if</span> (visited.<span class="hljs-built_in">find</span>(<span class="hljs-keyword">word</span>) == visited.<span class="hljs-built_in">end</span>() &amp;&amp; dict.<span class="hljs-built_in">find</span>(<span class="hljs-keyword">word</span>) != dict.<span class="hljs-built_in">end</span>()) &#123;
-                           tmp.insert(<span class="hljs-keyword">word</span>);
-                           visited.insert(<span class="hljs-keyword">word</span>);
+                       <span class="hljs-keyword">if</span> (visited.find(word) == visited.end() &amp;&amp; dict.find(word) != dict.end()) &#123;
+                           tmp.insert(word);
+                           visited.insert(word);
                        &#125;
                    &#125;
 
-                   <span class="hljs-keyword">word</span>[i] = old;
+                   word[i] = old;
                &#125;
            &#125;
 
@@ -470,7 +503,7 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
        &#125;
 
        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-   &#125;</code></pre>
+   &#125;</code></pre></div>
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="关于set与unordered-set"><a href="#关于set与unordered-set" class="headerlink" title="关于set与unordered_set"></a>关于set与unordered_set</h3><ul>
 <li><strong>set函数(集合)</strong>：这里的set表示集合的意思，和数学中的集合是一个意思，集合中不允许有重复出现的元素，由于set函数底层通常以红黑树实现，红黑树具有自动排序的功能，因此set内部所有的数据，在任何时候，都是有序的。</li>
 <li><strong>unordered_set函数</strong>： 是含有 Key 类型唯一对象集合的关联容器，依赖于哈希表。搜索、插入和移除拥有平均常数时间复杂度。在内部，元素并不以任何特别顺序排序，而是组织进桶中，元素被放进哪个桶完全依赖其值的哈希。允许对单独元素的快速访问，因为一旦哈希，就能够准确指代元素被放入的桶。不可修改容器元素（即使通过非 const 迭代器），因为修改可能更改元素的哈希，并破坏容器。代价是消耗比较多的内存，无自动排序功能。底层实现上，使用一个下标范围比较大的数组来存储元素，形成很多的桶，利用hash函数对key进行映射到不同区域进行保存。</li>
@@ -491,7 +524,7 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
 <p>因此如果你想要一个具有排序后的数据的话，通常可以选择map这种类型。或者想要打印具有一定顺序的元素。如果你只想记录数据而不是想要将数据进行排序的话，那么就可以选择unordered_map这种数据结构。</p>
 <p><a herf="https://blog.csdn.net/weixin_43501684/article/details/90147421">.</a></p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -515,11 +548,11 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">
@@ -528,8 +561,8 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/03/27/lower_bound%E5%87%BD%E6%95%B0/">
@@ -538,47 +571,45 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -637,17 +668,17 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -660,14 +691,31 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -676,7 +724,7 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -692,62 +740,6 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -874,6 +866,41 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

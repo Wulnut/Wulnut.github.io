@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>泛型编程 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/code.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-21 15:48">
-                    2020年2月21日 下午
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-21 15:48" pubdate>
+        2020年2月21日 下午
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.2k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    16
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,9 +215,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">泛型编程</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>泛型编程</p>
 <a id="more"></a>
 <h1 id="泛型编程-概观"><a href="#泛型编程-概观" class="headerlink" title="泛型编程-概观"></a>泛型编程-概观</h1><ul>
@@ -198,85 +231,85 @@
 <h1 id="特性-Traits"><a href="#特性-Traits" class="headerlink" title="特性(Traits)"></a>特性(Traits)</h1><h2 id="什么是traits以及为什么使用traits？"><a href="#什么是traits以及为什么使用traits？" class="headerlink" title="- 什么是traits以及为什么使用traits？"></a>- 什么是traits以及为什么使用traits？</h2><p>  假设给定一个数组，计算数组种所有元素的和：<br>  A[0] | A[1] |…| A[n] &emsp;&emsp;$\sum_{k=0}^n A[k]$</p>
 <ul>
 <li><p>我们可以很直接地写出如下的计算函数:</p>
-<pre><code class="hljs plain">template &lt;typename T&gt; 
-inline T Sigma(const T const* start, const T const* end) &#123;
-    T total &#x3D; T(); &#x2F;&#x2F; suppose T() actually creates a zero value
+<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; 
+<span class="hljs-function"><span class="hljs-keyword">inline</span> T <span class="hljs-title">Sigma</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* start, <span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* <span class="hljs-built_in">end</span>)</span> </span>&#123;
+    T total = T(); <span class="hljs-comment">// suppose T() actually creates a zero value</span>
 
-    &#x2F;&#x2F;T()是一个构造函数目的将total初始化为0；
+    <span class="hljs-comment">//T()是一个构造函数目的将total初始化为0；</span>
     
-    while (start !&#x3D; end) &#123;
-        total +&#x3D; *start ++ ;
+    <span class="hljs-keyword">while</span> (start != <span class="hljs-built_in">end</span>) &#123;
+        total += *start ++ ;
     &#125;
 
-    return total;
-&#125;</code></pre>
+    <span class="hljs-keyword">return</span> total;
+&#125;</code></pre></div>
 </li>
 <li><p>当我们使用char类型调用模板函数是，问题就来了：</p>
-<pre><code class="hljs plain">char szNames[] &#x3D; &quot;abc&quot;;
-std :: size_t nLength &#x3D; strlen(szNames);
-char* p &#x3D; szNames;
-char* q &#x3D; szNames + nLength;
-printf(&quot;sigma(ezNames) &#x3D; %d\n&quot;, Sigma(p,q));</code></pre>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">char</span> szNames[] = <span class="hljs-string">&quot;abc&quot;</span>;
+<span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> nLength = <span class="hljs-built_in">strlen</span>(szNames);
+<span class="hljs-keyword">char</span>* p = szNames;
+<span class="hljs-keyword">char</span>* q = szNames + nLength;
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sigma(ezNames) = %d\n&quot;</span>, Sigma(p,q));</code></pre></div>
 <script type="math/tex; mode=display">294 = 0x0126</script><script type="math/tex; mode=display">0000 | 0001 | 0010 | 0110</script><p>Char类型能hold住的最大值为0xFF = 255 也就是两个字节所以0010和0110可容纳的但是abc加起来<strong>大于255</strong>就溢出到溢出到1这个bit</p>
 </li>
 <li><p>调用Sigma(szNames)的结果是38( = 0x26)!而并不是所期望的值(97 + 98 + 99 = 294)</p>
 </li>
 <li>原因显而易见的：char无法存下这个294这个值</li>
-<li>如果要得到正确的结果，我们就不得不强制使用int类型：<pre><code class="hljs plain">int s &#x3D; Sigma&lt;int&gt;(p,q);</code></pre></li>
+<li>如果要得到正确的结果，我们就不得不强制使用int类型：<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> s = Sigma&lt;<span class="hljs-built_in">int</span>&gt;(p,q);</code></pre></div></li>
 <li>但是这种不必要的转换是完全可以避免的!</li>
 <li>解决方法是：为每个Sigma函数的参数类型T创建一种关联(association)，关联的类别就是用来储存Sigma结果的类型</li>
 <li>这种关联可以看作是类型T的一种特性(characteristic fo the type T),因为sigma函数返回值的类型叫做T的trait</li>
 <li>T与其trait的关系推演如下：<br>T -&gt; association -&gt; characteristic of T -&gt; another type -&gt; trait</li>
 <li>Traits可以实现为模板类，而关联(association)则是针对每个具体类型T的特化。在这个例子里我们将trait命名为SigmaTraits, 叫做traits模板(traits template)</li>
 </ul>
-<p>Traits实现：<br><pre><code class="hljs plain">template &lt;typename T&gt;
-class SigmaTraits &#123; &#125;;
-&#x2F;&#x2F;可以人为的将返回的数值边得相对的大
+<p>Traits实现：<br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span> &#123;</span> &#125;;
+<span class="hljs-comment">//可以人为的将返回的数值边得相对的大</span>
 
-template &lt;&gt;
-class SigmaTraits&lt;char&gt; &#123;
-public:
-    typedef int ReturnType;
+<span class="hljs-keyword">template</span> &lt;&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;char&gt; &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> ReturnType;
 &#125;;
 
-template &lt;&gt;
-class SigmaTraits&lt;short&gt; &#123;
-public:
-    typedef int ReturnType;
+<span class="hljs-keyword">template</span> &lt;&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;short&gt; &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> ReturnType;
 &#125;;
 
-template &lt;&gt;
-class SigmaTraits&lt;int&gt; &#123;
-public:
-    typedef long ReturnType;
+<span class="hljs-keyword">template</span> &lt;&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;int&gt; &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> ReturnType;
 &#125;;
 
-template &lt;&gt;
-class SigmaTraits&lt;unsigned int&gt; &#123;
-public:
-    typedef  unsigned long ReturnType;
+<span class="hljs-keyword">template</span> &lt;&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;unsigned int&gt; &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">typedef</span>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> ReturnType;
 &#125;;
 
-template &lt;&gt;
-class SigmaTraits&lt;float&gt; &#123;
-public:
-    typedef double ReturnType;
-&#125;;</code></pre></p>
+<span class="hljs-keyword">template</span> &lt;&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;float&gt; &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">double</span> ReturnType;
+&#125;;</code></pre></div></p>
 <ul>
 <li>模板类SigmaTraits叫做traits template， 它含有其参数类型T的一个特性(trait), 即ReturnType</li>
 <li><p>现在Sigma函数可以改写成:</p>
-<pre><code class="hljs plain">template &lt;typename T&gt;
-inline typename SigmaTraits&lt;T&gt; :: ReturnType Sigma (const T const* start, const T const* end) &#123;
-    typedef typename SigmaTraits&lt;T&gt; :: ReturnType ReturnType;
+<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">inline</span> <span class="hljs-keyword">typename</span> SigmaTraits&lt;T&gt; :: <span class="hljs-function">ReturnType <span class="hljs-title">Sigma</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* start, <span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* <span class="hljs-built_in">end</span>)</span> </span>&#123;
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">typename</span> SigmaTraits&lt;T&gt; :: ReturnType ReturnType;
 
-    ReturnType s &#x3D; ReturnType();
+    ReturnType s = ReturnType();
 
-    while (start !&#x3D; end) &#123;
-        s +&#x3D; *start ++;
+    <span class="hljs-keyword">while</span> (start != <span class="hljs-built_in">end</span>) &#123;
+        s += *start ++;
     &#125;
 
-    return s;
-&#125;</code></pre>
+    <span class="hljs-keyword">return</span> s;
+&#125;</code></pre></div>
 </li>
 </ul>
 <h1 id="迭代器-iterator"><a href="#迭代器-iterator" class="headerlink" title="迭代器(iterator)"></a>迭代器(iterator)</h1><h2 id="什么是迭代器？"><a href="#什么是迭代器？" class="headerlink" title="什么是迭代器？"></a>什么是迭代器？</h2><p>迭代器是指针的泛化(generalization of pointers)</p>
@@ -291,29 +324,29 @@ inline typename SigmaTraits&lt;T&gt; :: ReturnType Sigma (const T const* start, 
 <h2 id="迭代器的基本思想"><a href="#迭代器的基本思想" class="headerlink" title="迭代器的基本思想"></a>迭代器的基本思想</h2><ul>
 <li>在STL中，迭代器最终要的思想就是分离算法和容器，使之不需要相互依赖</li>
 <li><p>迭代器将算法和容器粘合(stick)在一起从而使得一种算法的实现可以运用到多种不同的容器上，如下面的例子,find算法接受一对迭代器，分别指向容器的开始位置和最终位置</p>
-<pre><code class="hljs plain">template &lt;typename _InIt, typename _Ty&gt;
-inline _InIt find(_InIt _First, _InIt _Last, const _Ty&amp; _Val) &#123;
-    &#x2F;&#x2F;find first matching _Val
-    for (; _First !&#x3D; _Last; ++_First) &#123;
-        if (*_First &#x3D;&#x3D; _Val)
+<div class="hljs"><pre><code class="hljs sqf">template &lt;<span class="hljs-built_in">typename</span> <span class="hljs-variable">_InIt</span>, <span class="hljs-built_in">typename</span> <span class="hljs-variable">_Ty</span>&gt;
+inline <span class="hljs-variable">_InIt</span> <span class="hljs-built_in">find</span>(<span class="hljs-variable">_InIt</span> <span class="hljs-variable">_First</span>, <span class="hljs-variable">_InIt</span> <span class="hljs-variable">_Last</span>, const <span class="hljs-variable">_Ty</span>&amp; <span class="hljs-variable">_Val</span>) &#123;
+    <span class="hljs-comment">//find first matching _Val</span>
+    <span class="hljs-keyword">for</span> (; <span class="hljs-variable">_First</span> != <span class="hljs-variable">_Last</span>; ++<span class="hljs-variable">_First</span>) &#123;
+        <span class="hljs-keyword">if</span> (*<span class="hljs-variable">_First</span> == <span class="hljs-variable">_Val</span>)
           break;
     &#125;
 
-    return (_First);
-&#125;</code></pre>
+    return (<span class="hljs-variable">_First</span>);
+&#125;</code></pre></div>
 <p>find算法对于不同的容器，比如vector, list, deque均适用：</p>
-<pre><code class="hljs plain">std :: vector&lt;int&gt; v(...);
-std :: list&lt;int&gt; l(...);
-std :: deque&lt;int&gt; d(...);
+<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">v</span><span class="hljs-params">(...)</span></span>;
+<span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">l</span><span class="hljs-params">(...)</span></span>;
+<span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">d</span><span class="hljs-params">(...)</span></span>;
 
-std :: vector&lt;int&gt; :: iterator itv &#x3D; std :: find(v.begin(), v.end(), elementToFind)
-std :: list&lt;int&gt; :: iterator itl &#x3D; std :: find(l.begin(), l.end(), elementToFind)
-std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), elementToFind)</code></pre>
+<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; :: iterator itv = <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">find</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), elementToFind)
+<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; :: iterator itl = <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">find</span>(l.<span class="hljs-built_in">begin</span>(), l.<span class="hljs-built_in">end</span>(), elementToFind)
+<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; :: iterator it3 = <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">find</span>(d.<span class="hljs-built_in">begin</span>(), d.<span class="hljs-built_in">end</span>(), elementToFind)</code></pre></div>
 <p>每种容器都有其对应的迭代器</p>
 </li>
 </ul>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -337,11 +370,11 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/02/22/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(4)/">
@@ -350,8 +383,8 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/02/20/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B%EF%BC%882%EF%BC%89/">
@@ -360,47 +393,45 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -459,17 +490,17 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -482,14 +513,31 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -498,7 +546,7 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -514,62 +562,6 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -696,6 +688,41 @@ std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), e
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

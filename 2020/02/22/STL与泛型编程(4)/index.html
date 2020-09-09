@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -20,17 +20,29 @@
   <title>容器 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,7 +50,9 @@
 <!-- 自定义样式保持在最底部 -->
 
 
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -46,7 +60,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Wulnut`s space</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -61,61 +75,73 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
           
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -123,48 +149,53 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/code.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
 
             
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-22 21:50">
-                    2020年2月22日 晚上
-                  </time>
-                </div>
-              
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-22 21:50" pubdate>
+        2020年2月22日 晚上
+      </time>
+    </span>
+  
+</div>
 
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    1.2k 字
-                  </span>
-                
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
 
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    16
-                     分钟
-                  </span>
-                
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
 
-                
-              </div>
+  
+  
+</div>
+
             
           </div>
 
@@ -184,19 +215,21 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">容器</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>容器简介</p>
 <a id="more"></a>
 <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><h3 id="概述"><a href="#概述" class="headerlink" title="- 概述"></a>- 概述</h3><ul>
 <li>Vector是一个能够存放任意类型的动态数组</li>
 <li>Vector的数据结构和操作与数组(array)类似，在内存中的表现形式是一段地址连续的空间</li>
 <li>Vector与数组的区别在于，数组大小往往是定义是固定的(比如：char buffer[256]);Vec支持动态空间大小调整，随着空间的变化Vector内部会自动扩充内存空间</li>
-<li>为了试用Vector，必须试用include指令包含该头文件,并通过std空间去访问：<pre><code class="hljs plain">include &lt;vector&gt;
-int main() &#123;
-    std :: vector v;
-&#125;</code></pre>
+<li>为了试用Vector，必须试用include指令包含该头文件,并通过std空间去访问：<div class="hljs"><pre><code class="hljs cpp">include &lt;<span class="hljs-built_in">vector</span>&gt;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span> v;
+&#125;</code></pre></div>
 </li>
 </ul>
 <h3 id="创建vector"><a href="#创建vector" class="headerlink" title="创建vector"></a>创建vector</h3><div class="table-container">
@@ -231,20 +264,20 @@ int main() &#123;
 </tbody>
 </table>
 </div>
-<h3 id="向vector添加元素"><a href="#向vector添加元素" class="headerlink" title="向vector添加元素"></a>向vector添加元素</h3><p>向vector添加元素的方法为调用其push_back()函数，表示将元素添加至其尾部：<br><pre><code class="hljs plain">std :: vector &lt;std :: wstring&gt; v3;
-for (std :: size_t i &#x3D; 0; i &lt; 10; ++ i) &#123;
-    std :: wstringstream wss;
-    wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);
+<h3 id="向vector添加元素"><a href="#向vector添加元素" class="headerlink" title="向vector添加元素"></a>向vector添加元素</h3><p>向vector添加元素的方法为调用其push_back()函数，表示将元素添加至其尾部：<br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span> &lt;<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>&gt; v3;
+<span class="hljs-keyword">for</span> (<span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++ i) &#123;
+    <span class="hljs-built_in">std</span> :: wstringstream wss;
+    wss &lt;&lt; TEXT(<span class="hljs-string">&quot;String[&quot;</span>) &lt;&lt; i &lt;&lt; TEXT(<span class="hljs-string">&quot;]&quot;</span>);
     v3.push_back(wss.str());
-&#125;</code></pre></p>
+&#125;</code></pre></div></p>
 <h3 id="判断vector是否为空、获取vector大小"><a href="#判断vector是否为空、获取vector大小" class="headerlink" title="判断vector是否为空、获取vector大小"></a>判断vector是否为空、获取vector大小</h3><ul>
 <li>如果要判断vector是否为空则调用empty()函数</li>
-<li>如果要获取vector大小则调用size()函数<pre><code class="hljs plain">std :: vector &lt;std :: wstring&gt; v3;
-bool isEmpty &#x3D; v3.empty();
+<li>如果要获取vector大小则调用size()函数<div class="hljs"><pre><code class="hljs angelscript">std :: vector &lt;std :: wstring&gt; v3;
+<span class="hljs-built_in">bool</span> isEmpty = v3.empty();
 
-int array[] &#x3D; &#123;1,2,3,4,5,6,7,8,9,10&#125;;
-std :: vector&lt;int&gt; v(array, array + 10)
-std :: size vSize &#x3D; v.size();</code></pre>
+<span class="hljs-built_in">int</span> <span class="hljs-built_in">array</span>[] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>&#125;;
+std :: vector&lt;<span class="hljs-built_in">int</span>&gt; v(<span class="hljs-built_in">array</span>, <span class="hljs-built_in">array</span> + <span class="hljs-number">10</span>)
+std :: size vSize = v.size();</code></pre></div>
 </li>
 </ul>
 <h3 id="访问vector中元素"><a href="#访问vector中元素" class="headerlink" title="访问vector中元素"></a>访问vector中元素</h3><ul>
@@ -259,45 +292,45 @@ std :: size vSize &#x3D; v.size();</code></pre>
 </ul>
 </li>
 </ul>
-<pre><code class="hljs plain">std :: vector&lt;std::wstring&gt; v;
-v.reserve(10);
-for (std::size_t i &#x3D; 0; i &lt; 3; ++ i) &#123;
-    std :: wstringstream wss;
-    wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);
+<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">wstring</span>&gt; v;
+v.reserve(<span class="hljs-number">10</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++ i) &#123;
+    <span class="hljs-built_in">std</span> :: wstringstream wss;
+    wss &lt;&lt; TEXT(<span class="hljs-string">&quot;String[&quot;</span>) &lt;&lt; i &lt;&lt; TEXT(<span class="hljs-string">&quot;]&quot;</span>);
     v.push_back(wss.str());
 &#125;
 
-try &#123;
-    std :: wstring wsz1 &#x3D; v[5]; &#x2F;&#x2F; not bounds checked -will not throw
-    std :: wstring wsz2 &#x3D; v.at(5); &#x2F;&#x2F; bounds checked -will throw if out of range
+<span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> wsz1 = v[<span class="hljs-number">5</span>]; <span class="hljs-comment">// not bounds checked -will not throw</span>
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> wsz2 = v.at(<span class="hljs-number">5</span>); <span class="hljs-comment">// bounds checked -will throw if out of range</span>
 &#125;
-catch (const std :: exception&amp; ex) &#123;
-    Console :: WriteLine(ex.what());
-&#125;</code></pre>
+<span class="hljs-keyword">catch</span> (<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span> :: exception&amp; ex) &#123;
+    <span class="hljs-built_in">Console</span> :: WriteLine(ex.what());
+&#125;</code></pre></div>
 <h3 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h3><ul>
 <li>clear：清除一整个vector</li>
 <li>pop_back：弹出vector为元素</li>
 <li>erase:删除vector中某一位置的元素<ul>
-<li>用法一：指定iterator删除某一元素<pre><code class="hljs plain">std :: vector&lt;int&gt; :: const_iterator it &#x3D; v.begin();
-v.erase(it + 1); &#x2F;&#x2F; erase the second element in the Vector</code></pre></li>
+<li>用法一：指定iterator删除某一元素<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; :: const_iterator it = v.<span class="hljs-built_in">begin</span>();
+v.erase(it + <span class="hljs-number">1</span>); <span class="hljs-comment">// erase the second element in the Vector</span></code></pre></div></li>
 <li>用法二：通过某一条件函数找到vector中需要删除的元素。所谓条件函数是一个按照用户定义的条件返回true/false的函数对象。我们以remove_if为例说明。</li>
 <li>remove_if函数定义在algorithm中，故需要include<algorithm></li>
-<li>定义筛选器：一个一元函数对象(unary_function),关键在于重载operator()<pre><code class="hljs plain">struct ContainsString : public std :: unary_function &lt;std :: wstring, bool&gt; &#123;
-    ContainsString (const std::wstring&amp; wszMatch) : m_wszMatch(wszMatch) &#123;&#125;
+<li>定义筛选器：一个一元函数对象(unary_function),关键在于重载operator()<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ContainsString</span> :</span> <span class="hljs-keyword">public</span> <span class="hljs-built_in">std</span> :: unary_function &lt;<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>, <span class="hljs-keyword">bool</span>&gt; &#123;
+    ContainsString (<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">wstring</span>&amp; wszMatch) : m_wszMatch(wszMatch) &#123;&#125;
 
-    bool operator()(const std :: wstring&amp; wszStringToMatch) const &#123;
-        &#x2F;&#x2F;注意因为它重载了()所以可以当一个函数来用
-        return (wszStringToMatch.find(m_wszMatch) !&#x3D; 1);
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>&amp; wszStringToMatch)</span> <span class="hljs-keyword">const</span> </span>&#123;
+        <span class="hljs-comment">//注意因为它重载了()所以可以当一个函数来用</span>
+        <span class="hljs-keyword">return</span> (wszStringToMatch.<span class="hljs-built_in">find</span>(m_wszMatch) != <span class="hljs-number">1</span>);
     &#125;
 
-    std :: wstring m_wszMatch;
-&#125;</code></pre></li>
-<li>在erase函数中调用remove_if执行删除:<pre><code class="hljs plain">v.erase (std :: remove_if (
-    v.begin(),
-    v.end(),
-    ContainsString (L&quot;C++&quot;)
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> m_wszMatch;
+&#125;</code></pre></div></li>
+<li>在erase函数中调用remove_if执行删除:<div class="hljs"><pre><code class="hljs arduino">v.erase (<span class="hljs-built_in">std</span> :: remove_if (
+    v.<span class="hljs-built_in">begin</span>(),
+    v.<span class="hljs-built_in">end</span>(),
+    ContainsString (<span class="hljs-string">L&quot;C++&quot;</span>)
 ),
-  v.end());</code></pre></li>
+  v.<span class="hljs-built_in">end</span>());</code></pre></div></li>
 <li>remove_if是不是真正remove了vector中的元素呢？<br>remove_if其实真正的做的事针对ContainsString条件对给出了erase函数需要操作的iterator位置。</li>
 </ul>
 </li>
@@ -311,20 +344,20 @@ v.erase(it + 1); &#x2F;&#x2F; erase the second element in the Vector</code></pre
 </ul>
 </li>
 <li>Deque采用了与vector不同的内存管理方式：大块分配内存</li>
-<li>为了试用deque，必须用include质量包含如下文件，并通过std命名空间访问：<pre><code class="hljs plain">#include &lt;deque&gt;
-int main() &#123;
-    std :: deque dq;
-&#125;</code></pre>
+<li>为了试用deque，必须用include质量包含如下文件，并通过std命名空间访问：<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;deque&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">deque</span> dq;
+&#125;</code></pre></div>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2></li>
 </ul>
 </li>
 <li>概述<ul>
 <li>List是一个能够存放任意类型的双向链表(double linked list)</li>
 <li>可以向List中接入一个子链表(sub-list)</li>
-<li>为了使用List，必须使用include指令包含如下文件，并通过std命名空间去访问：<pre><code class="hljs plain">#include &lt;list&gt;
-int main() &#123;
-    std :: list l;
-&#125;</code></pre>
+<li>为了使用List，必须使用include指令包含如下文件，并通过std命名空间去访问：<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;list&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">list</span> l;
+&#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -369,7 +402,7 @@ int main() &#123;
 </li>
 </ul>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -395,11 +428,11 @@ int main() &#123;
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/02/26/%E6%AF%8F%E6%97%A5%E8%8B%B1%E8%AF%AD%E5%90%AC%E5%8A%9B/">
@@ -408,8 +441,8 @@ int main() &#123;
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/02/21/STL%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B(3)/">
@@ -418,47 +451,45 @@ int main() &#123;
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.14/Valine.min.js" ></script>
-
   <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
-        app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
-        placeholder: "ヾﾉ≧∀≦)o来说点嘛",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: false,
-        serverURLs: "",
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
-    };
+    }
+    waitElementVisible('vcomments', loadValine);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -517,17 +548,17 @@ int main() &#123;
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-    <p>copyright &copy 2019-2020</p>
-    <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://hexo.fluid-dev.com/docs/" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
-    </div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
     
 
     
   <!-- 备案信息 -->
-  <div>
-    <a href="http://beian.miit.gov.cn/" target="_blank" class="beian-icp"
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
        rel="nofollow noopener">鄂ICP证20001010号</a>
     
   </div>
@@ -540,14 +571,31 @@ int main() &#123;
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
   <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
   <script>
     $(document).ready(function () {
@@ -556,7 +604,7 @@ int main() &#123;
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: '.post-content',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',
@@ -572,62 +620,6 @@ int main() &#123;
       }
     });
   </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-<!-- Plugins -->
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-    <!-- Google Analytics -->
-    <script defer>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-      ga('create', 'UA-155249740-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
 
 
 
@@ -754,6 +746,41 @@ int main() &#123;
       mermaid.initialize({"theme":"default"});
     }
   </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
