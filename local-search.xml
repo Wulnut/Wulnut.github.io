@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2020/08/01/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <url>/2020/08/01/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <title>公告 | 🔊 置顶</title>
+    <link href="/2020/09/15/%E7%BD%AE%E9%A1%B6/"/>
+    <url>/2020/09/15/%E7%BD%AE%E9%A1%B6/</url>
     
-    <content type="html"><![CDATA[<pre><code class="hljs js"><span class="hljs-keyword">var</span> emailvar = <span class="hljs-regexp">/^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/</span>; <span class="hljs-comment">// 匹配邮箱</span></code></pre><p>对上面这段正则表达式的解释</p><ul><li>首先开头与结尾有均有一个/，在正则表达式中正则表达式写在/…/中间</li><li>^和$表示的是正则表达式的开始与结束</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>&emsp;</p><a id="more"></a><style>.box{  width:600px;  margin: 100px auto;  padding: 20px;  background-image:-webkit-linear-gradient(left,#3498db 0%,#f47920 10%,#d71345 20%,#f7acbc 30%,#ffd400 40%,#3498db 50%,#f47920 60%,#d71345 70%,#f7acbc 80%,#ffd400 90%,#3498db 100%);  color:transparent;  background-size:200% 100%;  -webkit-background-clip:text;  font-size:3em;  text-align:center;  animation: move 3s infinite linear;}@keyframes move{  0%{    background-position:0 0;  }  100%{    background-position:-100% 0;  }}hr.style{     width:80%;    margin:0 auto;    border: 0;    height: 1px;    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); }</style><center><div class='box'>国赛结束，恢复更新喽~</div></center><p><hr class = "style"><br><br><br><br><br><br><br><br></p><script type="math/tex; mode=display">C = W \log_2 (1 + \frac{S}{N})</script><p><br><br><br><br><br><br><br></p>]]></content>
     
     
     
