@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -271,13 +267,13 @@ banner_img:是当前页面图片
 <p>在编译多个文件的时候所出现的报错<br><a id="more"></a></p>
 <h1 id="多文件编译遇见的问题"><a href="#多文件编译遇见的问题" class="headerlink" title="多文件编译遇见的问题"></a>多文件编译遇见的问题</h1><p><img src="/img/报错截图.jpg" srcset="/img/loading.gif" alt=" "></p>
 <p>该错误出现在 command line 为</p>
-<pre class="language-none"><code class="language-none">gcc coordin.h file1.cpp file2.cpp -o file1</code></pre>
+<div class="hljs"><pre><code class="hljs apache"><span class="hljs-attribute">gcc</span> coordin.h file<span class="hljs-number">1</span>.cpp file<span class="hljs-number">2</span>.cpp -o file<span class="hljs-number">1</span></code></pre></div>
 <p><strong>解决方法为：</strong><br><strong>解决方法是用如下命令进行编译(使用 -l 来连接 stdc++):</strong></p>
-<pre class="language-none"><code class="language-none">gcc coordin.h file1.cpp file2.cpp -o HelloWorld</code></pre>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">gcc</span> <span class="hljs-selector-tag">coordin</span><span class="hljs-selector-class">.h</span> <span class="hljs-selector-tag">file1</span><span class="hljs-selector-class">.cpp</span> <span class="hljs-selector-tag">file2</span><span class="hljs-selector-class">.cpp</span> <span class="hljs-selector-tag">-o</span> <span class="hljs-selector-tag">HelloWorld</span></code></pre></div>
 <p><strong>gcc编译cpp文件为什么要加-lstdc++?</strong></p>
-<pre><code>   gcc可以编译c++文件，也可以编译c文件，但默认是编译c文件的，加-lstdc++表示编译c++文件，
+<div class="hljs"><pre><code>   gcc可以编译c++文件，也可以编译c文件，但默认是编译c文件的，加-lstdc++表示编译c++文件，
 即链接c++库，加-lc表示链接c库，默认情况下就是链接c库，所以如果编译c文件可以不加-lc。
-</code></pre><p><strong>另外，你也可以使用 g++, 效果是一样的, stdc++会被自动连接:</strong><br><pre class="language-none"><code class="language-none">g++ coordin.h file1.cpp file2.cpp -o HelloWorld</code></pre></p>
+</code></pre></div><p><strong>另外，你也可以使用 g++, 效果是一样的, stdc++会被自动连接:</strong><br><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">g</span>++ <span class="hljs-selector-tag">coordin</span><span class="hljs-selector-class">.h</span> <span class="hljs-selector-tag">file1</span><span class="hljs-selector-class">.cpp</span> <span class="hljs-selector-tag">file2</span><span class="hljs-selector-class">.cpp</span> <span class="hljs-selector-tag">-o</span> <span class="hljs-selector-tag">HelloWorld</span></code></pre></div></p>
 
             </div>
             <hr>
@@ -555,8 +551,6 @@ banner_img:是当前页面图片
 
 
 
-  
-    
   
 
 

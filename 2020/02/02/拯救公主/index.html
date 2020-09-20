@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -273,7 +269,7 @@
 <p>给定牢房矩阵，公主、骑士和守卫在矩阵中的位置，请你计算拯救行动成功需要花费最短时间。</p>
 <h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>1、两个整数代表 $N$ 和 $M, (N, M \le 200)M,(N,M\le200)$.<br>2、随后 $N$ 行，每行有 $M$ 个字符。”@” 代表道路，”a” 代表公主，”r” 代表骑士，”x” 代表守卫, “#” 代表墙壁。</p>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>如果拯救行动成功，输出一个整数，表示行动的最短时间。<br>如果不可能成功，输出 “Impossible”。</p>
-<h3 id="输入样例1"><a href="#输入样例1" class="headerlink" title="输入样例1"></a>输入样例1</h3><pre><code>7 8
+<h3 id="输入样例1"><a href="#输入样例1" class="headerlink" title="输入样例1"></a>输入样例1</h3><div class="hljs"><pre><code>7 8
 #@#####@
 #@a#@@r@
 #@@#x@@@
@@ -281,8 +277,8 @@
 #@@@##@@
 @#@@@@@@
 @@@@@@@@
-</code></pre><h3 id="输出样例1"><a href="#输出样例1" class="headerlink" title="输出样例1"></a>输出样例1</h3><pre><code>13
-</code></pre><h3 id="输入样例2"><a href="#输入样例2" class="headerlink" title="输入样例2"></a>输入样例2</h3><pre><code>13 40
+</code></pre></div><h3 id="输出样例1"><a href="#输出样例1" class="headerlink" title="输出样例1"></a>输出样例1</h3><div class="hljs"><pre><code>13
+</code></pre></div><h3 id="输入样例2"><a href="#输入样例2" class="headerlink" title="输入样例2"></a>输入样例2</h3><div class="hljs"><pre><code>13 40
 @x@@##x@#x@x#xxxx##@#x@x@@#x#@#x#@@x@#@x
 xx###x@x#@@##xx@@@#@x@@#x@xxx@@#x@#x@@x@
 #@x#@x#x#@@##@@x#@xx#xxx@@x##@@@#@x@@x@x
@@ -296,8 +292,8 @@ x#x#@x@#x#@##@xrx@x#xxxx@##x##xx#@#x@xx@
 x#xx@x###@xxx#@#x#@@###@#@##@x#@x@#@@#@@
 #@#x@x#x#x###@x@@xxx####x@x##@x####xx#@x
 #x#@x#x######@@#x@#xxxx#xx@@@#xx#x#####@
-</code></pre><h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><pre><code>7
-</code></pre><h3 id="ans"><a href="#ans" class="headerlink" title="ans"></a>ans</h3><pre><code>//ac
+</code></pre></div><h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><div class="hljs"><pre><code>7
+</code></pre></div><h3 id="ans"><a href="#ans" class="headerlink" title="ans"></a>ans</h3><div class="hljs"><pre><code>//ac
 #include &lt;bits/stdc++.h&gt;
 using namespace std;
 
@@ -381,7 +377,7 @@ int main()&#123;
     &#125;
     return 0;
 &#125;
-</code></pre><h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>&emsp;&emsp;这个题目的棋盘范围超过了100也就是说使用dfs算法是非常危险的方法，因为dfs的时间复杂度为 $O(2^n)$ 而bfs的时间复杂度为$O(M*N)$所以使用dfs是会为超时的。</p>
+</code></pre></div><h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>&emsp;&emsp;这个题目的棋盘范围超过了100也就是说使用dfs算法是非常危险的方法，因为dfs的时间复杂度为 $O(2^n)$ 而bfs的时间复杂度为$O(M*N)$所以使用dfs是会为超时的。</p>
 <p>&emsp;&emsp;所以弃用dfs是必须的，一般再求最少问题时一般都是采用dfs算法使用。但是我们注意这个棋盘的范围超过了100。对于bfs来说<br>空间复杂度问题就显现的比较明显。如果采用一般的队列方式来存储帮助bfs的实现，时肯定不行的。此时就要记住。一般这种情况下求极值问题要求优化，我们就采用用<strong>优先队列</strong>的方法。来进行优化。其实质上对空间复杂度的优化就是对时间复杂度的优化。要不断使用最优秀的数据结构来解决时间于内存上的算法优化问题。</p>
 <font color="#f4f4f4" weight="bold" size="32">To be continue</font>
             </div>
@@ -664,8 +660,6 @@ int main()&#123;
 
 
 
-  
-    
   
 
 

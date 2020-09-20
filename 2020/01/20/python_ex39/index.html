@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -271,7 +267,7 @@
 <ol>
 <li>list[index] = newValue: 对指定索引index的列表元素进行修改</li>
 <li><p>list[::] = newList: 对指定方位的列表元素进行修改</p>
-<pre><code> list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code> list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
  list[0] = &quot;eee&quot;
 
@@ -280,7 +276,7 @@
  list[1:3] = [&quot;ggg&quot;,&quot;kkk&quot;]
 
  print(&quot;list:&quot;,list)
-</code></pre></li>
+</code></pre></div></li>
 </ol>
 <p>4.删除列表元素<br>列表创建后，可以根据需要使用列表函数，del语句或切片和删除指定袁术或所有元素。</p>
 <ol>
@@ -291,7 +287,7 @@
 <li>list.clear(): 删除列表中所有元素。</li>
 <li>list[::] = []: 对指定范围的列表元素进行</li>
 </ol>
-<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
     print(&quot;list:&quot;,list)
 
@@ -303,7 +299,7 @@
     #list[2:3] = []
 
     print(&quot;list:&quot;,list)
-</code></pre><p>list.remove(item)<br><img src="/img/list.remove.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p>list.remove(item)<br><img src="/img/list.remove.png" srcset="/img/loading.gif" alt=" "></p>
 <p>list.clear()<br><img src="/img/list.clear.png" srcset="/img/loading.gif" alt=" "></p>
 <p>list[::] = []<br><img src="/img/list[].png" srcset="/img/loading.gif" alt=" "></p>
 <h2 id="列表复制和删除"><a href="#列表复制和删除" class="headerlink" title="列表复制和删除"></a>列表复制和删除</h2><h3 id="1-列表复制"><a href="#1-列表复制" class="headerlink" title="1.列表复制"></a>1.列表复制</h3><p>列表复制有两种方法。</p>
@@ -311,24 +307,24 @@
 <li>list_copy = list.copy(): 列表浅复制。当列表list改变时，list_copy中的元素不会随之变化。</li>
 <li>list_copy = list: 列表复制。当列表list改变时，list_copy中的元素也会随之改变。</li>
 </ol>
-<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
     list_copy = list.copy()
 
     print(&quot;list:&quot;,list)
     print(&quot;list_copy:&quot;,list_copy)
-</code></pre><p><img src="/img/list.copy.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p><img src="/img/list.copy.png" srcset="/img/loading.gif" alt=" "></p>
 <h3 id="2-列表删除"><a href="#2-列表删除" class="headerlink" title="2.列表删除"></a>2.列表删除</h3><p>当列表不再使用后，可以使用del语句删除列表，其一般格式：</p>
-<pre><code>del 列表名
-</code></pre><p>del 可以索引删除也可以全部删除</p>
-<pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
+<div class="hljs"><pre><code>del 列表名
+</code></pre></div><p>del 可以索引删除也可以全部删除</p>
+<div class="hljs"><pre><code>    list = [&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;]
 
     print(&quot;list:&quot;,list)
 
     del list
 
     print(&quot;list:&quot;,list)
-</code></pre><p><img src="/img/del.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p><img src="/img/del.png" srcset="/img/loading.gif" alt=" "></p>
 <h2 id="列表运算"><a href="#列表运算" class="headerlink" title="列表运算"></a>列表运算</h2><ol>
 <li>+: 将多个列表组合成一个新的列表，新列表中的元素是多个元素的有序组合。</li>
 <li>*: 将整数n和列表相乘可以得到一个将原列表重复n次的新列表。</li>
@@ -345,8 +341,8 @@
 <li>list.count(key): 返回关键字key在列表中出现的次数</li>
 </ol>
 <h2 id="列表元素查找和排序"><a href="#列表元素查找和排序" class="headerlink" title="列表元素查找和排序"></a>列表元素查找和排序</h2><h3 id="1-列表元素查找"><a href="#1-列表元素查找" class="headerlink" title="1.列表元素查找"></a>1.列表元素查找</h3><p>list.index()函数用于查找并返回关键字在列表中第1次出现的位置，其一般格式为：</p>
-<pre><code>list.index(key)
-</code></pre><p>其中，key为要在列表中查找的元素。</p>
+<div class="hljs"><pre><code>list.index(key)
+</code></pre></div><p>其中，key为要在列表中查找的元素。</p>
 <h3 id="2-列表元素的排序"><a href="#2-列表元素的排序" class="headerlink" title="2.列表元素的排序"></a>2.列表元素的排序</h3><p>列表创建后，可以使用一下函数更具关键字对列表中的元素进行排序、倒序或临时排序。</p>
 <ol>
 <li>list.sort(): 对列表中的元素按照一定的规则进行排序</li>
@@ -621,8 +617,6 @@
 
 
 
-  
-    
   
 
 

@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -222,7 +218,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      946 字
+      943 字
     </span>
   
 
@@ -277,23 +273,23 @@
 </ul>
 </li>
 </ul>
-<p>int 型<br><pre class="language-none"><code class="language-none">int Max(int a, int b) &#123;
+<p>int 型<br><div class="hljs"><pre><code class="hljs reasonml"><span class="hljs-built_in">int</span> <span class="hljs-constructor">Max(<span class="hljs-params">int</span> <span class="hljs-params">a</span>, <span class="hljs-params">int</span> <span class="hljs-params">b</span>)</span> &#123;
     return (a &gt; b) ? a : b;
-&#125;</code></pre></p>
-<p>long型<br><pre class="language-none"><code class="language-none">long Max(long a, long b) &#123;
+&#125;</code></pre></div></p>
+<p>long型<br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-title">Max</span><span class="hljs-params">(<span class="hljs-keyword">long</span> a, <span class="hljs-keyword">long</span> b)</span> </span>&#123;
+    <span class="hljs-keyword">return</span> (a &gt; b) ? a : b;
+&#125;</code></pre></div></p>
+<p>char型<br><div class="hljs"><pre><code class="hljs reasonml"><span class="hljs-built_in">char</span> <span class="hljs-constructor">Max(<span class="hljs-params">char</span> <span class="hljs-params">a</span>, <span class="hljs-params">char</span> <span class="hljs-params">b</span>)</span> &#123;
     return (a &gt; b) ? a : b;
-&#125;</code></pre></p>
-<p>char型<br><pre class="language-none"><code class="language-none">char Max(char a, char b) &#123;
-    return (a &gt; b) ? a : b;
-&#125;</code></pre></p>
+&#125;</code></pre></div></p>
 <ul>
 <li><p>一个简单的例子</p>
 <ul>
 <li><p>如果使用模板，则可以省去一堆代码，从而将代码原型缩减到非常简介的表达：</p>
-<pre class="language-none"><code class="language-none">template &lt;typename T&gt; 
-T Max(T a, T b) &#123;
-    return (a &gt; b) ? a : b;
-&#125;</code></pre>
+<div class="hljs"><pre><code class="hljs excel">template &lt;typename <span class="hljs-built_in">T</span>&gt; 
+<span class="hljs-built_in">T</span> <span class="hljs-built_in">Max</span>(<span class="hljs-built_in">T</span> a, <span class="hljs-built_in">T</span> b) &#123;
+    return (a &gt; b) ? a <span class="hljs-symbol">:</span> b;
+&#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -307,44 +303,43 @@ T Max(T a, T b) &#123;
 <ul>
 <li>模板的声明(declaration)其实并未给出一个函数或类的完全定义(definition)，只是提供了一个函数或类的语法框架(syntactical skeleton)</li>
 <li><p>实例化时指从模板够检出一个真正的函数或类的过程，比如：</p>
-   <pre class="language-none"><code class="language-none">        template &lt;typename T&gt;
-        struct Object&#123;....&#125;
-        &#96;&#96;&#96;           
-   - 可以用来构建诸如Object&lt;int&gt;, Object&lt;char&gt;, Object&lt;int*&gt;, Object&lt;MyClass*&gt;等等不同类别的具体实例
+   <div class="hljs"><pre><code class="hljs nim">        <span class="hljs-keyword">template</span> &lt;typename T&gt;
+        struct <span class="hljs-type">Object</span><span class="hljs-meta">&#123;....&#125;</span>
+        ```           
+   - 可以用来构建诸如<span class="hljs-type">Object</span>&lt;<span class="hljs-built_in">int</span>&gt;, <span class="hljs-type">Object</span>&lt;<span class="hljs-built_in">char</span>&gt;, <span class="hljs-type">Object</span>&lt;<span class="hljs-built_in">int</span>*&gt;, <span class="hljs-type">Object</span>&lt;<span class="hljs-type">MyClass</span>*&gt;等等不同类别的具体实例
 
 - 实例化有两种类型：
   - **显式**实例化-在代码中明确指定要正对哪位类别进行实例化
   - **隐式**实例化-在首次使用时根据具体情况一种合适的型别惊醒实例化
   
-## C++函数模板
+<span class="hljs-comment">## C++函数模板</span>
 - 什么时函数模板？
-  - **函数模板**是参数化的一族函数(a family of functions)
+  - **函数模板**是参数化的一族函数(a family <span class="hljs-keyword">of</span> functions)
   - 通过函数模板，可以定义一系列函数，这些函数都是基于同一代码，但是可以用作在不同类别的参数上
-</code></pre>
+</code></pre></div>
 <p>template <typename T><br>inline T Max(const T&amp; a, const T&amp; b) {<br>return (a &gt; b) ? a : b;<br>}</p>
-<pre class="language-none"><code class="language-none">- 定义函数模板
-  - 定义一个函数模板，反水数中较大一个，该函数有两个参数：(a,b)
-  - 参数类别未定，以模板参数T表示
-  - 模板参数由关键字typename引入
-  - 也可以使用class代替typename来定义类型参数
-  - 从语法上讲使用class和使用typename没有区别
-  - 单从语义上，class可能会导致误区，即只有类才能作为类别参数；而事实上T所以表达的意思不仅仅只针对类，任何类别都可以
-  
-- 参数推导
-  - 模板参数是有传递给模板函数的实参所决定的
-  - 不允许自动类型转换：每个T必须严格匹配</code></pre>
+<div class="hljs"><pre><code class="hljs haml">-<span class="ruby"> 定义函数模板</span>
+<span class="ruby">  - 定义一个函数模板，反水数中较大一个，该函数有两个参数：(a,b)</span>
+<span class="ruby">  - 参数类别未定，以模板参数T表示</span>
+<span class="ruby">  - 模板参数由关键字typename引入</span>
+<span class="ruby">  - 也可以使用<span class="hljs-class"><span class="hljs-keyword">class</span>代替<span class="hljs-title">typename</span>来定义类型参数</span></span>
+<span class="ruby">  - 从语法上讲使用<span class="hljs-class"><span class="hljs-keyword">class</span>和使用<span class="hljs-title">typename</span>没有区别</span></span>
+<span class="ruby">  - 单从语义上，<span class="hljs-class"><span class="hljs-keyword">class</span>可能会导致误区，即只有类才能作为类别参数；而事实上<span class="hljs-title">T</span>所以表达的意思不仅仅只针对类，任何类别都可以</span></span>
+<span class="ruby">  </span>
+<span class="ruby">- 参数推导</span>
+<span class="ruby">  - 模板参数是有传递给模板函数的实参所决定的</span>
+<span class="ruby">  - 不允许自动类型转换：每个T必须严格匹配</span></code></pre></div>
 <p>Max(1, 2) //两次实参的类型都是int<br>Max(1, 2.0) //ERROR：第一参数的类别是int第二参数类别是double</p>
-<pre class="language-none"><code class="language-none">- 一般有两种处理这种错误的方法：
-   1. 用static_cast&lt;double&gt;或者强制转换参数类型以使两者匹配</code></pre>
+<div class="hljs"><pre><code class="hljs cpp">- 一般有两种处理这种错误的方法：
+   <span class="hljs-number">1.</span> 用<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">double</span>&gt;或者强制转换参数类型以使两者匹配</code></pre></div>
 <p>Max(static_cast<double>(1),2.0)</p>
-<pre class="language-none"><code class="language-none">1. 显示指定T的类别</code></pre>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">1.</span> 显示指定T的类别</code></pre></div>
 <p>Max<double>(1, 2.0)</p>
-<pre class="language-none"><code class="language-none">
-- 函数模板重载
-  - 函数模板也可以像普通函数一样被重载
-  - 非模板函数可以和**同名**的模板函数共存
-  - 编译器同通过函数模板参数推导来决定使用调用哪个函数
-  </code></pre>
+<div class="hljs"><pre><code class="hljs markdown">
+<span class="hljs-bullet">-</span> 函数模板重载
+<span class="hljs-bullet">  -</span> 函数模板也可以像普通函数一样被重载
+<span class="hljs-bullet">  -</span> 非模板函数可以和<span class="hljs-strong">**同名**</span>的模板函数共存
+<span class="hljs-bullet">  -</span> 编译器同通过函数模板参数推导来决定使用调用哪个函数</code></pre></div>
 <p>inline int const&amp; Max(const int const&amp; a, const int const&amp; b)</p>
 </li>
 </ul>
@@ -629,8 +624,6 @@ T Max(T a, T b) &#123;
 
 
 
-  
-    
   
 
 

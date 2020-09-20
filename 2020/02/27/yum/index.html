@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -270,49 +266,49 @@
 <h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p><strong>wget</strong>:类似于迅雷，是一种<code>下载工具</code>，通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，并可以使用HTTP代理 名字是World Wide Web”与“get”的结合。</p>
 <h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><p><strong>yum</strong>: 是redhat, centos 系统下的<code>软件安装方式</code>，基于Linux,全称为 Yellow dog Updater, Modified,是一个在Fedora和RedHat以及CentOS中的Shell前端软件包管理器,基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包。</p>
 <h3 id="yum常用选项和参数"><a href="#yum常用选项和参数" class="headerlink" title="yum常用选项和参数"></a>yum常用选项和参数</h3><h4 id="列举包文件"><a href="#列举包文件" class="headerlink" title="列举包文件"></a>列举包文件</h4><hr>
-<pre class="language-none"><code class="language-none">yum list #列出资源库中所有可以安装或更新的rpm包
-yum list updates　#列出资源库中所有可以更新的rpm包
-yum list installed　　#列出已经安装的所有的rpm包
-yum list extras　　#列出已经安装的但是不包含在官方资源库中的rpm包，例如安装了epel源的rpm包会列出来</code></pre>
+<div class="hljs"><pre><code class="hljs applescript">yum <span class="hljs-built_in">list</span> <span class="hljs-comment">#列出资源库中所有可以安装或更新的rpm包</span>
+yum <span class="hljs-built_in">list</span> updates　<span class="hljs-comment">#列出资源库中所有可以更新的rpm包</span>
+yum <span class="hljs-built_in">list</span> installed　　<span class="hljs-comment">#列出已经安装的所有的rpm包</span>
+yum <span class="hljs-built_in">list</span> extras　　<span class="hljs-comment">#列出已经安装的但是不包含在官方资源库中的rpm包，例如安装了epel源的rpm包会列出来</span></code></pre></div>
 <h4 id="列举资源信息"><a href="#列举资源信息" class="headerlink" title="列举资源信息"></a>列举资源信息</h4><hr>
-<pre class="language-none"><code class="language-none">yum info　　#列出资源库中所有可以安装或更新的rpm包的信息
-yum info perl　　#列出perl包信息
-yum info perl*　　#列出perl开头的所有包的信息
-yum info updates　　#列出资源库中所有可以更新的rpm包的信息
-yum info installed　　#列出已经安装的所有的rpm包的信息
-yum info extras　　#列出已经安装的但是不包含在资源库中的rpm包的信息
-</code></pre>
+<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">yum</span> <span class="hljs-literal">info</span>　　<span class="hljs-comment">#列出资源库中所有可以安装或更新的rpm包的信息</span>
+yum <span class="hljs-literal">info</span> perl　　<span class="hljs-comment">#列出perl包信息</span>
+yum <span class="hljs-literal">info</span> perl*　　<span class="hljs-comment">#列出perl开头的所有包的信息</span>
+yum <span class="hljs-literal">info</span> updates　　<span class="hljs-comment">#列出资源库中所有可以更新的rpm包的信息</span>
+yum <span class="hljs-literal">info</span> installed　　<span class="hljs-comment">#列出已经安装的所有的rpm包的信息</span>
+yum <span class="hljs-literal">info</span> extras　　<span class="hljs-comment">#列出已经安装的但是不包含在资源库中的rpm包的信息</span>
+</code></pre></div>
 <h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><hr>
-<pre class="language-none"><code class="language-none">yum search perl　#搜索匹配特定字符的rpm包，在包名称、包描述等中搜索
-yum provides libstdc++.so.6　　#反查包含特定文件名的rpm包，查询命令用yum provides *&#x2F;ifconfig，查询文件无需*&#x2F; 也可用yum whatprovides</code></pre>
+<div class="hljs"><pre><code class="hljs jboss-cli">yum search perl　<span class="hljs-comment">#搜索匹配特定字符的rpm包，在包名称、包描述等中搜索</span>
+yum provides libstdc++<span class="hljs-string">.so.6</span>　　<span class="hljs-comment">#反查包含特定文件名的rpm包，查询命令用yum provides */ifconfig，查询文件无需*/ 也可用yum whatprovides</span></code></pre></div>
 <h4 id="管理包"><a href="#管理包" class="headerlink" title="管理包"></a>管理包</h4><hr>
 <ul>
-<li>安装rpm包<pre class="language-none"><code class="language-none">yum install perl　　#安装perl包
-yum install perl*　　#安装perl开头的包
-yum remove perl* 　　#会删除perl* 所有包，以及相关依赖的包</code></pre></li>
-<li>软件组件管理<pre class="language-none"><code class="language-none">yum groupinstall &quot;Chinese Support&quot;　　#安装指定的组
-yum groupupdate &quot;Chinese Support&quot;　　#安装了的组成员软件包更新
-yum grouplist　　#安装了的组和可以安装的组一览显示
-yum groupremove &quot;Chinese Support&quot;　　#删除指定的组
-yum groupinfo &quot;Chinese Support&quot;　　#指定组所包含的软件包显示</code></pre>
+<li>安装rpm包<div class="hljs"><pre><code class="hljs vim">yum install <span class="hljs-keyword">perl</span>　　#安装<span class="hljs-keyword">perl</span>包
+yum install <span class="hljs-keyword">perl</span>*　　#安装<span class="hljs-keyword">perl</span>开头的包
+yum <span class="hljs-built_in">remove</span> <span class="hljs-keyword">perl</span>* 　　#会删除<span class="hljs-keyword">perl</span>* 所有包，以及相关依赖的包</code></pre></div></li>
+<li>软件组件管理<div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">yum</span> groupinstall <span class="hljs-string">&quot;Chinese Support&quot;</span>　　<span class="hljs-comment">#安装指定的组</span>
+yum groupupdate <span class="hljs-string">&quot;Chinese Support&quot;</span>　　<span class="hljs-comment">#安装了的组成员软件包更新</span>
+yum grouplist　　<span class="hljs-comment">#安装了的组和可以安装的组一览显示</span>
+yum groupremove <span class="hljs-string">&quot;Chinese Support&quot;</span>　　<span class="hljs-comment">#删除指定的组</span>
+yum groupinfo <span class="hljs-string">&quot;Chinese Support&quot;</span>　　<span class="hljs-comment">#指定组所包含的软件包显示</span></code></pre></div>
 <h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4></li>
 </ul>
 <hr>
-<pre class="language-none"><code class="language-none">yum check-update　　#检查可更新的rpm包
+<div class="hljs"><pre><code class="hljs routeros">yum check-update　　#检查可更新的rpm包
 yum update　　#更新所有的rpm包
 yum update kernel kernel-source　　#更新指定的rpm包,如更新kernel和kernel source
-yum upgrade　　#大规模的版本升级,与yum update不同的是,连旧的淘汰的包也升级</code></pre>
+yum<span class="hljs-built_in"> upgrade　</span>　#大规模的版本升级,与yum update不同的是,连旧的淘汰的包也升级</code></pre></div>
 <h4 id="清空缓存"><a href="#清空缓存" class="headerlink" title="清空缓存"></a>清空缓存</h4><hr>
-<pre class="language-none"><code class="language-none">yum clean packages　　#清除暂存中rpm包文件
-yum clean headers　　#清除暂存中rpm头文件
-yum clean oldheaders　　#清除暂存中旧的rpm头文件
-yum clean all　　#清除暂存中旧的rpm头文件和包文件</code></pre>
-<h4 id="简单参数"><a href="#简单参数" class="headerlink" title="简单参数"></a>简单参数</h4><pre class="language-none"><code class="language-none">-q #静默执行
--t #忽略错误
--R[分钟] #设置等待时间
--y #自动应答yes
---skip-broken #忽略依赖问题
---nogpgcheck #忽略GPG验证</code></pre>
+<div class="hljs"><pre><code class="hljs glsl">yum clean packages　　<span class="hljs-meta">#清除暂存中rpm包文件</span>
+yum clean headers　　<span class="hljs-meta">#清除暂存中rpm头文件</span>
+yum clean oldheaders　　<span class="hljs-meta">#清除暂存中旧的rpm头文件</span>
+yum clean <span class="hljs-built_in">all</span>　　<span class="hljs-meta">#清除暂存中旧的rpm头文件和包文件</span></code></pre></div>
+<h4 id="简单参数"><a href="#简单参数" class="headerlink" title="简单参数"></a>简单参数</h4><div class="hljs"><pre><code class="hljs haml">-<span class="ruby">q <span class="hljs-comment">#静默执行</span></span>
+<span class="ruby">-t <span class="hljs-comment">#忽略错误</span></span>
+<span class="ruby">-R[分钟] <span class="hljs-comment">#设置等待时间</span></span>
+<span class="ruby">-y <span class="hljs-comment">#自动应答yes</span></span>
+<span class="ruby">--skip-broken <span class="hljs-comment">#忽略依赖问题</span></span>
+<span class="ruby">--nogpgcheck <span class="hljs-comment">#忽略GPG验证</span></span></code></pre></div>
 <h2 id="rpm"><a href="#rpm" class="headerlink" title="rpm"></a>rpm</h2><p><code>rpm</code>:软件管理;</p>
 <p>redhat的软件格式 <code>rpm</code>  <code>r=redhat</code>  <code>p=package</code>   <code>m=management</code> 用于安装 卸载 <code>.rpm</code>软件</p>
 <p>串联下：<br>&emsp;&emsp;使用<code>wget</code>下载一个 <code>rpm</code>包, 然后用<code>rpm -ivh xxx.rpm</code> 安装这个软件，嫌麻烦的话，就可以直接用 <code>yum  install  sqoop</code> 来自动下载和安装依赖的 <code>rpm</code>软件。</p>
@@ -375,15 +371,15 @@ yum clean all　　#清除暂存中旧的rpm头文件和包文件</code></pre>
 <p>vim —version</p>
 </blockquote>
 <p>如果想升级更高版本的vim</p>
-<pre><code>sudo yum remove vim -y # 移除旧版本
+<div class="hljs"><pre><code>sudo yum remove vim -y # 移除旧版本
 sudo yum install ncurses-devel python-devel -y # 安装必要组件
 git clone https://github.com/vim/vim.git  #下载源码编译安装
 cd vim/src
 ./configure --with-features=huge --enable-pythoninterp=yes --enable-cscope --enable-fontset --with-python-config-dir=/usr/lib64/python2.7/config --enable-python3interp=yes --with-python-config-dir=/usr/lib/python3.6/config --enable-multibyte --prefix=/usr/local/vim/ # 根据自己实际情况设置编译参数
 make -j2 &amp;&amp; make install
-</code></pre><h1 id="conda环境"><a href="#conda环境" class="headerlink" title="conda环境"></a>conda环境</h1><h2 id="进入虚拟环境，使用"><a href="#进入虚拟环境，使用" class="headerlink" title="进入虚拟环境，使用"></a>进入虚拟环境，使用</h2><pre><code> $ conda activate spider-venv
-</code></pre><h2 id="退出虚拟环境，使用"><a href="#退出虚拟环境，使用" class="headerlink" title="退出虚拟环境，使用"></a>退出虚拟环境，使用</h2><pre><code> $ conda deactivate
-</code></pre>
+</code></pre></div><h1 id="conda环境"><a href="#conda环境" class="headerlink" title="conda环境"></a>conda环境</h1><h2 id="进入虚拟环境，使用"><a href="#进入虚拟环境，使用" class="headerlink" title="进入虚拟环境，使用"></a>进入虚拟环境，使用</h2><div class="hljs"><pre><code> $ conda activate spider-venv
+</code></pre></div><h2 id="退出虚拟环境，使用"><a href="#退出虚拟环境，使用" class="headerlink" title="退出虚拟环境，使用"></a>退出虚拟环境，使用</h2><div class="hljs"><pre><code> $ conda deactivate
+</code></pre></div>
             </div>
             <hr>
             <div>
@@ -660,8 +656,6 @@ make -j2 &amp;&amp; make install
 
 
 
-  
-    
   
 
 

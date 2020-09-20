@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -222,7 +218,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      681 字
+      636 字
     </span>
   
 
@@ -232,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      10
        分钟
     </span>
   
@@ -268,86 +264,86 @@
               <p>简单介绍如何使用$\LaTeX$进行流程图的绘制</p>
 <a id="more"></a>
 <h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="/img/流程图.png" srcset="/img/loading.gif" alt=" "></p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><pre class="language-none"><code class="language-none">\documentclass[UTF8]&#123;ctexart&#125;
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><div class="hljs"><pre><code class="hljs crmsh">\documentclass[UTF8]&#123;ctexart&#125;
 \usepackage&#123;tikz&#125; %%主要宏包
 \usetikzlibrary&#123;shapes,arrows&#125;
 
 \begin&#123;document&#125;
 \pagestyle&#123;empty&#125; % 无页眉页脚
 
-\tikzstyle&#123;startstop&#125; &#x3D; [rectangle,rounded corners, minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered, draw&#x3D;black,fill&#x3D;red!30]
-\tikzstyle&#123;io&#125; &#x3D; [trapezium, trapezium left angle &#x3D; 70,trapezium right angle&#x3D;110,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,draw&#x3D;black,fill&#x3D;blue!30]
-\tikzstyle&#123;process&#125; &#x3D; [rectangle,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,text width &#x3D;3cm,draw&#x3D;black,fill&#x3D;orange!30]
-\tikzstyle&#123;decision&#125; &#x3D; [diamond,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,draw&#x3D;black,fill&#x3D;green!30]
-\tikzstyle&#123;arrow&#125; &#x3D; [thick,-&gt;,&gt;&#x3D;stealth]
+\tikzstyle&#123;startstop&#125; = [rectangle,rounded corners, minimum <span class="hljs-attr">width=</span><span class="hljs-number">3</span>cm,minimum <span class="hljs-attr">height=</span><span class="hljs-number">1</span>cm,text centered, <span class="hljs-attr">draw=</span>black,<span class="hljs-attr">fill=</span>red!<span class="hljs-number">30</span>]
+\tikzstyle&#123;io&#125; = [trapezium, trapezium left angle = <span class="hljs-number">70</span>,trapezium right <span class="hljs-attr">angle=</span><span class="hljs-number">110</span>,minimum <span class="hljs-attr">width=</span><span class="hljs-number">3</span>cm,minimum <span class="hljs-attr">height=</span><span class="hljs-number">1</span>cm,text centered,<span class="hljs-attr">draw=</span>black,<span class="hljs-attr">fill=</span>blue!<span class="hljs-number">30</span>]
+\tikzstyle&#123;process&#125; = [rectangle,minimum <span class="hljs-attr">width=</span><span class="hljs-number">3</span>cm,minimum <span class="hljs-attr">height=</span><span class="hljs-number">1</span>cm,text centered,text width =<span class="hljs-number">3</span>cm,<span class="hljs-attr">draw=</span>black,<span class="hljs-attr">fill=</span>orange!<span class="hljs-number">30</span>]
+\tikzstyle&#123;decision&#125; = [diamond,minimum <span class="hljs-attr">width=</span><span class="hljs-number">3</span>cm,minimum <span class="hljs-attr">height=</span><span class="hljs-number">1</span>cm,text centered,<span class="hljs-attr">draw=</span>black,<span class="hljs-attr">fill=</span>green!<span class="hljs-number">30</span>]
+\tikzstyle&#123;arrow&#125; = [thick,-&gt;,&gt;=stealth]
 
-\begin&#123;tikzpicture&#125;[node distance&#x3D;2cm]
-\node (start) [startstop] &#123;Start&#125;;
-\node (input1) [io,below of&#x3D;start] &#123;Input&#125;;
-\node (process1) [process,below of&#x3D;input1] &#123;Process 1&#125;;
-\node (decision1) [decision,below of&#x3D;process1,yshift&#x3D;-0.5cm] &#123;Decession 1&#125;;
-\node (process2a) [process,below of&#x3D;decision1,yshift&#x3D;-0.5cm] &#123;Process 2aaaaaa aaaaaaa aaaa&#125;;
-\node (process2b) [process,right of &#x3D;decision1,xshift&#x3D;2cm] &#123;Process 2b&#125;;
-\node (out1) [io,below of&#x3D;process2a] &#123;Output&#125;;
-\node (stop) [startstop,below of&#x3D;out1] &#123;Stop&#125;;
+\begin&#123;tikzpicture&#125;[<span class="hljs-keyword">node</span> <span class="hljs-title">distance</span>=<span class="hljs-number">2</span>cm]
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(start</span>) [startstop] &#123;<span class="hljs-literal">Start</span>&#125;;
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(input1</span>) [io,below <span class="hljs-attr">of=</span><span class="hljs-literal">start</span>] &#123;Input&#125;;
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(process1</span>) [process,below <span class="hljs-attr">of=</span>input1] &#123;Process <span class="hljs-number">1</span>&#125;;
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(decision1</span>) [decision,below <span class="hljs-attr">of=</span>process1,<span class="hljs-attr">yshift=</span>-<span class="hljs-number">0.5</span>cm] &#123;Decession <span class="hljs-number">1</span>&#125;;
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(process2a</span>) [process,below <span class="hljs-attr">of=</span>decision1,<span class="hljs-attr">yshift=</span>-<span class="hljs-number">0.5</span>cm] &#123;Process <span class="hljs-number">2</span>aaaaaa aaaaaaa aaaa&#125;;
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(process2b</span>) [process,right of =decision1,<span class="hljs-attr">xshift=</span><span class="hljs-number">2</span>cm] &#123;Process <span class="hljs-number">2</span>b&#125;;
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(out1</span>) [io,below <span class="hljs-attr">of=</span>process2a] &#123;Output&#125;;
+\<span class="hljs-keyword">node</span> <span class="hljs-title">(stop</span>) [startstop,below <span class="hljs-attr">of=</span>out1] &#123;<span class="hljs-literal">Stop</span>&#125;;
 
-\draw [arrow] (start) -- (input1);
+\draw [arrow] (<span class="hljs-literal">start</span>) -- (input1);
 \draw [arrow] (input1) -- (process1);
 \draw [arrow] (process1) -- (decision1);
-\draw [arrow] (decision1) -- node[anchor&#x3D;east] &#123;yes&#125; (process2a);
-\draw [arrow] (decision1) -- node[anchor&#x3D;south] &#123;no&#125; (process2b);
+\draw [arrow] (decision1) -- <span class="hljs-keyword">node</span><span class="hljs-title">[anchor</span>=east] &#123;yes&#125; (process2a);
+\draw [arrow] (decision1) -- <span class="hljs-keyword">node</span><span class="hljs-title">[anchor</span>=south] &#123;no&#125; (process2b);
 \draw [arrow] (process2b) |- (process1);
 \draw [arrow] (process2a) -- (out1);
-\draw [arrow] (out1) -- (stop);
+\draw [arrow] (out1) -- (<span class="hljs-literal">stop</span>);
 \end&#123;tikzpicture&#125;
 
-\end&#123;document&#125;</code></pre>
+\end&#123;document&#125;</code></pre></div>
 <h2 id="using-package"><a href="#using-package" class="headerlink" title="using package"></a>using package</h2><p>$\LaTeX$中绘图均要引入<code>tikz</code>宏包</p>
-<pre class="language-none"><code class="language-none">\usepackage&#123;tikz&#125;
-\usetikzlibrary&#123;shapes.geometric, arrows&#125;</code></pre>
-<h2 id="对节点node进行定义"><a href="#对节点node进行定义" class="headerlink" title="对节点node进行定义"></a>对节点node进行定义</h2><pre class="language-none"><code class="language-none">\tikzstyle&#123;process&#125; &#x3D; [rectangle,minimum width&#x3D;3cm,minimum height&#x3D;1cm,text centered,text width &#x3D;3cm,draw&#x3D;black,fill&#x3D;orange!30]</code></pre>
-<h3 id="节点形状"><a href="#节点形状" class="headerlink" title="节点形状"></a>节点形状</h3><pre class="language-none"><code class="language-none">rectangle:矩形，可加圆角(rounded corners)
-trapezium:平行四边形
-diamond:菱形</code></pre>
-<h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><pre class="language-none"><code class="language-none">minimum width
-minimum height</code></pre>
-<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><pre class="language-none"><code class="language-none">text centered:文本居中</code></pre>
-<h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><pre class="language-none"><code class="language-none">text width&#x3D;3cm:文本超过3cm时会自动换行</code></pre>
-<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><pre class="language-none"><code class="language-none">draw</code></pre>
-<h3 id="填充颜色"><a href="#填充颜色" class="headerlink" title="填充颜色"></a>填充颜色</h3><pre class="language-none"><code class="language-none">fill</code></pre>
-<h2 id="对箭头进行定义"><a href="#对箭头进行定义" class="headerlink" title="对箭头进行定义"></a>对箭头进行定义</h2><pre><code>tikzstyle&#123;arrow&#125; = [thick,-&gt;,&gt;=stealth]
-</code></pre><h3 id="线粗"><a href="#线粗" class="headerlink" title="线粗"></a>线粗</h3><pre><code>thick:粗
+<div class="hljs"><pre><code class="hljs latex"><span class="hljs-tag">\<span class="hljs-name">usepackage</span><span class="hljs-string">&#123;tikz&#125;</span></span>
+<span class="hljs-tag">\<span class="hljs-name">usetikzlibrary</span><span class="hljs-string">&#123;shapes.geometric, arrows&#125;</span></span></code></pre></div>
+<h2 id="对节点node进行定义"><a href="#对节点node进行定义" class="headerlink" title="对节点node进行定义"></a>对节点node进行定义</h2><div class="hljs"><pre><code class="hljs arduino">\tikzstyle&#123;<span class="hljs-built_in">process</span>&#125; = [rectangle,minimum <span class="hljs-built_in">width</span>=<span class="hljs-number">3</span>cm,minimum <span class="hljs-built_in">height</span>=<span class="hljs-number">1</span>cm,<span class="hljs-built_in">text</span> centered,<span class="hljs-built_in">text</span> <span class="hljs-built_in">width</span> =<span class="hljs-number">3</span>cm,draw=black,<span class="hljs-built_in">fill</span>=orange!<span class="hljs-number">30</span>]</code></pre></div>
+<h3 id="节点形状"><a href="#节点形状" class="headerlink" title="节点形状"></a>节点形状</h3><div class="hljs"><pre><code class="hljs avrasm"><span class="hljs-symbol">rectangle:</span>矩形，可加圆角(rounded corners)
+<span class="hljs-symbol">trapezium:</span>平行四边形
+<span class="hljs-symbol">diamond:</span>菱形</code></pre></div>
+<h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><div class="hljs"><pre><code class="hljs arduino">minimum <span class="hljs-built_in">width</span>
+minimum <span class="hljs-built_in">height</span></code></pre></div>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><div class="hljs"><pre><code class="hljs applescript"><span class="hljs-built_in">text</span> centered:文本居中</code></pre></div>
+<h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><div class="hljs"><pre><code class="hljs angelscript">text width=<span class="hljs-number">3</span>cm:文本超过<span class="hljs-number">3</span>cm时会自动换行</code></pre></div>
+<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">draw</span></code></pre></div>
+<h3 id="填充颜色"><a href="#填充颜色" class="headerlink" title="填充颜色"></a>填充颜色</h3><div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">fill</span></code></pre></div>
+<h2 id="对箭头进行定义"><a href="#对箭头进行定义" class="headerlink" title="对箭头进行定义"></a>对箭头进行定义</h2><div class="hljs"><pre><code>tikzstyle&#123;arrow&#125; = [thick,-&gt;,&gt;=stealth]
+</code></pre></div><h3 id="线粗"><a href="#线粗" class="headerlink" title="线粗"></a>线粗</h3><div class="hljs"><pre><code>thick:粗
 thin:细
-</code></pre><h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><pre><code>-&gt;:反向箭头
+</code></pre></div><h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><div class="hljs"><pre><code>-&gt;:反向箭头
 &lt;-:正向箭头
 &lt;-&gt;:双向箭头
-</code></pre><h3 id="虚线"><a href="#虚线" class="headerlink" title="虚线"></a>虚线</h3><pre><code>dashed
-</code></pre><h3 id="箭头形状"><a href="#箭头形状" class="headerlink" title="箭头形状"></a>箭头形状</h3><pre><code>&gt;=stealth
-</code></pre><h2 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h2><pre><code>\node (decision1) [decision,below of=process1,yshift=-0.5cm] &#123;Decession 1&#125;;
-</code></pre><h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3><pre><code>(decision1):这个节点的name，后面需要用这个name调用这个节点。
-</code></pre><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>decision：需要调用的节点的属性
-</code></pre><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><pre><code>below of=process1：定义节点的位置
+</code></pre></div><h3 id="虚线"><a href="#虚线" class="headerlink" title="虚线"></a>虚线</h3><div class="hljs"><pre><code>dashed
+</code></pre></div><h3 id="箭头形状"><a href="#箭头形状" class="headerlink" title="箭头形状"></a>箭头形状</h3><div class="hljs"><pre><code>&gt;=stealth
+</code></pre></div><h2 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h2><div class="hljs"><pre><code>\node (decision1) [decision,below of=process1,yshift=-0.5cm] &#123;Decession 1&#125;;
+</code></pre></div><h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3><div class="hljs"><pre><code>(decision1):这个节点的name，后面需要用这个name调用这个节点。
+</code></pre></div><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><div class="hljs"><pre><code>decision：需要调用的节点的属性
+</code></pre></div><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><div class="hljs"><pre><code>below of=process1：定义节点的位置
 left of:
 right of:
-</code></pre><h3 id="偏移-对位置进行微调"><a href="#偏移-对位置进行微调" class="headerlink" title="偏移,对位置进行微调"></a>偏移,对位置进行微调</h3><pre><code>yshift:
+</code></pre></div><h3 id="偏移-对位置进行微调"><a href="#偏移-对位置进行微调" class="headerlink" title="偏移,对位置进行微调"></a>偏移,对位置进行微调</h3><div class="hljs"><pre><code>yshift:
 xshift:
-</code></pre><h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><pre><code>&#123;Decession 1&#125;:结果显示的标题
-</code></pre><h2 id="画箭头"><a href="#画箭头" class="headerlink" title="画箭头"></a>画箭头</h2><pre><code>\draw [arrow] (decision1) -- node[anchor=east] &#123;yes&#125; (process2a);
-</code></pre><h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><pre><code class="lang-[arrow]:需要调用的箭头的属性```">```(decision1)：箭头的其实位置
-</code></pre>
-<pre><code class="lang-(process2a)：箭头的末端位置```">### 线型
-<pre class="language-none"><code class="language-none">--：直线
-|-：先竖线后横线
--|：向横线后竖线</code></pre>
+</code></pre></div><h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><div class="hljs"><pre><code>&#123;Decession 1&#125;:结果显示的标题
+</code></pre></div><h2 id="画箭头"><a href="#画箭头" class="headerlink" title="画箭头"></a>画箭头</h2><div class="hljs"><pre><code>\draw [arrow] (decision1) -- node[anchor=east] &#123;yes&#125; (process2a);
+</code></pre></div><h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><div class="hljs"><pre><code class="lang-[arrow]:需要调用的箭头的属性```">```(decision1)：箭头的其实位置
+</code></pre></div>
+<div class="hljs"><pre><code class="lang-(process2a)：箭头的末端位置```">### 线型
+<pre><code class="hljs 1c">--：直线
+<span class="hljs-string">|-：先竖线后横线</span>
+-<span class="hljs-string">|：向横线后竖线</span></code></pre></div>
 ### 文字：如果需要在箭头上添加文字
 ```&#123;yes&#125;:需要添加的文字
 </code></pre>
-<h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><pre><code>[anchor=east]：
+<h3 id="文字的位置-上南下北左东右西-与地图方位不一致"><a href="#文字的位置-上南下北左东右西-与地图方位不一致" class="headerlink" title="文字的位置,上南下北左东右西(与地图方位不一致)"></a>文字的位置,上南下北左东右西(与地图方位不一致)</h3><div class="hljs"><pre><code>[anchor=east]：
 [anchor=south]：
 [anchor=west]：
 [anchor=north]：
 [anchor=center]：
-</code></pre>
+</code></pre></div>
             </div>
             <hr>
             <div>
@@ -624,8 +620,6 @@ xshift:
 
 
 
-  
-    
   
 
 

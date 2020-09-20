@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -271,13 +267,13 @@
 <p>&emsp;&emsp;以<strong>元素</strong>（数据元素的映象）+指针（指示后继元素存储位置）=<strong>结点</strong>（表示数据元素或数据元素的映象）</p>
 <p>&emsp;&emsp;以“结点的序列”表示线性表<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;————称作链表</p>
 <p>&emsp;&emsp;以线性表中第一个数据元素a~1~的存储地址作为线性表中的地址，称作线性表的头指针。<br>&emsp;&emsp;有时为了操作方便，在第一个结点之前需加一个“头结点”，以指向头结点的指针为链表的头指针。</p>
-<h3 id="单链表的C语言实现："><a href="#单链表的C语言实现：" class="headerlink" title="单链表的C语言实现："></a>单链表的C语言实现：</h3><pre><code>typedef struct LNode&#123;
+<h3 id="单链表的C语言实现："><a href="#单链表的C语言实现：" class="headerlink" title="单链表的C语言实现："></a>单链表的C语言实现：</h3><div class="hljs"><pre><code>typedef struct LNode&#123;
     ElemType data;//数据域
     struct LNode *next;//指针域
 &#125;LNode, *LinkList;
 
 LinkList L;//L为单链表的头指针;
-</code></pre><p>单链表操作实现的基本实现：</p>
+</code></pre></div><p>单链表操作实现的基本实现：</p>
 <ul>
 <li>GetElem(L, i, e)&emsp;//取第i个数据元素</li>
 <li>ListInsert(&amp;L, i, e)&emsp;//插入数据元素</li>
@@ -554,8 +550,6 @@ LinkList L;//L为单链表的头指针;
 
 
 
-  
-    
   
 
 

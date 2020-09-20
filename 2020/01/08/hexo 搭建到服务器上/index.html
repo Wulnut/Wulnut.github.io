@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -275,32 +271,32 @@
 &emsp;&emsp;Nginx (engine x) 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 服务器。。 本例演示 CentOS 7 下安装和配置 Nginx 的基本步骤。
 </p>
 
-<h2 id="步骤1：添加yum源"><a href="#步骤1：添加yum源" class="headerlink" title="步骤1：添加yum源"></a>步骤1：添加yum源</h2><pre><code>$ sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
-</code></pre><p>安装完yum源之后，可以查看一下。</p>
-<pre><code>repo id                                 repo name                                                              status
+<h2 id="步骤1：添加yum源"><a href="#步骤1：添加yum源" class="headerlink" title="步骤1：添加yum源"></a>步骤1：添加yum源</h2><div class="hljs"><pre><code>$ sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+</code></pre></div><p>安装完yum源之后，可以查看一下。</p>
+<div class="hljs"><pre><code>repo id                                 repo name                                                              status
 base/7/x86_64                           CentOS-7                                                               10,097
 epel/x86_64                             Extra Packages for Enterprise Linux 7 - x86_64                         13,510
 extras/7/x86_64                         CentOS-7                                                                  307
 nginx/x86_64                            nginx repo                                                                170
 updates/7/x86_64                        CentOS-7                                                                1,010
 repolist: 25,094
-</code></pre><p>可以发现<font width="bolder" color="red">nginx repo</font>已经安装到本机了</p>
+</code></pre></div><p>可以发现<font width="bolder" color="red">nginx repo</font>已经安装到本机了</p>
 <h2 id="步骤2：安装"><a href="#步骤2：安装" class="headerlink" title="步骤2：安装"></a>步骤2：安装</h2><p>yum 安装 Nginx，非常简单，一条命令。</p>
-<pre><code>$ sudo yum install nginx
-</code></pre><h2 id="步骤-3-配置-Nginx-服务"><a href="#步骤-3-配置-Nginx-服务" class="headerlink" title="步骤 3: 配置 Nginx 服务"></a>步骤 3: 配置 Nginx 服务</h2><p>设置开机启动</p>
-<pre><code>$ sudo systemctl enable nginx
-</code></pre><p>启动服务</p>
-<pre><code>$ sudo systemctl start nginx
-</code></pre><p>停止服务</p>
-<pre><code>$ sudo systemctl restart nginx
-</code></pre><p>重新加载，因为一般重新配置之后，不希望重启服务，这时可以使用重新加载。</p>
-<pre><code>$ sudo systemctl reload nginx
-</code></pre><p>到这里我们输入我们服务器外网的网址就可以看到<strong>nginx welcome</strong>的欢迎界面。此时就说明你的nginx已经安装完成了。</p>
+<div class="hljs"><pre><code>$ sudo yum install nginx
+</code></pre></div><h2 id="步骤-3-配置-Nginx-服务"><a href="#步骤-3-配置-Nginx-服务" class="headerlink" title="步骤 3: 配置 Nginx 服务"></a>步骤 3: 配置 Nginx 服务</h2><p>设置开机启动</p>
+<div class="hljs"><pre><code>$ sudo systemctl enable nginx
+</code></pre></div><p>启动服务</p>
+<div class="hljs"><pre><code>$ sudo systemctl start nginx
+</code></pre></div><p>停止服务</p>
+<div class="hljs"><pre><code>$ sudo systemctl restart nginx
+</code></pre></div><p>重新加载，因为一般重新配置之后，不希望重启服务，这时可以使用重新加载。</p>
+<div class="hljs"><pre><code>$ sudo systemctl reload nginx
+</code></pre></div><p>到这里我们输入我们服务器外网的网址就可以看到<strong>nginx welcome</strong>的欢迎界面。此时就说明你的nginx已经安装完成了。</p>
 <h1 id="在服务器上安装git"><a href="#在服务器上安装git" class="headerlink" title="在服务器上安装git"></a>在服务器上安装git</h1><p><P><br>&emsp;&emsp;当我们把nginx安装到我们的服务器之后，下一步就是安装git。如果之前你已经搭建过hexo博客并且已经将博客搭建在GitHub上时后面的步骤你将会稍微比较熟悉。<br>&lt;/p&gt;</p>
-<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><pre><code>git --version // 如无，则安装
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><div class="hljs"><pre><code>git --version // 如无，则安装
 yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
 yum install -y git
-</code></pre><h2 id="创建用户并配置其仓库"><a href="#创建用户并配置其仓库" class="headerlink" title="创建用户并配置其仓库"></a>创建用户并配置其仓库</h2><pre><code>useradd git
+</code></pre></div><h2 id="创建用户并配置其仓库"><a href="#创建用户并配置其仓库" class="headerlink" title="创建用户并配置其仓库"></a>创建用户并配置其仓库</h2><div class="hljs"><pre><code>useradd git
 passwd git // 设置密码
 su git // 这步很重要，不切换用户后面会很麻烦
 cd /home/git/
@@ -309,29 +305,29 @@ mkdir repos &amp;&amp; cd repos
 git init --bare blog.git // 创建一个裸露的仓库
 cd blog.git/hooks
 vi post-receive // 创建 hook 钩子函数，输入了内容如下
-</code></pre><pre class="language-none"><code class="language-none">#!&#x2F;bin&#x2F;sh
-git --work-tree&#x3D;&#x2F;home&#x2F;git&#x2F;projects&#x2F;blog --git-dir&#x3D;&#x2F;home&#x2F;git&#x2F;repos&#x2F;blog.git checkout -f</code></pre>
+</code></pre></div><div class="hljs"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span>
+git --work-tree=/home/git/projects/blog --git-dir=/home/git/repos/blog.git checkout -f</code></pre></div>
 <p>添加完毕后修改权限</p>
-<pre><code>chmod +x post-receive
+<div class="hljs"><pre><code>chmod +x post-receive
 exit // 退出到 root 登录
 chown -R git:git /home/git/repos/blog.git // 添加权限
-</code></pre><h2 id="测试git仓库是否可用，另找空白文件夹"><a href="#测试git仓库是否可用，另找空白文件夹" class="headerlink" title="测试git仓库是否可用，另找空白文件夹"></a>测试git仓库是否可用，另找空白文件夹</h2><pre><code>git clone git@server_ip:/home/git/repos/blog.git
-</code></pre><p>如果能把空仓库拉下来，就说明 git 仓库搭建成功了</p>
+</code></pre></div><h2 id="测试git仓库是否可用，另找空白文件夹"><a href="#测试git仓库是否可用，另找空白文件夹" class="headerlink" title="测试git仓库是否可用，另找空白文件夹"></a>测试git仓库是否可用，另找空白文件夹</h2><div class="hljs"><pre><code>git clone git@server_ip:/home/git/repos/blog.git
+</code></pre></div><p>如果能把空仓库拉下来，就说明 git 仓库搭建成功了</p>
 <h2 id="Git配置仓库"><a href="#Git配置仓库" class="headerlink" title="Git配置仓库"></a>Git配置仓库</h2><p>&emsp;&emsp;这一部分主要目的是让我们个人的电脑可以通过ssh方式连接到云服务器，然后我们就可以通过命令行方式将我们的博客Po到服务器上。操作如下： 安装git: yum install git 配置git用户 adduser git 修改用户权限:
 </p>
 
-<pre><code>chmod 740 /etc/sudoers
+<div class="hljs"><pre><code>chmod 740 /etc/sudoers
 vi /etc/sudoers
-</code></pre><pre class="language-none"><code class="language-none">找到这个位置添加下面这句话 git ALL&#x3D;(ALL) ALL</code></pre>
+</code></pre></div><div class="hljs"><pre><code class="hljs ada">找到这个位置添加下面这句话 git <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>) <span class="hljs-keyword">ALL</span></code></pre></div>
 <p><img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93d76b9d87178?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt=" "></p>
 <p>保存退出后 将sudoers文件权限改回原样</p>
-<pre><code>chmod 400 /etc/sudoers
-</code></pre><p>切换到git用户，然后在~目录下创建.ssh文件夹</p>
-<pre><code>        su git
+<div class="hljs"><pre><code>chmod 400 /etc/sudoers
+</code></pre></div><p>切换到git用户，然后在~目录下创建.ssh文件夹</p>
+<div class="hljs"><pre><code>        su git
         cd ~
         mkdir .ssh
         cd .ssh
-</code></pre><p><strong>生成公钥密钥文件</strong>(重点)</p>
+</code></pre></div><p><strong>生成公钥密钥文件</strong>(重点)</p>
 <font color="red" size="bolder">ssh-keygen</font>
 
 <p><strong>此时在目录下就会有两个文件，分别是</strong></p>
@@ -341,14 +337,14 @@ vi /etc/sudoers
 <font color="red" size="bolder">cp id_rsa.pub authorized_keys</font>
 
 <p><strong>这样目录下就会有一个authorized_keys文件，它和id_rsa.pub一模一样。<br>最后我们修改它的权限</strong></p>
-<pre><code>chmod 600 ~/.ssh/authorized_keys
+<div class="hljs"><pre><code>chmod 600 ~/.ssh/authorized_keys
 chmod 700 ~/.ssh
-</code></pre><p>&emsp;&emsp;但是大家一定要注意在远程连接服务其之前，我们一定要先对我能的服务器进行设置。<br>在root用户下修改 <strong>/etc/ssh/sshd_config</strong> 文件中的<strong>PasswordAuthentication no改为PasswordAuthentication yes</strong> 并保存。<br><img src="https://img.alicdn.com/tfs/TB1B8ELgHsTMeJjSszgXXacpFXa-799-554.png" srcset="/img/loading.gif" alt=" "><br>输入如下命令<strong>sudo service sshd restart</strong>重启SSH服务,就可以重新使用账号密码连接服务器了。<br><img src="https://img.alicdn.com/tfs/TB1OjQ_gMMPMeJjy1XbXXcwxVXa-812-264.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre></div><p>&emsp;&emsp;但是大家一定要注意在远程连接服务其之前，我们一定要先对我能的服务器进行设置。<br>在root用户下修改 <strong>/etc/ssh/sshd_config</strong> 文件中的<strong>PasswordAuthentication no改为PasswordAuthentication yes</strong> 并保存。<br><img src="https://img.alicdn.com/tfs/TB1B8ELgHsTMeJjSszgXXacpFXa-799-554.png" srcset="/img/loading.gif" alt=" "><br>输入如下命令<strong>sudo service sshd restart</strong>重启SSH服务,就可以重新使用账号密码连接服务器了。<br><img src="https://img.alicdn.com/tfs/TB1OjQ_gMMPMeJjy1XbXXcwxVXa-812-264.png" srcset="/img/loading.gif" alt=" "></p>
 <p>&emsp;&emsp;然后我们在<strong>自己的电脑上自己的电脑上自己的电脑上</strong>（重要的事说三遍），打开cmd，使用ssh方式连接我们的云服务器。<br>     <img src="https://user-gold-cdn.xitu.io/2019/8/15/16c93d7a77735c4d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt=" "></p>
 <p>最后当你远程连接上你的服务器时，就会出现<br><img src="/img/服务器-4.png" srcset="/img/loading.gif" alt=" "></p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>&emsp;&emsp;我们需要更改hexo博客的根目录下的_config.yml文件将最后一行的的repo：后面改成 </p>
-<pre><code>git@这里写服务器外网IP:/home/git/repos/blog.git
-</code></pre><p>之后大家就可以来尝试用hexo clean &amp; hexo g &amp; hexo d 来部署大家的博客了。<br><img src="/img/服务器-2.png" srcset="/img/loading.gif" alt=" "></p>
+<div class="hljs"><pre><code>git@这里写服务器外网IP:/home/git/repos/blog.git
+</code></pre></div><p>之后大家就可以来尝试用hexo clean &amp; hexo g &amp; hexo d 来部署大家的博客了。<br><img src="/img/服务器-2.png" srcset="/img/loading.gif" alt=" "></p>
 
             </div>
             <hr>
@@ -617,8 +613,6 @@ chmod 700 ~/.ssh
 
 
 
-  
-    
   
 
 

@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -222,7 +218,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      2.7k 字
     </span>
   
 
@@ -232,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39
+      36
        分钟
     </span>
   
@@ -285,110 +281,110 @@
 <p><strong>输出</strong></p>
 <p>输出从左上角走到右下角至少要经过多少步（即至少要经过多少个空地格子）。计算步数要包括起点和终点</p>
 <p><strong>输入样例</strong></p>
-<pre class="language-none"><code class="language-none">5 5
+<div class="hljs"><pre><code class="hljs clean"><span class="hljs-number">5</span> <span class="hljs-number">5</span>
 ..###
 #....
 #.#.#
 #.#.#
-#.#..</code></pre>
+#.#..</code></pre></div>
 <p><strong>输出样例</strong></p>
-<pre class="language-none"><code class="language-none">9</code></pre>
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-number">9</span></code></pre></div>
 <p><strong>普通BFS：</strong></p>
-<pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;queue&gt;
-using namespace std;
-const int INF &#x3D; 100000; 
-const int MAX &#x3D; 101;
-typedef pair&lt;int, int&gt; P;
-char map[MAX][MAX];
-int d[MAX][MAX];&#x2F;&#x2F;表示起点到各个位置的最短距离 
-int sx, sy, gx, gy;&#x2F;&#x2F;表示起点和终点坐标 
-int n, m;
-int dx[4] &#x3D; &#123;1, 0, -1, 0&#125;;
-int dy[4] &#x3D; &#123;0, 1, 0,- 1&#125;;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">100000</span>; 
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAX = <span class="hljs-number">101</span>;
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">pair</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; P;
+<span class="hljs-keyword">char</span> <span class="hljs-built_in">map</span>[MAX][MAX];
+<span class="hljs-keyword">int</span> d[MAX][MAX];<span class="hljs-comment">//表示起点到各个位置的最短距离 </span>
+<span class="hljs-keyword">int</span> sx, sy, gx, gy;<span class="hljs-comment">//表示起点和终点坐标 </span>
+<span class="hljs-keyword">int</span> n, m;
+<span class="hljs-keyword">int</span> dx[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;;
+<span class="hljs-keyword">int</span> dy[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,- <span class="hljs-number">1</span>&#125;;
 
-bool Check(int x, int y) &#123;
-	if(x&gt;&#x3D;0 &amp;&amp; x&lt;n &amp;&amp; y&gt;&#x3D;0 &amp;&amp; y&lt;m &amp;&amp; d[x][y]&#x3D;&#x3D;INF &amp;&amp; map[x][y]!&#x3D;&#39;#&#39;)
-		return true;
-	else return false;
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Check</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;
+	<span class="hljs-keyword">if</span>(x&gt;=<span class="hljs-number">0</span> &amp;&amp; x&lt;n &amp;&amp; y&gt;=<span class="hljs-number">0</span> &amp;&amp; y&lt;m &amp;&amp; d[x][y]==INF &amp;&amp; <span class="hljs-built_in">map</span>[x][y]!=<span class="hljs-string">&#x27;#&#x27;</span>)
+		<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+	<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 &#125; 
 
-int bfs() &#123;
-	queue&lt;P&gt; que;
-	for(int i &#x3D; 0; i &lt; n; i++)
-		for(int j &#x3D; 0; j &lt; m; j++)
-			d[i][j] &#x3D; INF;	
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span> </span>&#123;
+	<span class="hljs-built_in">queue</span>&lt;P&gt; que;
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j++)
+			d[i][j] = INF;	
 	que.push(P(sx, sy));
-	d[sx][sy] &#x3D; 0;
-	while(!que.empty()) &#123;
-		P p &#x3D; que.front(); 
+	d[sx][sy] = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">while</span>(!que.empty()) &#123;
+		P p = que.front(); 
 		que.pop();
-		if(p.first &#x3D;&#x3D; gx &amp;&amp; p.second &#x3D;&#x3D; gy)
-			break;
-		for(int i &#x3D; 0; i &lt; 4; i++) &#123;
-			int nx &#x3D; p.first + dx[i];
-			int ny &#x3D; p.second + dy[i];
-			if(Check(nx, ny)) &#123;
+		<span class="hljs-keyword">if</span>(p.first == gx &amp;&amp; p.second == gy)
+			<span class="hljs-keyword">break</span>;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) &#123;
+			<span class="hljs-keyword">int</span> nx = p.first + dx[i];
+			<span class="hljs-keyword">int</span> ny = p.second + dy[i];
+			<span class="hljs-keyword">if</span>(Check(nx, ny)) &#123;
 				que.push(P(nx,ny));
-				d[nx][ny] &#x3D; d[p.first][p.second] + 1;
+				d[nx][ny] = d[p.first][p.second] + <span class="hljs-number">1</span>;
 			&#125;
 		&#125;
 	&#125;
-	return d[gx][gy]; 
+	<span class="hljs-keyword">return</span> d[gx][gy]; 
 &#125;
 
-int main() &#123;
-	cin &gt;&gt; n &gt;&gt; m;
-	for(int i &#x3D; 0; i &lt; n; i++)
-		for(int j &#x3D; 0; j &lt; m; j++)
-			cin &gt;&gt; map[i][j];
-	sx &#x3D; 0, sy &#x3D; 0;
-	gx &#x3D; n-1, gy &#x3D; m-1;
-	int res &#x3D; bfs(); 
-	cout &lt;&lt; res+1 &lt;&lt; endl;
-    return 0;
-&#125;</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+	<span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; m;
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j++)
+			<span class="hljs-built_in">cin</span> &gt;&gt; <span class="hljs-built_in">map</span>[i][j];
+	sx = <span class="hljs-number">0</span>, sy = <span class="hljs-number">0</span>;
+	gx = n<span class="hljs-number">-1</span>, gy = m<span class="hljs-number">-1</span>;
+	<span class="hljs-keyword">int</span> res = bfs(); 
+	<span class="hljs-built_in">cout</span> &lt;&lt; res+<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
 <p><strong>双向BFS</strong>：</p>
-<pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;queue&gt;
-#define P pair&lt;int, int&gt;
-using namespace std;
-&#x2F;&#x2F;记录下当前状态, 从前往后搜索值为1，从后往前搜索值为2，如果某状态下，当前节点和准备扩展节点的状态相加为3，说明相遇
-queue &lt;P&gt; q1, q2; 
-int r, c, ans, dis[45][45], vst[45][45];
-int dx[4] &#x3D; &#123;-1, 0, 1, 0&#125;;
-int dy[4] &#x3D; &#123;0, 1, 0, -1&#125;;
-char m[45][45];
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> P pair<span class="hljs-meta-string">&lt;int, int&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-comment">//记录下当前状态, 从前往后搜索值为1，从后往前搜索值为2，如果某状态下，当前节点和准备扩展节点的状态相加为3，说明相遇</span>
+<span class="hljs-built_in">queue</span> &lt;P&gt; q1, q2; 
+<span class="hljs-keyword">int</span> r, c, ans, dis[<span class="hljs-number">45</span>][<span class="hljs-number">45</span>], vst[<span class="hljs-number">45</span>][<span class="hljs-number">45</span>];
+<span class="hljs-keyword">int</span> dx[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;;
+<span class="hljs-keyword">int</span> dy[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;;
+<span class="hljs-keyword">char</span> m[<span class="hljs-number">45</span>][<span class="hljs-number">45</span>];
 
-void dbfs() &#123;
-	bool flag;
-	q1.push(P(1, 1)), dis[1][1] &#x3D; 1, vst[1][1] &#x3D; 1; &#x2F;&#x2F;从前搜
-	q2.push(P(r, c)), dis[r][c] &#x3D; 1, vst[r][c] &#x3D; 2; &#x2F;&#x2F;从后搜
-	while(!q1.empty() &amp;&amp; !q2.empty()) &#123;
-		int x0, y0;
-		if(q1.size() &gt; q2.size()) &#123; &#x2F;&#x2F;每次扩展搜索树小的队列 flag&#x3D;1扩展前搜的队列，flag&#x3D;0扩展后搜的队列
-			x0 &#x3D; q2.front().first, y0 &#x3D; q2.front().second;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dbfs</span><span class="hljs-params">()</span> </span>&#123;
+	<span class="hljs-keyword">bool</span> flag;
+	q1.push(P(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)), dis[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>, vst[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>; <span class="hljs-comment">//从前搜</span>
+	q2.push(P(r, c)), dis[r][c] = <span class="hljs-number">1</span>, vst[r][c] = <span class="hljs-number">2</span>; <span class="hljs-comment">//从后搜</span>
+	<span class="hljs-keyword">while</span>(!q1.empty() &amp;&amp; !q2.empty()) &#123;
+		<span class="hljs-keyword">int</span> x0, y0;
+		<span class="hljs-keyword">if</span>(q1.size() &gt; q2.size()) &#123; <span class="hljs-comment">//每次扩展搜索树小的队列 flag=1扩展前搜的队列，flag=0扩展后搜的队列</span>
+			x0 = q2.front().first, y0 = q2.front().second;
 			q2.pop();
-			flag &#x3D; 0;
-		&#125;else &#123;
-			x0 &#x3D; q1.front().first, y0 &#x3D; q1.front().second;
+			flag = <span class="hljs-number">0</span>;
+		&#125;<span class="hljs-keyword">else</span> &#123;
+			x0 = q1.front().first, y0 = q1.front().second;
 			q1.pop();
-			flag &#x3D; 1;
+			flag = <span class="hljs-number">1</span>;
 		&#125;
-		for(int i &#x3D; 0; i &lt; 4; i++) &#123;
-			int nx &#x3D; x0 + dx[i];
-			int ny &#x3D; y0 + dy[i];
-			if(nx &gt;&#x3D; 1 &amp;&amp; nx &lt;&#x3D; r &amp;&amp; ny &gt;&#x3D; 1 &amp;&amp; ny &lt;&#x3D; c &amp;&amp; m[nx][ny] &#x3D;&#x3D; &#39;.&#39;) &#123;
-				if(!dis[nx][ny]) &#123;
-					dis[nx][ny] &#x3D; dis[x0][y0] + 1;
-					vst[nx][ny] &#x3D; vst[x0][y0];
-					if(flag) q1.push(P(nx, ny));
-					else q2.push(P(nx, ny));
-				&#125;else &#123;
-					if(vst[x0][y0] + vst[nx][ny]&#x3D;&#x3D; 3) &#123; &#x2F;&#x2F;相遇
-						ans &#x3D; dis[nx][ny] + dis[x0][y0];
-						return;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) &#123;
+			<span class="hljs-keyword">int</span> nx = x0 + dx[i];
+			<span class="hljs-keyword">int</span> ny = y0 + dy[i];
+			<span class="hljs-keyword">if</span>(nx &gt;= <span class="hljs-number">1</span> &amp;&amp; nx &lt;= r &amp;&amp; ny &gt;= <span class="hljs-number">1</span> &amp;&amp; ny &lt;= c &amp;&amp; m[nx][ny] == <span class="hljs-string">&#x27;.&#x27;</span>) &#123;
+				<span class="hljs-keyword">if</span>(!dis[nx][ny]) &#123;
+					dis[nx][ny] = dis[x0][y0] + <span class="hljs-number">1</span>;
+					vst[nx][ny] = vst[x0][y0];
+					<span class="hljs-keyword">if</span>(flag) q1.push(P(nx, ny));
+					<span class="hljs-keyword">else</span> q2.push(P(nx, ny));
+				&#125;<span class="hljs-keyword">else</span> &#123;
+					<span class="hljs-keyword">if</span>(vst[x0][y0] + vst[nx][ny]== <span class="hljs-number">3</span>) &#123; <span class="hljs-comment">//相遇</span>
+						ans = dis[nx][ny] + dis[x0][y0];
+						<span class="hljs-keyword">return</span>;
 					&#125;
 				&#125;
 			&#125;
@@ -396,15 +392,15 @@ void dbfs() &#123;
 	&#125;
 &#125;
 
-int main() &#123;
-	cin &gt;&gt; r &gt;&gt; c;
-	for(int i &#x3D; 1; i &lt;&#x3D; r; i++)
-		for(int j &#x3D; 1; j &lt;&#x3D; c; j++)
-			cin &gt;&gt; m[i][j];
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+	<span class="hljs-built_in">cin</span> &gt;&gt; r &gt;&gt; c;
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= r; i++)
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= c; j++)
+			<span class="hljs-built_in">cin</span> &gt;&gt; m[i][j];
 	dbfs(); 
-	cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-	return 0;
-&#125;</code></pre>
+	<span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
 <p><a herf = "https://leetcode-cn.com/problems/word-ladder/">力扣第127题：单词接龙</a></p>
 <p>给定两个单词（<em>beginWord</em> 和 <em>endWord</em>）和一个字典，找到从 <em>beginWord</em> 到 <em>endWord</em> 的最短转换序列的长度。转换需遵循如下规则：</p>
 <ol>
@@ -420,66 +416,66 @@ int main() &#123;
 <li>你可以假设 <em>beginWord</em> 和 <em>endWord</em> 是非空的，且二者不相同。</li>
 </ul>
 <p><strong>示例 1:</strong></p>
-<pre class="language-none"><code class="language-none">输入:
-beginWord &#x3D; &quot;hit&quot;,
-endWord &#x3D; &quot;cog&quot;,
-wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]
+<div class="hljs"><pre><code class="hljs clean">输入:
+beginWord = <span class="hljs-string">&quot;hit&quot;</span>,
+endWord = <span class="hljs-string">&quot;cog&quot;</span>,
+wordList = [<span class="hljs-string">&quot;hot&quot;</span>,<span class="hljs-string">&quot;dot&quot;</span>,<span class="hljs-string">&quot;dog&quot;</span>,<span class="hljs-string">&quot;lot&quot;</span>,<span class="hljs-string">&quot;log&quot;</span>,<span class="hljs-string">&quot;cog&quot;</span>]
 
-输出: 5
+输出: <span class="hljs-number">5</span>
 
-解释: 一个最短转换序列是 &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,
-     返回它的长度 5。</code></pre>
+解释: 一个最短转换序列是 <span class="hljs-string">&quot;hit&quot;</span> -&gt; <span class="hljs-string">&quot;hot&quot;</span> -&gt; <span class="hljs-string">&quot;dot&quot;</span> -&gt; <span class="hljs-string">&quot;dog&quot;</span> -&gt; <span class="hljs-string">&quot;cog&quot;</span>,
+     返回它的长度 <span class="hljs-number">5</span>。</code></pre></div>
 <p><strong>示例 2:</strong></p>
-<pre class="language-none"><code class="language-none">输入:
-beginWord &#x3D; &quot;hit&quot;
-endWord &#x3D; &quot;cog&quot;
-wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]
+<div class="hljs"><pre><code class="hljs makefile"><span class="hljs-section">输入:</span>
+beginWord = <span class="hljs-string">&quot;hit&quot;</span>
+endWord = <span class="hljs-string">&quot;cog&quot;</span>
+wordList = [<span class="hljs-string">&quot;hot&quot;</span>,<span class="hljs-string">&quot;dot&quot;</span>,<span class="hljs-string">&quot;dog&quot;</span>,<span class="hljs-string">&quot;lot&quot;</span>,<span class="hljs-string">&quot;log&quot;</span>]
 
-输出: 0
+<span class="hljs-section">输出: 0</span>
 
-解释: endWord &quot;cog&quot; 不在字典中，所以无法进行转换。</code></pre>
+<span class="hljs-section">解释: endWord &quot;cog&quot; 不在字典中，所以无法进行转换。</span></code></pre></div>
 <p>&emsp;&emsp;如果只是单纯的使用BFS经行操作那么时间复杂度将会为$O(M\times N)$ $M$表示单词的长度, $N$表示单词列表中单词的个数.</p>
-<pre class="language-c++" data-language="c++"><code class="language-c++">int ladderLength(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) &#123;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ladderLength</span><span class="hljs-params">(<span class="hljs-built_in">string</span> beginWord, <span class="hljs-built_in">string</span> endWord, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordList)</span> </span>&#123;
 
-      unordered_set&lt;string&gt; s; &#x2F;&#x2F; 可以块数查找
+      <span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; s; <span class="hljs-comment">// 可以块数查找</span>
 
-      for (auto i : wordList) s.insert(i);
-      &#x2F;&#x2F; first 表示字符
-      &#x2F;&#x2F; second 表示走过的路长
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : wordList) s.insert(i);
+      <span class="hljs-comment">// first 表示字符</span>
+      <span class="hljs-comment">// second 表示走过的路长</span>
 
-      queue&lt;pair&lt;string, int&gt;&gt; q;
-      q.push(make_pair(beginWord, 1));
+      <span class="hljs-built_in">queue</span>&lt;<span class="hljs-built_in">pair</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;&gt; q;
+      q.push(<span class="hljs-built_in">make_pair</span>(beginWord, <span class="hljs-number">1</span>));
 
-      string temp;
-      int step; &#x2F;&#x2F; 表示用暂时存贮走过的步子
+      <span class="hljs-built_in">string</span> temp;
+      <span class="hljs-keyword">int</span> step; <span class="hljs-comment">// 表示用暂时存贮走过的步子</span>
 
-      while (!q.empty()) &#123;
-          if (q.front().first &#x3D;&#x3D; endWord) return q.front().second;
+      <span class="hljs-keyword">while</span> (!q.empty()) &#123;
+          <span class="hljs-keyword">if</span> (q.front().first == endWord) <span class="hljs-keyword">return</span> q.front().second;
 
-          temp &#x3D; q.front().first;
-          step &#x3D; q.front().second;
+          temp = q.front().first;
+          step = q.front().second;
           q.pop();
 
-          char ch;
-          for (int i &#x3D; 0; i &lt;&#x3D; temp.size(); ++ i) &#123;
-              ch &#x3D; temp[i];
+          <span class="hljs-keyword">char</span> ch;
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= temp.size(); ++ i) &#123;
+              ch = temp[i];
 
-              for (int a &#x3D; &#39;a&#39;; a &lt; &#39;z&#39;; ++ a) &#123;
-                  if (ch &#x3D;&#x3D; a) continue;
+              <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> a = <span class="hljs-string">&#x27;a&#x27;</span>; a &lt; <span class="hljs-string">&#x27;z&#x27;</span>; ++ a) &#123;
+                  <span class="hljs-keyword">if</span> (ch == a) <span class="hljs-keyword">continue</span>;
 
-                  temp[i] &#x3D; a;
-                  if (s.find(temp) !&#x3D; s.end()) &#123; &#x2F;&#x2F; 这里表示如果找到了可以转换的两个单词，就把该数存放入队列里
-                      q.push(make_pair(temp, step + 1));
-                      s.erase(temp); &#x2F;&#x2F; 删掉结点的意思防止找到重复
+                  temp[i] = a;
+                  <span class="hljs-keyword">if</span> (s.find(temp) != s.end()) &#123; <span class="hljs-comment">// 这里表示如果找到了可以转换的两个单词，就把该数存放入队列里</span>
+                      q.push(<span class="hljs-built_in">make_pair</span>(temp, step + <span class="hljs-number">1</span>));
+                      s.erase(temp); <span class="hljs-comment">// 删掉结点的意思防止找到重复</span>
                   &#125;
 
-                  temp[i] &#x3D; ch;
+                  temp[i] = ch;
               &#125;
           &#125;
       &#125;
 
-      return 0;
-  &#125;</code></pre>
+      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  &#125;</code></pre></div>
 <p>如果使用双向BFS：</p>
 <ul>
 <li>$O(M \times N)$，其中 MM 是单词的长度 $N$是单词表中单词的总数。与单向搜索相同的是，找到所有的变换需要 $M \times N$ 次操作。但是搜索时间会被缩小一半，因为两个搜索会在中间某处相遇。</li>
@@ -501,54 +497,54 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
 <ul>
 <li>最短变换序列的长度就是中间节点在两边的层次之和。因此，我们可以在访问数组中记录节点的层次。</li>
 </ul>
-<pre class="language-c++" data-language="c++"><code class="language-c++">int dbfs(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) &#123;
-       unordered_set&lt;string&gt; dict(wordList.begin(), wordList.end());
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dbfs</span><span class="hljs-params">(<span class="hljs-built_in">string</span> beginWord, <span class="hljs-built_in">string</span> endWord, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordList)</span> </span>&#123;
+       <span class="hljs-function"><span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; <span class="hljs-title">dict</span><span class="hljs-params">(wordList.begin(), wordList.end())</span></span>;
 
-       if (dict.find(beginWord) !&#x3D; dict.end()) return 0;
+       <span class="hljs-keyword">if</span> (dict.find(beginWord) != dict.end()) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
-       &#x2F;&#x2F;初始化
-       unordered_set&lt;string&gt; beginSet, endSet, tmp, visited;
+       <span class="hljs-comment">//初始化</span>
+       <span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; beginSet, endSet, tmp, visited;
        beginSet.insert(beginWord);
        endSet.insert(endWord);
-       int len &#x3D; 1;
+       <span class="hljs-keyword">int</span> len = <span class="hljs-number">1</span>;
 
-       while (!beginSet.empty() &amp;&amp; !endSet.empty()) &#123;
-           if (beginSet.size() &gt; endSet.size()) &#123;
-               tmp &#x3D; beginSet;
-               beginSet &#x3D; endSet;
-               endSet &#x3D; tmp;
+       <span class="hljs-keyword">while</span> (!beginSet.empty() &amp;&amp; !endSet.empty()) &#123;
+           <span class="hljs-keyword">if</span> (beginSet.size() &gt; endSet.size()) &#123;
+               tmp = beginSet;
+               beginSet = endSet;
+               endSet = tmp;
            &#125;
            tmp.clear();
 
-           for (string word : beginSet) &#123;
-               for (int i &#x3D; 0; i &lt; word.size(); ++ i) &#123;
-                   char old &#x3D; word[i];
+           <span class="hljs-keyword">for</span> (<span class="hljs-built_in">string</span> word : beginSet) &#123;
+               <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; word.size(); ++ i) &#123;
+                   <span class="hljs-keyword">char</span> old = word[i];
 
-                   for (char a &#x3D; &#39;a&#39;; a &lt; &#39;z&#39;; ++ a) &#123;
-                       if (old &#x3D;&#x3D; a) continue;
+                   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> a = <span class="hljs-string">&#x27;a&#x27;</span>; a &lt; <span class="hljs-string">&#x27;z&#x27;</span>; ++ a) &#123;
+                       <span class="hljs-keyword">if</span> (old == a) <span class="hljs-keyword">continue</span>;
 
-                       word[i] &#x3D; a;
+                       word[i] = a;
 
-                       if (endSet.find(word) !&#x3D; endSet.end()) &#123;
-                           return len + 1;
+                       <span class="hljs-keyword">if</span> (endSet.find(word) != endSet.end()) &#123;
+                           <span class="hljs-keyword">return</span> len + <span class="hljs-number">1</span>;
                        &#125;
 
-                       if (visited.find(word) &#x3D;&#x3D; visited.end() &amp;&amp; dict.find(word) !&#x3D; dict.end()) &#123;
+                       <span class="hljs-keyword">if</span> (visited.find(word) == visited.end() &amp;&amp; dict.find(word) != dict.end()) &#123;
                            tmp.insert(word);
                            visited.insert(word);
                        &#125;
                    &#125;
 
-                   word[i] &#x3D; old;
+                   word[i] = old;
                &#125;
            &#125;
 
-           beginSet &#x3D; tmp;
+           beginSet = tmp;
            ++ len;
        &#125;
 
-       return 0;
-   &#125;</code></pre>
+       <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+   &#125;</code></pre></div>
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="关于set与unordered-set"><a href="#关于set与unordered-set" class="headerlink" title="关于set与unordered_set"></a>关于set与unordered_set</h3><ul>
 <li><strong>set函数(集合)</strong>：这里的set表示集合的意思，和数学中的集合是一个意思，集合中不允许有重复出现的元素，由于set函数底层通常以红黑树实现，红黑树具有自动排序的功能，因此set内部所有的数据，在任何时候，都是有序的。</li>
 <li><strong>unordered_set函数</strong>： 是含有 Key 类型唯一对象集合的关联容器，依赖于哈希表。搜索、插入和移除拥有平均常数时间复杂度。在内部，元素并不以任何特别顺序排序，而是组织进桶中，元素被放进哪个桶完全依赖其值的哈希。允许对单独元素的快速访问，因为一旦哈希，就能够准确指代元素被放入的桶。不可修改容器元素（即使通过非 const 迭代器），因为修改可能更改元素的哈希，并破坏容器。代价是消耗比较多的内存，无自动排序功能。底层实现上，使用一个下标范围比较大的数组来存储元素，形成很多的桶，利用hash函数对key进行映射到不同区域进行保存。</li>
@@ -845,8 +841,6 @@ wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;
 
 
 
-  
-    
   
 
 

@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -222,7 +218,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3k 字
+      2.9k 字
     </span>
   
 
@@ -232,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      41
+      39
        分钟
     </span>
   
@@ -283,77 +279,77 @@
 <li>重复上述2，3两个步骤，直到所有可以访问的点都已经访问过</li>
 </ol>
 <p>怎么样，其实核心步骤只有两步，应该很好理解吧？我找到了一张不错的动图，大家可以根据上面的流程对照一下动图加深一下理解。</p>
-<p><img src="/img/short-path/dijkstra.gif" srcset="/img/loading.gif" alt="如图"><br>我们根据原理不难写出代码：<br>C++版本：<br><pre class="language-C++" data-language="C++"><code class="language-C++">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-using namespace std;
+<p><img src="/img/short-path/dijkstra.gif" srcset="/img/loading.gif" alt="如图"><br>我们根据原理不难写出代码：<br>C++版本：<br><div class="hljs"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 
-const int N &#x3D; 510;
-int g[N][N];
-int dis[N];
-int st[N];
-int n, m;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">510</span>;
+<span class="hljs-keyword">int</span> g[N][N];
+<span class="hljs-keyword">int</span> dis[N];
+<span class="hljs-keyword">int</span> st[N];
+<span class="hljs-keyword">int</span> n, m;
 
-int dijkstra() &#123;
-    memset(dis, 0x3f, sizeof dis);
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">memset</span>(dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> dis);
     
-    dis[1] &#x3D; 0;
+    dis[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
     
-    for (int i &#x3D; 0; i &lt; n; ++ i) &#123;
-        int t &#x3D; -1;
-        for (int j &#x3D; 1; j &lt;&#x3D; n; ++ j) &#123;
-            if (!st[j] &amp;&amp;(t &#x3D;&#x3D; -1 || dis[t] &gt; dis[j])) &#123;
-                t &#x3D; j;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++ i) &#123;
+        <span class="hljs-keyword">int</span> t = <span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++ j) &#123;
+            <span class="hljs-keyword">if</span> (!st[j] &amp;&amp;(t == <span class="hljs-number">-1</span> || dis[t] &gt; dis[j])) &#123;
+                t = j;
             &#125;
         &#125;
-        st[t] &#x3D; true;
+        st[t] = <span class="hljs-literal">true</span>;
         
-        for (int j &#x3D; 1; j &lt;&#x3D; n; ++ j) &#123;
-            dis[j] &#x3D; min(dis[j], dis[t] + g[t][j]);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++ j) &#123;
+            dis[j] = min(dis[j], dis[t] + g[t][j]);
         &#125;
     &#125;
     
-    if(dis[n] &#x3D;&#x3D; 0x3f3f3f3f) return -1;
-    return dis[n];
+    <span class="hljs-keyword">if</span>(dis[n] == <span class="hljs-number">0x3f3f3f3f</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">return</span> dis[n];
 &#125;
 
-int main() &#123;
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
     
-    memset(g, 0x3f, sizeof g);
-    while ( m -- ) &#123;
-        int a, b, c;
-        scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
-        g[a][b] &#x3D; min(g[a][b], c);
+    <span class="hljs-built_in">memset</span>(g, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> g);
+    <span class="hljs-keyword">while</span> ( m -- ) &#123;
+        <span class="hljs-keyword">int</span> a, b, c;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+        g[a][b] = min(g[a][b], c);
     &#125;
     
-    printf(&quot;%d&quot;, dijkstra());
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, dijkstra());
     
-    return 0;
-&#125;</code></pre></p>
-<p>Pyhon版本：<br><pre class="language-Python" data-language="Python"><code class="language-Python">INF &#x3D; sys.maxsize
-edges &#x3D; [[]] # 邻接表存储边
-dis &#x3D; [] # 记录s到其他点的距离
-visited &#x3D; &#123;&#125; # 记录访问过的点
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div></p>
+<p>Pyhon版本：<br><div class="hljs"><pre><code class="hljs Python">INF = sys.maxsize
+edges = [[]] <span class="hljs-comment"># 邻接表存储边</span>
+dis = [] <span class="hljs-comment"># 记录s到其他点的距离</span>
+visited = &#123;&#125; <span class="hljs-comment"># 记录访问过的点</span>
 
-while True:
-    mini &#x3D; INF
-    u &#x3D; 0
-    flag &#x3D; False
-    # 遍历所有未访问过点当中距离最小的
-    for i in range(V):
-        if i not in visited and dis[i] &lt; mini:
-            mini, u &#x3D; dis[i], i
-            flag &#x3D; True
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    mini = INF
+    u = <span class="hljs-number">0</span>
+    flag = <span class="hljs-literal">False</span>
+    <span class="hljs-comment"># 遍历所有未访问过点当中距离最小的</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(V):
+        <span class="hljs-keyword">if</span> i <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> visited <span class="hljs-keyword">and</span> dis[i] &lt; mini:
+            mini, u = dis[i], i
+            flag = <span class="hljs-literal">True</span>
             
-    # 如果没有未访问的点，则退出
-    if not flag:
-        break
+    <span class="hljs-comment"># 如果没有未访问的点，则退出</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> flag:
+        <span class="hljs-keyword">break</span>
         
- visited[u] &#x3D; True
+ visited[u] = <span class="hljs-literal">True</span>
     
-    for v, l in edges[u]:
-        dis[v] &#x3D; min(dis[v], dis[u] + l)</code></pre></p>
+    <span class="hljs-keyword">for</span> v, l <span class="hljs-keyword">in</span> edges[u]:
+        dis[v] = min(dis[v], dis[u] + l)</code></pre></div></p>
 <p>&emsp;&emsp;虽然我们已经知道算法没有反例了，但是还是可以思考一下。主要的点在于我们每次都选择未访问的点进行松弛，有没有可能我们松弛了一个已经访问的点，由于它已经被松弛过了，导致后面没法拿来松弛其他的点呢？<br>&emsp;&emsp;其实是不可能的，因为我们每次选择的都是距离最小的未访问过的点。假设当前的点是u，我们找到了一个已经访问过的点v，是不可能存在dis[u] + l &lt; dis[v]的，因为dis[v]必然要小于dis[u]，v才有可能先于u访问。但是这有一个前提，就是每条边的长度不<br>能是负数。</p>
 <h1 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h1><p>&emsp;&emsp;和Bellman-ford算法一样，Dijkstra算法最大的问题同样是复杂度。我们每次选择一个点进行松弛，选择的时候需要遍历一遍所有的点，显然这是非常耗时的。复杂度应该是$O(V^2 + E)$，这里的E是边的数量，Dijkstra中每个点只会松弛一次，也就意味着每条<br>边最多遍历一次。<br>&emsp;&emsp;我们观察一下会发现，外面这层循环也就算了，里面这层循环很没有必要，我们只是找了一个最值而已。完全可以使用数据结构来代替循环查询，维护最值的场景我们也已经非常熟悉了，当然是使用优先队列。</p>
 <h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h1><ul>
@@ -363,193 +359,193 @@ while True:
 </ul>
 <p><a class="btn" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/852/" title="title">参考题目</a></p>
 <p>C++版本：</p>
-<pre class="language-C++" data-language="C++"><code class="language-C++">#include &lt;cstring&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-#include &lt;queue&gt;
+<div class="hljs"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
 
-using namespace std;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 
-typedef pair&lt;int, int&gt; PII;
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">pair</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; PII;
 
-const int N &#x3D; 1e6 + 10;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1e6</span> + <span class="hljs-number">10</span>;
 
-int n, m;
-int h[N], w[N], e[N], ne[N], idx;
-int dist[N], heap[N];
-bool st[N];
+<span class="hljs-keyword">int</span> n, m;
+<span class="hljs-keyword">int</span> h[N], w[N], e[N], ne[N], idx;
+<span class="hljs-keyword">int</span> dist[N], heap[N];
+<span class="hljs-keyword">bool</span> st[N];
 
-void add(int a, int b, int c)
-&#123;
-    e[idx] &#x3D; b, w[idx] &#x3D; c, ne[idx] &#x3D; h[a], h[a] &#x3D; idx ++ ;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
 &#125;
 
-int dijkstra()
-&#123;
-    memset(dist, 0x3f, sizeof dist);
-    dist[1] &#x3D; 0;
-    priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
-    heap.push(&#123;0, 1&#125;);
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">memset</span>(dist, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> dist);
+    dist[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">priority_queue</span>&lt;PII, <span class="hljs-built_in">vector</span>&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
+    heap.push(&#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;);
 
-    while (heap.size())
+    <span class="hljs-keyword">while</span> (heap.size())
     &#123;
-        PII t &#x3D; heap.top();
+        PII t = heap.top();
         heap.pop();
 
-        int ver &#x3D; t.second; &#x2F;&#x2F;distance &#x3D; t.first;
+        <span class="hljs-keyword">int</span> ver = t.second; <span class="hljs-comment">//distance = t.first;</span>
 
-        if (st[ver]) continue;
-        st[ver] &#x3D; true;
+        <span class="hljs-keyword">if</span> (st[ver]) <span class="hljs-keyword">continue</span>;
+        st[ver] = <span class="hljs-literal">true</span>;
 
-        for (int i &#x3D; h[ver]; i !&#x3D; -1; i &#x3D; ne[i])
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = h[ver]; i != <span class="hljs-number">-1</span>; i = ne[i])
         &#123;
-            int j &#x3D; e[i];
-            if (dist[j] &gt; dist[ver] + w[i])
+            <span class="hljs-keyword">int</span> j = e[i];
+            <span class="hljs-keyword">if</span> (dist[j] &gt; dist[ver] + w[i])
             &#123;
-                dist[j] &#x3D; dist[ver] + w[i];
+                dist[j] = dist[ver] + w[i];
                 heap.push(&#123;dist[j], j&#125;);
             &#125;
         &#125;
     &#125;
 
-    if (dist[n] &#x3D;&#x3D; 0x3f3f3f3f) return -1;
-    return dist[n];
+    <span class="hljs-keyword">if</span> (dist[n] == <span class="hljs-number">0x3f3f3f3f</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">return</span> dist[n];
 &#125;
 
-int main()
-&#123;
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
 
-    memset(h, -1, sizeof h);
-    while (m -- )
+    <span class="hljs-built_in">memset</span>(h, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> h);
+    <span class="hljs-keyword">while</span> (m -- )
     &#123;
-        int a, b, c;
-        scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
+        <span class="hljs-keyword">int</span> a, b, c;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
         add(a, b, c);
     &#125;
 
-    printf(&quot;%d\n&quot;, dijkstra());
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, dijkstra());
 
-    return 0;
-&#125;</code></pre>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
 <p>Pyhon版本：</p>
-<pre class="language-Python" data-language="Python"><code class="language-Python">import heapq
-import sys
+<div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> heapq
+<span class="hljs-keyword">import</span> sys
 
-# 优先队列
-class PriorityQueue:
+<span class="hljs-comment"># 优先队列</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PriorityQueue</span>:</span>
   
-    def __init__(self):
-        self._queue &#x3D; []
-        self._index &#x3D; 0
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span>
+        self._queue = []
+        self._index = <span class="hljs-number">0</span>
 
-    def push(self, item, priority):
-        # 传入两个参数，一个是存放元素的数组，另一个是要存储的元素，这里是一个元组。
-        # 由于heap内部默认由小到大排，所以对priority取负数
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">push</span>(<span class="hljs-params">self, item, priority</span>):</span>
+        <span class="hljs-comment"># 传入两个参数，一个是存放元素的数组，另一个是要存储的元素，这里是一个元组。</span>
+        <span class="hljs-comment"># 由于heap内部默认由小到大排，所以对priority取负数</span>
         heapq.heappush(self._queue, (-priority, self._index, item))
-        self._index +&#x3D; 1
+        self._index += <span class="hljs-number">1</span>
 
-    def pop(self):
-        return heapq.heappop(self._queue)[-1]
-
-
-    def empty(self):
-        return len(self._queue) &#x3D;&#x3D; 0
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pop</span>(<span class="hljs-params">self</span>):</span>
+        <span class="hljs-keyword">return</span> heapq.heappop(self._queue)[<span class="hljs-number">-1</span>]
 
 
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">empty</span>(<span class="hljs-params">self</span>):</span>
+        <span class="hljs-keyword">return</span> len(self._queue) == <span class="hljs-number">0</span>
 
-que &#x3D; PriorityQueue()
 
-INF &#x3D; sys.maxsize
-edges &#x3D; [[], [[2, 7], [3, 9], [6, 14]], [[1, 7], [3, 10], [4, 15]], [[1, 9], [2, 10], [6, 2], [4, 11]], [[3, 11], [5, 6]], [[4, 6], [6, 9]], [[3, 2], [5, 9]]] # 邻接表存储边
-dis &#x3D; [sys.maxsize for _ in range(8)] # 记录s到其他点的距离
-s &#x3D; 1
-que.push(s, 0)
-dis[s] &#x3D; 0
-visited &#x3D; &#123;&#125;
 
-while not que.empty():
-    u, d &#x3D; que.pop()
-    if d !&#x3D; dis[u]:
-        continue
+que = PriorityQueue()
 
-    for v, l in edges[u]:
-        if dis[u] + l &lt; dis[v]:
-            dis[v] &#x3D; dis[u] + l
+INF = sys.maxsize
+edges = [[], [[<span class="hljs-number">2</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">9</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">14</span>]], [[<span class="hljs-number">1</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">10</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">15</span>]], [[<span class="hljs-number">1</span>, <span class="hljs-number">9</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">10</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">11</span>]], [[<span class="hljs-number">3</span>, <span class="hljs-number">11</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]], [[<span class="hljs-number">4</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">9</span>]], [[<span class="hljs-number">3</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">9</span>]]] <span class="hljs-comment"># 邻接表存储边</span>
+dis = [sys.maxsize <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">8</span>)] <span class="hljs-comment"># 记录s到其他点的距离</span>
+s = <span class="hljs-number">1</span>
+que.push(s, <span class="hljs-number">0</span>)
+dis[s] = <span class="hljs-number">0</span>
+visited = &#123;&#125;
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> que.empty():
+    u, d = que.pop()
+    <span class="hljs-keyword">if</span> d != dis[u]:
+        <span class="hljs-keyword">continue</span>
+
+    <span class="hljs-keyword">for</span> v, l <span class="hljs-keyword">in</span> edges[u]:
+        <span class="hljs-keyword">if</span> dis[u] + l &lt; dis[v]:
+            dis[v] = dis[u] + l
             que.push(v, dis[v])
 
-print(dis)</code></pre>
-<p>Java版本：<br><pre class="language-Java" data-language="Java"><code class="language-Java">import java.util.ArrayDeque;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Scanner;
+print(dis)</code></pre></div>
+<p>Java版本：<br><div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">import</span> java.util.ArrayDeque;
+<span class="hljs-keyword">import</span> java.util.Comparator;
+<span class="hljs-keyword">import</span> java.util.PriorityQueue;
+<span class="hljs-keyword">import</span> java.util.Queue;
+<span class="hljs-keyword">import</span> java.util.Scanner;
 
-public class dijkstra &#123;
-	static class node
-	&#123;
-		int x; &#x2F;&#x2F;节点编号
-		int lenth;&#x2F;&#x2F;长度
-		public node(int x,int lenth) &#123;
-			this.x&#x3D;x;
-			this.lenth&#x3D;lenth;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">dijkstra</span> </span>&#123;
+	<span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">node</span></span>
+<span class="hljs-class">	</span>&#123;
+		<span class="hljs-keyword">int</span> x; <span class="hljs-comment">//节点编号</span>
+		<span class="hljs-keyword">int</span> lenth;<span class="hljs-comment">//长度</span>
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">node</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> lenth)</span> </span>&#123;
+			<span class="hljs-keyword">this</span>.x=x;
+			<span class="hljs-keyword">this</span>.lenth=lenth;
 		&#125;
 	&#125;
 
-	public static void main(String[] args) &#123;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
 		 
-		int[][] map &#x3D; new int[6][6];&#x2F;&#x2F;记录权值，顺便记录链接情况，可以考虑附加邻接表
-		initmap(map);&#x2F;&#x2F;初始化
-		boolean bool[]&#x3D;new boolean[6];&#x2F;&#x2F;判断是否已经确定
-		int len[]&#x3D;new int[6];&#x2F;&#x2F;长度
-		for(int i&#x3D;0;i&lt;6;i++)
+		<span class="hljs-keyword">int</span>[][] map = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">6</span>][<span class="hljs-number">6</span>];<span class="hljs-comment">//记录权值，顺便记录链接情况，可以考虑附加邻接表</span>
+		initmap(map);<span class="hljs-comment">//初始化</span>
+		<span class="hljs-keyword">boolean</span> bool[]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[<span class="hljs-number">6</span>];<span class="hljs-comment">//判断是否已经确定</span>
+		<span class="hljs-keyword">int</span> len[]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">6</span>];<span class="hljs-comment">//长度</span>
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">6</span>;i++)
 		&#123;
-			len[i]&#x3D;Integer.MAX_VALUE;
+			len[i]=Integer.MAX_VALUE;
 		&#125;
-		Queue&lt;node&gt;q1&#x3D;new PriorityQueue&lt;node&gt;(com);
-		len[0]&#x3D;0;&#x2F;&#x2F;从0这个点开始
-		q1.add(new node(0, 0));
-		int count&#x3D;0;&#x2F;&#x2F;计算执行了几次dijkstra
-		while (!q1.isEmpty()) &#123;
-			node t1&#x3D;q1.poll();
-			int index&#x3D;t1.x;&#x2F;&#x2F;节点编号
-			int length&#x3D;t1.lenth;&#x2F;&#x2F;节点当前点距离
-			bool[index]&#x3D;true;&#x2F;&#x2F;抛出的点确定
-			count++;&#x2F;&#x2F;其实执行了6次就可以确定就不需要继续执行了  这句可有可无，有了减少计算次数
-			for(int i&#x3D;0;i&lt;map[index].length;i++)
+		Queue&lt;node&gt;q1=<span class="hljs-keyword">new</span> PriorityQueue&lt;node&gt;(com);
+		len[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<span class="hljs-comment">//从0这个点开始</span>
+		q1.add(<span class="hljs-keyword">new</span> node(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>));
+		<span class="hljs-keyword">int</span> count=<span class="hljs-number">0</span>;<span class="hljs-comment">//计算执行了几次dijkstra</span>
+		<span class="hljs-keyword">while</span> (!q1.isEmpty()) &#123;
+			node t1=q1.poll();
+			<span class="hljs-keyword">int</span> index=t1.x;<span class="hljs-comment">//节点编号</span>
+			<span class="hljs-keyword">int</span> length=t1.lenth;<span class="hljs-comment">//节点当前点距离</span>
+			bool[index]=<span class="hljs-keyword">true</span>;<span class="hljs-comment">//抛出的点确定</span>
+			count++;<span class="hljs-comment">//其实执行了6次就可以确定就不需要继续执行了  这句可有可无，有了减少计算次数</span>
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;map[index].length;i++)
 			&#123;
-				if(map[index][i]&gt;0&amp;&amp;!bool[i])
+				<span class="hljs-keyword">if</span>(map[index][i]&gt;<span class="hljs-number">0</span>&amp;&amp;!bool[i])
 				&#123;
-					node node&#x3D;new node(i, length+map[index][i]);
-					if(len[i]&gt;node.lenth)&#x2F;&#x2F;需要更新节点的时候更新节点并加入队列
+					node node=<span class="hljs-keyword">new</span> node(i, length+map[index][i]);
+					<span class="hljs-keyword">if</span>(len[i]&gt;node.lenth)<span class="hljs-comment">//需要更新节点的时候更新节点并加入队列</span>
 					&#123;
-						len[i]&#x3D;node.lenth;
+						len[i]=node.lenth;
 						q1.add(node);
 					&#125;
 				&#125;
 			&#125;
 		&#125;		
-		for(int i&#x3D;0;i&lt;6;i++)
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">6</span>;i++)
 		&#123;
 			System.out.println(len[i]);
 		&#125;
 	&#125;
-	static Comparator&lt;node&gt;com&#x3D;new Comparator&lt;node&gt;() &#123;
+	<span class="hljs-keyword">static</span> Comparator&lt;node&gt;com=<span class="hljs-keyword">new</span> Comparator&lt;node&gt;() &#123;
 
-		public int compare(node o1, node o2) &#123;
-			return o1.lenth-o2.lenth;
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(node o1, node o2)</span> </span>&#123;
+			<span class="hljs-keyword">return</span> o1.lenth-o2.lenth;
 		&#125;
 	&#125;;
 
-	private static void initmap(int[][] map) &#123;
-		map[0][1]&#x3D;2;map[0][2]&#x3D;3;map[0][3]&#x3D;6;
-		map[1][0]&#x3D;2;map[1][4]&#x3D;4;map[1][5]&#x3D;6;
-		map[2][0]&#x3D;3;map[2][3]&#x3D;2;
-		map[3][0]&#x3D;6;map[3][2]&#x3D;2;map[3][4]&#x3D;1;map[3][5]&#x3D;3;
-		map[4][1]&#x3D;4;map[4][3]&#x3D;1;
-		map[5][1]&#x3D;6;map[5][3]&#x3D;3;	
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initmap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] map)</span> </span>&#123;
+		map[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">2</span>;map[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>]=<span class="hljs-number">3</span>;map[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">6</span>;
+		map[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">2</span>;map[<span class="hljs-number">1</span>][<span class="hljs-number">4</span>]=<span class="hljs-number">4</span>;map[<span class="hljs-number">1</span>][<span class="hljs-number">5</span>]=<span class="hljs-number">6</span>;
+		map[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">3</span>;map[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">2</span>;
+		map[<span class="hljs-number">3</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">6</span>;map[<span class="hljs-number">3</span>][<span class="hljs-number">2</span>]=<span class="hljs-number">2</span>;map[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>]=<span class="hljs-number">1</span>;map[<span class="hljs-number">3</span>][<span class="hljs-number">5</span>]=<span class="hljs-number">3</span>;
+		map[<span class="hljs-number">4</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">4</span>;map[<span class="hljs-number">4</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">1</span>;
+		map[<span class="hljs-number">5</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">6</span>;map[<span class="hljs-number">5</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">3</span>;	
 	&#125;
-&#125;</code></pre></p>
+&#125;</code></pre></div></p>
 <p>&emsp;&emsp;这里用visited来判断是否之前访问过的主要目的是为了防止负环的产生，这样程序会陷入死循环，如果确定程序不存在负边的话，其实可以没必要判断。因为先出队列的一定更优，不会存在之后还被更新的情况。如果想不明白这点加上判断也没有关系。<br>&emsp;&emsp;我们最后分析一下复杂度，每个点最多用来松弛其他点一次，加上优先队列的调整耗时，整体的复杂度是$O(V \log V+E)$，比之前$O(V^2+E)$的复杂度要提速了很多，非常适合边很多，点相对较少的图。有时候spfa卡时间了，我们会选择Dijkstra。</p>
 
             </div>
@@ -820,8 +816,6 @@ public class dijkstra &#123;
 
 
 
-  
-    
   
 
 

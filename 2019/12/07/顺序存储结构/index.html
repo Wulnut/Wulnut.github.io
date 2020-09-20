@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -222,7 +218,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.5k 字
     </span>
   
 
@@ -232,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      18
        分钟
     </span>
   
@@ -283,85 +279,85 @@
 </ul>
 </li>
 </ul>
-<h2 id="顺序映象的C语言描述"><a href="#顺序映象的C语言描述" class="headerlink" title="顺序映象的C语言描述"></a>顺序映象的C语言描述</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#define LISTSIZE 100  &#x2F;&#x2F;存储空间最大分配量
-typedef struct &#123;
+<h2 id="顺序映象的C语言描述"><a href="#顺序映象的C语言描述" class="headerlink" title="顺序映象的C语言描述"></a>顺序映象的C语言描述</h2><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LISTSIZE 100  <span class="hljs-comment">//存储空间最大分配量</span></span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span>
     ElemType elem[LISTSZIE];
-    int length;  &#x2F;&#x2F;当前长度
+    <span class="hljs-keyword">int</span> length;  <span class="hljs-comment">//当前长度</span>
 &#125;Sqlist; 
-&#x2F;&#x2F;Sqlist，代表线性表;</code></pre>
+<span class="hljs-comment">//Sqlist，代表线性表;</span></code></pre></div>
 <ul>
 <li>在线性表的静态分配顺序存储结构中，线性表的最多数据元素个数为LSITSIZE，元素数量不能随意增加，这是以数组方式描述线性表的缺点。</li>
 </ul>
 <p>&emsp;&ensp;为了实现线性表最大存储数据元素数可随意变化，可以使用一个动态的数组来取代上面的固定长度数组，如下描述。</p>
-<p>线性表的动态分配顺序储存结构：<br><pre class="language-c++" data-language="c++"><code class="language-c++">#define LIST_INIT_SIZE 100  &#x2F;&#x2F;初始分配量
-#define LISTINCREMENT 10 &#x2F;&#x2F;分配分配增量
+<p>线性表的动态分配顺序储存结构：<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LIST_INIT_SIZE 100  <span class="hljs-comment">//初始分配量</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LISTINCREMENT 10 <span class="hljs-comment">//分配分配增量</span></span>
 
-typedef struct &#123;
-    ElemType *elem;  &#x2F;&#x2F;储存空间基址
-    int length; &#x2F;&#x2F;当前长度
-    int listsize; &#x2F;&#x2F;当前分配的存储容量
-&#125;SqList;&#x2F;&#x2F; 俗称 顺序表</code></pre></p>
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span>
+    ElemType *elem;  <span class="hljs-comment">//储存空间基址</span>
+    <span class="hljs-keyword">int</span> length; <span class="hljs-comment">//当前长度</span>
+    <span class="hljs-keyword">int</span> listsize; <span class="hljs-comment">//当前分配的存储容量</span>
+&#125;SqList;<span class="hljs-comment">// 俗称 顺序表</span></code></pre></div></p>
 <h3 id="线性表操作"><a href="#线性表操作" class="headerlink" title="线性表操作"></a>线性表操作</h3><h3 id="1-InitList-amp-L"><a href="#1-InitList-amp-L" class="headerlink" title="1.InitList(&amp;L);"></a>1.InitList(&amp;L);</h3><p>&emsp;&emsp;InitList(&amp;L); 的实现是一个加工型的运算，因此，将L设为引用参数，首先动态分配存储空间，然后，将length设置为0，表示表中没有数据元素。</p>
-<p>代码实现：<br><pre class="language-c++" data-language="c++"><code class="language-c++">Status InitList_Sq (SqList &amp;L)&#123;
-    L.elem &#x3D; (ElemType* )malloc(LIST_INIT_SIZE * sizeof (ElemType));
-    if (!L.elem)&#123;
-        exit (1);&#x2F;&#x2F;储存分配失败
+<p>代码实现：<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-function">Status <span class="hljs-title">InitList_Sq</span> <span class="hljs-params">(SqList &amp;L)</span></span>&#123;
+    L.elem = (ElemType* )<span class="hljs-built_in">malloc</span>(LIST_INIT_SIZE * <span class="hljs-keyword">sizeof</span> (ElemType));
+    <span class="hljs-keyword">if</span> (!L.elem)&#123;
+        <span class="hljs-built_in">exit</span> (<span class="hljs-number">1</span>);<span class="hljs-comment">//储存分配失败</span>
     &#125;
-    L.length &#x3D; 0;
-    L.listsize &#x3D; LIST_INIT_SIZE;&#x2F;&#x2F;初始储存容量;
-    return OK;
-&#125;</code></pre></p>
+    L.length = <span class="hljs-number">0</span>;
+    L.listsize = LIST_INIT_SIZE;<span class="hljs-comment">//初始储存容量;</span>
+    <span class="hljs-keyword">return</span> OK;
+&#125;</code></pre></div></p>
 <h3 id="2-LocateElme-L-x-compare"><a href="#2-LocateElme-L-x-compare" class="headerlink" title="2.LocateElme(L,x,compare());"></a>2.LocateElme(L,x,compare());</h3><ul>
 <li>线性表中的<strong>按置操作</strong>是指在线性表中查找与给定值X相等的数据元素。</li>
 <li>顺序表中完成该运算最简单的方法是：从第一个元素a~1~起依次和X比较，直到找到一个与X相等的数据元素，则返回它在顺序表中的存储下标记或序号(二者差1);或者查遍整个表都没有找到与X相等的元素，返回ERROR。</li>
 </ul>
-<p>代码实现：<br><pre class="language-c++" data-language="c++"><code class="language-c++">Status LocateElem_Sq (SqList L, ElemType x)&#123;
-    int i &#x3D; 0;
-    while (i &lt;&#x3D; L.length-1 &amp;&amp; L.elem[i] !&#x3D; x)&#123;
+<p>代码实现：<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-function">Status <span class="hljs-title">LocateElem_Sq</span> <span class="hljs-params">(SqList L, ElemType x)</span></span>&#123;
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (i &lt;= L.length<span class="hljs-number">-1</span> &amp;&amp; L.elem[i] != x)&#123;
         i++;
     &#125;
-    if(i &gt; L.length - 1)&#123;
-        return ERROR;
+    <span class="hljs-keyword">if</span>(i &gt; L.length - <span class="hljs-number">1</span>)&#123;
+        <span class="hljs-keyword">return</span> ERROR;
     &#125;
-    else return i;
-&#125;</code></pre></p>
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> i;
+&#125;</code></pre></div></p>
 <blockquote>
 <p>本算法的主要运算是比较，显然比较的次数与x在表中的位置有关，也与表长有关。当a~1~ = x时，比较一次成功，当a~n~ = x时比较n次成功，按值查找的平均比较次数为 $\frac{(N+1)}{2}$,时间性能为$O(n)$。</p>
 </blockquote>
-<h3 id="3-ListInsert-amp-L-i-e"><a href="#3-ListInsert-amp-L-i-e" class="headerlink" title="3. ListInsert(&amp;L, i, e)"></a>3. ListInsert(&amp;L, i, e)</h3><p>代码实现:<br><pre class="language-c++" data-language="c++"><code class="language-c++">Status ListInsert_Sq (SqList &amp;L, int i, ElemType e)&#123;
-    &#x2F;&#x2F;在顺序表L的第i个元素之前插入新的元素e
-    &#x2F;&#x2F;i的合法范围为 1 &lt;&#x3D;i&lt;&#x3D;L.length+1
-    ElemType *q &#x3D; &amp;(L.elem[i-1]);&#x2F;&#x2F;q指示插入位置
+<h3 id="3-ListInsert-amp-L-i-e"><a href="#3-ListInsert-amp-L-i-e" class="headerlink" title="3. ListInsert(&amp;L, i, e)"></a>3. ListInsert(&amp;L, i, e)</h3><p>代码实现:<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-function">Status <span class="hljs-title">ListInsert_Sq</span> <span class="hljs-params">(SqList &amp;L, <span class="hljs-keyword">int</span> i, ElemType e)</span></span>&#123;
+    <span class="hljs-comment">//在顺序表L的第i个元素之前插入新的元素e</span>
+    <span class="hljs-comment">//i的合法范围为 1 &lt;=i&lt;=L.length+1</span>
+    ElemType *q = &amp;(L.elem[i<span class="hljs-number">-1</span>]);<span class="hljs-comment">//q指示插入位置</span>
     ElemType *p;
-    for (p &#x3D; &amp;(L.elem[L.length-1]); p &gt;&#x3D; q; --p)&#123;
-            *(p + 1) &#x3D; *p;&#x2F;&#x2F;插入位置及之后的元素右移
-            *q &#x3D; e;&#x2F;&#x2F;插入e
-        ++L.length;&#x2F;&#x2F;表长增1
+    <span class="hljs-keyword">for</span> (p = &amp;(L.elem[L.length<span class="hljs-number">-1</span>]); p &gt;= q; --p)&#123;
+            *(p + <span class="hljs-number">1</span>) = *p;<span class="hljs-comment">//插入位置及之后的元素右移</span>
+            *q = e;<span class="hljs-comment">//插入e</span>
+        ++L.length;<span class="hljs-comment">//表长增1</span>
     &#125;
-&#125;</code></pre><br>算法时间复杂度为：$O(ListLength(L))$</p>
-<pre class="language-c++" data-language="c++"><code class="language-c++">if (i &lt; 1 || i &gt; L.length + 1)&#123;
-    return ERROR;&#x2F;&#x2F;插入位置不合法
+&#125;</code></pre></div><br>算法时间复杂度为：$O(ListLength(L))$</p>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">1</span> || i &gt; L.length + <span class="hljs-number">1</span>)&#123;
+    <span class="hljs-keyword">return</span> ERROR;<span class="hljs-comment">//插入位置不合法</span>
 &#125;
 
-if (L.length &gt;&#x3D; L.listsize)&#123;
-    return OVERFLOW;&#x2F;&#x2F;当前存储空间已满
-&#125;</code></pre>
+<span class="hljs-keyword">if</span> (L.length &gt;= L.listsize)&#123;
+    <span class="hljs-keyword">return</span> OVERFLOW;<span class="hljs-comment">//当前存储空间已满</span>
+&#125;</code></pre></div>
 <h4 id="考虑移动元素的平均情况："><a href="#考虑移动元素的平均情况：" class="headerlink" title="考虑移动元素的平均情况："></a>考虑移动元素的平均情况：</h4><p>&emsp;&emsp;假设在第i个元素之前插入的概率为p~i~,则在长度为<em>n</em>的线性表中插入一个元素为所需移动元素次数的期望值为：</p>
 <script type="math/tex; mode=display">E_is = \sum_{i = 1}^{n + 1} P_i(n - i + 1)</script><p>所有为位置的概率的累加和。</p>
 <p>&emsp;&emsp;若假定在线性表中任何一个位置上进行插入的概率都是相等的，则移动元素的期望值为：</p>
-<script type="math/tex; mode=display">E_is = \frac{i}{n+1}\sum_{i=1}^{n+1}(n-i+1) = \frac{2}{n}</script><h3 id="4-ListDelete-amp-L-i-amp-e-的实现："><a href="#4-ListDelete-amp-L-i-amp-e-的实现：" class="headerlink" title="4. ListDelete(&amp;L, i, &amp;e)的实现："></a>4. ListDelete(&amp;L, i, &amp;e)的实现：</h3><p>代码实现：<br><pre class="language-none"><code class="language-none">Status LsitDelet_Sq (SqList &amp;L, int i, ElemType &amp;e)&#123;
-    if((i &lt; 1) || (i &gt; L.length))&#123;
-        return ERROR;&#x2F;&#x2F;删除位置不合法
+<script type="math/tex; mode=display">E_is = \frac{i}{n+1}\sum_{i=1}^{n+1}(n-i+1) = \frac{2}{n}</script><h3 id="4-ListDelete-amp-L-i-amp-e-的实现："><a href="#4-ListDelete-amp-L-i-amp-e-的实现：" class="headerlink" title="4. ListDelete(&amp;L, i, &amp;e)的实现："></a>4. ListDelete(&amp;L, i, &amp;e)的实现：</h3><p>代码实现：<br><div class="hljs"><pre><code class="hljs reasonml">Status LsitDelet_Sq (SqList &amp;L, <span class="hljs-built_in">int</span> i, ElemType &amp;e)&#123;
+    <span class="hljs-keyword">if</span>((i &lt; <span class="hljs-number">1</span>)<span class="hljs-operator"> || </span>(i &gt; <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">L</span>.</span></span>length))&#123;
+        return ERROR;<span class="hljs-comment">//删除位置不合法</span>
     &#125;
-    p &#x3D; &amp;(L.elem[i-1]);&#x2F;&#x2F;p为被删除元素的位置
-    e &#x3D; *p;&#x2F;&#x2F;被删除元素的值赋给e,可以查看被删元素
-    q &#x3D; L.elem + L.length-1;&#x2F;&#x2F;表尾元素的位置，基址加上一个整数值
-    for (++p; p &lt;&#x3D; q; ++p)&#123;
-        *(p-1) &#x3D; *p;&#x2F;&#x2F;被删除元素之后的元素左移
-        --L.length;&#x2F;&#x2F;表长减一
+    p = &amp;(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">L</span>.</span></span>elem<span class="hljs-literal">[<span class="hljs-identifier">i</span>-<span class="hljs-number">1</span>]</span>);<span class="hljs-comment">//p为被删除元素的位置</span>
+    e = *p;<span class="hljs-comment">//被删除元素的值赋给e,可以查看被删元素</span>
+    q = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">L</span>.</span></span>elem + <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">L</span>.</span></span>length-<span class="hljs-number">1</span>;<span class="hljs-comment">//表尾元素的位置，基址加上一个整数值</span>
+    <span class="hljs-keyword">for</span> (++p; p &lt;= q; ++p)&#123;
+        *(p-<span class="hljs-number">1</span>) = *p;<span class="hljs-comment">//被删除元素之后的元素左移</span>
+        --<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">L</span>.</span></span>length;<span class="hljs-comment">//表长减一</span>
     &#125;
     return OK;
-&#125;</code></pre><br>算法时间复杂度为：$O(ListLength(L))$</p>
+&#125;</code></pre></div><br>算法时间复杂度为：$O(ListLength(L))$</p>
 <h4 id="考虑移动元素的平均情况：-1"><a href="#考虑移动元素的平均情况：-1" class="headerlink" title="考虑移动元素的平均情况："></a>考虑移动元素的平均情况：</h4><p>&emsp;&emsp;假设删除第i个元素的概率为$q_i$,则在长度为$n$的线性表中删除一个元素所需移动元素次数的期望值为：</p>
 <script type="math/tex; mode=display">E_dl = \sum_{i=1}^{n}q_i(n-i)</script><p>&emsp;&emsp;假设定在线性表中任何一个位置上进行删除的概率都是相等的，则移动元素的期望值为：</p>
 <script type="math/tex; mode=display">E_dl=\frac{1}{n}\sum_{i=1}^{n}(n-1)=\frac{n-1}{2}</script>
@@ -632,8 +628,6 @@ if (L.length &gt;&#x3D; L.listsize)&#123;
 
 
 
-  
-    
   
 
 

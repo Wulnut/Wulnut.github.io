@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -278,14 +274,14 @@
 <p>$0 &lt; N$, $V \leq 1000$</p>
 <p>$0 &lt; v_i$, $w_i \leq 1000$</p>
 <p><strong>输入样例</strong></p>
-<pre><code>4 5
+<div class="hljs"><pre><code>4 5
 1 2
 2 4
 3 4
 4 5
-</code></pre><p><strong>输出样例</strong></p>
-<pre><code>8
-</code></pre><p>S</p>
+</code></pre></div><p><strong>输出样例</strong></p>
+<div class="hljs"><pre><code>8
+</code></pre></div><p>S</p>
 <h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>&emsp;&emsp;这是最基础的背包问题，特点是：<font color = #f278>每种物品仅有一件，可以选择放或不放。</font></p>
 <h5 id="用子问题定义状态："><a href="#用子问题定义状态：" class="headerlink" title="用子问题定义状态："></a>用子问题定义状态：</h5><p>即$f[i][v]$表示前$i$件物品恰放入一个容量为$v$的背包可以获得的最大价值。则其状态转移方程便是：</p>
 <script type="math/tex; mode=display">
@@ -592,8 +588,6 @@ f[i][v] = max
 
 
 
-  
-    
   
 
 

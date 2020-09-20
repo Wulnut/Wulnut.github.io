@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -232,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      15
        分钟
     </span>
   
@@ -271,10 +267,10 @@
 <li>Vector是一个能够存放任意类型的动态数组</li>
 <li>Vector的数据结构和操作与数组(array)类似，在内存中的表现形式是一段地址连续的空间</li>
 <li>Vector与数组的区别在于，数组大小往往是定义是固定的(比如：char buffer[256]);Vec支持动态空间大小调整，随着空间的变化Vector内部会自动扩充内存空间</li>
-<li>为了试用Vector，必须试用include指令包含该头文件,并通过std空间去访问：<pre class="language-none"><code class="language-none">include &lt;vector&gt;
-int main() &#123;
-    std :: vector v;
-&#125;</code></pre>
+<li>为了试用Vector，必须试用include指令包含该头文件,并通过std空间去访问：<div class="hljs"><pre><code class="hljs cpp">include &lt;<span class="hljs-built_in">vector</span>&gt;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span> v;
+&#125;</code></pre></div>
 </li>
 </ul>
 <h3 id="创建vector"><a href="#创建vector" class="headerlink" title="创建vector"></a>创建vector</h3><div class="table-container">
@@ -309,20 +305,20 @@ int main() &#123;
 </tbody>
 </table>
 </div>
-<h3 id="向vector添加元素"><a href="#向vector添加元素" class="headerlink" title="向vector添加元素"></a>向vector添加元素</h3><p>向vector添加元素的方法为调用其push_back()函数，表示将元素添加至其尾部：<br><pre class="language-none"><code class="language-none">std :: vector &lt;std :: wstring&gt; v3;
-for (std :: size_t i &#x3D; 0; i &lt; 10; ++ i) &#123;
-    std :: wstringstream wss;
-    wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);
+<h3 id="向vector添加元素"><a href="#向vector添加元素" class="headerlink" title="向vector添加元素"></a>向vector添加元素</h3><p>向vector添加元素的方法为调用其push_back()函数，表示将元素添加至其尾部：<br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span> &lt;<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>&gt; v3;
+<span class="hljs-keyword">for</span> (<span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++ i) &#123;
+    <span class="hljs-built_in">std</span> :: wstringstream wss;
+    wss &lt;&lt; TEXT(<span class="hljs-string">&quot;String[&quot;</span>) &lt;&lt; i &lt;&lt; TEXT(<span class="hljs-string">&quot;]&quot;</span>);
     v3.push_back(wss.str());
-&#125;</code></pre></p>
+&#125;</code></pre></div></p>
 <h3 id="判断vector是否为空、获取vector大小"><a href="#判断vector是否为空、获取vector大小" class="headerlink" title="判断vector是否为空、获取vector大小"></a>判断vector是否为空、获取vector大小</h3><ul>
 <li>如果要判断vector是否为空则调用empty()函数</li>
-<li>如果要获取vector大小则调用size()函数<pre class="language-none"><code class="language-none">std :: vector &lt;std :: wstring&gt; v3;
-bool isEmpty &#x3D; v3.empty();
+<li>如果要获取vector大小则调用size()函数<div class="hljs"><pre><code class="hljs angelscript">std :: vector &lt;std :: wstring&gt; v3;
+<span class="hljs-built_in">bool</span> isEmpty = v3.empty();
 
-int array[] &#x3D; &#123;1,2,3,4,5,6,7,8,9,10&#125;;
-std :: vector&lt;int&gt; v(array, array + 10)
-std :: size vSize &#x3D; v.size();</code></pre>
+<span class="hljs-built_in">int</span> <span class="hljs-built_in">array</span>[] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>&#125;;
+std :: vector&lt;<span class="hljs-built_in">int</span>&gt; v(<span class="hljs-built_in">array</span>, <span class="hljs-built_in">array</span> + <span class="hljs-number">10</span>)
+std :: size vSize = v.size();</code></pre></div>
 </li>
 </ul>
 <h3 id="访问vector中元素"><a href="#访问vector中元素" class="headerlink" title="访问vector中元素"></a>访问vector中元素</h3><ul>
@@ -337,45 +333,45 @@ std :: size vSize &#x3D; v.size();</code></pre>
 </ul>
 </li>
 </ul>
-<pre class="language-none"><code class="language-none">std :: vector&lt;std::wstring&gt; v;
-v.reserve(10);
-for (std::size_t i &#x3D; 0; i &lt; 3; ++ i) &#123;
-    std :: wstringstream wss;
-    wss &lt;&lt; TEXT(&quot;String[&quot;) &lt;&lt; i &lt;&lt; TEXT(&quot;]&quot;);
+<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">wstring</span>&gt; v;
+v.reserve(<span class="hljs-number">10</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++ i) &#123;
+    <span class="hljs-built_in">std</span> :: wstringstream wss;
+    wss &lt;&lt; TEXT(<span class="hljs-string">&quot;String[&quot;</span>) &lt;&lt; i &lt;&lt; TEXT(<span class="hljs-string">&quot;]&quot;</span>);
     v.push_back(wss.str());
 &#125;
 
-try &#123;
-    std :: wstring wsz1 &#x3D; v[5]; &#x2F;&#x2F; not bounds checked -will not throw
-    std :: wstring wsz2 &#x3D; v.at(5); &#x2F;&#x2F; bounds checked -will throw if out of range
+<span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> wsz1 = v[<span class="hljs-number">5</span>]; <span class="hljs-comment">// not bounds checked -will not throw</span>
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> wsz2 = v.at(<span class="hljs-number">5</span>); <span class="hljs-comment">// bounds checked -will throw if out of range</span>
 &#125;
-catch (const std :: exception&amp; ex) &#123;
-    Console :: WriteLine(ex.what());
-&#125;</code></pre>
+<span class="hljs-keyword">catch</span> (<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span> :: exception&amp; ex) &#123;
+    <span class="hljs-built_in">Console</span> :: WriteLine(ex.what());
+&#125;</code></pre></div>
 <h3 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h3><ul>
 <li>clear：清除一整个vector</li>
 <li>pop_back：弹出vector为元素</li>
 <li>erase:删除vector中某一位置的元素<ul>
-<li>用法一：指定iterator删除某一元素<pre class="language-none"><code class="language-none">std :: vector&lt;int&gt; :: const_iterator it &#x3D; v.begin();
-v.erase(it + 1); &#x2F;&#x2F; erase the second element in the Vector</code></pre></li>
+<li>用法一：指定iterator删除某一元素<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; :: const_iterator it = v.<span class="hljs-built_in">begin</span>();
+v.erase(it + <span class="hljs-number">1</span>); <span class="hljs-comment">// erase the second element in the Vector</span></code></pre></div></li>
 <li>用法二：通过某一条件函数找到vector中需要删除的元素。所谓条件函数是一个按照用户定义的条件返回true/false的函数对象。我们以remove_if为例说明。</li>
 <li>remove_if函数定义在algorithm中，故需要include<algorithm></li>
-<li>定义筛选器：一个一元函数对象(unary_function),关键在于重载operator()<pre class="language-none"><code class="language-none">struct ContainsString : public std :: unary_function &lt;std :: wstring, bool&gt; &#123;
-    ContainsString (const std::wstring&amp; wszMatch) : m_wszMatch(wszMatch) &#123;&#125;
+<li>定义筛选器：一个一元函数对象(unary_function),关键在于重载operator()<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ContainsString</span> :</span> <span class="hljs-keyword">public</span> <span class="hljs-built_in">std</span> :: unary_function &lt;<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>, <span class="hljs-keyword">bool</span>&gt; &#123;
+    ContainsString (<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">wstring</span>&amp; wszMatch) : m_wszMatch(wszMatch) &#123;&#125;
 
-    bool operator()(const std :: wstring&amp; wszStringToMatch) const &#123;
-        &#x2F;&#x2F;注意因为它重载了()所以可以当一个函数来用
-        return (wszStringToMatch.find(m_wszMatch) !&#x3D; 1);
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>&amp; wszStringToMatch)</span> <span class="hljs-keyword">const</span> </span>&#123;
+        <span class="hljs-comment">//注意因为它重载了()所以可以当一个函数来用</span>
+        <span class="hljs-keyword">return</span> (wszStringToMatch.<span class="hljs-built_in">find</span>(m_wszMatch) != <span class="hljs-number">1</span>);
     &#125;
 
-    std :: wstring m_wszMatch;
-&#125;</code></pre></li>
-<li>在erase函数中调用remove_if执行删除:<pre class="language-none"><code class="language-none">v.erase (std :: remove_if (
-    v.begin(),
-    v.end(),
-    ContainsString (L&quot;C++&quot;)
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> m_wszMatch;
+&#125;</code></pre></div></li>
+<li>在erase函数中调用remove_if执行删除:<div class="hljs"><pre><code class="hljs arduino">v.erase (<span class="hljs-built_in">std</span> :: remove_if (
+    v.<span class="hljs-built_in">begin</span>(),
+    v.<span class="hljs-built_in">end</span>(),
+    ContainsString (<span class="hljs-string">L&quot;C++&quot;</span>)
 ),
-  v.end());</code></pre></li>
+  v.<span class="hljs-built_in">end</span>());</code></pre></div></li>
 <li>remove_if是不是真正remove了vector中的元素呢？<br>remove_if其实真正的做的事针对ContainsString条件对给出了erase函数需要操作的iterator位置。</li>
 </ul>
 </li>
@@ -389,20 +385,20 @@ v.erase(it + 1); &#x2F;&#x2F; erase the second element in the Vector</code></pre
 </ul>
 </li>
 <li>Deque采用了与vector不同的内存管理方式：大块分配内存</li>
-<li>为了试用deque，必须用include质量包含如下文件，并通过std命名空间访问：<pre class="language-none"><code class="language-none">#include &lt;deque&gt;
-int main() &#123;
-    std :: deque dq;
-&#125;</code></pre>
+<li>为了试用deque，必须用include质量包含如下文件，并通过std命名空间访问：<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;deque&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">deque</span> dq;
+&#125;</code></pre></div>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2></li>
 </ul>
 </li>
 <li>概述<ul>
 <li>List是一个能够存放任意类型的双向链表(double linked list)</li>
 <li>可以向List中接入一个子链表(sub-list)</li>
-<li>为了使用List，必须使用include指令包含如下文件，并通过std命名空间去访问：<pre class="language-none"><code class="language-none">#include &lt;list&gt;
-int main() &#123;
-    std :: list l;
-&#125;</code></pre>
+<li>为了使用List，必须使用include指令包含如下文件，并通过std命名空间去访问：<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;list&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">list</span> l;
+&#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -725,8 +721,6 @@ int main() &#123;
 
 
 
-  
-    
   
 
 

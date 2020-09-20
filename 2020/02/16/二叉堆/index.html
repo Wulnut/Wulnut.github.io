@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -222,7 +218,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      610 字
+      572 字
     </span>
   
 
@@ -232,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      6
        分钟
     </span>
   
@@ -277,56 +273,56 @@
 <li>左儿子的编号是自己的编号 $×2+1$</li>
 <li>右儿子的编号是自己的编号 $×2+2$</li>
 </ul>
-<pre class="language-none"><code class="language-none">const int N &#x3D; 10000;
-int heap[N], sz;
+<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> N = <span class="hljs-number">10000</span>;
+<span class="hljs-built_in">int</span> heap[N], sz;
 
-void push(int x) &#123;
-    &#x2F;&#x2F;自己节点的编号
-    int i &#x3D; sz ++;
+<span class="hljs-built_in">void</span> push(<span class="hljs-built_in">int</span> x) &#123;
+    <span class="hljs-comment">//自己节点的编号</span>
+    <span class="hljs-built_in">int</span> i = sz ++;
     
-    while(i &gt; 0) &#123;
-        &#x2F;&#x2F; 父亲结点的编号
-        int p &#x3D; (i &#x3D; 1) &gt;&gt; 2;
+    <span class="hljs-keyword">while</span>(i &gt; <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-comment">// 父亲结点的编号</span>
+        <span class="hljs-built_in">int</span> p = (i = <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">2</span>;
 
-        &#x2F;&#x2F;如果已经没有大小颠倒则退出
-        if (heap[p] &lt;&#x3D; x) break;
+        <span class="hljs-comment">//如果已经没有大小颠倒则退出</span>
+        <span class="hljs-keyword">if</span> (heap[p] &lt;= x) <span class="hljs-keyword">break</span>;
 
-        &#x2F;&#x2F;父亲节点的数值放下来，而把自己提上去
-        heap[i] &#x3D; heap[p];
-        i &#x3D; p;
+        <span class="hljs-comment">//父亲节点的数值放下来，而把自己提上去</span>
+        heap[i] = heap[p];
+        i = p;
     &#125;
 
-    heap[i] &#x3D; x;
+    heap[i] = x;
 &#125;
 
-int pop() &#123;
+<span class="hljs-built_in">int</span> pop() &#123;
 
-    &#x2F;&#x2F;最小值
+    <span class="hljs-comment">//最小值</span>
 
-    int ret &#x3D; heap[0];
+    <span class="hljs-built_in">int</span> ret = heap[<span class="hljs-number">0</span>];
 
-    &#x2F;&#x2F;要提到根的数值
-    int x &#x3D; heap[--sz];
+    <span class="hljs-comment">//要提到根的数值</span>
+    <span class="hljs-built_in">int</span> x = heap[--sz];
 
-    &#x2F;&#x2F;从根开始向下交换
-    int i &#x3D; 0;
-    while ((i &lt;&lt; 2) + 1 &lt; sz) &#123;
-        &#x2F;&#x2F;比较儿子的值
-        int a &#x3D; i * 2 + 1, b &#x3D; i * 2 + 2;
-        if (b &lt; sz &amp;&amp; heap[b] &lt; heap[a]) a &#x3D; b;
+    <span class="hljs-comment">//从根开始向下交换</span>
+    <span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> ((i &lt;&lt; <span class="hljs-number">2</span>) + <span class="hljs-number">1</span> &lt; sz) &#123;
+        <span class="hljs-comment">//比较儿子的值</span>
+        <span class="hljs-built_in">int</span> a = i * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, b = i * <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">if</span> (b &lt; sz &amp;&amp; heap[b] &lt; heap[a]) a = b;
 
-        &#x2F;&#x2F;如果已经没有大小颠倒则退出
-        if (heap[a] &gt;&#x3D; x) break;
+        <span class="hljs-comment">//如果已经没有大小颠倒则退出</span>
+        <span class="hljs-keyword">if</span> (heap[a] &gt;= x) <span class="hljs-keyword">break</span>;
 
-        &#x2F;&#x2F;把儿子的数值提上来
-        heap[i] &#x3D; heap[a];
-        i &#x3D; a;
+        <span class="hljs-comment">//把儿子的数值提上来</span>
+        heap[i] = heap[a];
+        i = a;
     &#125;
 
-    heap[i] &#x3D; x;
+    heap[i] = x;
 
-    return ret;
-&#125;</code></pre>
+    <span class="hljs-keyword">return</span> ret;
+&#125;</code></pre></div>
 
             </div>
             <hr>
@@ -604,8 +600,6 @@ int pop() &#123;
 
 
 
-  
-    
   
 
 

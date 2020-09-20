@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -271,18 +267,18 @@
 <li>与函数模板类似， 类页可以通过参数泛化，从而可以构建出一族不同类型的类实例</li>
 <li>类模板参数可以是某一类型或常量（仅限int或者enum）</li>
 </ul>
-<p>一个类模板的例子：Stack<T><br><pre class="language-none"><code class="language-none">const std::size_t DefaultStackSize &#x3D; 1024;
+<p>一个类模板的例子：Stack<T><br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> DefaultStackSize = <span class="hljs-number">1024</span>;
 
-template &lt;typename T, std::size_t n &#x3D; DefaultStackSize&gt;
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> n = DefaultStackSize&gt;
 class Stack &#123;
-public:
-    void Push(const T const&amp; element);
-    int Pop(T&amp; element);
-    int Top(T&amp; element) const;
-private:
-    std::vector&lt;T&gt; m_Members;
-    std::size_t m_nMaxSize &#x3D; n;
-&#125;;</code></pre></p>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">void</span> Push(<span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>&amp; element);
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Pop</span><span class="hljs-params">(T&amp; element)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Top</span><span class="hljs-params">(T&amp; element)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt; m_Members;
+    <span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> m_nMaxSize = n;
+&#125;;</code></pre></div></p>
 <ul>
 <li>T可以是任意类别</li>
 <li>模板实参也可以是一个int或enum的常量(此处是size_t, 本质是int类型)</li>
@@ -293,71 +289,71 @@ private:
 <h2 id="类模板的声明"><a href="#类模板的声明" class="headerlink" title="- 类模板的声明"></a>- 类模板的声明</h2><ul>
 <li>声明类模板与申明函数模板类似</li>
 <li><p>关键字class和typename都可以用，但是还是更倾向于去使用typename</p>
-<pre class="language-none"><code class="language-none">template &lt;typename T, std::size_t n&gt; class Stack&#123;...&#125;
-template &lt;class T, std::size_t n&gt; class Stack&#123;...&#125;</code></pre>
+<div class="hljs"><pre><code class="hljs nim"><span class="hljs-keyword">template</span> &lt;typename T, std::size_t n&gt; class <span class="hljs-type">Stack</span><span class="hljs-meta">&#123;...&#125;</span>
+<span class="hljs-keyword">template</span> &lt;class T, std::size_t n&gt; class <span class="hljs-type">Stack</span><span class="hljs-meta">&#123;...&#125;</span></code></pre></div>
 </li>
 <li><p>在类模板内部，T可以像其他函数类别一样(比如int , char等)定义成员变量和成员函数</p>
-<pre class="language-none"><code class="language-none">void Push(const T const&amp; element)
-int Pop(T&amp; element);
-int Top(T&amp; element) const;
-std::vector&lt;T&gt; m_Members;</code></pre></li>
-<li>除了Copy constructor 之外，如果在类模板中需要使用到这个类本身，比如定义operator，那么就应该医用其完整的定义(Stack<T,n>)而不是省略类别T。<pre class="language-none"><code class="language-none">template &lt;typename T, std::size_t n&gt;
-class Stack&#123;
-  public:
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Push</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>&amp; element)</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Pop</span><span class="hljs-params">(T&amp; element)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Top</span><span class="hljs-params">(T&amp; element)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt; m_Members;</code></pre></div></li>
+<li>除了Copy constructor 之外，如果在类模板中需要使用到这个类本身，比如定义operator，那么就应该医用其完整的定义(Stack<T,n>)而不是省略类别T。<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> n&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span>&#123;</span>
+  <span class="hljs-keyword">public</span>:
       ...
-      Stack (Stack&lt;T,n&gt; const&amp;); &#x2F;&#x2F;copy constructor
-      Stack&lt;T&gt;&amp; operator &#x3D; (Stack&lt;T,n&gt; const&amp;); &#x2F;&#x2F; assignment operator
+      Stack (Stack&lt;T,n&gt; <span class="hljs-keyword">const</span>&amp;); <span class="hljs-comment">//copy constructor</span>
+      Stack&lt;T&gt;&amp; <span class="hljs-keyword">operator</span> = (Stack&lt;T,n&gt; <span class="hljs-keyword">const</span>&amp;); <span class="hljs-comment">// assignment operator</span>
       ...
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 </ul>
 <h2 id="类模板的实现"><a href="#类模板的实现" class="headerlink" title="- 类模板的实现"></a>- 类模板的实现</h2><ul>
 <li><p>要定义一个类模板的成员函数，则要指明其是一个模板函数</p>
 <p>Push函数：</p>
-<pre class="language-none"><code class="language-none">template &lt;typename T, std::size_t nMaxSize&gt;
-void Stack&lt;T, nMaxSize&gt; :: Push(const T const&amp; element) &#123;
-    if (m_Members.size() &gt;&#x3D; m_nMaxSize) &#123;
-        &#x2F;&#x2F; error handing...
-        return ;
+<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> nMaxSize&gt;
+<span class="hljs-keyword">void</span> Stack&lt;T, nMaxSize&gt; :: Push(<span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>&amp; element) &#123;
+    <span class="hljs-keyword">if</span> (m_Members.<span class="hljs-built_in">size</span>() &gt;= m_nMaxSize) &#123;
+        <span class="hljs-comment">// error handing...</span>
+        <span class="hljs-keyword">return</span> ;
     &#125;
 
     m_Members.push_back(element);
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>Pop函数：</p>
-<pre class="language-none"><code class="language-none">template &lt;typename T, std :: size_t nMaxSize&gt;
-int Stack&lt;T, nMaxSize&gt; :: Pop(T&amp; element) &#123;
-    if (m_Members.empty()) &#123;
-        return 0;
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> nMaxSize&gt;
+<span class="hljs-keyword">int</span> Stack&lt;T, nMaxSize&gt; :: Pop(T&amp; element) &#123;
+    <span class="hljs-keyword">if</span> (m_Members.empty()) &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     &#125;
 
-    element &#x3D; m_Members.back(); &#x2F;&#x2F; we have to first store the back element
-    m_Members.pop_back(); &#x2F;&#x2F; because pop_back of a vector removes
-    return 1; &#x2F;&#x2F; the last element but doesn&#39;t return it
-&#125;</code></pre>
+    element = m_Members.back(); <span class="hljs-comment">// we have to first store the back element</span>
+    m_Members.pop_back(); <span class="hljs-comment">// because pop_back of a vector removes</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// the last element but doesn&#x27;t return it</span>
+&#125;</code></pre></div>
 <p>Top函数：</p>
-<pre class="language-none"><code class="language-none">template &lt;typename T, std :: size_t nMaxSize&gt;
-int Stack&lt;T, nMaxSize&gt; :: Top(T&amp; element) const &#123;
-    if (m_Members.empty()) &#123;
-        return 0;
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> nMaxSize&gt;
+<span class="hljs-keyword">int</span> Stack&lt;T, nMaxSize&gt; :: Top(T&amp; element) <span class="hljs-keyword">const</span> &#123;
+    <span class="hljs-keyword">if</span> (m_Members.empty()) &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     &#125;
 
-    element &#x3D; m_Members.back();
-    return 1;
-&#125;</code></pre>
+    element = m_Members.back();
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+&#125;</code></pre></div>
 </li>
 </ul>
 <h2 id="使用类模板"><a href="#使用类模板" class="headerlink" title="- 使用类模板"></a>- 使用类模板</h2><ul>
 <li>Stack<int> stack：定义了一类型为int的Stack， 大小为默认值</li>
 <li>Stack<int, 100> stack：定义了一个类型为int, 大小为100的Stack</li>
-<li>将100个元素Push到Stack中<pre class="language-none"><code class="language-none">for (int i &#x3D; 0; i &lt; 100; ++ i) &#123;
-    stack.Push(i);
-&#125;</code></pre></li>
-<li>Pop出Stack顶部元素:<pre class="language-none"><code class="language-none">int element
-stack.Pop(element);</code></pre></li>
-<li>获取Stack顶部元素:<pre class="language-none"><code class="language-none">stack.Top(element);</code></pre></li>
-<li>Stack的stack定义:<pre class="language-none"><code class="language-none">Stack&lt;Stack&lt;int&gt; &gt;intStackStack; &#x2F;&#x2F; 最右边要加一个空格
+<li>将100个元素Push到Stack中<div class="hljs"><pre><code class="hljs matlab"><span class="hljs-keyword">for</span> (int <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; <span class="hljs-number">100</span>; ++ <span class="hljs-built_in">i</span>) &#123;
+    stack.Push(<span class="hljs-built_in">i</span>);
+&#125;</code></pre></div></li>
+<li>Pop出Stack顶部元素:<div class="hljs"><pre><code class="hljs reasonml"><span class="hljs-built_in">int</span> element
+stack.<span class="hljs-constructor">Pop(<span class="hljs-params">element</span>)</span>;</code></pre></div></li>
+<li>获取Stack顶部元素:<div class="hljs"><pre><code class="hljs reasonml">stack.<span class="hljs-constructor">Top(<span class="hljs-params">element</span>)</span>;</code></pre></div></li>
+<li>Stack的stack定义:<div class="hljs"><pre><code class="hljs angelscript">Stack&lt;Stack&lt;<span class="hljs-built_in">int</span>&gt; &gt;<span class="hljs-built_in">int</span>StackStack; <span class="hljs-comment">// 最右边要加一个空格</span>
 
-Stack&lt;Stack&lt;int&gt;&gt; intStackStack; &#x2F;&#x2F; ERROR: &gt;&gt; is not allowed </code></pre>
+Stack&lt;Stack&lt;<span class="hljs-built_in">int</span>&gt;&gt; <span class="hljs-built_in">int</span>StackStack; <span class="hljs-comment">// ERROR: &gt;&gt; is not allowed </span></code></pre></div>
 </li>
 </ul>
 <h2 id="类模板特化-specializations"><a href="#类模板特化-specializations" class="headerlink" title="- 类模板特化(specializations)"></a>- 类模板特化(specializations)</h2><ul>
@@ -370,36 +366,36 @@ Stack&lt;Stack&lt;int&gt;&gt; intStackStack; &#x2F;&#x2F; ERROR: &gt;&gt; is not
 <li>特化一个类模板的时候也意味着需要特化其所有参数的成员的类型</li>
 <li>如果要特化一个类，那么做法为：<ul>
 <li>声明一个带template&lt;&gt;的类， 即空参数列表</li>
-<li>在类名后紧跟的尖括号中显式指明类别，例如： <pre class="language-none"><code class="language-none">template&lt;&gt;
-class Stack&lt;std::wstring&gt; &#123;
+<li>在类名后紧跟的尖括号中显式指明类别，例如： <div class="hljs"><pre><code class="hljs angelscript">template&lt;&gt;
+<span class="hljs-keyword">class</span> <span class="hljs-symbol">Stack</span>&lt;<span class="hljs-symbol">std::<span class="hljs-symbol">wstring</span></span>&gt; &#123;
 
-&#125;</code></pre></li>
+&#125;</code></pre></div></li>
 </ul>
 </li>
-<li>特化后的具体体现可以和柱模板的实现不一样，比如以下的特化增加了一个成员函数，并采用list作元素存取的实现<pre class="language-none"><code class="language-none">template &lt;&gt;
-class Stack &lt;std :: wstring&gt; &#123;
-  public:
-      void SetStackStack(const std :: size_t n) &#123;m_nMaxSize &#x3D; n;&#125;
-      &#x2F;&#x2F; 添加一个新的成员函数
+<li>特化后的具体体现可以和柱模板的实现不一样，比如以下的特化增加了一个成员函数，并采用list作元素存取的实现<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">template</span> &lt;&gt;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> &lt;std :: wstring&gt; &#123;</span>
+  <span class="hljs-keyword">public</span>:
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetStackStack</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> n)</span> </span>&#123;m_nMaxSize = n;&#125;
+      <span class="hljs-comment">// 添加一个新的成员函数</span>
 
-      std :: size_t CurrentSize() const &#123;return m_Members.size();&#125;
+      <span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-keyword">size_t</span> <span class="hljs-title">CurrentSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123;<span class="hljs-keyword">return</span> m_Members.<span class="hljs-built_in">size</span>();&#125;
 
-      void Push(const std :: wstring const&amp; element);
-      int Pop(std :: wstring const&amp; element);
-      int Top(std :: wstring const&amp; element) const;
-  private:
-      std :: size_t m_nMaxSize;
-      std :: list &lt;std :: wstring&gt; m_Members;
-      &#x2F;&#x2F;采用list作为Stack的内部实现，取代了主模板中用vector实现的方式
-&#125;;</code></pre>
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Push</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> <span class="hljs-keyword">const</span>&amp; element)</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Pop</span><span class="hljs-params">(<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> <span class="hljs-keyword">const</span>&amp; element)</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Top</span><span class="hljs-params">(<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span> <span class="hljs-keyword">const</span>&amp; element)</span> <span class="hljs-keyword">const</span></span>;
+  <span class="hljs-keyword">private</span>:
+      <span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> m_nMaxSize;
+      <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">list</span> &lt;<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>&gt; m_Members;
+      <span class="hljs-comment">//采用list作为Stack的内部实现，取代了主模板中用vector实现的方式</span>
+&#125;;</code></pre></div>
 </li>
 </ul>
 <h2 id="偏特化-Partial-specialization"><a href="#偏特化-Partial-specialization" class="headerlink" title="- 偏特化(Partial specialization)"></a>- 偏特化(Partial specialization)</h2><p>….不做了解，中间会产生二义性…晚点再说。</p>
 <h2 id="默认模板实参"><a href="#默认模板实参" class="headerlink" title="- 默认模板实参"></a>- 默认模板实参</h2><ul>
-<li>类似函数的默认参数，对于类模板而言也可以定义其模板参数的默认值，这些值就叫做<strong>默认模板参数</strong><pre class="language-none"><code class="language-none">template &lt;typename T, typename TContainer &#x3D; std :: vector&lt;T&gt;&gt;
+<li>类似函数的默认参数，对于类模板而言也可以定义其模板参数的默认值，这些值就叫做<strong>默认模板参数</strong><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-keyword">typename</span> TContainer = <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span>&lt;T&gt;&gt;
 class Stack &#123;
-    private : TContainer m_Container;
-&#125;</code></pre></li>
+    <span class="hljs-keyword">private</span> : TContainer m_Container;
+&#125;</code></pre></div></li>
 <li>Stack<int> intStack: 使用默认的vector作为实参</li>
 <li>Stack<std :: wstring, std :: list <std :: wstring> &gt; wstrStack: 指定使用list作为容器而非默认的vector</li>
 </ul>
@@ -414,14 +410,14 @@ class Stack &#123;
 <li>对于内置类别(built-in type)， 不能再用operator重载</li>
 <li>操作符重载的两种情况：<ul>
 <li>静态成员函数</li>
-<li>静态全局函数(如果该全集函数需要访问类的private或protected成员，则必须声明为friend成员)<pre class="language-none"><code class="language-none">class ComplexType &#123;
-    public: 
-      &#x2F;&#x2F;non-static member
-      ComplexType operator &lt; (ComplexType&amp; );
+<li>静态全局函数(如果该全集函数需要访问类的private或protected成员，则必须声明为friend成员)<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComplexType</span> &#123;</span>
+    <span class="hljs-keyword">public</span>: 
+      <span class="hljs-comment">//non-static member</span>
+      ComplexType <span class="hljs-keyword">operator</span> &lt; (ComplexType&amp; );
 
-      &#x2F;&#x2F;global functions
-      friend ComplexType operator + (int, ComplexType&amp; );
-&#125;</code></pre></li>
+      <span class="hljs-comment">//global functions</span>
+      <span class="hljs-keyword">friend</span> ComplexType <span class="hljs-keyword">operator</span> + (<span class="hljs-keyword">int</span>, ComplexType&amp; );
+&#125;</code></pre></div></li>
 <li>一元操作符(Unary operators)如果声明为成员函数，则没有参数。如果声明为全局函数则有一个参数</li>
 <li>二元操作符(Binary operator)如果声明为成员函数，则有一个参数。如果声明为全局函数，则有两个参数</li>
 <li>如果一个操作符技能够用作一元操作，又能用作二元操作(&amp;, *, +, -)，则可以分别被重载</li>
@@ -707,8 +703,6 @@ class Stack &#123;
 
 
 
-  
-    
   
 
 

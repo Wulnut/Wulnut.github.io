@@ -29,11 +29,7 @@
     
     
       
-      
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
     
   
 
@@ -279,25 +275,25 @@
 <p>当需要拷贝元素，但不可修改拷贝出来的值时，使用 for(const auto x:range)，避免拷贝开销.</p>
 <hr>
 <p>当我们在遍历容器的时候</p>
-<pre><code>for(auto i : vec)&#123;
+<div class="hljs"><pre><code>for(auto i : vec)&#123;
 std::cout &lt;&lt;i &lt;&lt;std::endl;
 &#125;
-</code></pre><p>但我知道这不必要的——不必要,因为我只需要打印 vec ——复制的值</p>
+</code></pre></div><p>但我知道这不必要的——不必要,因为我只需要打印 vec ——复制的值</p>
 <p>编辑 : vec的每个元素，所以我可以这样做</p>
-<pre><code>for(auto &amp;i : vec)&#123;
+<div class="hljs"><pre><code>for(auto &amp;i : vec)&#123;
 std::cout &lt;&lt;i &lt;&lt;std::endl;
 &#125;
-</code></pre><p>但是我想确保 vec的值从未被修改并遵守 const-correctness，所以我可以：</p>
-<pre><code>for(const auto &amp;i : vec)&#123;
+</code></pre></div><p>但是我想确保 vec的值从未被修改并遵守 const-correctness，所以我可以：</p>
+<div class="hljs"><pre><code>for(const auto &amp;i : vec)&#123;
 std::cout &lt;&lt;i &lt;&lt;std::endl;
 &#125;
-</code></pre><p>我的问题是:如果我只需要看看一些容器的值,不会最后循环( const auto &amp;i ) 总是首选由于增加effieciency没有额外的副本(编辑 : vec的每个元素？</p>
-<pre><code>T//I&#39;m copying this
+</code></pre></div><p>我的问题是:如果我只需要看看一些容器的值,不会最后循环( const auto &amp;i ) 总是首选由于增加effieciency没有额外的副本(编辑 : vec的每个元素？</p>
+<div class="hljs"><pre><code>T//I&#39;m copying this
 T&amp;//I&#39;m modifying this
 const T&amp;//I&#39;m reading this
-</code></pre><p>这些是你的”默认值”。当 T 是基本类型( 内置) 时，你通常只需要恢复 const T ( 无引用)，因为副本比别名更便宜。</p>
+</code></pre></div><p>这些是你的”默认值”。当 T 是基本类型( 内置) 时，你通常只需要恢复 const T ( 无引用)，因为副本比别名更便宜。</p>
 <h1 id="对vector进行排序"><a href="#对vector进行排序" class="headerlink" title="对vector进行排序"></a>对vector进行排序</h1><p>源码：</p>
-<pre><code>#include &lt;algorithm&gt;
+<div class="hljs"><pre><code>#include &lt;algorithm&gt;
 #include &lt;vector&gt;
 
 vector&lt;int&gt; vec;
@@ -308,14 +304,14 @@ return a&lt;b; //升序排列
 &#125;
 
 std::sort(vec.begin(),vec.end(),compare);
-</code></pre><blockquote>
+</code></pre></div><blockquote>
 <p>注意：由于sort()函数如果不声明比较函数就是默认升序，从小到大。</p>
 </blockquote>
-<h2 id="利用标准库函数find-对vector进行查找"><a href="#利用标准库函数find-对vector进行查找" class="headerlink" title="利用标准库函数find()对vector进行查找"></a>利用标准库函数find()对vector进行查找</h2><pre><code>vector&lt;int&gt; vec;
+<h2 id="利用标准库函数find-对vector进行查找"><a href="#利用标准库函数find-对vector进行查找" class="headerlink" title="利用标准库函数find()对vector进行查找"></a>利用标准库函数find()对vector进行查找</h2><div class="hljs"><pre><code>vector&lt;int&gt; vec;
 int a=10;
 vector&lt;int&gt;::iterator it=find(vec.begin(),vector.end(),a);
-</code></pre><h2 id="构造类型在vector中的排序与查找"><a href="#构造类型在vector中的排序与查找" class="headerlink" title="构造类型在vector中的排序与查找"></a>构造类型在vector中的排序与查找</h2><p>&emsp;&emsp;将构造类型，比如struct的对象存储在vector中，查找时，需要重载等于运算符（operator==），具体实现参考如下代码。</p>
-<pre><code>struct Element &#123;
+</code></pre></div><h2 id="构造类型在vector中的排序与查找"><a href="#构造类型在vector中的排序与查找" class="headerlink" title="构造类型在vector中的排序与查找"></a>构造类型在vector中的排序与查找</h2><p>&emsp;&emsp;将构造类型，比如struct的对象存储在vector中，查找时，需要重载等于运算符（operator==），具体实现参考如下代码。</p>
+<div class="hljs"><pre><code>struct Element &#123;
 public:
     int a;
     int b;
@@ -358,7 +354,7 @@ int main() &#123;
     vector&lt;Element&gt;::iterator it = find(vecEle.begin(),vecEle.end(),Element(4,4));
     cout &lt;&lt; &quot;found &quot; &lt;&lt; *it &lt;&lt; endl;
 &#125;
-</code></pre><blockquote>
+</code></pre></div><blockquote>
 <p>程序输出：<br>a:1,b:1<br>a:2,b:2<br>a:3,b:3<br>a:4,b:4<br>found a:4,b:4</p>
 </blockquote>
 
@@ -636,8 +632,6 @@ int main() &#123;
 
 
 
-  
-    
   
 
 
