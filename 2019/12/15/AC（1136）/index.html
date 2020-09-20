@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -218,7 +222,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      550 字
+      569 字
     </span>
   
 
@@ -263,69 +267,69 @@
             <div class="markdown-body" id="post-body">
               <p>这个一道递归优化问题</p>
 <a id="more"></a>
-<h1 id="递归优化"><a href="#递归优化" class="headerlink" title="递归优化"></a>递归优化</h1><p><strong>题目表述</strong><br>优化一下代码：<br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
-<span class="hljs-function"></span>&#123;
-	<span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-	<span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-	<span class="hljs-keyword">return</span> f(n - <span class="hljs-number">1</span>) + f(n - <span class="hljs-number">2</span>);
+<h1 id="递归优化"><a href="#递归优化" class="headerlink" title="递归优化"></a>递归优化</h1><p><strong>题目表述</strong><br>优化一下代码：<br><pre class="language-none"><code class="language-none">#include &lt;iostream&gt;
+using namespace std;
+int f(int n)
+&#123;
+	if (n &lt; 0) return 0;
+	if (n &#x3D;&#x3D; 0) return 1;
+	return f(n - 1) + f(n - 2);
 &#125;
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
-<span class="hljs-function"></span>&#123;    
-	<span class="hljs-keyword">int</span> n;
-	<span class="hljs-built_in">cin</span> &gt;&gt; n;
-	<span class="hljs-built_in">cout</span> &lt;&lt; f(n);
-	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div><br><strong>输入</strong><br>    一个小于50的正整数n。<br><strong>输出</strong><br>    f(n)，不要换行。<br><strong>样例输入</strong><br>    3<br><strong>样例输出</strong><br>    3</p>
+int main()
+&#123;    
+	int n;
+	cin &gt;&gt; n;
+	cout &lt;&lt; f(n);
+	return 0;
+&#125;</code></pre><br><strong>输入</strong><br>    一个小于50的正整数n。<br><strong>输出</strong><br>    f(n)，不要换行。<br><strong>样例输入</strong><br>    3<br><strong>样例输出</strong><br>    3</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>&emsp;&emsp;这个题目看起来没有什么意思，但是我们通过分析计算我们会发现。<br>&emsp;&emsp;1. 递归50次后$int$是否够存，<br>&emsp;&emsp;2. 递归50次后会不会爆栈。<br>&emsp;&emsp;3. 我们应该如何优化。<br>&emsp;&emsp;我们将代码复制到编辑器里面后编译会发现在输入49后$int$会溢出说明这49的递归后是一个超过21亿的数，所以我们应该使用$long$ $long$来储存这个庞大的数值。然后就是爆栈的问题，在使用$long$ $long$之后还是能计算出来的说明还没有爆栈，还能计算。然后就是递归的优化问题了。</p>
 <h3 id="什么是递归优化？"><a href="#什么是递归优化？" class="headerlink" title="什么是递归优化？"></a>什么是递归优化？</h3><p>&emsp;&emsp;递归优化是由于递归多次后递归深度过大，导致爆栈。或者是由于递归深度过深之后时间过长，导致之间效率低下。所以我们常见的递归优化有两种。</p>
 <ol>
 <li>尾递归。</li>
 <li>将递归改循环。<br>两种方法，我们在记忆化之后我们发现这些数列之间的插值满足斐波拉切数列。所以我们就可以把这个递归函数改成一个循环函数。就可以实现对递归的优化。</li>
 </ol>
-<p><strong>答案</strong><br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
-<span class="hljs-comment">/*int f(int n)</span>
-<span class="hljs-comment">&#123;</span>
-<span class="hljs-comment">	if (n &lt; 0) return 0;</span>
-<span class="hljs-comment">	if (n == 0) return 1;</span>
-<span class="hljs-comment">	return f(n - 1) + f(n - 2);</span>
-<span class="hljs-comment">&#125;*/</span>
+<p><strong>答案</strong><br><pre class="language-none"><code class="language-none">#include &lt;iostream&gt;
+using namespace std;
+&#x2F;*int f(int n)
+&#123;
+	if (n &lt; 0) return 0;
+	if (n &#x3D;&#x3D; 0) return 1;
+	return f(n - 1) + f(n - 2);
+&#125;*&#x2F;
 
 
-<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>  <span class="hljs-title">fibo</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>
-<span class="hljs-function"></span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> nFirst = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> nSecond = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>  nThird = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span> ; i &lt;= n; i++)&#123;
-        nThird = nFirst + nSecond;
-        nFirst = nSecond;
-        nSecond = nThird;
+long long  fibo(int n)
+&#123;
+    long long nFirst &#x3D; 0;
+    long long nSecond &#x3D; 1;
+    long long  nThird &#x3D; 0;
+    for(int i &#x3D; 2 ; i &lt;&#x3D; n; i++)&#123;
+        nThird &#x3D; nFirst + nSecond;
+        nFirst &#x3D; nSecond;
+        nSecond &#x3D; nThird;
     &#125;
-    <span class="hljs-keyword">return</span> nThird;
+    return nThird;
 &#125;
 
-<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> count = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">if</span>(n == <span class="hljs-number">1</span>)&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+long long f(int n)&#123;
+    long long count &#x3D; 1;
+    if(n &#x3D;&#x3D; 1)&#123;
+        return 1;
     &#125;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)
+    for (int i &#x3D; 1; i &lt; n; i++)
     &#123;
-        count += fibo(i);
+        count +&#x3D; fibo(i);
     &#125;
-    <span class="hljs-keyword">return</span> count+<span class="hljs-number">1</span>;
+    return count+1;
 &#125;
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
-<span class="hljs-function"></span>&#123;    
-	<span class="hljs-keyword">int</span> n;
-	<span class="hljs-built_in">cin</span> &gt;&gt; n;
-	<span class="hljs-built_in">cout</span> &lt;&lt; f(n);
-	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div></p>
+int main()
+&#123;    
+	int n;
+	cin &gt;&gt; n;
+	cout &lt;&lt; f(n);
+	return 0;
+&#125;</code></pre></p>
 
             </div>
             <hr>
@@ -605,6 +609,8 @@
 
 
 
+  
+    
   
 
 

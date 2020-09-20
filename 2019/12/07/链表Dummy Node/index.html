@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -218,7 +222,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      904 字
+      986 字
     </span>
   
 
@@ -228,7 +232,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      15
        分钟
     </span>
   
@@ -265,175 +269,175 @@
 <a id="more"></a>
 <h1 id="链表Dummy-Node"><a href="#链表Dummy-Node" class="headerlink" title="链表Dummy Node"></a>链表Dummy Node</h1><h2 id="（一）Partition-List"><a href="#（一）Partition-List" class="headerlink" title="（一）Partition List"></a>（一）Partition List</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/partition-list/description/">https://leetcode.com/problems/partition-list/description/</a></p>
 <p><strong>题目：给出一个链表和一个x值，要求返回一个顺序链表使得小于x的数在链表前面，大于等于x的数在链表后面，保证节点顺序不变。</strong></p>
-<div class="hljs"><pre><code>      例如：$1-&gt;3-&gt;2-&gt;4-&gt;2, 3$ 变成：$1-&gt;2-&gt;2-&gt;3-&gt;4$
-</code></pre></div><font color="#435d6c" size="3px">解答：建立两个新的左、右指针及dummy node，使用head指针遍历整个链表，遇到大于等于head的节点则放到右链表，否则放到左链表。最后将左右链表相连。
+<pre><code>      例如：$1-&gt;3-&gt;2-&gt;4-&gt;2, 3$ 变成：$1-&gt;2-&gt;2-&gt;3-&gt;4$
+</code></pre><font color="#435d6c" size="3px">解答：建立两个新的左、右指针及dummy node，使用head指针遍历整个链表，遇到大于等于head的节点则放到右链表，否则放到左链表。最后将左右链表相连。
 
 第一次犯错：忘记将又指针的尾部指向null;</font>
 
 <p>代码：</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">partition</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> x)</span> </span>&#123;
-         <span class="hljs-keyword">if</span> (head == null) &#123;
-            <span class="hljs-keyword">return</span> head;
+<pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+    public ListNode partition(ListNode head, int x) &#123;
+         if (head &#x3D;&#x3D; null) &#123;
+            return head;
         &#125;
         
-        ListNode leftDummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-        ListNode rightDummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-        ListNode left = leftDummy;
-        ListNode right = rightDummy;
+        ListNode leftDummy &#x3D; new ListNode(0);
+        ListNode rightDummy &#x3D; new ListNode(0);
+        ListNode left &#x3D; leftDummy;
+        ListNode right &#x3D; rightDummy;
         
-        <span class="hljs-keyword">while</span> (head != null) &#123;
-            <span class="hljs-keyword">if</span> (head.val &gt;= x) &#123;
-                right.next = head;
-                right = right.next;
-            &#125; <span class="hljs-keyword">else</span> &#123;
-                left.next = head;
-                left = left.next;
+        while (head !&#x3D; null) &#123;
+            if (head.val &gt;&#x3D; x) &#123;
+                right.next &#x3D; head;
+                right &#x3D; right.next;
+            &#125; else &#123;
+                left.next &#x3D; head;
+                left &#x3D; left.next;
             &#125;
-            head = head.next;
+            head &#x3D; head.next;
         &#125;
-        right.next = null;
-        left.next = rightDummy.next;
-        <span class="hljs-keyword">return</span> leftDummy.next;
+        right.next &#x3D; null;
+        left.next &#x3D; rightDummy.next;
+        return leftDummy.next;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="（二）-Merge-Two-Sorted-Lists"><a href="#（二）-Merge-Two-Sorted-Lists" class="headerlink" title="（二） Merge Two Sorted Lists"></a>（二） Merge Two Sorted Lists</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-two-sorted-lists/description/">https://leetcode.com/problems/merge-two-sorted-lists/description/</a></p>
 <font color="red">AC！</font>
 
 <p><b>题目：将两个顺序链表合并成一个顺序链表；</b></p>
 <font color="#435d6c" size="3px">解答：依次比较两个链表里的值大小进行排列；</font>
 
-<p>改进：当一个链表指针指向null，另一个链表还没时，可以直接将重新排列的链表尾指向当前指针：<br><div class="hljs"><pre><code class="hljs c++">
-           <span class="hljs-keyword">if</span> (l1 != null) &#123;
+<p>改进：当一个链表指针指向null，另一个链表还没时，可以直接将重新排列的链表尾指向当前指针：<br><pre class="language-c++" data-language="c++"><code class="language-c++">
+           if (l1 !&#x3D; null) &#123;
 
-           head.next = l1;
+           head.next &#x3D; l1;
 
-           &#125; <span class="hljs-keyword">else</span> &#123;
+           &#125; else &#123;
 
-           head.next = l2;
+           head.next &#x3D; l2;
 
-          &#125;</code></pre></div></p>
-<p>代码：<br><div class="hljs"><pre><code class="hljs c++">
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;
-        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-        ListNode head = dummy;
+          &#125;</code></pre></p>
+<p>代码：<br><pre class="language-c++" data-language="c++"><code class="language-c++">
+class Solution &#123;
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;
+        ListNode dummy &#x3D; new ListNode(0);
+        ListNode head &#x3D; dummy;
         
-        <span class="hljs-keyword">while</span> (l2 != null &amp;&amp; l1 != null) &#123;
-            <span class="hljs-keyword">if</span> (l1.val &lt;= l2.val) &#123;
-                head.next = l1;
-                l1 = l1.next;
-            &#125; <span class="hljs-keyword">else</span> &#123;
-                head.next = l2;
-                l2 = l2.next;
+        while (l2 !&#x3D; null &amp;&amp; l1 !&#x3D; null) &#123;
+            if (l1.val &lt;&#x3D; l2.val) &#123;
+                head.next &#x3D; l1;
+                l1 &#x3D; l1.next;
+            &#125; else &#123;
+                head.next &#x3D; l2;
+                l2 &#x3D; l2.next;
             &#125;
-            head = head.next;
+            head &#x3D; head.next;
         &#125; 
-        <span class="hljs-keyword">while</span> (l1 != null) &#123;
-            head.next = l1;
-            l1 = l1.next;
-            head = head.next;
+        while (l1 !&#x3D; null) &#123;
+            head.next &#x3D; l1;
+            l1 &#x3D; l1.next;
+            head &#x3D; head.next;
         &#125;
-        <span class="hljs-keyword">while</span> (l2 != null) &#123;
-            head.next = l2;
-            l2 = l2.next;
-            head = head.next;
+        while (l2 !&#x3D; null) &#123;
+            head.next &#x3D; l2;
+            l2 &#x3D; l2.next;
+            head &#x3D; head.next;
         &#125;
-        head.next = null;
-        <span class="hljs-keyword">return</span> dummy.next;
+        head.next &#x3D; null;
+        return dummy.next;
     &#125;
-&#125;</code></pre></div></p>
+&#125;</code></pre></p>
 <h2 id="（三）swap-two-nodes-in-linked-list"><a href="#（三）swap-two-nodes-in-linked-list" class="headerlink" title="（三）swap two nodes in linked list"></a>（三）swap two nodes in linked list</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/swap-nodes-in-pairs/description/">https://leetcode.com/problems/swap-nodes-in-pairs/description/</a></p>
 <font color="red" >AC！</font>
 
 <p><b>题目：两两交换链表中节点位置。</b>如：$1-&gt;2-&gt;4-&gt;5-&gt;6$ 转变为: $2-&gt;1-&gt;5-&gt;4-&gt;6$</p>
 <font color="#435d6c" size="3px">解答：使用两个指针遍历链表；</font>
 
-<p>代码：<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
-        <span class="hljs-keyword">if</span> (head == null) &#123;
-            <span class="hljs-keyword">return</span> head;
+<p>代码：<br><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+    public ListNode swapPairs(ListNode head) &#123;
+        if (head &#x3D;&#x3D; null) &#123;
+            return head;
         &#125;
         
-        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-        dummy.next = head;
-        ListNode headNext = head.next;
-        ListNode headPrev = dummy;
+        ListNode dummy &#x3D; new ListNode(0);
+        dummy.next &#x3D; head;
+        ListNode headNext &#x3D; head.next;
+        ListNode headPrev &#x3D; dummy;
         
-        <span class="hljs-keyword">while</span> (head != null &amp;&amp; headNext != null) &#123;
-            headPrev.next = headNext;
-            head.next = headNext.next;
-            headNext.next = head;
-            headPrev = head;
-            head = head.next;
-            <span class="hljs-keyword">if</span> (head != null) &#123;
-                headNext = head.next;
+        while (head !&#x3D; null &amp;&amp; headNext !&#x3D; null) &#123;
+            headPrev.next &#x3D; headNext;
+            head.next &#x3D; headNext.next;
+            headNext.next &#x3D; head;
+            headPrev &#x3D; head;
+            head &#x3D; head.next;
+            if (head !&#x3D; null) &#123;
+                headNext &#x3D; head.next;
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> dummy.next;
+        return dummy.next;
     &#125;
-&#125;</code></pre></div></p>
+&#125;</code></pre></p>
 <h2 id="（四）reorder-list"><a href="#（四）reorder-list" class="headerlink" title="（四）reorder list"></a>（四）reorder list</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reorder-list/description/">https://leetcode.com/problems/reorder-list/description/</a></p>
 <p><b>题目：给定一个单链表：</b>$L0-&gt;L1-&gt;…-&gt;Ln-1-&gt;Ln,$</p>
-<div class="hljs"><pre><code>      重新排序后为：$L0-&gt;Ln-&gt;L1-&gt;Ln-1-&gt;L2-&gt;Ln-2-&gt;...$
-</code></pre></div><font color="#435d6c" size="3px">解答：
+<pre><code>      重新排序后为：$L0-&gt;Ln-&gt;L1-&gt;Ln-1-&gt;L2-&gt;Ln-2-&gt;...$
+</code></pre><font color="#435d6c" size="3px">解答：
 
 第一次犯错：将链表尾连接到头之后，忘记将尾的前一个指针指向空；
 
 第二次犯错：忘记考虑链表头和prevTail重合的情况（偶数链表）。</font>
 
-<p>代码：<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reorderList</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
-        <span class="hljs-keyword">while</span> (head != null &amp;&amp; head.next != null) &#123;
-            ListNode prevTail = head;
-            <span class="hljs-keyword">while</span> (prevTail.next.next != null) &#123;
-                prevTail = prevTail.next;
+<p>代码：<br><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+    public void reorderList(ListNode head) &#123;
+        while (head !&#x3D; null &amp;&amp; head.next !&#x3D; null) &#123;
+            ListNode prevTail &#x3D; head;
+            while (prevTail.next.next !&#x3D; null) &#123;
+                prevTail &#x3D; prevTail.next;
             &#125;
-            ListNode tail = prevTail.next;
-            <span class="hljs-keyword">if</span> (head.next == tail) &#123;
-                <span class="hljs-keyword">break</span>;
+            ListNode tail &#x3D; prevTail.next;
+            if (head.next &#x3D;&#x3D; tail) &#123;
+                break;
             &#125; 
-            tail.next = head.next;
-            head.next = tail;
-            head = head.next.next;
-            prevTail.next = null;
+            tail.next &#x3D; head.next;
+            head.next &#x3D; tail;
+            head &#x3D; head.next.next;
+            prevTail.next &#x3D; null;
         &#125;
     &#125;
-&#125;</code></pre></div></p>
+&#125;</code></pre></p>
 <h2 id="（四）Rotate-List"><a href="#（四）Rotate-List" class="headerlink" title="（四）Rotate List"></a>（四）Rotate List</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/rotate-list/description/">https://leetcode.com/problems/rotate-list/description/</a></p>
 <p><strong>题目：将链表尾部的k个节点移到链表头部；</strong></p>
 <font color="#435d6c" size="3px">解答：每次将链表最后一个节点移动至链表头，移动k次；</font>
 
 <p>第一次犯错：（超时）先遍历链表，得到链表长度length，循环只需执行 k%length 次；</p>
-<p>代码：<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">rotateRight</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
+<p>代码：<br><pre class="language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+    public ListNode rotateRight(ListNode head, int k) &#123;
 
 
-        ListNode tail = head;
-        <span class="hljs-keyword">int</span> length = <span class="hljs-number">0</span>;
+        ListNode tail &#x3D; head;
+        int length &#x3D; 0;
         
-        <span class="hljs-keyword">while</span> (tail != null ) &#123;
+        while (tail !&#x3D; null ) &#123;
             length++;
-            tail = tail.next;
+            tail &#x3D; tail.next;
         &#125;
         
-        <span class="hljs-keyword">if</span> (length == <span class="hljs-number">0</span> || length == <span class="hljs-number">1</span>) &#123;
-            <span class="hljs-keyword">return</span> head;
+        if (length &#x3D;&#x3D; 0 || length &#x3D;&#x3D; 1) &#123;
+            return head;
         &#125;
         
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k % length; i++) &#123;
-            ListNode preTail = head;
-            <span class="hljs-keyword">while</span> (preTail != null &amp;&amp; preTail.next != null &amp;&amp; preTail.next.next != null) &#123;
-                preTail = preTail.next;
+        for (int i &#x3D; 0; i &lt; k % length; i++) &#123;
+            ListNode preTail &#x3D; head;
+            while (preTail !&#x3D; null &amp;&amp; preTail.next !&#x3D; null &amp;&amp; preTail.next.next !&#x3D; null) &#123;
+                preTail &#x3D; preTail.next;
             &#125;
-            tail = preTail.next;
-            tail.next = head;
-            preTail.next = null;
-            head = tail;
+            tail &#x3D; preTail.next;
+            tail.next &#x3D; head;
+            preTail.next &#x3D; null;
+            head &#x3D; tail;
         &#125;
-        <span class="hljs-keyword">return</span> head;
+        return head;
     &#125;
-&#125;</code></pre></div></p>
+&#125;</code></pre></p>
 
             </div>
             <hr>
@@ -711,6 +715,8 @@
 
 
 
+  
+    
   
 
 

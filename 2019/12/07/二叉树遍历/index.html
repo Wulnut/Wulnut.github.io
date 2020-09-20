@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -273,16 +277,16 @@
 <p>树的前中后序遍历是个递归的定义，在遍历到根节点的左/右子树时，也要遵循前/中/后序遍历的顺序，例如下面这棵树：</p>
 <p>前序遍历：ABDECFG<br>中序遍历：DBEAFCG<br>后序遍历：DEBFGCA<br>层序遍历：ABCDEFG</p>
 <p>树的结点结构体声明如下：<br>语言：C语言（为了省事用到了C++的栈，因为C语言要用栈的话要自己重新写一个出来，就偷了个懒）<br>编译器：VS</p>
-<div class="hljs"><pre><code>typedef char DataType;
+<pre><code>typedef char DataType;
 
 typedef struct TreeNode&#123;
     DataType data;
     struct TreeNode *left;
     struct TreeNode *right;
 &#125;TreeNode;
-</code></pre></div><p>前序遍历（先序遍历）<br>对于一棵树的前序遍历，递归的写法是最简单的（写起来），就是将一个大的问题转化为几个小的子问题，直到子问题可以很容易求解，最后将子问题的解组合起来就是大问题的解。</p>
+</code></pre><p>前序遍历（先序遍历）<br>对于一棵树的前序遍历，递归的写法是最简单的（写起来），就是将一个大的问题转化为几个小的子问题，直到子问题可以很容易求解，最后将子问题的解组合起来就是大问题的解。</p>
 <p>前序访问的递归写法<br>先放代码，如果看完觉得不太清楚可以看看下面的详细步骤图解。</p>
-<div class="hljs"><pre><code>void PreOrder(const TreeNode *root)
+<pre><code>void PreOrder(const TreeNode *root)
 &#123;
     if (root == NULL)                 //若结点为空
     &#123;
@@ -293,7 +297,7 @@ typedef struct TreeNode&#123;
     PreOrder(root-&gt;left);             //前序访问左子树
     PreOrder(root-&gt;right);            //前序访问右子树
 &#125;
-</code></pre></div><p>比如说还是上面的这颗树：</p>
+</code></pre><p>比如说还是上面的这颗树：</p>
 <p>访问根节点</p>
 <p>访问左子树</p>
 <p>走到这里之后发现根节点的左孩子还是一棵子树，那就将访问这棵子树看作是遍历整颗树的一个子问题，遍历这棵子树的方法和遍历整颗树的方法是一样的。<br>然后继续访问它的左子树：</p>
@@ -303,7 +307,7 @@ typedef struct TreeNode&#123;
 <p>然后就和D结点一样的处理方法，-&gt;左孩子，发现是空，返回-&gt;右孩子，发现还是空，继续返回，发现这时候B的左右孩子都访问过了，继续返回。<br>访问右子树</p>
 <p>然后和处理A的左子树的方法一样，最后访问到G结点的右子树时，发现是空，就返回，这时候树的所有节点都已经访问过了，所以可以一路返回到A结点的右子树完的地方，整个递归就结束了。</p>
 <p>最后输出的前序访问序列便是：ABDECFG<br>前序访问的非递归写法<br>还是先上代码：</p>
-<div class="hljs"><pre><code>void PreOrderLoop(TreeNode *root)
+<pre><code>void PreOrderLoop(TreeNode *root)
 &#123;
     std::stack&lt;TreeNode *&gt; s;
     TreeNode *cur, *top;
@@ -323,7 +327,7 @@ typedef struct TreeNode&#123;
         cur = top-&gt;right;
     &#125;
 &#125;
-</code></pre></div><p>非递归的写法比递归写法要麻烦一点，要用到栈来存储树的结点，在理解非递归方法的时候要重点理解栈中保存的元素的共同点是什么，在前序访问中，栈中元素都是自己和自己的左孩子都访问过了，而右孩子还没有访问到的节点，如果不太懂可以看下面的详细步骤图解。</p>
+</code></pre><p>非递归的写法比递归写法要麻烦一点，要用到栈来存储树的结点，在理解非递归方法的时候要重点理解栈中保存的元素的共同点是什么，在前序访问中，栈中元素都是自己和自己的左孩子都访问过了，而右孩子还没有访问到的节点，如果不太懂可以看下面的详细步骤图解。</p>
 <p>首先我们要用一个指针（cur）来指向当前访问的结点</p>
 <p>发现这个节点不为空，就将它的数据输出，然后将这个节点的地址（图上的栈中写了节点的值是为了便于理解，实际上栈中保存的是节点地址）压栈。</p>
 <p>再去访问它的左子树，发现左孩子结点依旧不为空，继续输出并压栈。</p>
@@ -333,7 +337,7 @@ typedef struct TreeNode&#123;
 <p>B的右孩子处理方法和D一样，然后再从栈中拿出A节点，去访问A的右孩子C，在访问到G节点的右孩子之后，发现当前节点cur为空，栈中也没有元素可以取出来了，这时候就代表整棵树都被访问过了，便结束循环。</p>
 <p>最后输出的前序访问序列便是：ABDECFG<br>中序遍历<br>对于一棵树的中序遍历，和前序一样，可以分为递归遍历和非递归遍历，递归遍历是相对简单的，还是子问题思想，将一个大问题分解，直到可以解决，最后解决整个大问题。</p>
 <p>中序遍历的递归写法<br>还是先上代码：</p>
-<div class="hljs"><pre><code>void InOrder(const TreeNode *root)
+<pre><code>void InOrder(const TreeNode *root)
 &#123;
     if (root == NULL)              //判断节点是否为空
     &#123;
@@ -344,7 +348,7 @@ typedef struct TreeNode&#123;
     printf(&quot;%c &quot;, root-&gt;data);     //访问节点值
     InOrder(root-&gt;right);          //中序遍历右子树
 &#125;
-</code></pre></div><p>从根节点进入</p>
+</code></pre><p>从根节点进入</p>
 <p>发现根节点不为空，访问左子树</p>
 <p>发现不为空，继续访问左子树</p>
 <p>发现不为空，继续访问左子树</p>
@@ -362,7 +366,7 @@ typedef struct TreeNode&#123;
 <p>最后输出的中序访问序列为：DBEAFCG</p>
 <p>非递归写法<br>中序访问的非递归写法和前序一样，都要用到一个栈来辅助存储，不一样的地方在于前序访问时，栈中保存的元素是右子树还没有被访问到的节点的地址，而中序访问时栈中保存的元素是节点自身和它的右子树都没有被访问到的节点地址。</p>
 <p>先上代码：</p>
-<div class="hljs"><pre><code>void InOrderLoop(TreeNode *root)
+<pre><code>void InOrderLoop(TreeNode *root)
 &#123;
     std::stack&lt;TreeNode *&gt; s;
     TreeNode *cur;
@@ -382,7 +386,7 @@ typedef struct TreeNode&#123;
         cur = cur-&gt;right;
     &#125;
 &#125;
-</code></pre></div><p>cur指针一路沿着最左边往下访问，路过的节点全部压栈，直到遇到空节点</p>
+</code></pre><p>cur指针一路沿着最左边往下访问，路过的节点全部压栈，直到遇到空节点</p>
 <p>从栈中取出栈顶节点top，输出栈顶结点的值并使cur = top-&gt;right，从第一步开始去遍历top的右子树。</p>
 <p>遍历完之后，cur走到了D节点的右孩子，发现cur 为空，但栈中还有元素，就重复第二步</p>
 <p>这时候，cur走到了E节点的右孩子，发现cur 为空，但栈中还有元素，就继续重复第二步，之后cur = top-&gt;right，cur指针继续去遍历A节点的右子树，从第一步开始</p>
@@ -391,7 +395,7 @@ typedef struct TreeNode&#123;
 <p>最后输出的中序访问序列为:DBEAFCG</p>
 <p>后序遍历<br>后序遍历还是分递归版本和非递归版本，后序遍历的递归版本和前序中序很相似，就是输出根节点值的时机不同，而后序遍历的非递归版本则要比前序和中序的要难一些，因为在返回根节点时要分从左子树返回和右子树返回两种情况，从左子树返回时不输出，从右子树返回时才需要输出根节点的值。</p>
 <p>递归写法<br>先上代码：</p>
-<div class="hljs"><pre><code>void PostOrder(TreeNode *root)
+<pre><code>void PostOrder(TreeNode *root)
 &#123;
     if (root == NULL)
     &#123;
@@ -402,10 +406,10 @@ typedef struct TreeNode&#123;
     PostOrder(root-&gt;right);
     printf(&quot;%c &quot;, root-&gt;data);
 &#125;
-</code></pre></div><p>后序遍历的递归版本和前中序非常相似，就是输出根节点值的时机不同，详细图解这里就不画了，可以联系前中序的递归版本来理解。</p>
+</code></pre><p>后序遍历的递归版本和前中序非常相似，就是输出根节点值的时机不同，详细图解这里就不画了，可以联系前中序的递归版本来理解。</p>
 <p>后序遍历的非递归写法<br>后序遍历的非递归同样要借助一个栈来保存元素，栈中保存的元素是它的右子树和自身都没有被遍历到的节点，与中序遍历不同的是先访问右子树，在回来的时候再输出根节点的值。需要多一个last指针指向上一次访问到的节点，用来确认是从根节点的左子树返回的还是从右子树返回的。</p>
 <p>先上代码：</p>
-<div class="hljs"><pre><code>void PostOrderLoop(TreeNode *root)
+<pre><code>void PostOrderLoop(TreeNode *root)
 &#123;
     std::stack&lt;TreeNode *&gt; s;
     TreeNode *cur, *top, *last = NULL;
@@ -430,7 +434,7 @@ typedef struct TreeNode&#123;
         &#125;
     &#125;
 &#125;
-</code></pre></div><p>还是沿着左子树一路往下走，将路过的节点都压栈，直到走到空节点。</p>
+</code></pre><p>还是沿着左子树一路往下走，将路过的节点都压栈，直到走到空节点。</p>
 <p>然后从栈中看一下栈顶元素（只看一眼，用top指针记下，先不出栈），如果top节点没有右子树，或者last等于top的右孩子，说明top的右子树不存在或者遍历过了，就输出top节点的值，并将栈顶元素pop掉（出栈），反之则是从左子树回到根节点的，接下来要去右子树。</p>
 <p>如图，top的右孩子为空，说明右子树不存在，就可以输出top的值并pop掉栈顶了，这时候用last指针记下top指向的节点，代表上一次处理的节点。（这一过程cur始终没有动，一直指向空）</p>
 <p>继续从栈顶看一个元素记为top，然后发现top的右孩子不为空，而且last也不等于top-&gt;right，就使cur = top-&gt;right，回到第一步，用同样的方法来处理top的右子树，下一次回来的时候，last指针指向的是E节点。</p>
@@ -439,7 +443,7 @@ typedef struct TreeNode&#123;
 <p>最后输出的中序访问序列为:DEBFGCA</p>
 <p>层序遍历<br>层序遍历是比较接近人的思维方式的一种遍历方法，将二叉树的每一层分别遍历，直到最后的叶子节点被全部遍历完，这里要用到的辅助数据结构是队列，队列具有先进先出的性质。</p>
 <p>上代码：</p>
-<div class="hljs"><pre><code>void LevelOrder(TreeNode *root)
+<pre><code>void LevelOrder(TreeNode *root)
 &#123;
     std::queue&lt;TreeNode *&gt; q;
     TreeNode *front;
@@ -462,7 +466,7 @@ typedef struct TreeNode&#123;
         printf(&quot;%c &quot;, front-&gt;data);
     &#125;
 &#125;
-</code></pre></div><p>层序遍历的思路是，创建一个队列，先将根节点（A）入队，然后用front指针将根节点记下来，再将根节点出队，接下来看front节点（也就是刚才的根节点）有没有左孩子或右孩子，如果有，先左（B）后右（C）入队，最后输出front节点的值，只要队列还不为空，就说明还没有遍历完，就进行下一次循环，这时的队头元素（front）则为刚才入队的左孩子（B），然后front出队，再把它的左右孩子拉进来（如果有），因为队列的先进先出性质，B的左右孩子DE是排在C后面的，然后输出B，下一次循环将会拉人C的左右孩子FG，最后因为FG没有左右孩子，一直出队，没有入队元素，队列迟早会变为空，当队列为空时，整颗树就层序遍历完成了，结束循环。</p>
+</code></pre><p>层序遍历的思路是，创建一个队列，先将根节点（A）入队，然后用front指针将根节点记下来，再将根节点出队，接下来看front节点（也就是刚才的根节点）有没有左孩子或右孩子，如果有，先左（B）后右（C）入队，最后输出front节点的值，只要队列还不为空，就说明还没有遍历完，就进行下一次循环，这时的队头元素（front）则为刚才入队的左孩子（B），然后front出队，再把它的左右孩子拉进来（如果有），因为队列的先进先出性质，B的左右孩子DE是排在C后面的，然后输出B，下一次循环将会拉人C的左右孩子FG，最后因为FG没有左右孩子，一直出队，没有入队元素，队列迟早会变为空，当队列为空时，整颗树就层序遍历完成了，结束循环。</p>
 <p>根节点入队，并用front指针标记</p>
 <p>队头出队，并将左右孩子拉进队列</p>
 <p>重复1，2</p>
@@ -745,6 +749,8 @@ typedef struct TreeNode&#123;
 
 
 
+  
+    
   
 
 

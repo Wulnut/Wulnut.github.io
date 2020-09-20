@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -264,31 +268,31 @@
               <p>当你有个人服务器的时候就可以把你的图片存在服务器上，这样就方便以后的存取，这事搭建图床时会遇见的问题。</p>
 <a id="more"></a>
 <h2 id="docker可能遇见的问题"><a href="#docker可能遇见的问题" class="headerlink" title="docker可能遇见的问题"></a>docker可能遇见的问题</h2><p>安装docker时使用在Liunx中使用Docker, 注: Liunx使用的是在虚拟机下的centOS7版本<br>在刚开始安装Docker时没有任何错误, 但是在后续的docker启动过程中, 出现以下问题:</p>
-<div class="hljs"><pre><code>Job for docker.service failed because the control process exited with error code.
+<pre><code>Job for docker.service failed because the control process exited with error code.
  See &quot;systemctl status docker.service&quot; and &quot;journalctl -xe&quot; for details.
-</code></pre></div><p>分析一下问题：</p>
+</code></pre><p>分析一下问题：</p>
 <ol>
 <li>首先查看了一下内核版本</li>
 <li>因为使用命令: yum install docker下载时, 默认下载的是Docker的最新版本, 但是内核版本低的话可能不兼容新版本Docker, 所以有可能出现如上错误</li>
 </ol>
 <p>解决方法：</p>
 <p><strong>步骤一:将以前下载好的Docker卸载干净, 使用如下命令:</strong></p>
-<div class="hljs"><pre><code>yum remove docker-*
-</code></pre></div><p><strong>步骤二:更新该Liunx系统的内核版本,使用如下命令:</strong></p>
-<div class="hljs"><pre><code>yum update
-</code></pre></div><p>建议更新完之后, 重启一下系统</p>
+<pre><code>yum remove docker-*
+</code></pre><p><strong>步骤二:更新该Liunx系统的内核版本,使用如下命令:</strong></p>
+<pre><code>yum update
+</code></pre><p>建议更新完之后, 重启一下系统</p>
 <p><strong>步骤三:继续下载安装docker(尽量使用高级管理员权限下载)使用如下命令</strong></p>
-<div class="hljs"><pre><code>yum install docker
-</code></pre></div><p><strong>步骤四:使用如下命令启动docker</strong></p>
-<div class="hljs"><pre><code>sudo systemctl start docker
-</code></pre></div><p>问题解决!<br>注：如果这样安装完之后还报错, 按照这个步骤再来一遍即可</p>
+<pre><code>yum install docker
+</code></pre><p><strong>步骤四:使用如下命令启动docker</strong></p>
+<pre><code>sudo systemctl start docker
+</code></pre><p>问题解决!<br>注：如果这样安装完之后还报错, 按照这个步骤再来一遍即可</p>
 <p><strong>如果使用docker命令时出现如下错误:</strong></p>
-<div class="hljs"><pre><code>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
-</code></pre></div><p>第一个原因可能是因为docker没有启动<br>第二个原因就是因为docker出现错误<br>归根结底都是docker启动问题, 解决方案还是以上步骤</p>
+<pre><code>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+</code></pre><p>第一个原因可能是因为docker没有启动<br>第二个原因就是因为docker出现错误<br>归根结底都是docker启动问题, 解决方案还是以上步骤</p>
 <p>22端口是使用的是nginx的服务器<br>80是浏览器的默认端口<br>443端口我设置成图床服务的端口</p>
 <h2 id="Centos-下-nginx-没有-sites-enabled-文件夹问题"><a href="#Centos-下-nginx-没有-sites-enabled-文件夹问题" class="headerlink" title="Centos 下 nginx 没有 sites-enabled 文件夹问题"></a>Centos 下 nginx 没有 sites-enabled 文件夹问题</h2><p>可能是Centos都会遇见的问题解决方法为：<br>编辑 /etc/nginx/nginx.conf 在 http block 中添加：</p>
-<div class="hljs"><pre><code>include /etc/nginx/sites-enabled/*;
-</code></pre></div><p>然后再/etc/nginx 目录下自己创建一个sites-enabled文件夹就好了<br>最后别忘记了重启nginx服务</p>
+<pre><code>include /etc/nginx/sites-enabled/*;
+</code></pre><p>然后再/etc/nginx 目录下自己创建一个sites-enabled文件夹就好了<br>最后别忘记了重启nginx服务</p>
 
             </div>
             <hr>
@@ -557,6 +561,8 @@
 
 
 
+  
+    
   
 
 

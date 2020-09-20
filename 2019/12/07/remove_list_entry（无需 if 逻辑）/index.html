@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -218,7 +222,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      816 字
+      864 字
     </span>
   
 
@@ -228,7 +232,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -273,83 +277,83 @@
 <blockquote>
 <p>第一段代码</p>
 </blockquote>
-<div class="hljs"><pre><code class="hljs xl">remove_list_entry(entry)
+<pre class="language-none"><code class="language-none">remove_list_entry(entry)
 &#123;
-    prev = NULL;
-    walk = head;
+    prev &#x3D; NULL;
+    walk &#x3D; head;
 ​
-    <span class="hljs-comment">// Walk the list</span>
+    &#x2F;&#x2F; Walk the list
 ​
-    <span class="hljs-keyword">while</span> (walk != entry)
+    while (walk !&#x3D; entry)
     &#123;
-        prev = walk;
-        <span class="hljs-function"><span class="hljs-title">walk</span> = walk-&gt;</span>next;
+        prev &#x3D; walk;
+        walk &#x3D; walk-&gt;next;
     &#125;
     
-    <span class="hljs-comment">// Remove the entry by updating the </span>
-    <span class="hljs-comment">// head or the previous entry</span>
-    <span class="hljs-keyword">if</span>(!prev)
+    &#x2F;&#x2F; Remove the entry by updating the 
+    &#x2F;&#x2F; head or the previous entry
+    if(!prev)
     &#123;
-        <span class="hljs-function"><span class="hljs-title">head</span> = entry-&gt;</span>next;
+        head &#x3D; entry-&gt;next;
     &#125;
-    <span class="hljs-keyword">else</span>
+    else
     &#123;
-        <span class="hljs-function"><span class="hljs-title">prev</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">next</span> = entry-&gt;</span>next;
+        prev-&gt;next &#x3D; entry-&gt;next;
     &#125; 
-&#125;</code></pre></div>
+&#125;</code></pre>
 <blockquote>
 <p>第二段代码</p>
 </blockquote>
-<div class="hljs"><pre><code class="hljs swift">remove_list_entry(entry)
+<pre class="language-none"><code class="language-none">remove_list_entry(entry)
 &#123;
-    <span class="hljs-comment">// The &quot;indirect&quot; pointer points to the</span>
-    <span class="hljs-comment">// *address* of the thing we&#x27;ll update</span>
-    <span class="hljs-keyword">indirect</span> = &amp;head;
+    &#x2F;&#x2F; The &quot;indirect&quot; pointer points to the
+    &#x2F;&#x2F; *address* of the thing we&#39;ll update
+    indirect &#x3D; &amp;head;
 ​
-    <span class="hljs-comment">// Walk the list, looking for the thing that</span>
-    <span class="hljs-comment">// points to the entry we want to remove </span>
-    <span class="hljs-keyword">while</span> ((*<span class="hljs-keyword">indirect</span>) != entry))
+    &#x2F;&#x2F; Walk the list, looking for the thing that
+    &#x2F;&#x2F; points to the entry we want to remove 
+    while ((*indirect) !&#x3D; entry))
     &#123;
-        <span class="hljs-keyword">indirect</span> = &amp;(*<span class="hljs-keyword">indirect</span>)-&gt;next;
+        indirect &#x3D; &amp;(*indirect)-&gt;next;
     &#125;
 ​
-    <span class="hljs-comment">// .. and just remove it</span>
-    *<span class="hljs-keyword">indirect</span> = entry-&gt;next;
-&#125;</code></pre></div>
+    &#x2F;&#x2F; .. and just remove it
+    *indirect &#x3D; entry-&gt;next;
+&#125;</code></pre>
 <font color="red" size="2px">这里我注释一下哈，这两段代码都是伪码。所以看起来有点奇怪</font>
 
 <p>&emsp;&emsp;看起来这两段代码功能上都一样的但是，第一段的最后用了一个if和一个else目的在于处理特殊情况，但是第二段代码很简洁没有if和else来处理特殊情况，这是一种很有意思且巧妙的思想同样<b>Dummy Node链表</b>也是一种处理方式，在这里不讨论，后面我回专门来说这种链表。</p>
 
-<div class="hljs"><pre><code class="hljs awk">Node *head, *prev, *walk;
+<pre class="language-none"><code class="language-none">Node *head, *prev, *walk;
 void remove_list_entry(Node* entry)
 &#123;
-    prev = NULL;
+    prev &#x3D; NULL;
 
-    <span class="hljs-regexp">//</span> walk 这一变量名，十分巧妙，
-    <span class="hljs-regexp">//</span> 变量命名的不二法门就是对应其物理（实际）意义
-    walk = head;
+    &#x2F;&#x2F; walk 这一变量名，十分巧妙，
+    &#x2F;&#x2F; 变量命名的不二法门就是对应其物理（实际）意义
+    walk &#x3D; head;
 
-    <span class="hljs-keyword">while</span> (walk != entry)
+    while (walk !&#x3D; entry)
     &#123;
-        prev = walk;
-        walk = walk-&gt;<span class="hljs-keyword">next</span>;
+        prev &#x3D; walk;
+        walk &#x3D; walk-&gt;next;
     &#125;
 
-    <span class="hljs-regexp">//</span> 也即没有执行 <span class="hljs-keyword">while</span> 循环，walk == entry，entry == head
-    <span class="hljs-keyword">if</span> (!prev)
-        head = entry-&gt;<span class="hljs-keyword">next</span>;
-    <span class="hljs-keyword">else</span>
-        prev-&gt;<span class="hljs-keyword">next</span> = entry-&gt;<span class="hljs-keyword">next</span>;
+    &#x2F;&#x2F; 也即没有执行 while 循环，walk &#x3D;&#x3D; entry，entry &#x3D;&#x3D; head
+    if (!prev)
+        head &#x3D; entry-&gt;next;
+    else
+        prev-&gt;next &#x3D; entry-&gt;next;
 
-&#125;</code></pre></div>
-<div class="hljs"><pre><code class="hljs crmsh">void remove_list_entry(<span class="hljs-keyword">Node</span><span class="hljs-title">* entry</span>)
+&#125;</code></pre>
+<pre class="language-none"><code class="language-none">void remove_list_entry(Node* entry)
 &#123;
-    <span class="hljs-keyword">Node</span> <span class="hljs-title">**indirect</span>;
-    indirect = &amp;head;
-    while ((*indirect) != entry)
-        indirect = &amp;(*indirect)-&gt;next;
-    *indirect = entry-&gt;next;
-&#125;</code></pre></div>
+    Node **indirect;
+    indirect &#x3D; &amp;head;
+    while ((*indirect) !&#x3D; entry)
+        indirect &#x3D; &amp;(*indirect)-&gt;next;
+    *indirect &#x3D; entry-&gt;next;
+&#125;</code></pre>
 <font color="#24495e" size="2"><p>&emsp;&emsp;这是两段代码的表准形式</p></font>
 
 <p>&emsp;&emsp;为什么要区分是头指针呢，因为整个程序的逻辑是找到被删除指针的前一个指针，如果被删除的指针为头指针，显然其没有前一个指针。
@@ -631,6 +635,8 @@ void remove_list_entry(Node* entry)
 
 
 
+  
+    
   
 
 

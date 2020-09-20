@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -267,180 +271,180 @@
 <p>这里我将从Java和C++两中语言入手，在减少这样的问题出现</p>
 <h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><p>一、StreamTokenizer实现快速输入</p>
 <p>需要的jar包</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
-<span class="hljs-keyword">import</span> java.io.IOException;
-<span class="hljs-keyword">import</span> java.io.InputStreamReader;
-<span class="hljs-keyword">import</span> java.io.StreamTokenizer;</code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">BufferedReader</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStreamReader</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">StreamTokenizer</span><span class="token punctuation">;</span></code></pre>
 <p>定义如下：</p>
-<div class="hljs"><pre><code class="hljs java">StreamTokenizer st =<span class="hljs-keyword">new</span> StreamTokenizer(<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in)));</code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">StreamTokenizer</span> st <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">StreamTokenizer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>StreamTokenizer只能接收数字或字母，如果输入除空格和回车以外的字符（如：!@#$%^&amp;*()[]{})无法识别，会显示null</p>
 <p>StreamTokenizer可以<strong>获取输入</strong>流并根据空格和回车分割成Token（标记），用nextToken方法读取下一个标记 </p>
 <p>如果标记是字符串，用st.sval获取标记，如果是数字用st.nval获取标记，st.navl是double类型</p>
 <p>示例</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
-<span class="hljs-keyword">import</span> java.io.IOException;
-<span class="hljs-keyword">import</span> java.io.InputStreamReader;
-<span class="hljs-keyword">import</span> java.io.StreamTokenizer;
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">BufferedReader</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStreamReader</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">StreamTokenizer</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">//import java.io.*;</span>
+<span class="token comment">//import java.io.*;</span>
 
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
-        StreamTokenizer st =<span class="hljs-keyword">new</span> StreamTokenizer(<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in)));
-        st.nextToken();
-        String s=st.sval;
-        System.out.println(s);
-        st.nextToken();
-        <span class="hljs-keyword">double</span> n=st.nval;
-        System.out.println(n);
-        <span class="hljs-comment">/**输入内容</span>
-<span class="hljs-comment">         * hollow 1233</span>
-<span class="hljs-comment">         * 输出内容</span>
-<span class="hljs-comment">         * hollow</span>
-<span class="hljs-comment">         * 1233.0</span>
-<span class="hljs-comment">         */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">StreamTokenizer</span> st <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">StreamTokenizer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        st<span class="token punctuation">.</span><span class="token function">nextToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> s<span class="token operator">=</span>st<span class="token punctuation">.</span>sval<span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        st<span class="token punctuation">.</span><span class="token function">nextToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> n<span class="token operator">=</span>st<span class="token punctuation">.</span>nval<span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">/**输入内容
+         * hollow 1233
+         * 输出内容
+         * hollow
+         * 1233.0
+         */</span>
         
-    &#125;
+    <span class="token punctuation">&#125;</span>
  
-&#125;</code></pre></div>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>二、BufferedReader实现快速输入读一行</p>
 <p>需要导入的jar</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.BufferedReader;
-<span class="hljs-keyword">import</span> java.io.IOException;
-<span class="hljs-keyword">import</span> java.io.InputStreamReader;</code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">BufferedReader</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStreamReader</span><span class="token punctuation">;</span></code></pre>
 <p>定义：</p>
-<div class="hljs"><pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));</code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">BufferedReader</span> inBuff<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>常用方法：</p>
-<div class="hljs"><pre><code class="hljs java">inBuff.readLine()<span class="hljs-comment">//读取一行内容，返回字符串</span></code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java">inBuff<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//读取一行内容，返回字符串</span></code></pre>
 <p>实例：</p>
-<div class="hljs"><pre><code class="hljs java">BufferedReader inBuff=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
-        String s=inBuff.readLine();
-        System.out.println(<span class="hljs-string">&quot;有问题吗&quot;</span>+s+<span class="hljs-string">&quot;没有吧&quot;</span>);
-        <span class="hljs-comment">/**</span>
-<span class="hljs-comment">         * 输出内容</span>
-<span class="hljs-comment">         * hollow world!</span>
-<span class="hljs-comment">         * 有问题吗hollow world!没有吧</span>
-<span class="hljs-comment">         */</span></code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">BufferedReader</span> inBuff<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> s<span class="token operator">=</span>inBuff<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"有问题吗"</span><span class="token operator">+</span>s<span class="token operator">+</span><span class="token string">"没有吧"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">/**
+         * 输出内容
+         * hollow world!
+         * 有问题吗hollow world!没有吧
+         */</span></code></pre>
 <p>三、PrintWriter实现快速输出</p>
 <p>需要的jar包</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
-<span class="hljs-keyword">import</span> java.io.PrintWriter;</code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">OutputStreamWriter</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">PrintWriter</span><span class="token punctuation">;</span></code></pre>
 <p>定义如下：</p>
-<div class="hljs"><pre><code class="hljs java">PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));</code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">PrintWriter</span> out <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PrintWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OutputStreamWriter</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>常用方法：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 输出分为两步：</span>
-<span class="hljs-comment">// 1、先通过print()或println()方法把需要输出的内容放入缓冲区，</span>
-<span class="hljs-comment">// 2、然后通过flush()将缓冲区的内容输出到控制台</span>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">// 输出分为两步：</span>
+<span class="token comment">// 1、先通过print()或println()方法把需要输出的内容放入缓冲区，</span>
+<span class="token comment">// 2、然后通过flush()将缓冲区的内容输出到控制台</span>
 
-print(需要输出的内容)<span class="hljs-comment">//不换行输出，只是把需要的内容放入缓冲，</span>
-println(需要输出的内容)<span class="hljs-comment">//换行输出</span>
-flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输出到控制台，</span></code></pre></div>
+<span class="token function">print</span><span class="token punctuation">(</span>需要输出的内容<span class="token punctuation">)</span><span class="token comment">//不换行输出，只是把需要的内容放入缓冲，</span>
+<span class="token function">println</span><span class="token punctuation">(</span>需要输出的内容<span class="token punctuation">)</span><span class="token comment">//换行输出</span>
+<span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//刷新缓冲区，把缓冲区的内容输出到控制台，</span></code></pre>
 <p>示例：</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> CCPC;
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> CCPC<span class="token punctuation">;</span>
 
-<span class="hljs-keyword">import</span> java.io.OutputStreamWriter;
-<span class="hljs-keyword">import</span> java.io.PrintWriter;
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">OutputStreamWriter</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">PrintWriter</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">//import java.io.*;</span>
+<span class="token comment">//import java.io.*;</span>
 
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
-        PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(System.out));
-        String s=<span class="hljs-string">&quot;hollow world&quot;</span>;
-        <span class="hljs-keyword">int</span> i=<span class="hljs-number">12344</span>;
-        out.print(s+<span class="hljs-string">&quot; &quot;</span>+i);
-        out.flush();
-        <span class="hljs-comment">/**</span>
-<span class="hljs-comment">         * 输出内容</span>
-<span class="hljs-comment">         * hollow world 12344</span>
-<span class="hljs-comment">         */</span>
-    &#125;
-&#125;</code></pre></div>
-<p>一个例子<br><strong>一般建议使用BufferedRead()</strong><br><div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// https://www.acwing.com/problem/content/790/</span>
-<span class="hljs-comment">// 使用BufferedReader读入的方法</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">PrintWriter</span> out <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PrintWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OutputStreamWriter</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> s<span class="token operator">=</span><span class="token string">"hollow world"</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">12344</span><span class="token punctuation">;</span>
+        out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>s<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        out<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">/**
+         * 输出内容
+         * hollow world 12344
+         */</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<p>一个例子<br><strong>一般建议使用BufferedRead()</strong><br><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">// https://www.acwing.com/problem/content/790/</span>
+<span class="token comment">// 使用BufferedReader读入的方法</span>
 
-<span class="hljs-keyword">import</span> java.io.BufferedReader;
-<span class="hljs-keyword">import</span> java.io.IOException;
-<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">BufferedReader</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStreamReader</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ex4</span> </span>&#123;
-    <span class="hljs-comment">// 全局变量</span>
-<span class="hljs-comment">//    static int N = 100010;  // 数据规模为 10w</span>
-<span class="hljs-comment">//    static int[] arr = new int[N];</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
-        BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
-        <span class="hljs-comment">// parseInt将字符串转为int</span>
-        <span class="hljs-comment">// parseDouble将字符转为double</span>
-        <span class="hljs-keyword">int</span> n = Integer.parseInt(reader.readLine());
-        String[] arrStr = reader.readLine().split(<span class="hljs-string">&quot; &quot;</span>);
-        <span class="hljs-keyword">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Ex4</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 全局变量</span>
+<span class="token comment">//    static int N = 100010;  // 数据规模为 10w</span>
+<span class="token comment">//    static int[] arr = new int[N];</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">BufferedReader</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// parseInt将字符串转为int</span>
+        <span class="token comment">// parseDouble将字符转为double</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>reader<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrStr <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++ i) &#123;
-            arr[i] = Integer.parseInt(arrStr[i]);
-        &#125;
-        reader.close();
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>arrStr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        reader<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="hljs-keyword">long</span> ans = mergesort(arr, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>);
+        <span class="token keyword">long</span> ans <span class="token operator">=</span> <span class="token function">mergesort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        System.out.println(ans);
-    &#125;
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">long</span> <span class="hljs-title">mergesort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;
-        <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">long</span> <span class="token function">mergesort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>l <span class="token operator">>=</span> r<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-        <span class="hljs-keyword">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">long</span> res = mergesort(arr, l, mid) + mergesort(arr,mid + <span class="hljs-number">1</span>, r);
+        <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> r <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> res <span class="token operator">=</span> <span class="token function">mergesort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">mergesort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span>mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="hljs-keyword">int</span>[] temp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[r - l + <span class="hljs-number">1</span>];
-        <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>, i = l, j = mid + <span class="hljs-number">1</span>;
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> i <span class="token operator">=</span> l<span class="token punctuation">,</span> j <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-        <span class="hljs-keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r) &#123;
-            <span class="hljs-keyword">if</span> (arr[i] &lt;= arr[j]) temp[k ++] = arr[i ++];
-            <span class="hljs-keyword">else</span> &#123;
-                res += mid - i + <span class="hljs-number">1</span>;
-                temp[k ++] = arr[j ++];
-            &#125;
-        &#125;
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> mid <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> temp<span class="token punctuation">[</span>k <span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                res <span class="token operator">+=</span> mid <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                temp<span class="token punctuation">[</span>k <span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j <span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="hljs-keyword">while</span> (i &lt;= mid) temp[k ++] = arr[i ++];
-        <span class="hljs-keyword">while</span> (j &lt;=   r) temp[k ++] = arr[j ++];
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> mid<span class="token punctuation">)</span> temp<span class="token punctuation">[</span>k <span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;=</span>   r<span class="token punctuation">)</span> temp<span class="token punctuation">[</span>k <span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j <span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="hljs-keyword">for</span> (i = l, j = <span class="hljs-number">0</span>; i &lt;= r; i ++, j ++) &#123;
-            arr[i] = temp[j];
-        &#125;
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> l<span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> r<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">,</span> j <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="hljs-keyword">return</span> res;
-    &#125;
-&#125;
-</code></pre></div></p>
-<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="getchar读入"><a href="#getchar读入" class="headerlink" title="getchar读入"></a>getchar读入</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>
-<span class="hljs-function"></span>&#123;
-    <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span> , ch = getchar();
-    <span class="hljs-keyword">while</span>( !<span class="hljs-built_in">isdigit</span>( ch ) ) ch = getchar();
-    <span class="hljs-keyword">while</span>( <span class="hljs-built_in">isdigit</span>( ch ) ) x = x * <span class="hljs-number">10</span> + ch - <span class="hljs-string">&#x27;0&#x27;</span> , ch = getchar();
-    <span class="hljs-keyword">return</span> x;
-&#125;</code></pre></div>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+</code></pre></p>
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="getchar读入"><a href="#getchar读入" class="headerlink" title="getchar读入"></a>getchar读入</h3><pre class="language-c++" data-language="c++"><code class="language-c++">inline int read()
+&#123;
+    register int x &#x3D; 0 , ch &#x3D; getchar();
+    while( !isdigit( ch ) ) ch &#x3D; getchar();
+    while( isdigit( ch ) ) x &#x3D; x * 10 + ch - &#39;0&#39; , ch &#x3D; getchar();
+    return x;
+&#125;</code></pre>
 <p>用时28.74s</p>
-<h3 id="fread读入优化"><a href="#fread读入优化" class="headerlink" title="fread读入优化"></a>fread读入优化</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">io</span></span>
-<span class="hljs-class">&#123;</span>
-    <span class="hljs-keyword">char</span> ibuf[<span class="hljs-number">900</span> &lt;&lt; <span class="hljs-number">20</span>] , * s;
+<h3 id="fread读入优化"><a href="#fread读入优化" class="headerlink" title="fread读入优化"></a>fread读入优化</h3><pre class="language-c++" data-language="c++"><code class="language-c++">struct io
+&#123;
+    char ibuf[900 &lt;&lt; 20] , * s;
     io()
     &#123;
-        fread( s = ibuf , <span class="hljs-number">1</span> , <span class="hljs-number">900</span> &lt;&lt; <span class="hljs-number">20</span> , <span class="hljs-built_in">stdin</span> );
+        fread( s &#x3D; ibuf , 1 , 900 &lt;&lt; 20 , stdin );
     &#125;
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">while</span>( * s &lt; <span class="hljs-number">48</span> ) s++;
-        <span class="hljs-keyword">while</span>( * s &gt; <span class="hljs-number">32</span> )
-            u = u * <span class="hljs-number">10</span> + * s++ - <span class="hljs-number">48</span>;
-        <span class="hljs-keyword">return</span> u;
+    inline int read()
+    &#123;
+        register int u &#x3D; 0;
+        while( * s &lt; 48 ) s++;
+        while( * s &gt; 32 )
+            u &#x3D; u * 10 + * s++ - 48;
+        return u;
     &#125;
-&#125; ip;</code></pre></div>
+&#125; ip;</code></pre>
 <p>用时1.535s</p>
-<h3 id="当然如果觉得以上的方法比较麻烦可以："><a href="#当然如果觉得以上的方法比较麻烦可以：" class="headerlink" title="当然如果觉得以上的方法比较麻烦可以："></a>当然如果觉得以上的方法比较麻烦可以：</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-built_in">std</span>::ios::sync_with_stdio(<span class="hljs-literal">false</span>);</code></pre></div>
+<h3 id="当然如果觉得以上的方法比较麻烦可以："><a href="#当然如果觉得以上的方法比较麻烦可以：" class="headerlink" title="当然如果觉得以上的方法比较麻烦可以："></a>当然如果觉得以上的方法比较麻烦可以：</h3><pre class="language-c++" data-language="c++"><code class="language-c++">std::ios::sync_with_stdio(false);</code></pre>
 <p>通过对cin和cout的解除绑定可以达到和scanf于printf一样的速度有时候会更快</p>
 <h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><p><strong>cout</strong></p>
 <p>用时102.2s</p>
@@ -448,32 +452,32 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 <p>用时27.36s</p>
 <p><strong>puts（直接当字符串输出）</strong></p>
 <p>用时2.001s</p>
-<h3 id="putchar输出优化"><a href="#putchar输出优化" class="headerlink" title="putchar输出优化"></a>putchar输出优化</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
-<span class="hljs-function"></span>&#123;
-    <span class="hljs-keyword">if</span>(x&lt;<span class="hljs-number">0</span>)
+<h3 id="putchar输出优化"><a href="#putchar输出优化" class="headerlink" title="putchar输出优化"></a>putchar输出优化</h3><pre class="language-c++" data-language="c++"><code class="language-c++">void print(int x)
+&#123;
+    if(x&lt;0)
     &#123;
-        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;-&#x27;</span>);
-        x=-x;
+        putchar(&#39;-&#39;);
+        x&#x3D;-x;
     &#125;
-    <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">9</span>)
-        print(x/<span class="hljs-number">10</span>);
-    <span class="hljs-built_in">putchar</span>(x%<span class="hljs-number">10</span>+<span class="hljs-string">&#x27;0&#x27;</span>);
-&#125;</code></pre></div>
+    if(x&gt;9)
+        print(x&#x2F;10);
+    putchar(x%10+&#39;0&#39;);
+&#125;</code></pre>
 <p>用时3.339s</p>
-<h3 id="fwrite输出优化"><a href="#fwrite输出优化" class="headerlink" title="fwrite输出优化"></a>fwrite输出优化</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span> &gt;</span>
-<span class="hljs-class">    <span class="hljs-title">inline</span> <span class="hljs-title">void</span> <span class="hljs-title">print</span>( <span class="hljs-title">register</span> <span class="hljs-title">T</span> <span class="hljs-title">u</span> )</span>
-<span class="hljs-class">    &#123;</span>
-        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> * q = a;
-        <span class="hljs-keyword">if</span>( !u ) * t++ = <span class="hljs-number">48</span>;
-        <span class="hljs-keyword">else</span>
+<h3 id="fwrite输出优化"><a href="#fwrite输出优化" class="headerlink" title="fwrite输出优化"></a>fwrite输出优化</h3><pre class="language-c++" data-language="c++"><code class="language-c++">template&lt; class T &gt;
+    inline void print( register T u )
+    &#123;
+        static int * q &#x3D; a;
+        if( !u ) * t++ &#x3D; 48;
+        else
         &#123;
-            <span class="hljs-keyword">if</span>( u &lt; <span class="hljs-number">0</span> )
-                * t++ = <span class="hljs-number">45</span> , u *= <span class="hljs-number">-1</span>;
-            <span class="hljs-keyword">while</span>( u ) * q++ = u % <span class="hljs-number">10</span> + <span class="hljs-number">48</span> , u /= <span class="hljs-number">10</span>;
-            <span class="hljs-keyword">while</span>( q != a )
-                * t++ = * --q;
+            if( u &lt; 0 )
+                * t++ &#x3D; 45 , u *&#x3D; -1;
+            while( u ) * q++ &#x3D; u % 10 + 48 , u &#x2F;&#x3D; 10;
+            while( q !&#x3D; a )
+                * t++ &#x3D; * --q;
         &#125;
-    &#125;</code></pre></div>
+    &#125;</code></pre>
 <p>用时0.6653s</p>
 <p><strong>由此可以看出，fwrite对比其他读入方式有极大的差距</strong></p>
 <p>不过由于一般输出量都比较小，所以输出优化意义不大</p>
@@ -767,6 +771,8 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 
 
 
+  
+    
   
 
 

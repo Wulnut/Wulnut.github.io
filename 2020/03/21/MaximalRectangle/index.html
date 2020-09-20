@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -293,12 +297,12 @@
 <li>左边沿：单调栈中紧邻A的柱子。（如果A已经出栈，那么左边沿就是A出栈后的栈顶）而且是该柱子的右边，所以要+1.</li>
 </ul>
 <p>因此，完全覆盖第index个柱子的最大矩形的面积如下（stk是单调栈）</p>
-<div class="hljs"><pre><code>maxArea = heights[index] * (i - (stk.top() +1))
-</code></pre></div><p>还有一种情况。当A出栈后，单调栈为空时，那就是说明，A的左边没有比它矮的。左边沿就可以到0.</p>
-<div class="hljs"><pre><code>maxArea = heights[index] * (stk.empty() ? i : (i - stk.top() -1)))
-</code></pre></div><p>可能你还有点不明白就是，那实际代码是怎么计算的？其实自习想一下就明白了，因为是取得top元素进行计算所以计算是从右边逐<br>渐往左边延伸。所以当整个栈排空的时候也就计算了距离右边最远的边界。</p>
+<pre><code>maxArea = heights[index] * (i - (stk.top() +1))
+</code></pre><p>还有一种情况。当A出栈后，单调栈为空时，那就是说明，A的左边没有比它矮的。左边沿就可以到0.</p>
+<pre><code>maxArea = heights[index] * (stk.empty() ? i : (i - stk.top() -1)))
+</code></pre><p>可能你还有点不明白就是，那实际代码是怎么计算的？其实自习想一下就明白了，因为是取得top元素进行计算所以计算是从右边逐<br>渐往左边延伸。所以当整个栈排空的时候也就计算了距离右边最远的边界。</p>
 <h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p><strong>栈实现：</strong></p>
-<div class="hljs"><pre><code>int largeRectangleArea(vector&lt;int&gt;&amp; h) &#123;
+<pre><code>int largeRectangleArea(vector&lt;int&gt;&amp; h) &#123;
     stack&lt;int&gt; s;
     h.push_back(0);
     int sum = 0;
@@ -316,8 +320,8 @@
 
     return sum;
 &#125;
-</code></pre></div><p><strong>分治解法：</strong></p>
-<div class="hljs"><pre><code>    int largestRectangleArea(vector&lt;int&gt;&amp; heights) &#123;
+</code></pre><p><strong>分治解法：</strong></p>
+<pre><code>    int largestRectangleArea(vector&lt;int&gt;&amp; heights) &#123;
         if(heights.empty()) return 0;
         return maxArea(heights,0,(int)heights.size()-1);
     &#125;
@@ -343,11 +347,11 @@
         return max( (end-start+1)*heights[minIndex],
                 max( maxArea(heights,start, minIndex-1),maxArea(heights,minIndex+1, end) ) );//分治
     &#125;
-</code></pre></div><h1 id="算01-矩阵中包含最多1-的矩形"><a href="#算01-矩阵中包含最多1-的矩形" class="headerlink" title="算01 矩阵中包含最多1 的矩形"></a>算01 矩阵中包含最多1 的矩形</h1><p>接下来还有道Maximal Rectangle 的题，这道题的实用价值很大：算01 矩阵中包含最多1 的矩形。</p>
+</code></pre><h1 id="算01-矩阵中包含最多1-的矩形"><a href="#算01-矩阵中包含最多1-的矩形" class="headerlink" title="算01 矩阵中包含最多1 的矩形"></a>算01 矩阵中包含最多1 的矩形</h1><p>接下来还有道Maximal Rectangle 的题，这道题的实用价值很大：算01 矩阵中包含最多1 的矩形。</p>
 <p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing all ones and return its area.</p>
 <p>有了上一题的基础，这道题就可等效为上一题，对于矩阵每一行，我们将其看作直方图，立柱的高度就是行中元素往上数包含的连续1的个数。</p>
 <p>因此每一行都可以利用上一题方法计算最大矩形，最后求出各行结果的最大值就好了。时间复杂度 O(n2)</p>
-<div class="hljs"><pre><code>    int maximalRectangle(vector&lt;vector&lt;char&gt;&gt;&amp; matrix) &#123;
+<pre><code>    int maximalRectangle(vector&lt;vector&lt;char&gt;&gt;&amp; matrix) &#123;
                 if(matrix.size() == 0 || matrix[0].size() == 0) return 0;
         int H = matrix.size(), W = matrix[0].size();
         int height[W+1];
@@ -375,7 +379,7 @@
         return MAX;
 
     &#125;
-</code></pre></div>
+</code></pre>
             </div>
             <hr>
             <div>
@@ -643,6 +647,8 @@
 
 
 
+  
+    
   
 
 

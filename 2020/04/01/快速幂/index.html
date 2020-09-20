@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -218,7 +222,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.2k 字
     </span>
   
 
@@ -228,7 +232,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      15
        分钟
     </span>
   
@@ -266,14 +270,14 @@
 <h1 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h1><p>问题描述：</p>
 <p>&emsp;&emsp;求$A^B$的最后三位数的整数。</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>如果我们直接通过循环的方法来解决我们会发现</p>
-<div class="hljs"><pre><code class="hljs c++">	<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;
-        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;
+<pre class="language-c++" data-language="c++"><code class="language-c++">	long long solve(long long base, long long power) &#123;
+        long long result &#x3D; 1;
         
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= power; ++ i) &#123;
-            result = result * base;
+        for (int i &#x3D; 0; i &lt;&#x3D; power; ++ i) &#123;
+            result &#x3D; result * base;
       &#125;
-        <span class="hljs-keyword">return</span> result % <span class="hljs-number">1000</span>;
-&#125;</code></pre></div>
+        return result % 1000;
+&#125;</code></pre>
 <p>如果给出$base = 2$ $power = 100$ 的时候我们就就会发现函数$f(x) = a^{b}$是一个指数函数后期的增长速度是非常快的所以我们需要对此进行优化。</p>
 <h3 id="取模运算"><a href="#取模运算" class="headerlink" title="取模运算"></a>取模运算</h3><p>取模运算有以下 性质：</p>
 <ol>
@@ -284,14 +288,14 @@
 <li><p>$(a - b)\%c = ((a\%c)-(b\%c))\%c$</p>
 <p>总成依据话就是，在取模运算的时候我们在中间过程每次都取模，在得出答案之后我们再取一次模。</p>
 <p>我们通过性质性质2来优化我们的代码：</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i &lt;= power; ++ i) &#123;
-        result *= base;
-        result %= <span class="hljs-number">1000</span>;
+<pre class="language-c++" data-language="c++"><code class="language-c++">long long solve(long long base, long long power) &#123;
+    long long result &#x3D; 1;
+    for (int i &#x3D;0; i &lt;&#x3D; power; ++ i) &#123;
+        result *&#x3D; base;
+        result %&#x3D; 1000;
     &#125;
-    <span class="hljs-keyword">return</span> result % <span class="hljs-number">1000</span>;
-&#125;</code></pre></div>
+    return result % 1000;
+&#125;</code></pre>
 <p>通过这样的运算优化，我们发现这种取模运算中如果我们中间进行取模的话是可以防止出现溢出的情况的。</p>
 </li>
 </ol>
@@ -302,55 +306,55 @@
 <p>$3^{10} = (3\times3)\times(3\times3)\times(3\times3)\times(3\times3)\times(3\times3)$</p>
 <p>$3^{10} = (3\times3)^5$</p>
 <p>其实这种方法也在平常也是十分常见的，比如我们向计算$2^4$我们肯定不会一个一个的乘$2$我们一般都会去直接计算$4\times4$从而快速的计算出结果，其实两者的关系是一样的。</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> base, <span class="hljs-keyword">int</span> power)</span> </span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = base;
+<pre class="language-c++" data-language="c++"><code class="language-c++">long long solve(int base, int power) &#123;
+    long long result &#x3D; base;
     
-    whlie (power &gt; <span class="hljs-number">0</span>) &#123;
-        <span class="hljs-keyword">if</span> (power % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;
-            <span class="hljs-comment">//如果指数为偶数</span>
-            power /= <span class="hljs-number">2</span>;<span class="hljs-comment">//把指数缩小为一半</span>
-            base = base * base % <span class="hljs-number">1000</span>;<span class="hljs-comment">//底数变大成原来的平方</span>
-        &#125; <span class="hljs-keyword">else</span> &#123;
-             <span class="hljs-comment">//如果指数为奇数</span>
-            power = power - <span class="hljs-number">1</span>;<span class="hljs-comment">//把指数减去1，使其变成一个偶数</span>
-            result = result * base % <span class="hljs-number">1000</span>;<span class="hljs-comment">//此时记得要把指数为奇数时分离出来的底数的一次方收集好</span>
-            power /= <span class="hljs-number">2</span>;<span class="hljs-comment">//此时指数为偶数，可以继续执行操作</span>
-            base = base * base % <span class="hljs-number">1000</span>;
+    whlie (power &gt; 0) &#123;
+        if (power % 2 &#x3D;&#x3D; 0) &#123;
+            &#x2F;&#x2F;如果指数为偶数
+            power &#x2F;&#x3D; 2;&#x2F;&#x2F;把指数缩小为一半
+            base &#x3D; base * base % 1000;&#x2F;&#x2F;底数变大成原来的平方
+        &#125; else &#123;
+             &#x2F;&#x2F;如果指数为奇数
+            power &#x3D; power - 1;&#x2F;&#x2F;把指数减去1，使其变成一个偶数
+            result &#x3D; result * base % 1000;&#x2F;&#x2F;此时记得要把指数为奇数时分离出来的底数的一次方收集好
+            power &#x2F;&#x3D; 2;&#x2F;&#x2F;此时指数为偶数，可以继续执行操作
+            base &#x3D; base * base % 1000;
         &#125;
     &#125;
     
-    <span class="hljs-keyword">return</span> result;
-&#125;</code></pre></div>
+    return result;
+&#125;</code></pre>
 <h2 id="最终优化"><a href="#最终优化" class="headerlink" title="最终优化"></a>最终优化</h2><p>&emsp;&emsp;我们知到判断奇偶性除了使用 $\%$看其余数是否为$0$ $or$ $1$来进行判断之外，我们还可以通过位运算来进行计算，例如：power&amp;1。因为如果power为偶数，则其二进制表示的最后一位一定是0；如果power是奇数，则其二进制表示的最后一位一定是1。将他们分别与1的二进制做“与”运算，得到的就是power二进制最后一位的数字了，是0则为偶数，是1则为奇数。例如5是奇数，则5&amp;1=1；而6是偶数，则6&amp;1=0；因此奇偶数的判断就可以用“位运算”来替换了。</p>
 <p>&emsp;&emsp;同样对于除以$2$的运算我们也可以使用位运算来进行优化power /= 2可以使用右移power = power &gt;&gt; 1实现，右移动1就是除以2，如果右移2就是除以4，同理左移就是乘，左移1就是乘以2左移2就是乘以4；</p>
-<div class="hljs"><pre><code class="hljs c++">
-<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;
-    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">while</span> (power &gt; <span class="hljs-number">0</span>) &#123;
-        <span class="hljs-keyword">if</span> (power &amp; <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//此处等价于if(power%2==1)</span>
-            result = result * base % <span class="hljs-number">1000</span>;
+<pre class="language-c++" data-language="c++"><code class="language-c++">
+long long solve(long long base, long long power) &#123;
+    long long result &#x3D; 1;
+    while (power &gt; 0) &#123;
+        if (power &amp; 1) &#123;&#x2F;&#x2F;此处等价于if(power%2&#x3D;&#x3D;1)
+            result &#x3D; result * base % 1000;
         &#125;
-        power &gt;&gt;= <span class="hljs-number">1</span>;<span class="hljs-comment">//此处等价于power=power/2</span>
-        base = (base * base) % <span class="hljs-number">1000</span>;
+        power &gt;&gt;&#x3D; 1;&#x2F;&#x2F;此处等价于power&#x3D;power&#x2F;2
+        base &#x3D; (base * base) % 1000;
     &#125;
-    <span class="hljs-keyword">return</span> result;
+    return result;
 &#125;
-</code></pre></div>
+</code></pre>
 <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>求$m^k$ $\% $ $p$ 时间复杂度为$O(logk)$</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> p)</span> </span>&#123;
-    <span class="hljs-keyword">int</span> res = <span class="hljs-number">1</span> % p, t = m;
+<pre class="language-c++" data-language="c++"><code class="language-c++">int solve(int m, int k, int p) &#123;
+    int res &#x3D; 1 % p, t &#x3D; m;
     
-    <span class="hljs-keyword">while</span> (k) &#123;
+    while (k) &#123;
         
-        <span class="hljs-comment">//如果为奇数</span>
-        <span class="hljs-keyword">if</span> (k &amp;  <span class="hljs-number">1</span>) res = res * t % p;
+        &#x2F;&#x2F;如果为奇数
+        if (k &amp;  1) res &#x3D; res * t % p;
         
-        t = t * t % p;
-        k &gt;&gt; <span class="hljs-number">1</span>;
+        t &#x3D; t * t % p;
+        k &gt;&gt; 1;
     &#125;
     
-    <span class="hljs-keyword">return</span> res;
-&#125;</code></pre></div>
+    return res;
+&#125;</code></pre>
 
             </div>
             <hr>
@@ -626,6 +630,8 @@
 
 
 
+  
+    
   
 
 

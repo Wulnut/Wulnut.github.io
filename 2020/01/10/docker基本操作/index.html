@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -264,41 +268,41 @@
               <p>在Linux运维中我们经常会用到docker，docker通过丰富的镜像软件可以为我们的服务操作带来方便</p>
 <a id="more"></a>
 <h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><p>&emsp;&emsp;首先Docker要求CentOS系统的内核版本高于 3.10 ，通过 uname -r 命令查看你当前的内核版本是否支持安装docker。<br>如果内核版本过低就更新一下系统内核</p>
-<div class="hljs"><pre><code>yum update
-</code></pre></div><p>然后安装需要的软件包，yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
-<div class="hljs"><pre><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-</code></pre></div><p>设置yum源：</p>
-<div class="hljs"><pre><code>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-</code></pre></div><p><img src="/img/docker操作_6.png" srcset="/img/loading.gif" alt=" "></p>
+<pre><code>yum update
+</code></pre><p>然后安装需要的软件包，yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
+<pre><code>sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre><p>设置yum源：</p>
+<pre><code>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre><p><img src="/img/docker操作_6.png" srcset="/img/loading.gif" alt=" "></p>
 <p>我们可以查看所有仓库中所有docker版本，并选择特定版本安装：</p>
-<div class="hljs"><pre><code>yum list docker-ce --showduplicates | sort -r
-</code></pre></div><p><img src="/img/docker操作_5.png" srcset="/img/loading.gif" alt=" "></p>
+<pre><code>yum list docker-ce --showduplicates | sort -r
+</code></pre><p><img src="/img/docker操作_5.png" srcset="/img/loading.gif" alt=" "></p>
 <p>做好这些前提准备之后我们就可以安装docker了</p>
-<div class="hljs"><pre><code>sudo yum install docker-ce-17.12.0.ce
-</code></pre></div><p>启动、设置开启开机启动</p>
-<div class="hljs"><pre><code>sudo systemctl start docker
+<pre><code>sudo yum install docker-ce-17.12.0.ce
+</code></pre><p>启动、设置开启开机启动</p>
+<pre><code>sudo systemctl start docker
 sudo systemctl enable docker
-</code></pre></div><p>完成上面的操作后验证安装是否成功(有client和service两部分表示docker安装启动都成功了):</p>
-<div class="hljs"><pre><code>docker version
-</code></pre></div><p><img src="/img/docker操作_4.png" srcset="/img/loading.gif" alt=" "></p>
+</code></pre><p>完成上面的操作后验证安装是否成功(有client和service两部分表示docker安装启动都成功了):</p>
+<pre><code>docker version
+</code></pre><p><img src="/img/docker操作_4.png" srcset="/img/loading.gif" alt=" "></p>
 <p>查看docker启动状态：</p>
-<div class="hljs"><pre><code>systemctl status docker
-</code></pre></div><p><img src="/img/docker操作_3.png" srcset="/img/loading.gif" alt=" "></p>
+<pre><code>systemctl status docker
+</code></pre><p><img src="/img/docker操作_3.png" srcset="/img/loading.gif" alt=" "></p>
 <h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>查询docker安装过的包：<br><img src="/img/docker操作_2.png" srcset="/img/loading.gif" alt=""></p>
 <p>删除安装包：</p>
-<div class="hljs"><pre><code>yum remove docker-ce.x86_64 ddocker-ce-cli.x86_64 -y
-</code></pre></div><p>删除镜像/容器等:</p>
-<div class="hljs"><pre><code>rm -rf /var/lib/docker
-</code></pre></div><h2 id="然后我们还可可以删除容器的方法："><a href="#然后我们还可可以删除容器的方法：" class="headerlink" title="然后我们还可可以删除容器的方法："></a>然后我们还可可以删除容器的方法：</h2><ul>
+<pre><code>yum remove docker-ce.x86_64 ddocker-ce-cli.x86_64 -y
+</code></pre><p>删除镜像/容器等:</p>
+<pre><code>rm -rf /var/lib/docker
+</code></pre><h2 id="然后我们还可可以删除容器的方法："><a href="#然后我们还可可以删除容器的方法：" class="headerlink" title="然后我们还可可以删除容器的方法："></a>然后我们还可可以删除容器的方法：</h2><ul>
 <li><p>先停止运行的容器：</p>
-<div class="hljs"><pre><code class="hljs sql">docker container <span class="hljs-keyword">stop</span> [<span class="hljs-keyword">container</span>-<span class="hljs-keyword">id</span>]</code></pre></div>
+<pre class="language-none"><code class="language-none">docker container stop [container-id]</code></pre>
 </li>
 <li><p>然后删除容器：</p>
 </li>
 </ul>
-<div class="hljs"><pre><code class="hljs axapta">docker <span class="hljs-keyword">container</span> rm [<span class="hljs-keyword">container</span>-id]</code></pre></div>
+<pre class="language-none"><code class="language-none">docker container rm [container-id]</code></pre>
 <ul>
-<li>最后删除镜像：<div class="hljs"><pre><code class="hljs arduino">docker <span class="hljs-built_in">image</span> rmi [<span class="hljs-built_in">image</span>-id]</code></pre></div>
+<li>最后删除镜像：<pre class="language-none"><code class="language-none">docker image rmi [image-id]</code></pre>
 </li>
 </ul>
 <p>获取对应的 id 可以通过命令：<strong>docker container ls</strong>和 <strong>docker image ls</strong>。<br><img src="/img/docker操作_1.png" srcset="/img/loading.gif" alt=" "></p>
@@ -579,6 +583,8 @@ sudo systemctl enable docker
 
 
 
+  
+    
   
 
 

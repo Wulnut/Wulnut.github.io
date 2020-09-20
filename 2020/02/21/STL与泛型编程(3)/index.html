@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -228,7 +232,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      16
        分钟
     </span>
   
@@ -272,85 +276,85 @@
 <h1 id="特性-Traits"><a href="#特性-Traits" class="headerlink" title="特性(Traits)"></a>特性(Traits)</h1><h2 id="什么是traits以及为什么使用traits？"><a href="#什么是traits以及为什么使用traits？" class="headerlink" title="- 什么是traits以及为什么使用traits？"></a>- 什么是traits以及为什么使用traits？</h2><p>  假设给定一个数组，计算数组种所有元素的和：<br>  A[0] | A[1] |…| A[n] &emsp;&emsp;$\sum_{k=0}^n A[k]$</p>
 <ul>
 <li><p>我们可以很直接地写出如下的计算函数:</p>
-<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; 
-<span class="hljs-function"><span class="hljs-keyword">inline</span> T <span class="hljs-title">Sigma</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* start, <span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* <span class="hljs-built_in">end</span>)</span> </span>&#123;
-    T total = T(); <span class="hljs-comment">// suppose T() actually creates a zero value</span>
+<pre class="language-none"><code class="language-none">template &lt;typename T&gt; 
+inline T Sigma(const T const* start, const T const* end) &#123;
+    T total &#x3D; T(); &#x2F;&#x2F; suppose T() actually creates a zero value
 
-    <span class="hljs-comment">//T()是一个构造函数目的将total初始化为0；</span>
+    &#x2F;&#x2F;T()是一个构造函数目的将total初始化为0；
     
-    <span class="hljs-keyword">while</span> (start != <span class="hljs-built_in">end</span>) &#123;
-        total += *start ++ ;
+    while (start !&#x3D; end) &#123;
+        total +&#x3D; *start ++ ;
     &#125;
 
-    <span class="hljs-keyword">return</span> total;
-&#125;</code></pre></div>
+    return total;
+&#125;</code></pre>
 </li>
 <li><p>当我们使用char类型调用模板函数是，问题就来了：</p>
-<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">char</span> szNames[] = <span class="hljs-string">&quot;abc&quot;</span>;
-<span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> nLength = <span class="hljs-built_in">strlen</span>(szNames);
-<span class="hljs-keyword">char</span>* p = szNames;
-<span class="hljs-keyword">char</span>* q = szNames + nLength;
-<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sigma(ezNames) = %d\n&quot;</span>, Sigma(p,q));</code></pre></div>
+<pre class="language-none"><code class="language-none">char szNames[] &#x3D; &quot;abc&quot;;
+std :: size_t nLength &#x3D; strlen(szNames);
+char* p &#x3D; szNames;
+char* q &#x3D; szNames + nLength;
+printf(&quot;sigma(ezNames) &#x3D; %d\n&quot;, Sigma(p,q));</code></pre>
 <script type="math/tex; mode=display">294 = 0x0126</script><script type="math/tex; mode=display">0000 | 0001 | 0010 | 0110</script><p>Char类型能hold住的最大值为0xFF = 255 也就是两个字节所以0010和0110可容纳的但是abc加起来<strong>大于255</strong>就溢出到溢出到1这个bit</p>
 </li>
 <li><p>调用Sigma(szNames)的结果是38( = 0x26)!而并不是所期望的值(97 + 98 + 99 = 294)</p>
 </li>
 <li>原因显而易见的：char无法存下这个294这个值</li>
-<li>如果要得到正确的结果，我们就不得不强制使用int类型：<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> s = Sigma&lt;<span class="hljs-built_in">int</span>&gt;(p,q);</code></pre></div></li>
+<li>如果要得到正确的结果，我们就不得不强制使用int类型：<pre class="language-none"><code class="language-none">int s &#x3D; Sigma&lt;int&gt;(p,q);</code></pre></li>
 <li>但是这种不必要的转换是完全可以避免的!</li>
 <li>解决方法是：为每个Sigma函数的参数类型T创建一种关联(association)，关联的类别就是用来储存Sigma结果的类型</li>
 <li>这种关联可以看作是类型T的一种特性(characteristic fo the type T),因为sigma函数返回值的类型叫做T的trait</li>
 <li>T与其trait的关系推演如下：<br>T -&gt; association -&gt; characteristic of T -&gt; another type -&gt; trait</li>
 <li>Traits可以实现为模板类，而关联(association)则是针对每个具体类型T的特化。在这个例子里我们将trait命名为SigmaTraits, 叫做traits模板(traits template)</li>
 </ul>
-<p>Traits实现：<br><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span> &#123;</span> &#125;;
-<span class="hljs-comment">//可以人为的将返回的数值边得相对的大</span>
+<p>Traits实现：<br><pre class="language-none"><code class="language-none">template &lt;typename T&gt;
+class SigmaTraits &#123; &#125;;
+&#x2F;&#x2F;可以人为的将返回的数值边得相对的大
 
-<span class="hljs-keyword">template</span> &lt;&gt;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;char&gt; &#123;</span>
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> ReturnType;
+template &lt;&gt;
+class SigmaTraits&lt;char&gt; &#123;
+public:
+    typedef int ReturnType;
 &#125;;
 
-<span class="hljs-keyword">template</span> &lt;&gt;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;short&gt; &#123;</span>
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> ReturnType;
+template &lt;&gt;
+class SigmaTraits&lt;short&gt; &#123;
+public:
+    typedef int ReturnType;
 &#125;;
 
-<span class="hljs-keyword">template</span> &lt;&gt;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;int&gt; &#123;</span>
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> ReturnType;
+template &lt;&gt;
+class SigmaTraits&lt;int&gt; &#123;
+public:
+    typedef long ReturnType;
 &#125;;
 
-<span class="hljs-keyword">template</span> &lt;&gt;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;unsigned int&gt; &#123;</span>
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-keyword">typedef</span>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> ReturnType;
+template &lt;&gt;
+class SigmaTraits&lt;unsigned int&gt; &#123;
+public:
+    typedef  unsigned long ReturnType;
 &#125;;
 
-<span class="hljs-keyword">template</span> &lt;&gt;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SigmaTraits</span>&lt;float&gt; &#123;</span>
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">double</span> ReturnType;
-&#125;;</code></pre></div></p>
+template &lt;&gt;
+class SigmaTraits&lt;float&gt; &#123;
+public:
+    typedef double ReturnType;
+&#125;;</code></pre></p>
 <ul>
 <li>模板类SigmaTraits叫做traits template， 它含有其参数类型T的一个特性(trait), 即ReturnType</li>
 <li><p>现在Sigma函数可以改写成:</p>
-<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
-<span class="hljs-keyword">inline</span> <span class="hljs-keyword">typename</span> SigmaTraits&lt;T&gt; :: <span class="hljs-function">ReturnType <span class="hljs-title">Sigma</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* start, <span class="hljs-keyword">const</span> T <span class="hljs-keyword">const</span>* <span class="hljs-built_in">end</span>)</span> </span>&#123;
-    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">typename</span> SigmaTraits&lt;T&gt; :: ReturnType ReturnType;
+<pre class="language-none"><code class="language-none">template &lt;typename T&gt;
+inline typename SigmaTraits&lt;T&gt; :: ReturnType Sigma (const T const* start, const T const* end) &#123;
+    typedef typename SigmaTraits&lt;T&gt; :: ReturnType ReturnType;
 
-    ReturnType s = ReturnType();
+    ReturnType s &#x3D; ReturnType();
 
-    <span class="hljs-keyword">while</span> (start != <span class="hljs-built_in">end</span>) &#123;
-        s += *start ++;
+    while (start !&#x3D; end) &#123;
+        s +&#x3D; *start ++;
     &#125;
 
-    <span class="hljs-keyword">return</span> s;
-&#125;</code></pre></div>
+    return s;
+&#125;</code></pre>
 </li>
 </ul>
 <h1 id="迭代器-iterator"><a href="#迭代器-iterator" class="headerlink" title="迭代器(iterator)"></a>迭代器(iterator)</h1><h2 id="什么是迭代器？"><a href="#什么是迭代器？" class="headerlink" title="什么是迭代器？"></a>什么是迭代器？</h2><p>迭代器是指针的泛化(generalization of pointers)</p>
@@ -365,24 +369,24 @@
 <h2 id="迭代器的基本思想"><a href="#迭代器的基本思想" class="headerlink" title="迭代器的基本思想"></a>迭代器的基本思想</h2><ul>
 <li>在STL中，迭代器最终要的思想就是分离算法和容器，使之不需要相互依赖</li>
 <li><p>迭代器将算法和容器粘合(stick)在一起从而使得一种算法的实现可以运用到多种不同的容器上，如下面的例子,find算法接受一对迭代器，分别指向容器的开始位置和最终位置</p>
-<div class="hljs"><pre><code class="hljs sqf">template &lt;<span class="hljs-built_in">typename</span> <span class="hljs-variable">_InIt</span>, <span class="hljs-built_in">typename</span> <span class="hljs-variable">_Ty</span>&gt;
-inline <span class="hljs-variable">_InIt</span> <span class="hljs-built_in">find</span>(<span class="hljs-variable">_InIt</span> <span class="hljs-variable">_First</span>, <span class="hljs-variable">_InIt</span> <span class="hljs-variable">_Last</span>, const <span class="hljs-variable">_Ty</span>&amp; <span class="hljs-variable">_Val</span>) &#123;
-    <span class="hljs-comment">//find first matching _Val</span>
-    <span class="hljs-keyword">for</span> (; <span class="hljs-variable">_First</span> != <span class="hljs-variable">_Last</span>; ++<span class="hljs-variable">_First</span>) &#123;
-        <span class="hljs-keyword">if</span> (*<span class="hljs-variable">_First</span> == <span class="hljs-variable">_Val</span>)
+<pre class="language-none"><code class="language-none">template &lt;typename _InIt, typename _Ty&gt;
+inline _InIt find(_InIt _First, _InIt _Last, const _Ty&amp; _Val) &#123;
+    &#x2F;&#x2F;find first matching _Val
+    for (; _First !&#x3D; _Last; ++_First) &#123;
+        if (*_First &#x3D;&#x3D; _Val)
           break;
     &#125;
 
-    return (<span class="hljs-variable">_First</span>);
-&#125;</code></pre></div>
+    return (_First);
+&#125;</code></pre>
 <p>find算法对于不同的容器，比如vector, list, deque均适用：</p>
-<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">v</span><span class="hljs-params">(...)</span></span>;
-<span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">l</span><span class="hljs-params">(...)</span></span>;
-<span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">d</span><span class="hljs-params">(...)</span></span>;
+<pre class="language-none"><code class="language-none">std :: vector&lt;int&gt; v(...);
+std :: list&lt;int&gt; l(...);
+std :: deque&lt;int&gt; d(...);
 
-<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; :: iterator itv = <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">find</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>(), elementToFind)
-<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; :: iterator itl = <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">find</span>(l.<span class="hljs-built_in">begin</span>(), l.<span class="hljs-built_in">end</span>(), elementToFind)
-<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; :: iterator it3 = <span class="hljs-built_in">std</span> :: <span class="hljs-built_in">find</span>(d.<span class="hljs-built_in">begin</span>(), d.<span class="hljs-built_in">end</span>(), elementToFind)</code></pre></div>
+std :: vector&lt;int&gt; :: iterator itv &#x3D; std :: find(v.begin(), v.end(), elementToFind)
+std :: list&lt;int&gt; :: iterator itl &#x3D; std :: find(l.begin(), l.end(), elementToFind)
+std :: deque&lt;int&gt; :: iterator it3 &#x3D; std :: find(d.begin(), d.end(), elementToFind)</code></pre>
 <p>每种容器都有其对应的迭代器</p>
 </li>
 </ul>
@@ -663,6 +667,8 @@ inline <span class="hljs-variable">_InIt</span> <span class="hljs-built_in">find
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -275,130 +279,130 @@
 <p>&emsp;&emsp;它的核心思维是松弛，所谓的松弛可以理解成找到了更短的路径对原路径进行更新。对于一个有V个节点的有向图进行V-1轮松弛，从而找到源点到所有点的最短距离。</p>
 <p>&emsp;&emsp;初始的时候我们会用一个数组记录源点到其他所有点的距离，对于与源点直接相连的点来说，这个距离就是它和源点的距离否则则是无穷大。对于第一轮松弛来说，我们寻找的是源点出发经过一个点到达其他点的最短距离。我们用s代表源<br>点，我们寻找的就是s经过点a到达点b，使得距离小于s直接到b的距离。</p>
 <p>&emsp;&emsp;第二轮松弛就是寻找的s经过两个点到达第三个点的最短距离，同理，对于一个有V个点的图来说，两个点之间最多经过V-1个点，所以我们需要V-1轮松弛操作。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">for</span> (var i = <span class="hljs-number">0</span>; i &lt; n - <span class="hljs-number">1</span>; i++) &#123;
-    <span class="hljs-keyword">for</span> (var j = <span class="hljs-number">0</span>; j &lt; m; j++) &#123;//对m条边进行循环
-      var edge = edges[j];
-      // 松弛操作
-      <span class="hljs-keyword">if</span> (distance[edge.to] &gt; distance[edge.<span class="hljs-keyword">from</span>] + edge.weight )&#123; 
-        distance[edge.to] = distance[edge.<span class="hljs-keyword">from</span>] + edge.weight;
-      &#125;
-    &#125;
-&#125;</code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> <span class="token punctuation">(</span>var i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">+</span><span class="token operator">+</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>var j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> j<span class="token operator">+</span><span class="token operator">+</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token operator">//</span>对m条边进行循环
+      var edge <span class="token operator">=</span> edges<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token operator">//</span> 松弛操作
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>distance<span class="token punctuation">[</span>edge<span class="token punctuation">.</span>to<span class="token punctuation">]</span> <span class="token operator">></span> distance<span class="token punctuation">[</span>edge<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">]</span> <span class="token operator">+</span> edge<span class="token punctuation">.</span>weight <span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 
+        distance<span class="token punctuation">[</span>edge<span class="token punctuation">.</span>to<span class="token punctuation">]</span> <span class="token operator">=</span> distance<span class="token punctuation">[</span>edge<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">]</span> <span class="token operator">+</span> edge<span class="token punctuation">.</span>weight<span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>&emsp;&emsp;Bellman-ford的算法很好理解，实现也不难，但是它有一个缺点就是复杂度很高。我们前面说了一共需要V-1轮松弛，每一轮松弛我们都需要遍历E条边，所以整体的复杂度是$O(VE)$，E指的是边的数量。想想看，假设对于一个有1w个顶点，10w条边的<br>图来说，这个算法是显然无法得出结果的。</p>
 <p>&emsp;&emsp;所以为了提高算法的可用性，我们必须对这个算法进行优化。我们来分析一下复杂度巨大的原因，主要在两个地方，一个地方是我们松弛了V-1次，另外一个地方是我们枚举了所有的边。松弛V-1次是不可避免的，因为可能存在极端的情况需要V-1次松弛<br>才可以达成。但我们每次都枚举了所有的边感觉有点浪费，因为其中大部分的边是不可能达成新的松弛的。那有没有办法我们筛选出来可能构成新的松弛的边呢？</p>
 <p>&emsp;&emsp;针对这个问题的思考和优化引出了新的算法——spfa。</p>
 <h2 id="SPFA算法"><a href="#SPFA算法" class="headerlink" title="SPFA算法"></a>SPFA算法</h2><p>&emsp;&emsp;SPFA算法的英文全称是Shortest Path Faster Algorithm，从名字上我们就看得出来这个算法的最大特点就是快。它比Bellman-ford要快上许多倍，它的复杂度是$O(kE)$，这里的k是一个小于等于2的常数。</p>
 <p>&emsp;&emsp;SPFA的核心原理和Bellman-ford算法是一样的，也是对点的松弛。只不过它优化了复杂度，优化的方法也很简单，用一个队列维护了可能存在新的松弛的点。这样我们每次从这些点出发去寻找其他可以松弛的点加入队列，这里面的原理<br>很简单，只有被松弛过的点才有可能去松弛其他的点。</p>
 <p>&emsp;&emsp;SPFA的代码也很短，实现起来难度很低，单单从代码上来看和普通的宽搜区别并不大。</p>
-<p>Python版本：<br><div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> sys
-<span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue
-que = Queue()
+<p>Python版本：<br><pre class="language-Python" data-language="Python"><code class="language-Python">import sys
+from queue import Queue
+que &#x3D; Queue()
 
-<span class="hljs-comment"># 邻接表存储边</span>
-edges = [[]]
-<span class="hljs-comment"># 维护是否在队列当中</span>
-visited = [<span class="hljs-literal">False</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(V)]
-dis = [sys.maxsize <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(V)]
-dis[s] = <span class="hljs-number">0</span>
+# 邻接表存储边
+edges &#x3D; [[]]
+# 维护是否在队列当中
+visited &#x3D; [False for _ in range(V)]
+dis &#x3D; [sys.maxsize for _ in range(V)]
+dis[s] &#x3D; 0
 
 que.put(s)
-visited[s] = <span class="hljs-literal">True</span>
+visited[s] &#x3D; True
 
-<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> que.emtpy():
-    u = que.get()
-    <span class="hljs-keyword">for</span> v, l <span class="hljs-keyword">in</span> edges[u]:
-        <span class="hljs-keyword">if</span> dis[u] + l &lt; dis[v]:
-            dis[v] = dis[u] + l
-            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[v]:
+while not que.emtpy():
+    u &#x3D; que.get()
+    for v, l in edges[u]:
+        if dis[u] + l &lt; dis[v]:
+            dis[v] &#x3D; dis[u] + l
+            if not visited[v]:
                 que.add(v)
-                visited[v] = <span class="hljs-literal">True</span>
+                visited[v] &#x3D; True
                 
-    visited[u] = <span class="hljs-literal">False</span></code></pre></div></p>
+    visited[u] &#x3D; False</code></pre></p>
 <p><a class="btn" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/853/" title="title">参考题目</a></p>
-<p>C++版本：<br><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<p>C++版本：<br><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;queue&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
 
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100010</span>;
+const int N &#x3D; 100010;
 
-<span class="hljs-keyword">int</span> n, m;
-<span class="hljs-keyword">int</span> h[N], e[N], ne[N], w[N], idx;
-<span class="hljs-keyword">int</span> dis[N];
-<span class="hljs-keyword">bool</span> st[N];
+int n, m;
+int h[N], e[N], ne[N], w[N], idx;
+int dis[N];
+bool st[N];
 
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span> </span>&#123;
-    e[idx] = b, ne[idx] = h[a], w[idx] = c, h[a] = idx ++;
+void add(int a, int b, int c) &#123;
+    e[idx] &#x3D; b, ne[idx] &#x3D; h[a], w[idx] &#x3D; c, h[a] &#x3D; idx ++;
 &#125;
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">spfa</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; q;
-    q.push(<span class="hljs-number">1</span>);
-    <span class="hljs-built_in">memset</span>(dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> dis);
-    dis[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
-    st[<span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>;
+int spfa() &#123;
+    queue&lt;int&gt; q;
+    q.push(1);
+    memset(dis, 0x3f, sizeof dis);
+    dis[1] &#x3D; 0;
+    st[1] &#x3D; true;
     
-    <span class="hljs-keyword">while</span> ( !q.empty() ) &#123;
-        <span class="hljs-keyword">int</span> t = q.front();
+    while ( !q.empty() ) &#123;
+        int t &#x3D; q.front();
         q.pop();
         
-        st[t] = <span class="hljs-literal">false</span>;
+        st[t] &#x3D; false;
         
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = h[t]; i != <span class="hljs-number">-1</span>; i = ne[i]) &#123;
-            <span class="hljs-keyword">int</span> j = e[i];
+        for (int i &#x3D; h[t]; i !&#x3D; -1; i &#x3D; ne[i]) &#123;
+            int j &#x3D; e[i];
             
-            <span class="hljs-keyword">if</span> (dis[j] &gt; dis[t] + w[i]) &#123;
-                dis[j] = dis[t] + w[i];
-                st[j] = <span class="hljs-literal">true</span>;
+            if (dis[j] &gt; dis[t] + w[i]) &#123;
+                dis[j] &#x3D; dis[t] + w[i];
+                st[j] &#x3D; true;
                 q.push(j);
             &#125;
         &#125;
     &#125;
     
-    <span class="hljs-keyword">if</span> (dis[n] == <span class="hljs-number">0x3f3f3f3f</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
-    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> dis[n];
+    if (dis[n] &#x3D;&#x3D; 0x3f3f3f3f) return -1;
+    else return dis[n];
     
 &#125;
 
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
-    <span class="hljs-built_in">memset</span>(h, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> h);
+int main() &#123;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    memset(h, -1, sizeof h);
     
-    <span class="hljs-keyword">while</span> ( m -- ) &#123;
-        <span class="hljs-keyword">int</span> a, b, c;
-        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+    while ( m -- ) &#123;
+        int a, b, c;
+        scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
         add(a, b, c);
     &#125;
     
-    <span class="hljs-keyword">int</span> t = spfa();
+    int t &#x3D; spfa();
     
-    <span class="hljs-keyword">if</span> (t == <span class="hljs-number">-1</span>) <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;impossible&quot;</span>);
-    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, t);
+    if (t &#x3D;&#x3D; -1) puts(&quot;impossible&quot;);
+    else printf(&quot;%d&quot;, t);
 &#125;
-</code></pre></div></p>
-<p>Python版；<br><div class="hljs"><pre><code class="hljs python">n, m, k = map(int, input().split())
+</code></pre></p>
+<p>Python版；<br><pre class="language-python" data-language="python"><code class="language-python">n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="hljs-comment">## 用一个list 记录所有边的信息即可</span>
-g = []
-dist = [float(<span class="hljs-string">&quot;inf&quot;</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n+<span class="hljs-number">1</span>)]
+<span class="token comment">## 用一个list 记录所有边的信息即可</span>
+g <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+dist <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">"inf"</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(m):
-    a, b, w = map(int, input().split())
-    g.append([a, b, w])
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> w <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    g<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> w<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bellman_ford</span>():</span>
-    dist[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>
+<span class="token keyword">def</span> <span class="token function">bellman_ford</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dist<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
 
-    <span class="hljs-comment">## 循环几次代表最多用几条边</span>
-    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(k):
-        <span class="hljs-comment">## 必须backup 防止在过程中会更新dist里面的数据导致并不是最多k条边</span>
-        backup = dist[:]
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(m):
-            a, b, w = g[i][<span class="hljs-number">0</span>], g[i][<span class="hljs-number">1</span>], g[i][<span class="hljs-number">2</span>]
-            dist[b] = min(dist[b], backup[a] + w)
+    <span class="token comment">## 循环几次代表最多用几条边</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment">## 必须backup 防止在过程中会更新dist里面的数据导致并不是最多k条边</span>
+        backup <span class="token operator">=</span> dist<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> w <span class="token operator">=</span> g<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> g<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> g<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+            dist<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>dist<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">,</span> backup<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">+</span> w<span class="token punctuation">)</span>
 
-bellman_ford()
-print(dist[n] <span class="hljs-keyword">if</span> dist[n] != float(<span class="hljs-string">&quot;inf&quot;</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;impossible&quot;</span>)</code></pre></div></p>
+bellman_ford<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dist<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token keyword">if</span> dist<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">"inf"</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token string">"impossible"</span><span class="token punctuation">)</span></code></pre></p>
 
             </div>
             <hr>
@@ -674,6 +678,8 @@ print(dist[n] <span class="hljs-keyword">if</span> dist[n] != float(<span class=
 
 
 
+  
+    
   
 
 

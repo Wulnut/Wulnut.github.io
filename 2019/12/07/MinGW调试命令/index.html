@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -272,7 +276,7 @@ GCC的开发环境，为C++的跨平台开发提供了良好的基础支持，�
 着头脑，而MinGW则只会生成一个可执行文件</p>
 
 <hr>
-<h2 id="gdb调试测试代码-test-c-："><a href="#gdb调试测试代码-test-c-：" class="headerlink" title="gdb调试测试代码(test.c)："></a>gdb调试测试代码(test.c)：</h2><div class="hljs"><pre><code>#include &lt;stdio.h&gt;
+<h2 id="gdb调试测试代码-test-c-："><a href="#gdb调试测试代码-test-c-：" class="headerlink" title="gdb调试测试代码(test.c)："></a>gdb调试测试代码(test.c)：</h2><pre><code>#include &lt;stdio.h&gt;
 
 void swap(int *a,int *b)&#123;
     int temp = *a;
@@ -287,8 +291,8 @@ int main(void)
     printf(&quot;a = %d ,b = %d\n&quot;,a,b);
     return 0;
 &#125;
-</code></pre></div><h3 id="要支持调试，在编译时要加入-g选项，编译命令："><a href="#要支持调试，在编译时要加入-g选项，编译命令：" class="headerlink" title="要支持调试，在编译时要加入-g选项，编译命令："></a>要支持调试，在编译时要加入-g选项，编译命令：</h3><div class="hljs"><pre><code>gcc text.c -g text.exe
-</code></pre></div><h3 id="出现调试命令："><a href="#出现调试命令：" class="headerlink" title="出现调试命令："></a>出现调试命令：</h3><div class="hljs"><pre><code>GNU gdb (GDB) 7.6.1
+</code></pre><h3 id="要支持调试，在编译时要加入-g选项，编译命令："><a href="#要支持调试，在编译时要加入-g选项，编译命令：" class="headerlink" title="要支持调试，在编译时要加入-g选项，编译命令："></a>要支持调试，在编译时要加入-g选项，编译命令：</h3><pre><code>gcc text.c -g text.exe
+</code></pre><h3 id="出现调试命令："><a href="#出现调试命令：" class="headerlink" title="出现调试命令："></a>出现调试命令：</h3><pre><code>GNU gdb (GDB) 7.6.1
 Copyright (C) 2013 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
 This is free software: you are free to change and redistribute it.
@@ -299,7 +303,7 @@ For bug reporting instructions, please see:
 &lt;http://www.gnu.org/software/gdb/bugs/&gt;...
 Reading symbols from D:\mypro\C\test.exe...done.
 (gdb)
-</code></pre></div><h3 id="gdb调试命令表："><a href="#gdb调试命令表：" class="headerlink" title="gdb调试命令表："></a>gdb调试命令表：</h3><div class="table-container">
+</code></pre><h3 id="gdb调试命令表："><a href="#gdb调试命令表：" class="headerlink" title="gdb调试命令表："></a>gdb调试命令表：</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -378,7 +382,7 @@ Reading symbols from D:\mypro\C\test.exe...done.
 </table>
 </div>
 <h3 id="1-l命令，列出部分代码："><a href="#1-l命令，列出部分代码：" class="headerlink" title="1.l命令，列出部分代码："></a>1.l命令，列出部分代码：</h3><p>在(gdb)后面输入l可以显示一部分代码再输入一次l可以显示全部代码</p>
-<div class="hljs"><pre><code>(gdb) l
+<pre><code>(gdb) l
 2   
 3   void swap(int *a,int *b)&#123;
 4       int temp = *a;
@@ -397,7 +401,7 @@ Reading symbols from D:\mypro\C\test.exe...done.
 14      return 0;
 15  &#125;(gdb) l
 (gdb) Line number 16 out of range; test.c has 15 lines
-</code></pre></div><h3 id="2-start命令，开始运行，会停到main入口处："><a href="#2-start命令，开始运行，会停到main入口处：" class="headerlink" title="2.start命令，开始运行，会停到main入口处："></a>2.start命令，开始运行，会停到main入口处：</h3><div class="hljs"><pre><code>(gdb) start
+</code></pre><h3 id="2-start命令，开始运行，会停到main入口处："><a href="#2-start命令，开始运行，会停到main入口处：" class="headerlink" title="2.start命令，开始运行，会停到main入口处："></a>2.start命令，开始运行，会停到main入口处：</h3><pre><code>(gdb) start
 Temporary breakpoint 1 at 0x401491: file test.c, line 11.
 Starting program: D:\mypro\C/test.exe 
 [New Thread 8000.0x18c4]
@@ -405,19 +409,19 @@ Starting program: D:\mypro\C/test.exe
 
 Temporary breakpoint 1, main () at test.c:11
 11      int a=1,b=2
-</code></pre></div><h3 id="4-n命令：单步调试，不进入函数，跳到第12行"><a href="#4-n命令：单步调试，不进入函数，跳到第12行" class="headerlink" title="4.n命令：单步调试，不进入函数，跳到第12行:"></a>4.n命令：单步调试，不进入函数，跳到第12行:</h3><div class="hljs"><pre><code>(gdb) n
+</code></pre><h3 id="4-n命令：单步调试，不进入函数，跳到第12行"><a href="#4-n命令：单步调试，不进入函数，跳到第12行" class="headerlink" title="4.n命令：单步调试，不进入函数，跳到第12行:"></a>4.n命令：单步调试，不进入函数，跳到第12行:</h3><pre><code>(gdb) n
 12      swap(&amp;a,&amp;b);
-</code></pre></div><h3 id="5-s命令：单步调试，进入函数，跳到第4行"><a href="#5-s命令：单步调试，进入函数，跳到第4行" class="headerlink" title="5.s命令：单步调试，进入函数，跳到第4行:"></a>5.s命令：单步调试，进入函数，跳到第4行:</h3><div class="hljs"><pre><code>gdb) s
+</code></pre><h3 id="5-s命令：单步调试，进入函数，跳到第4行"><a href="#5-s命令：单步调试，进入函数，跳到第4行" class="headerlink" title="5.s命令：单步调试，进入函数，跳到第4行:"></a>5.s命令：单步调试，进入函数，跳到第4行:</h3><pre><code>gdb) s
 swap (a=0x61ff2c, b=0x61ff28) at test.c:4
 4       int temp = *a;
-</code></pre></div><h3 id="6-b命令设置断点（b-第n行代码的行数）："><a href="#6-b命令设置断点（b-第n行代码的行数）：" class="headerlink" title="6.b命令设置断点（b + 第n行代码的行数）："></a>6.b命令设置断点（b + 第n行代码的行数）：</h3><div class="hljs"><pre><code>(gdb) b 6
+</code></pre><h3 id="6-b命令设置断点（b-第n行代码的行数）："><a href="#6-b命令设置断点（b-第n行代码的行数）：" class="headerlink" title="6.b命令设置断点（b + 第n行代码的行数）："></a>6.b命令设置断点（b + 第n行代码的行数）：</h3><pre><code>(gdb) b 6
 Breakpoint 2 at 0x401478: file test.c, line 6.
-</code></pre></div><h3 id="7-r命令-运行程序，直到下一个断点就停："><a href="#7-r命令-运行程序，直到下一个断点就停：" class="headerlink" title="7.r命令,运行程序，直到下一个断点就停："></a>7.r命令,运行程序，直到下一个断点就停：</h3><div class="hljs"><pre><code>The program being debugged has been started already.
+</code></pre><h3 id="7-r命令-运行程序，直到下一个断点就停："><a href="#7-r命令-运行程序，直到下一个断点就停：" class="headerlink" title="7.r命令,运行程序，直到下一个断点就停："></a>7.r命令,运行程序，直到下一个断点就停：</h3><pre><code>The program being debugged has been started already.
 Start it from the beginning? (y or n)
 ...
 Breakpoint 2, swap (a=0x61ff2c, b=0x61ff28) at test.c:6
 6       *b = temp;
-</code></pre></div><h3 id="7-p命令-输出制定的变量的值，变量要在程序运行处可见"><a href="#7-p命令-输出制定的变量的值，变量要在程序运行处可见" class="headerlink" title="7.p命令,输出制定的变量的值，变量要在程序运行处可见:"></a>7.p命令,输出制定的变量的值，变量要在程序运行处可见:</h3><div class="hljs"><pre><code>(gdb) p *a
+</code></pre><h3 id="7-p命令-输出制定的变量的值，变量要在程序运行处可见"><a href="#7-p命令-输出制定的变量的值，变量要在程序运行处可见" class="headerlink" title="7.p命令,输出制定的变量的值，变量要在程序运行处可见:"></a>7.p命令,输出制定的变量的值，变量要在程序运行处可见:</h3><pre><code>(gdb) p *a
 $1 = 2
 (gdb) p *b
 $2 = 2
@@ -425,20 +429,20 @@ $2 = 2
 $3 = (int *) 0x61ff2c
 (gdb) p b
 $4 = (int *) 0x61ff28
-</code></pre></div><p>next一下，再看b的值：</p>
-<div class="hljs"><pre><code>(gdb) n
+</code></pre><p>next一下，再看b的值：</p>
+<pre><code>(gdb) n
 7   &#125;
 (gdb) p *b
 $5 = 1
-</code></pre></div><h3 id="8-i-b命令-查看断点信息"><a href="#8-i-b命令-查看断点信息" class="headerlink" title="8.i b命令,查看断点信息:"></a>8.i b命令,查看断点信息:</h3><div class="hljs"><pre><code>(gdb) i b
+</code></pre><h3 id="8-i-b命令-查看断点信息"><a href="#8-i-b命令-查看断点信息" class="headerlink" title="8.i b命令,查看断点信息:"></a>8.i b命令,查看断点信息:</h3><pre><code>(gdb) i b
 Num     Type           Disp Enb Address    What
 2       breakpoint     keep y   0x00401478 in swap at test.c:6
     breakpoint already hit 1 time
-</code></pre></div><h3 id="9-d命令-删除断点，不加断点位置即删除所有断点"><a href="#9-d命令-删除断点，不加断点位置即删除所有断点" class="headerlink" title="9.d命令,删除断点，不加断点位置即删除所有断点:"></a>9.d命令,删除断点，不加断点位置即删除所有断点:</h3><div class="hljs"><pre><code>(gdb) d 
+</code></pre><h3 id="9-d命令-删除断点，不加断点位置即删除所有断点"><a href="#9-d命令-删除断点，不加断点位置即删除所有断点" class="headerlink" title="9.d命令,删除断点，不加断点位置即删除所有断点:"></a>9.d命令,删除断点，不加断点位置即删除所有断点:</h3><pre><code>(gdb) d 
 Delete all breakpoints? (y or n) [answered Y; input not from terminal]
 (gdb) i b
 No breakpoints or watchpoints.
-</code></pre></div><h3 id="10-没有断点后，再试一下r命令，可以看到，执行完了程序："><a href="#10-没有断点后，再试一下r命令，可以看到，执行完了程序：" class="headerlink" title="10.没有断点后，再试一下r命令，可以看到，执行完了程序："></a>10.没有断点后，再试一下r命令，可以看到，执行完了程序：</h3><div class="hljs"><pre><code>(gdb) r
+</code></pre><h3 id="10-没有断点后，再试一下r命令，可以看到，执行完了程序："><a href="#10-没有断点后，再试一下r命令，可以看到，执行完了程序：" class="headerlink" title="10.没有断点后，再试一下r命令，可以看到，执行完了程序："></a>10.没有断点后，再试一下r命令，可以看到，执行完了程序：</h3><pre><code>(gdb) r
 The program being debugged has been started already.
 Start it from the beginning? (y or n) [answered Y; input not from terminal]
 error return ../../gdb-7.6.1/gdb/windows-nat.c:1275 was 5
@@ -447,8 +451,8 @@ Starting program: D:\mypro\C/test.exe
 [New Thread 1976.0x5e0]
 a = 2 ,b = 1
 [Inferior 1 (process 1976) exited normally
-</code></pre></div><h3 id="11-q命令，退出gdb："><a href="#11-q命令，退出gdb：" class="headerlink" title="11.q命令，退出gdb："></a>11.q命令，退出gdb：</h3><div class="hljs"><pre><code>(gdb) q
-</code></pre></div>
+</code></pre><h3 id="11-q命令，退出gdb："><a href="#11-q命令，退出gdb：" class="headerlink" title="11.q命令，退出gdb："></a>11.q命令，退出gdb：</h3><pre><code>(gdb) q
+</code></pre>
             </div>
             <hr>
             <div>
@@ -716,6 +720,8 @@ a = 2 ,b = 1
 
 
 
+  
+    
   
 
 

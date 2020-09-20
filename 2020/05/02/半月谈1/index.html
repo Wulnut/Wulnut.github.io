@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -267,34 +271,34 @@
 <h2 id="蓝桥"><a href="#蓝桥" class="headerlink" title="蓝桥"></a>蓝桥</h2><p>&emsp;&emsp;在学习算法的过程种，我慢慢的对我自己的真实能有了比较全面的了解。从简单的基本算法开始到数据结构到图论</p>
 <script type="math/tex; mode=display">基本算法\rightarrow 数据结构 \rightarrow 图论 \rightarrow \dots</script><p>说实话没得一步是简单的，是真的举步维艰。基本算法中的枚举、模拟、递归、分治$\dots$ 我感觉我到现在都没有真正学会其中的思想，每天坚持通过训练的方式来提高自己的对一些算法的理解，但是半天下来可能也就做了一两个题目，有时候思路开阔可能也就三四个，但是大部分时间也就是一两个的样子。可能是在家的原因，调板子没啥效率。但是这种挫败感是太真实了，随着渐渐对这种方向的深入了解。也就慢慢的明白自己知道东西实在是太少了，不断的从一些教学视频里面慢慢的学习前人总结出的经验。</p>
 <p>但是这确实很可笑，你感觉你学会了一种算法，但是题目给你变一变，你就立马懵逼了。如果说做算法题可以类比成你高中的数学题的话，可能就是你题型见的不够多，总结的很少导致的。但这也是困难所在，虽然算法就那么多你这么能正真理解一个题目到底想怎么考你去使用这个算法是十分困难的。就拿前缀和为例</p>
-<div class="hljs"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100</span>;
-<span class="hljs-keyword">int</span> arr[N];
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i) <span class="hljs-built_in">cin</span> &gt;&gt; arr[i], arr[i] += arr[i - <span class="hljs-number">1</span>];
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i) <span class="hljs-built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
+<pre class="language-C++" data-language="C++"><code class="language-C++">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+const int N &#x3D; 100;
+int arr[N];
+int main() &#123;
+    for (int i &#x3D; 1; i &lt;&#x3D; n; ++ i) cin &gt;&gt; arr[i], arr[i] +&#x3D; arr[i - 1];
+    for (int i &#x3D; 1; i &lt;&#x3D; n; ++ i) cout &lt;&lt; arr[i] &lt;&lt; &#39; &#39;;
+    return 0;
+&#125;</code></pre>
 <p>前缀和就是那样很简单，就是一个arr[i] = arr[i - 1] + arr[i];的一个公式，在仔细看看其实是就是前$N$项求和，但是它有什么用？怎么用？可以干啥一般都是怎么处理的。</p>
 <p>完完全全就需要你自己去总结思考，但是可能这种小技巧也只会出现在你解决某个题目中的一个小步骤中，但是有些人总是能把这种小技巧玩的出神入化，来降低时间复杂度。这就要看各位对这种技巧的理解了，没人能帮助你。</p>
 <h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>在知乎上经常能看到有人发这样的问题，“大神都是如何刷leetcode的”。我才这样的问这样问题的人都是一些为了找工作而去刷题的人。因为正真的大佬早已经在ACM类比赛中把算法这东西玩的炉火纯青了，你可能还在第一层，人家已经到了第五层了。其中有个人的回答很是亮眼，他说：你把打好的青春都浪费在刷LeetCode上那你为什么不把那些时间去研究一下新技术，学习一下技术的底层实现呢？看到一个题目思考了10分钟还没思路那就去看题解理解这个题目，花费那么长时间浪费在这上面不那么值得。就像郭杰瑞那期视频一样老郭做了江苏高考英语试卷但是到最后结果和大家想的一样，错了很多，是他英语差吗不是，那是人家的母语那是什么是缺乏这方面的训练。也就是说为什么我们刚开始学算法的时候为什么会那么痛苦，没有接收相关的训练很难一开始就上手完成的很好，针对的训练是至关重要的。</p>
 <p>但是我反观一下自己，把大把的时间花在学习这些东西上是否也是一种浪费？当然不是，那是我以后吃饭的东西花费时间在这上面怎么算是浪费呢？但是我觉得我缺走上了歧途，什么歧途？</p>
 <p>C++:</p>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mian</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Hello World&quot;</span>;
-&#125;</code></pre></div>
+<pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+int mian() &#123;
+    std::cout &lt;&lt; &quot;Hello World&quot;;
+&#125;</code></pre>
 <p>Java:</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">public</span> <span class="hljs-title">Hello</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
-        System.out.println(<span class="hljs-string">&quot;Hello World&quot;</span>);
-    &#125;
-&#125;</code></pre></div>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token keyword">public</span> <span class="token class-name">Hello</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>Python:</p>
-<div class="hljs"><pre><code class="hljs python">print(<span class="hljs-string">&quot;Hello World&quot;</span>)</code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span></code></pre>
 <p>JavaScript:</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello World&quot;</span>);</code></pre></div>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>我现在会四种语言来写出Hello World这个词，说明我了解了很多不同种类的编程语言但是，我确实不明白为什么我们要一开始去写一个Hello World。是因为他简单？其实并不是，学习编程每个人的目的是不同的，为什么现在社会上有那么多培训班，在短短是几个星期里面就能教出一个人去公司里面上班每个月拿着一两万的工资？因为现在很多东西被模式化了，</p>
 <p>UADC(update, add, delete, create)这样的模式几乎符合任何情况，并不是人们想的通过编程来改变世界。如果说你被这种混口饭吃的想法所束缚，那你的发展也就那样的。那科班生和培训班的人也就没什么两样的了，科班生不只是有很多时间去打磨自己的能力，更多的是有时间去创造。这些语言归根到底是一种我们所特有的一种工具，而这种工具用来帮助我们把现实生活中的一些常见问题给抽象出来我们通过算法来反复重复的解决这种问题来方便我们。这才是我们的学习的正真目的，为什么说各个行业都需要会写程序的人，但是这些领域有时候又和计算机专业完全不沾边。但是就有人能去创造它方便行业快速发展，而这就是创造力。而不是仅仅的为了那一两行算法代码。这也是为什么说我<strong>没趣、死板、不懂审美</strong>$\dots$ 的原因。</p>
 <p>被这种看起来死板的东西所束缚了，不能走出这种圈子，去学习了解更多的东西来正真成就自己。</p>
@@ -574,6 +578,8 @@
 
 
 
+  
+    
   
 
 

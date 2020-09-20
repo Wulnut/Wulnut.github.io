@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -274,16 +278,16 @@
 </ul>
 <p>使用方法：</p>
 <p>头文件：</p>
-<div class="hljs"><pre><code>#include &lt;queue&gt;
-</code></pre></div><p> 声明方法：<br>1、普通声明</p>
-<div class="hljs"><pre><code>queue&lt;int&gt;q;
-</code></pre></div><p>2、结构体</p>
-<div class="hljs"><pre><code>struct node
+<pre><code>#include &lt;queue&gt;
+</code></pre><p> 声明方法：<br>1、普通声明</p>
+<pre><code>queue&lt;int&gt;q;
+</code></pre><p>2、结构体</p>
+<pre><code>struct node
 &#123;    
 int x, y;
 &#125;;
 queue&lt;node&gt;q;
-</code></pre></div><h3 id="STL-中优先队列的使用方法-priority-queue"><a href="#STL-中优先队列的使用方法-priority-queue" class="headerlink" title="STL 中优先队列的使用方法(priority_queue)"></a>STL 中<font color="#f278">优先队列</font>的使用方法(priority_queue)</h3><p>&emsp;&emsp;优先队列容器与队列一样，只能从队尾插入元素，从队首删除元素。但是它有一个特性，就是队列中最大的元素总是位于队首，所以出队时，并非按照先进先出的原则进行，而是将当前队列中最大的元素出队。这点类似于给队列里的元素进行了由大互小的顺序排序。元素的比较规则默认按元素值由大到小排序，可以重载“&lt;”操作符来重新定义比较规则。</p>
+</code></pre><h3 id="STL-中优先队列的使用方法-priority-queue"><a href="#STL-中优先队列的使用方法-priority-queue" class="headerlink" title="STL 中优先队列的使用方法(priority_queue)"></a>STL 中<font color="#f278">优先队列</font>的使用方法(priority_queue)</h3><p>&emsp;&emsp;优先队列容器与队列一样，只能从队尾插入元素，从队首删除元素。但是它有一个特性，就是队列中最大的元素总是位于队首，所以出队时，并非按照先进先出的原则进行，而是将当前队列中最大的元素出队。这点类似于给队列里的元素进行了由大互小的顺序排序。元素的比较规则默认按元素值由大到小排序，可以重载“&lt;”操作符来重新定义比较规则。</p>
 <p>基本操作：</p>
 <ul>
 <li><p>empty() 如果队列为空返回真</p>
@@ -300,11 +304,11 @@ queue&lt;node&gt;q;
 <p>在默认的优先队列中，优先级高的先出队。在默认的int型中先出队的为较大的数。</p>
 <p>使用方法：</p>
 <p>头文件：</p>
-<div class="hljs"><pre><code>#include &lt;queue&gt;
-</code></pre></div><p>声明方式：</p>
+<pre><code>#include &lt;queue&gt;
+</code></pre><p>声明方式：</p>
 <p>1、普通方法：<br>    priority_queue<int>q;   //通过操作，按照元素从大到小的顺序出队<br>    priority_queue<int,vector<int>, greater<int> &gt;q;  //通过操作，按照元素从小到大的顺序出队</p>
 <p>2、自定义优先级：</p>
-<div class="hljs"><pre><code>struct cmp &#123;     
+<pre><code>struct cmp &#123;     
 　　operator bool ()(int x, int y)     
 　　&#123;        
 　　　　 return　x &gt; y; // x小的优先级高       
@@ -313,8 +317,8 @@ queue&lt;node&gt;q;
 &#125;;
 priority_queue&lt;int, vector&lt;int&gt;, cmp&gt;q;    //定义方法
 //其中，第二个参数为容器类型。第三个参数为比较函数。
-</code></pre></div><p>3、结构体声明方式：</p>
-<div class="hljs"><pre><code>struct node &#123;     
+</code></pre><p>3、结构体声明方式：</p>
+<pre><code>struct node &#123;     
 　　int x, y;     
 　　friend bool operator &lt; (node a, node b)     
 　　&#123;         
@@ -325,7 +329,7 @@ priority_queue&lt;node&gt;q;   //定义方法
 //在该结构中，y为值, x为优先级。
 //通过自定义operator&lt;操作符来比较元素中的优先级。
 //在重载“&lt;”时，最好不要重载“&gt;”，可能会发生编译错误
-</code></pre></div>
+</code></pre>
             </div>
             <hr>
             <div>
@@ -593,6 +597,8 @@ priority_queue&lt;node&gt;q;   //定义方法
 
 
 
+  
+    
   
 
 
