@@ -1,0 +1,1023 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/panda.png">
+  <link rel="icon" type="image/png" href="/img/panda.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个普普通通的，知识于思想分享破站。虽然不成熟但是记录了我的成长过程">
+  <meta name="author" content="Wulnut">
+  <meta name="keywords" content="Wulnut,垃圾桶,ash-bin,美赛">
+  <title>最短路径之Dijkstra ~ Wulnut`s space</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Wulnut's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Home/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-brush"></i>
+                Blog
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                Rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/short-path/usedijkstra.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-20 22:50" pubdate>
+        2020年9月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      39
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">最短路径之Dijkstra</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>最短路径算法</p>
+<a id="more"></a>
+<p>&emsp;&emsp;在上一篇文章当中我们讲解了bellman-ford算法和spfa算法，其中spfa算法是我个人比较常用的算法，比赛当中几乎没有用过其他的最短路算法。但是spfa也是有缺点的，我们之前说过它的复杂度是<br>$O(kE)$，这里的E是边的数量。但有的时候边的数量很多，E最多能够达到$V^2$，这会导致超时，所以我们会更换其他的算法。这里说的其他的算法就是Dijkstra。</p>
+<h1 id="Dijkstra算法的前提："><a href="#Dijkstra算法的前提：" class="headerlink" title="Dijkstra算法的前提："></a>Dijkstra算法的前提：</h1><ol>
+<li>首先，Dijkstra处理的是带正权值的<code>有权图</code>，那么，就需要一个二维数组（如果空间大用list数组）存储各个点到达(边)的权值大小。<code>(邻接矩阵或者邻接表存储)</code></li>
+<li>其次，还需要一个<code>bool数组</code>判断那些点已经确定最短长度，那些点没有确定。<code>int数组</code>记录距离<code>(在算法执行过程可能被多次更新)</code>。</li>
+<li>需要<code>优先队列</code>加入<code>已经确定点的周围点</code>。每次抛出确定最短路径的那个并且确定最短，直到所有点路径确定最短为止。(优化后)</li>
+</ol>
+<h1 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h1><p>&emsp;&emsp;在上一篇文章当中我们曾经说过Bellman-ford算法本质上其实是动态规划算法，我们的状态就是每个点的最短距离，策略就是可行的边，由于一共最多要松弛V-1次，所以整体的算法复杂度很高。当我们用队列维护可以松弛的点之后，就将复杂度降到了<br>$O(kE)$，也就是spfa算法。<br>&emsp;&emsp;Dijkstra算法和Bellman-ford算法虽然都是最短路算法，但是核心的逻辑并不相同。Dijkstra算法的底层逻辑是贪心，也可以理解成贪心算法在图论当中的使用。<br>&emsp;&emsp;其实Dijstra算法和Bellman-ford算法类似，也是一个松弛的过程。即一开始的时候除了源点s之外，其他的点的距离都设置成无穷大，我们需要遍历这张图对这些距离进行松弛。所谓的松弛也就是要将这些距离变小。假设我们已经求到了两个点u和v的距离，我们用<br>dis[u]表示u到s的距离，dis[v]表示v的距离。</p>
+<p>&emsp;&emsp;假设我们有dis[u] &lt; dis[v]，也就是说u离s更近，那么我们接下来要用一个新的点去搜索松弛的可能，u和v哪一个更有可能获得更好的结果呢？当然是u，所以我们选择u去进行新的松弛，这也就是贪心算法的体现。如果这一层理解了，算法的整个原理也就差不多<br>了。</p>
+<p>我们来整理一下思路来看下完整的算法流程：</p>
+<ol>
+<li>我们用一个数组dis记录源点s到其他点的最短距离，起始时dis[s] = 0，其他值设为无穷大</li>
+<li>我们从未访问过的点当中选择距离最小的点u，将它标记为已访问</li>
+<li>遍历u所有可以连通的点v，如果dis[v] &lt; dis[u] + l[u] [v]，那么更新dis[v]</li>
+<li>重复上述2，3两个步骤，直到所有可以访问的点都已经访问过</li>
+</ol>
+<p>怎么样，其实核心步骤只有两步，应该很好理解吧？我找到了一张不错的动图，大家可以根据上面的流程对照一下动图加深一下理解。</p>
+<p><img src="/img/short-path/dijkstra.gif" srcset="/img/loading.gif" alt="如图"><br>我们根据原理不难写出代码：<br>C++版本：<br><div class="hljs"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">510</span>;
+<span class="hljs-keyword">int</span> g[N][N];
+<span class="hljs-keyword">int</span> dis[N];
+<span class="hljs-keyword">int</span> st[N];
+<span class="hljs-keyword">int</span> n, m;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">memset</span>(dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> dis);
+    
+    dis[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++ i) &#123;
+        <span class="hljs-keyword">int</span> t = <span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++ j) &#123;
+            <span class="hljs-keyword">if</span> (!st[j] &amp;&amp;(t == <span class="hljs-number">-1</span> || dis[t] &gt; dis[j])) &#123;
+                t = j;
+            &#125;
+        &#125;
+        st[t] = <span class="hljs-literal">true</span>;
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++ j) &#123;
+            dis[j] = min(dis[j], dis[t] + g[t][j]);
+        &#125;
+    &#125;
+    
+    <span class="hljs-keyword">if</span>(dis[n] == <span class="hljs-number">0x3f3f3f3f</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">return</span> dis[n];
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+    
+    <span class="hljs-built_in">memset</span>(g, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> g);
+    <span class="hljs-keyword">while</span> ( m -- ) &#123;
+        <span class="hljs-keyword">int</span> a, b, c;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+        g[a][b] = min(g[a][b], c);
+    &#125;
+    
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, dijkstra());
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div></p>
+<p>Pyhon版本：<br><div class="hljs"><pre><code class="hljs Python">INF = sys.maxsize
+edges = [[]] <span class="hljs-comment"># 邻接表存储边</span>
+dis = [] <span class="hljs-comment"># 记录s到其他点的距离</span>
+visited = &#123;&#125; <span class="hljs-comment"># 记录访问过的点</span>
+
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    mini = INF
+    u = <span class="hljs-number">0</span>
+    flag = <span class="hljs-literal">False</span>
+    <span class="hljs-comment"># 遍历所有未访问过点当中距离最小的</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(V):
+        <span class="hljs-keyword">if</span> i <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> visited <span class="hljs-keyword">and</span> dis[i] &lt; mini:
+            mini, u = dis[i], i
+            flag = <span class="hljs-literal">True</span>
+            
+    <span class="hljs-comment"># 如果没有未访问的点，则退出</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> flag:
+        <span class="hljs-keyword">break</span>
+        
+ visited[u] = <span class="hljs-literal">True</span>
+    
+    <span class="hljs-keyword">for</span> v, l <span class="hljs-keyword">in</span> edges[u]:
+        dis[v] = min(dis[v], dis[u] + l)</code></pre></div></p>
+<p>&emsp;&emsp;虽然我们已经知道算法没有反例了，但是还是可以思考一下。主要的点在于我们每次都选择未访问的点进行松弛，有没有可能我们松弛了一个已经访问的点，由于它已经被松弛过了，导致后面没法拿来松弛其他的点呢？<br>&emsp;&emsp;其实是不可能的，因为我们每次选择的都是距离最小的未访问过的点。假设当前的点是u，我们找到了一个已经访问过的点v，是不可能存在dis[u] + l &lt; dis[v]的，因为dis[v]必然要小于dis[u]，v才有可能先于u访问。但是这有一个前提，就是每条边的长度不<br>能是负数。</p>
+<h1 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h1><p>&emsp;&emsp;和Bellman-ford算法一样，Dijkstra算法最大的问题同样是复杂度。我们每次选择一个点进行松弛，选择的时候需要遍历一遍所有的点，显然这是非常耗时的。复杂度应该是$O(V^2 + E)$，这里的E是边的数量，Dijkstra中每个点只会松弛一次，也就意味着每条<br>边最多遍历一次。<br>&emsp;&emsp;我们观察一下会发现，外面这层循环也就算了，里面这层循环很没有必要，我们只是找了一个最值而已。完全可以使用数据结构来代替循环查询，维护最值的场景我们也已经非常熟悉了，当然是使用优先队列。</p>
+<h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h1><ul>
+<li>一般从选定点开始抛入优先队列。（路径一般为0），<code>bool数组</code>标记0的位置(最短为0) , 然后0周围连通的点抛入优先队列中（可能是node类），并把各个点的距离记录到对应数组内<code>(如果小于就更新，大于就不动，初始第一次是无穷肯定会更新)</code>，第一次就结束了</li>
+<li>从队列中抛出距离最近的那个点B（第一次就是0周围邻居）。这个点距离一定是最近的（所有权值都是正的，点的距离只能越来越长。）标记这个点为true，<code>并且将这个点的邻居加入队列</code>(下一次确定的最短点在前面未确定和这个点邻居中产生),并更新通过B点计算各个位置的<br>长度，如果小于则更新！<br><img src="/img/short-path/dijkstra1.png" srcset="/img/loading.gif" alt="如图"></li>
+<li>重复二的操作，直到所有点都确定。<br><img src="/img/short-path/dijkstra2.png" srcset="/img/loading.gif" alt="如图"></li>
+</ul>
+<p><a class="btn" target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/852/" title="title">参考题目</a></p>
+<p>C++版本：</p>
+<div class="hljs"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">pair</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; PII;
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1e6</span> + <span class="hljs-number">10</span>;
+
+<span class="hljs-keyword">int</span> n, m;
+<span class="hljs-keyword">int</span> h[N], w[N], e[N], ne[N], idx;
+<span class="hljs-keyword">int</span> dist[N], heap[N];
+<span class="hljs-keyword">bool</span> st[N];
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> c)</span></span>
+<span class="hljs-function"></span>&#123;
+    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">memset</span>(dist, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> dist);
+    dist[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">priority_queue</span>&lt;PII, <span class="hljs-built_in">vector</span>&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;
+    heap.push(&#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;);
+
+    <span class="hljs-keyword">while</span> (heap.size())
+    &#123;
+        PII t = heap.top();
+        heap.pop();
+
+        <span class="hljs-keyword">int</span> ver = t.second; <span class="hljs-comment">//distance = t.first;</span>
+
+        <span class="hljs-keyword">if</span> (st[ver]) <span class="hljs-keyword">continue</span>;
+        st[ver] = <span class="hljs-literal">true</span>;
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = h[ver]; i != <span class="hljs-number">-1</span>; i = ne[i])
+        &#123;
+            <span class="hljs-keyword">int</span> j = e[i];
+            <span class="hljs-keyword">if</span> (dist[j] &gt; dist[ver] + w[i])
+            &#123;
+                dist[j] = dist[ver] + w[i];
+                heap.push(&#123;dist[j], j&#125;);
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">if</span> (dist[n] == <span class="hljs-number">0x3f3f3f3f</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">return</span> dist[n];
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);
+
+    <span class="hljs-built_in">memset</span>(h, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> h);
+    <span class="hljs-keyword">while</span> (m -- )
+    &#123;
+        <span class="hljs-keyword">int</span> a, b, c;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);
+        add(a, b, c);
+    &#125;
+
+    <span class="hljs-built_in">cout</span> &lt;&lt; dijkstra() &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p>Pyhon版本：</p>
+<div class="hljs"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> heapq
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-comment"># 优先队列</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PriorityQueue</span>:</span>
+  
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span>
+        self._queue = []
+        self._index = <span class="hljs-number">0</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">push</span>(<span class="hljs-params">self, item, priority</span>):</span>
+        <span class="hljs-comment"># 传入两个参数，一个是存放元素的数组，另一个是要存储的元素，这里是一个元组。</span>
+        <span class="hljs-comment"># 由于heap内部默认由小到大排，所以对priority取负数</span>
+        heapq.heappush(self._queue, (-priority, self._index, item))
+        self._index += <span class="hljs-number">1</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pop</span>(<span class="hljs-params">self</span>):</span>
+        <span class="hljs-keyword">return</span> heapq.heappop(self._queue)[<span class="hljs-number">-1</span>]
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">empty</span>(<span class="hljs-params">self</span>):</span>
+        <span class="hljs-keyword">return</span> len(self._queue) == <span class="hljs-number">0</span>
+
+
+
+que = PriorityQueue()
+
+INF = sys.maxsize
+edges = [[], [[<span class="hljs-number">2</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">9</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">14</span>]], [[<span class="hljs-number">1</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">10</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">15</span>]], [[<span class="hljs-number">1</span>, <span class="hljs-number">9</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">10</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">11</span>]], [[<span class="hljs-number">3</span>, <span class="hljs-number">11</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]], [[<span class="hljs-number">4</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">9</span>]], [[<span class="hljs-number">3</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">9</span>]]] <span class="hljs-comment"># 邻接表存储边</span>
+dis = [sys.maxsize <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">8</span>)] <span class="hljs-comment"># 记录s到其他点的距离</span>
+s = <span class="hljs-number">1</span>
+que.push(s, <span class="hljs-number">0</span>)
+dis[s] = <span class="hljs-number">0</span>
+visited = &#123;&#125;
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> que.empty():
+    u, d = que.pop()
+    <span class="hljs-keyword">if</span> d != dis[u]:
+        <span class="hljs-keyword">continue</span>
+
+    <span class="hljs-keyword">for</span> v, l <span class="hljs-keyword">in</span> edges[u]:
+        <span class="hljs-keyword">if</span> dis[u] + l &lt; dis[v]:
+            dis[v] = dis[u] + l
+            que.push(v, dis[v])
+
+print(dis)</code></pre></div>
+<p>Java版本：<br><div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">import</span> java.util.ArrayDeque;
+<span class="hljs-keyword">import</span> java.util.Comparator;
+<span class="hljs-keyword">import</span> java.util.PriorityQueue;
+<span class="hljs-keyword">import</span> java.util.Queue;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">dijkstra</span> </span>&#123;
+	<span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">node</span></span>
+<span class="hljs-class">	</span>&#123;
+		<span class="hljs-keyword">int</span> x; <span class="hljs-comment">//节点编号</span>
+		<span class="hljs-keyword">int</span> lenth;<span class="hljs-comment">//长度</span>
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">node</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> lenth)</span> </span>&#123;
+			<span class="hljs-keyword">this</span>.x=x;
+			<span class="hljs-keyword">this</span>.lenth=lenth;
+		&#125;
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+		 
+		<span class="hljs-keyword">int</span>[][] map = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">6</span>][<span class="hljs-number">6</span>];<span class="hljs-comment">//记录权值，顺便记录链接情况，可以考虑附加邻接表</span>
+		initmap(map);<span class="hljs-comment">//初始化</span>
+		<span class="hljs-keyword">boolean</span> bool[]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[<span class="hljs-number">6</span>];<span class="hljs-comment">//判断是否已经确定</span>
+		<span class="hljs-keyword">int</span> len[]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">6</span>];<span class="hljs-comment">//长度</span>
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">6</span>;i++)
+		&#123;
+			len[i]=Integer.MAX_VALUE;
+		&#125;
+		Queue&lt;node&gt;q1=<span class="hljs-keyword">new</span> PriorityQueue&lt;node&gt;(com);
+		len[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<span class="hljs-comment">//从0这个点开始</span>
+		q1.add(<span class="hljs-keyword">new</span> node(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>));
+		<span class="hljs-keyword">int</span> count=<span class="hljs-number">0</span>;<span class="hljs-comment">//计算执行了几次dijkstra</span>
+		<span class="hljs-keyword">while</span> (!q1.isEmpty()) &#123;
+			node t1=q1.poll();
+			<span class="hljs-keyword">int</span> index=t1.x;<span class="hljs-comment">//节点编号</span>
+			<span class="hljs-keyword">int</span> length=t1.lenth;<span class="hljs-comment">//节点当前点距离</span>
+			bool[index]=<span class="hljs-keyword">true</span>;<span class="hljs-comment">//抛出的点确定</span>
+			count++;<span class="hljs-comment">//其实执行了6次就可以确定就不需要继续执行了  这句可有可无，有了减少计算次数</span>
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;map[index].length;i++)
+			&#123;
+				<span class="hljs-keyword">if</span>(map[index][i]&gt;<span class="hljs-number">0</span>&amp;&amp;!bool[i])
+				&#123;
+					node node=<span class="hljs-keyword">new</span> node(i, length+map[index][i]);
+					<span class="hljs-keyword">if</span>(len[i]&gt;node.lenth)<span class="hljs-comment">//需要更新节点的时候更新节点并加入队列</span>
+					&#123;
+						len[i]=node.lenth;
+						q1.add(node);
+					&#125;
+				&#125;
+			&#125;
+		&#125;		
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">6</span>;i++)
+		&#123;
+			System.out.println(len[i]);
+		&#125;
+	&#125;
+	<span class="hljs-keyword">static</span> Comparator&lt;node&gt;com=<span class="hljs-keyword">new</span> Comparator&lt;node&gt;() &#123;
+
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(node o1, node o2)</span> </span>&#123;
+			<span class="hljs-keyword">return</span> o1.lenth-o2.lenth;
+		&#125;
+	&#125;;
+
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initmap</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] map)</span> </span>&#123;
+		map[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">2</span>;map[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>]=<span class="hljs-number">3</span>;map[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">6</span>;
+		map[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">2</span>;map[<span class="hljs-number">1</span>][<span class="hljs-number">4</span>]=<span class="hljs-number">4</span>;map[<span class="hljs-number">1</span>][<span class="hljs-number">5</span>]=<span class="hljs-number">6</span>;
+		map[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">3</span>;map[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">2</span>;
+		map[<span class="hljs-number">3</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">6</span>;map[<span class="hljs-number">3</span>][<span class="hljs-number">2</span>]=<span class="hljs-number">2</span>;map[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>]=<span class="hljs-number">1</span>;map[<span class="hljs-number">3</span>][<span class="hljs-number">5</span>]=<span class="hljs-number">3</span>;
+		map[<span class="hljs-number">4</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">4</span>;map[<span class="hljs-number">4</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">1</span>;
+		map[<span class="hljs-number">5</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">6</span>;map[<span class="hljs-number">5</span>][<span class="hljs-number">3</span>]=<span class="hljs-number">3</span>;	
+	&#125;
+&#125;</code></pre></div></p>
+<p>&emsp;&emsp;这里用visited来判断是否之前访问过的主要目的是为了防止负环的产生，这样程序会陷入死循环，如果确定程序不存在负边的话，其实可以没必要判断。因为先出队列的一定更优，不会存在之后还被更新的情况。如果想不明白这点加上判断也没有关系。<br>&emsp;&emsp;我们最后分析一下复杂度，每个点最多用来松弛其他点一次，加上优先队列的调整耗时，整体的复杂度是$O(V \log V+E)$，比之前$O(V^2+E)$的复杂度要提速了很多，非常适合边很多，点相对较少的图。有时候spfa卡时间了，我们会选择Dijkstra。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/study/">study</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/17/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84(1)/">
+                        <span class="hidden-mobile">最短路径之bellman-ford&SPFA</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          enableQQ: true,
+          booolean: true,
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+          requureFiel: ['niick', 'mail'],
+          emojiCDN: '//i0.hdslb.com/bfs/emote/',
+          emojiMaps: {
+        "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
+        "tv_亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
+        "tv_偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
+        "tv_再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
+        "tv_冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
+        "tv_发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
+        "tv_发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
+        "tv_可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
+        "tv_吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
+        "tv_呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
+        "tv_呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
+        "tv_困": "241ee304e44c0af029adceb294399391e4737ef2.png",
+        "tv_坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
+        "tv_大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
+        "tv_大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
+        "tv_委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
+        "tv_害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
+        "tv_尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
+        "tv_微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
+        "tv_思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
+        "tv_惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
+        "tv_打脸": "56ab10b624063e966bfcb76ea5dc4794d87dfd47.png",
+        "tv_抓狂": "fe31c08edad661d63762b04e17b8d5ae3c71a757.png",
+        "tv_抠鼻": "c666f55e88d471e51bbd9fab9bb308110824a6eb.png",
+        "tv_斜眼笑": "911f987aa8bc1bee12d52aafe62bc41ef4474e6c.png",
+        "tv_无奈": "ea8ed89ee9878f2fece2dda0ea8a5dbfe21b5751.png",
+        "tv_晕": "5443c22b4d07fb1907ccc610c8e6db254f2461b7.png",
+        "tv_流汗": "cead1c351ab8d79e9f369605beb90148db0fbed3.png",
+        "tv_流泪": "7e71cde7858f0cd50d74b0264aa26db612a8a167.png",
+        "tv_流鼻血": "c32d39db2737f89b904ca32700d140a9241b0767.png",
+        "tv_点赞": "f85c354995bd99e28fc76c869bfe42ba6438eff4.png",
+        "tv_生气": "26702dcafdab5e8225b43ffd23c94ac1ff932654.png",
+        "tv_生病": "8b0ec90e6b86771092a498c54f09fc94621c1900.png",
+        "tv_疑问": "0793d949b18d7be716078349c202c15ff166f314.png",
+        "tv_白眼": "c1d59f439e379ee50eef488bcb5e5378e5044ea4.png",
+        "tv_皱眉": "72ccad6679fea0d14cce648b4d818e09b8ffea2d.png",
+        "tv_目瞪口呆": "0b8cb81a68de5d5365212c99375e7ace3e7891b7.png",
+        "tv_睡着": "8b196675b53af58264f383c50ad0945048290b33.png",
+        "tv_笑哭": "1abc628f6d4f4caf9d0e7800878f4697abbc8273.png",
+        "tv_腼腆": "89712c0d4af73e67f89e35cbc518420380a7f6f4.png",
+        "tv_色": "61822c7e9aae5da76475e7892534545336b23a6f.png",
+        "tv_调侃": "4bc022533ef31544ca0d72c12c808cf4a1cce3e3.png",
+        "tv_调皮": "b9c41de8e82dd7a8515ae5e3cb63e898bf245186.png",
+        "tv_鄙视": "6e72339f346a692a495b123174b49e4e8e781303.png",
+        "tv_闭嘴": "c9e990da7f6e93975e25fd8b70e2e290aa4086ef.png",
+        "tv_难过": "87f46748d3f142ebc6586ff58860d0e2fc8263ba.png",
+        "tv_馋": "fc7e829b845c43c623c8b490ee3602b7f0e76a31.png",
+        "tv_鬼脸": "0ffbbddf8a94d124ca2f54b360bbc04feb6bbfea.png",
+        "tv_黑人问号": "45821a01f51bc867da9edbaa2e070410819a95b2.png",
+        "tv_鼓掌": "1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png",
+        "custom_37" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/097cd88f446efae87cb27de38c5eed15.png",
+        "custom_36" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/ec2166501d29bc1eb7380c22944db462.png",
+        "custom_35" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/8ca39f96c182e51cd752dde464157c2e.png",
+        "custom_34" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/0a65c5dd18872b56605c08f7bae2e8c8.png",
+        "custom_33" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/ec3edbfe84684fdb1680307d261c3c7b.png",
+        "custom_32" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/31.webp",
+        "custom_31" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/30.gif",
+        "custom_30" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/29.webp",
+        "custom_29" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/28.webp",
+        "custom_28" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/27.webp",
+        "custom_27" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/26.webp",
+        "custom_26" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/25.jpg",
+        "custom_25" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/24.webp",
+        "custom_24" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/23.webp",
+        "custom_23" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/22.webp",
+        "custom_22" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/21.webp",
+        "custom_21" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/20.webp",
+        "custom_20" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/19.webp",
+        "custom_19" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/18.jpg",
+        "custom_18" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/17.webp",
+        "custom_17" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/16.webp",
+        "custom_16" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/15.webp",
+        "custom_15" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/14.webp",
+        "custom_14" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/13.webp",
+        "custom_13" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/12.webp",
+        "custom_12" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/11.webp",
+        "custom_11" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/10.webp",
+        "custom_10" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/9.webp",
+        "custom_9" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/8.webp",
+        "custom_8" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/7.webp",
+        "custom_7" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/6.gif",
+        "custom_6" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/5.gif",
+        "custom_5" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/4.jpg",
+        "custom_4" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/3.jpg",
+        "custom_3" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/2.webp",
+        "custom_2" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/1.webp",
+        "custom_1" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@master/2020/04/19/c3164053d300cc5cca5e4dc3311842dc.png",
+        "custom_0" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@master/2020/04/19/6b5e768e524c8441ba66184bfdd86d4d.png",
+            // ... 更多表情
+        }
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
+    
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">鄂ICP证20001010号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "最短路径之Dijkstra&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "🔗"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
