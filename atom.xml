@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Wulnut`s space</title>
-  <icon>http://www.wulnut.top/themes/fluid/source/img/panda.png</icon>
+  <icon>http://www.wulnut.top/source/img/main/panda.png</icon>
   <subtitle>垃圾桶轮到你介绍了</subtitle>
   <link href="http://www.wulnut.top/atom.xml" rel="self"/>
   
