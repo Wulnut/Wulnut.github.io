@@ -19,7 +19,7 @@
   <meta name="description" content="一个普普通通的，知识于思想分享破站。虽然不成熟但是记录了我的成长过程">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="Wulnut,垃圾桶,ash-bin,美赛">
-  <title>虚拟地址和物理地址 ~ Wulnut`s space</title>
+  <title>Cache地址映射与计算方式 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -193,7 +193,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/12230204-439af747b09c4d9b9fc18cf69f531141.png') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162229663-269157985.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -208,8 +208,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-16 20:38" pubdate>
-        2020年10月16日 晚上
+      <time datetime="2020-11-01 19:38" pubdate>
+        2020年11月1日 晚上
       </time>
     </span>
   
@@ -220,7 +220,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.5k 字
+      1.2k 字
     </span>
   
 
@@ -230,7 +230,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      13
        分钟
     </span>
   
@@ -260,34 +260,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">虚拟地址和物理地址</h1>
+            <h1 style="display: none">Cache地址映射与计算方式</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>计算机中虚拟地址与物理地址</p>
+              <p>Cache地址映射</p>
 <a id="more"></a>
-<h1 id="一、了解基本概念"><a href="#一、了解基本概念" class="headerlink" title="一、了解基本概念"></a>一、了解基本概念</h1><h2 id="1-地址空间"><a href="#1-地址空间" class="headerlink" title="1.地址空间"></a>1.地址空间</h2><p>&emsp;&emsp;我们最开始接触地址的时候，应该是在我们学习数组的时候。地址空间其实是一个比较抽象的概念，我们可以把它想象成一个长的数组，每个数组元素占一个字节。那么这个数组的长度就由地址空间长度来决定。例如：我们32位的系统的地址空间就是我们的$2^{32}$字节(4GB),而64位的地址空间大小就是$2^{64}$个字节。这也就解释了在我们32位的操作系统，为什么最大只能支持4GB的有效内存。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/15774762-3a7d9d5ef4e0d886.webp" srcset="/img/loading.gif" alt=" "></p>
-<h2 id="2-虚拟地址的由来"><a href="#2-虚拟地址的由来" class="headerlink" title="2.虚拟地址的由来"></a>2.虚拟地址的由来</h2><p>&emsp;&emsp;在早期的计算机中，程序是直接运行到物理内存（可以理解为内存条上的内存）上的。也就是说，程序运行的时候直接访问的就是物理地址。如果，我们的一个计算机只运行一个程序，那么只有这个程序所需要的内存空间不超过物理内存空间的大小，就不会有问题。但是，我们正在希望的是在某个时候同时运行多个程序。那么这个时候，就会有个一个问题，计算机如何把有限的物理内存分配给多个程序使用呢？<br>&emsp;&emsp;某台计算机总的内存大小是128M，现在同时运行两个程序A和B，A需占用内存10M，B需占用内存110。计算机在给程序分配内存时会采取这样的方法：先将内存中的前10M分配给程序A,接着再从内存中剩余的118M中划分出110M分配给程序B。这种分配方法可以保证程序A和程序B都能运行，但是这种简单的内存分配策略问题很多。<br>&emsp;&emsp;问题1：进程地址空间不隔离。由于程序都是直接访问物理内存，所以恶意程序可以随意修改别的进程的内存数据，以达到破坏的目的。有些非恶意的，但是有bug的程序也可能不小心修改了其它程序的内存数据，就会导致其它程序的运行出现异常。这种情况对用户来说是无法容忍的，因为用户希望使用计算机的时候，其中一个任务失败了，至少不能影响其它的任务。<br>&emsp;&emsp;问题2：内存使用效率低。在A和B都运行的情况下，如果用户又运行了程序C，而程序C需要20M大小的内存才能运行，而此时系统只剩下8M的空间可供使用，所以此时系统必须在已运行的程序中选择一个将该程序的数据暂时拷贝到硬盘上，释放出部分空间来供程序C使用，然后再将程序C的数据全部装入内存中运行。可以想象得到，在这个过程中，有大量的数据在装入装出，导致效率十分低下。<br>&emsp;&emsp;问题3：程序运行的地址不确定。当内存中的剩余空间可以满足程序C的要求后，操作系统会在剩余空间中随机分配一段连续的20M大小的空间给程序C使用，因为是随机分配的，所以程序运行的地址是不确定的。但是我们的某些硬件是需要在固定的地址上去开始运行的，但是如果这个地址后边被我们的程序占有，那么我们对这块内存的修改，就可能导致某些硬件不可用了。<br>&emsp;&emsp;为了解决上述问题，人们想到了一种变通的方法，就是增加一个中间层，利用一种间接的地址访问方法访问物理内存。按照这种方法，程序中访问的内存地址不再是实际的物理内存地址，而是一个虚拟地址，然后由操作系统将这个虚拟地址映射到适当的物理内存地址上。这样，只要操作系统处理好虚拟地址到物理内存地址的映射，就可以保证不同的程序最终访问的内存地址位于不同的区域，彼此没有重叠，就可以达到内存地址空间隔离的效果。</p>
-<h1 id="二、虚拟地址和物理地址映射"><a href="#二、虚拟地址和物理地址映射" class="headerlink" title="二、虚拟地址和物理地址映射"></a>二、虚拟地址和物理地址映射</h1><p>&emsp;&emsp;了解了我们的虚拟地址和物理地址的由来，下面我们来总结一下，他们的概念.<br>&emsp;&emsp;物理地址：物理地址空间是实在的存在于计算机中的一个实体，在每一台计算机中保持唯一独立性。我们可以称它为物理内存；如在32位的机器上，物理空间的大小理论上可以达到$2^{32}$字节(4GB)，但如果实际装了512的内存，那么其物理地址真正的有效部分只有$512MB = 512 \times 1024 KB = = 512 \times 1024 \times 1024 B (0x00000000\sim0x1fffffff)$。其他部分是无效的。<br>&emsp;&emsp;虚拟地址：虚拟地址并不真实存在于计算机中。每个进程都分配有自己的虚拟空间，而且只能访问自己被分配使用的空间。理论上，虚拟空间受物理内存大小的限制，如给有4GB内存，那么虚拟地址空间的地址范围就应该是$0x00000000\sim0xFFFFFFFF$.每个进程都有自己独立的虚拟地址空间。这样每个进程都能访问自己的地址空间，<br>这样做到了有效的隔离。<br>&emsp;&emsp;在上面我们提到了合理的内存管理机制。我们这里虚拟地址和物理地址之间的映射是通过MMU（内存管理单元）来完成的。<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/15774762-b0ec5de9cf127f27.webp" srcset="/img/loading.gif" alt=" "><br>&emsp;&emsp;我们平时操作的内存其实都是通过操作虚拟地址的内存单元。通过通过MMU的映射来间接的操作我们的物理地址。</p>
-<h1 id="对虚地址的理解"><a href="#对虚地址的理解" class="headerlink" title="对虚地址的理解"></a>对虚地址的理解</h1><h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><ol>
-<li>每个进程都有自己独立的4G内存空间，各个进程的内存空间具有类似的结构。</li>
-<li>一个新进程建立的时候，将会建立起自己的内存空间，此进程的数据，代码等从磁盘拷贝到自己的进程空间，哪些数据在哪里，都由进程控制表中的task_struct记录，task_struct中记录中一条链表，记录中内存空间的分配情况，哪些地址有数据，哪些地址无数据，哪些可读，哪些可写，都可以通过这个链表记录。</li>
-<li>每个进程已经分配的内存空间，都与对应的磁盘空间映射。<br><br><br>问题：计算机明明没有那么多内存（n个进程的话就需要$n\times4$G）内存建立一个进程，就要把磁盘上的程序文件拷贝到进程对应的内存中去，对于一个程序对应的多个进程这种情况，浪费内存！</li>
-</ol>
-<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><ol>
-<li>每个进程的4G内存空间只是虚拟内存空间，每次访问内存空间的某个地址，都需要把地址翻译为实际物理内存地址。</li>
-<li>所有进程共享同一物理内存，每个进程只把自己目前需要的虚拟内存空间映射并存储到物理内存上。</li>
-<li>进程要知道哪些内存地址上的数据在物理内存上，哪些不在，还有在物理内存上的哪里，需要用页表来记录。</li>
-<li>页表的每一个表项分两部分，第一部分记录此页是否在物理内存上，第二部分记录物理内存页的地址（如果在的话）。</li>
-<li>当进程访问某个虚拟地址，去看页表，如果发现对应的数据不在物理内存中，则缺页异常。</li>
-<li>缺页异常的处理过程，就是把进程需要的数据从磁盘上拷贝到物理内存中，如果内存已经满了，没有空地方了，那就找一个页覆盖，当然如果被覆盖的页曾经被修改过，需要将此页写回磁盘。</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li>既然每个进程的内存空间都是一致而且固定的，所以链接器在链接可执行文件时，可以设定内存地址，而不用去管这些数据最终实际的内存地址，这是有独立内存空间的好处。</li>
-<li>当不同的进程使用同样的代码时，比如库文件中的代码，物理内存中可以只存储一份这样的代码，不同的进程只需要把自己的虚拟内存映射过去就可以了，节省内存。</li>
-<li>在程序需要分配连续的内存空间的时候，只需要在虚拟内存空间分配连续空间，而不需要实际物理内存的连续空间，可以利用碎片。</li>
-</ol>
-<p>&emsp;&emsp;另外，事实上，在每个进程创建加载时，内核只是为进程“创建”了虚拟内存的布局，具体就是初始化进程控制表中内存相关的链表，实际上并不立即就把虚拟内存对应位置的程序数据和代码<br>（比如.text .data段）.拷贝到物理内存中，只是建立好虚拟内存和磁盘文件之间的映射就好（叫做存储器映射）,等到运行到对应的程序时，才会通过缺页异常，来拷贝数据。还有进程运行过程中，<br>要动态分配内存，比如malloc时，也只是分配了虚拟内存，即为这块虚拟内存对应的页表项做相应设置，当进程真正访问到此数据时，才引发缺页异常。</p>
+<h1 id="什么是Cache地址映射"><a href="#什么是Cache地址映射" class="headerlink" title="什么是Cache地址映射"></a>什么是Cache地址映射</h1><p>&emsp;&emsp;主存的容量比Cache要大的多，所以我们得采用多个主存块映射到同一个Cache行中的方法，将要访问的局部主存区域取到Cache中。映射方法有：直接映射，全相联映射，组相链映射</p>
+<h2 id="直接映射"><a href="#直接映射" class="headerlink" title="直接映射"></a>直接映射</h2><p>直接映射是最简单粗暴的办法：</p>
+<blockquote>
+<p>(块地址)mod(cache中的块数)</p>
+</blockquote>
+<p>&emsp;&emsp;一个内存块地址始终映射到一个固定的Cache 地址。下图中主存被分为了0-2047个内存块，缓存块或者说cache line有16块。那么第0，16，n*16块因为mod16都为0，所以他们对应到的Cache行号都为0。如果我们要访问第16号内存块(内存块从0开始计数的)，只要它在缓存块里面，那么它必定是在0号缓存块，也就是行号为0.<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162001890-759184579.png" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;知道了映射方法，那么如何规定主存地址呢？其实对于取模运算，我们只需要取低位字节就可以了。在十进制里面如果对16取余，那么结果定是两位数以内，并且不会大于15。比如说Cache有16行，16是2的4次方，那么我们就可以直接取主存块号的低四位作为Cache行号。<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162127959-1713738037.png" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;17对应的cache行号就是1.但当我们读取某一个缓存行时，我们怎么知道他是0块群的还是其他块群的呢？其实正如主存块号中包含了Cache行号一样，其低四位之前的高位就可以作为区分的Tag(主存标记)使用。最后一点就是，CPU读取数据只是要读取它需要的字(Word)而已，那么这个字具体是在Cache line的哪里，我们还需要一个偏移量来纪录它。所以直接映射的主存地址应该由三部分组成：主存子块标记，Cache子块标记，字块内地址。<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162153262-921590979.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>现在我们来自己动手做一做：假设数据在主存和Cache间的传送单位为512B，Cache大小为$2^{13}$B，主存大小为$2^{20}$B。</p>
+</blockquote>
+<p>&emsp;&emsp;因为主存大小为$2^{20}$B,且以512B为传送单位。那么$2^{20}$B=2048块$ \times $512B/块，主存可以划分为2048块，主存地址为20位二进制数。因为我们需要确定要取的是块中的哪个字，又$512=2^9$，所以需要9位作为偏移量，或者说字块内地址。 Cache可以划分出16行($2^{13}$=16行 $\times$ 512B/行)，也就是说划出4位作为行号标记，或者说Cache字块地址。剩下的7位自然就作为主存字块标记啦。<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162214235-403548343.png" srcset="/img/loading.gif" alt=""></p>
+<p>优缺点：</p>
+<ul>
+<li>电路实现简单，命中时间短</li>
+<li>无需考虑替换问题</li>
+<li>Cache的存储空间没有得到充分使用，命中率低</li>
+</ul>
+<h2 id="全相联映射"><a href="#全相联映射" class="headerlink" title="全相联映射"></a>全相联映射</h2><p>&emsp;&emsp;针对直接映射Cache空间利用率低的问题，我们有一种简单粗暴的办法提升空间的利用率。那就是主存中的任意一块都可以映射到Cache中的任意一个位置。有空位置你就坐下，随意，映射位置不在固定。<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162229663-269157985.png" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;那么我们唯一要做的就是知道Cache中是对应主存中的哪一块和字块内地址就行。因为是随便映射，所以我们把直接映射中的Cache字块标记合并到主存字块标记中。</p>
+<p><code>全相联映射主存地址只有两部分：主存字块标记，字块内地址。</code></p>
+<p>优缺点：</p>
+<ul>
+<li>不存在冲突缺失，命中率高</li>
+<li>电路复杂，速度慢</li>
+</ul>
+<h2 id="组相联映射"><a href="#组相联映射" class="headerlink" title="组相联映射"></a>组相联映射</h2><p>&emsp;&emsp;综合前两种方法的就是组相联映射，具体做法是：将Cache中的行分组，主存块映射到固定的行中，但行中的位置可以随意。也就是组间直接映射，组内全相联映射。</p>
+<blockquote>
+<p>Cache组号=主存块号 mod Cache组数</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162251696-1669819464.png" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;那么问题来了怎么确定Cache中的字块是对应主存的那一块呢？首先我们仍需要字块内地址，需要区分组号，那么剩下的地址就可以作为主存字块标记使用。</p>
+<blockquote>
+<p>容量为64块的Cache，采用组相联方式映像，字块大小为128字，每4块为一组。若主存容量为4096块，且以字编址，那么主存地址该如何划分？</p>
+</blockquote>
+<p>&emsp;&emsp;因为$4096=2^{19}$，所以主存地址应该为19位，Cache总共有16组，所以需要4位确定组号。又字块大小为$128$字，$128=2^7$，所有字块内地址为7位，剩下的$19-7-4=8$位作为主存字块标记。<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/1932912-20200702162305856-386316918.png" srcset="/img/loading.gif" alt=""></p>
+<p>优缺点：</p>
+<ul>
+<li>电路较简单，速度较快，命中率较高，属于比较理想的方式</li>
+</ul>
 
             </div>
             <hr>
@@ -297,17 +314,10 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/study/">study</a>
+                      <a class="hover-with-bg" href="/categories/Notes/">Notes</a>
                     
                   </div>
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
-                    
-                  </div>
                 
               </div>
               
@@ -318,18 +328,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/01/cache%E6%98%A0%E5%B0%84%E6%96%B9%E5%BC%8F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Cache地址映射与计算方式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/27/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84(3)/">
-                        <span class="hidden-mobile">超级源点与超级汇点</span>
+                      <a href="/2020/10/16/virtual_address/">
+                        <span class="hidden-mobile">虚拟地址和物理地址</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -608,7 +612,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "虚拟地址和物理地址&nbsp;",
+        "Cache地址映射与计算方式&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
