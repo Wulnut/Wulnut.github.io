@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -267,19 +267,19 @@
 <a id="more"></a>
 <h1 id="有关lower-bound-函数的使用"><a href="#有关lower-bound-函数的使用" class="headerlink" title="有关lower_bound()函数的使用"></a>有关lower_bound()函数的使用</h1><p>lower_bound()函数需要加载头文件#include<algorithm>,其基本用途是查找有序区间中第一个大于或等于某给定值的元素的位置，其中排序规则可以通过二元关系来表示。</p>
 <div class="hljs"><pre><code class="hljs C++">函数原型：
-<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-title">class</span> <span class="hljs-title">Type</span>&gt;</span>
-<span class="hljs-class">   <span class="hljs-title">ForwardIterator</span> <span class="hljs-title">lower_bound</span>(</span>
-<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">First</span>, </span>
-<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">Last</span>,</span>
-<span class="hljs-class">      <span class="hljs-title">const</span> <span class="hljs-title">Type</span>&amp; _<span class="hljs-title">Val</span></span>
-<span class="hljs-class">   );</span>
-<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-title">class</span> <span class="hljs-title">Type</span>, <span class="hljs-title">class</span> <span class="hljs-title">BinaryPredicate</span>&gt;</span>
-<span class="hljs-class">   <span class="hljs-title">ForwardIterator</span> <span class="hljs-title">lower_bound</span>(</span>
-<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">First</span>, </span>
-<span class="hljs-class">      <span class="hljs-title">ForwardIterator</span> _<span class="hljs-title">Last</span>,</span>
-<span class="hljs-class">      <span class="hljs-title">const</span> <span class="hljs-title">Type</span>&amp; _<span class="hljs-title">Val</span>,</span>
-<span class="hljs-class">      <span class="hljs-title">BinaryPredicate</span> _<span class="hljs-title">Comp</span></span>
-<span class="hljs-class">   );</span>传入参数说明：
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-keyword">class</span> <span class="hljs-title">Type</span>&gt;</span>
+   <span class="hljs-function">ForwardIterator <span class="hljs-title">lower_bound</span><span class="hljs-params">(</span></span>
+<span class="hljs-function"><span class="hljs-params">      ForwardIterator _First, </span></span>
+<span class="hljs-function"><span class="hljs-params">      ForwardIterator _Last,</span></span>
+<span class="hljs-function"><span class="hljs-params">      <span class="hljs-keyword">const</span> Type&amp; _Val</span></span>
+<span class="hljs-function"><span class="hljs-params">   )</span></span>;
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForwardIterator</span>, <span class="hljs-keyword">class</span> <span class="hljs-title">Type</span>, <span class="hljs-keyword">class</span> <span class="hljs-title">BinaryPredicate</span>&gt;</span>
+   <span class="hljs-function">ForwardIterator <span class="hljs-title">lower_bound</span><span class="hljs-params">(</span></span>
+<span class="hljs-function"><span class="hljs-params">      ForwardIterator _First, </span></span>
+<span class="hljs-function"><span class="hljs-params">      ForwardIterator _Last,</span></span>
+<span class="hljs-function"><span class="hljs-params">      <span class="hljs-keyword">const</span> Type&amp; _Val,</span></span>
+<span class="hljs-function"><span class="hljs-params">      BinaryPredicate _Comp</span></span>
+<span class="hljs-function"><span class="hljs-params">   )</span></span>;传入参数说明：
    
 _First 要查找区间的起始位置
 _Last 要查找区间的结束位置

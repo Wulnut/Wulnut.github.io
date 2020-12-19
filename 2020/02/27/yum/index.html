@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -268,10 +268,10 @@
 <h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h2><p><strong>wget</strong>:类似于迅雷，是一种<code>下载工具</code>，通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，并可以使用HTTP代理 名字是World Wide Web”与“get”的结合。</p>
 <h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><p><strong>yum</strong>: 是redhat, centos 系统下的<code>软件安装方式</code>，基于Linux,全称为 Yellow dog Updater, Modified,是一个在Fedora和RedHat以及CentOS中的Shell前端软件包管理器,基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包。</p>
 <h3 id="yum常用选项和参数"><a href="#yum常用选项和参数" class="headerlink" title="yum常用选项和参数"></a>yum常用选项和参数</h3><h4 id="列举包文件"><a href="#列举包文件" class="headerlink" title="列举包文件"></a>列举包文件</h4><hr>
-<div class="hljs"><pre><code class="hljs applescript">yum <span class="hljs-built_in">list</span> <span class="hljs-comment">#列出资源库中所有可以安装或更新的rpm包</span>
-yum <span class="hljs-built_in">list</span> updates　<span class="hljs-comment">#列出资源库中所有可以更新的rpm包</span>
-yum <span class="hljs-built_in">list</span> installed　　<span class="hljs-comment">#列出已经安装的所有的rpm包</span>
-yum <span class="hljs-built_in">list</span> extras　　<span class="hljs-comment">#列出已经安装的但是不包含在官方资源库中的rpm包，例如安装了epel源的rpm包会列出来</span></code></pre></div>
+<div class="hljs"><pre><code class="hljs mipsasm">yum list <span class="hljs-comment">#列出资源库中所有可以安装或更新的rpm包</span>
+yum list updates　<span class="hljs-comment">#列出资源库中所有可以更新的rpm包</span>
+yum list <span class="hljs-keyword">installed　</span>　<span class="hljs-comment">#列出已经安装的所有的rpm包</span>
+yum list <span class="hljs-keyword">extras　</span>　<span class="hljs-comment">#列出已经安装的但是不包含在官方资源库中的rpm包，例如安装了epel源的rpm包会列出来</span></code></pre></div>
 <h4 id="列举资源信息"><a href="#列举资源信息" class="headerlink" title="列举资源信息"></a>列举资源信息</h4><hr>
 <div class="hljs"><pre><code class="hljs nginx"><span class="hljs-attribute">yum</span> <span class="hljs-literal">info</span>　　<span class="hljs-comment">#列出资源库中所有可以安装或更新的rpm包的信息</span>
 yum <span class="hljs-literal">info</span> perl　　<span class="hljs-comment">#列出perl包信息</span>
@@ -296,10 +296,10 @@ yum groupinfo <span class="hljs-string">&quot;Chinese Support&quot;</span>　　
 <h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4></li>
 </ul>
 <hr>
-<div class="hljs"><pre><code class="hljs routeros">yum check-update　　#检查可更新的rpm包
-yum update　　#更新所有的rpm包
-yum update kernel kernel-source　　#更新指定的rpm包,如更新kernel和kernel source
-yum<span class="hljs-built_in"> upgrade　</span>　#大规模的版本升级,与yum update不同的是,连旧的淘汰的包也升级</code></pre></div>
+<div class="hljs"><pre><code class="hljs smali">yum<span class="hljs-built_in"> check-update　</span>　<span class="hljs-comment">#检查可更新的rpm包</span>
+yum update　　<span class="hljs-comment">#更新所有的rpm包</span>
+yum update kernel kernel-source　　<span class="hljs-comment">#更新指定的rpm包,如更新kernel和kernel source</span>
+yum upgrade　　<span class="hljs-comment">#大规模的版本升级,与yum update不同的是,连旧的淘汰的包也升级</span></code></pre></div>
 <h4 id="清空缓存"><a href="#清空缓存" class="headerlink" title="清空缓存"></a>清空缓存</h4><hr>
 <div class="hljs"><pre><code class="hljs glsl">yum clean packages　　<span class="hljs-meta">#清除暂存中rpm包文件</span>
 yum clean headers　　<span class="hljs-meta">#清除暂存中rpm头文件</span>

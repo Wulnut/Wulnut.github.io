@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -347,8 +347,8 @@ class Stack &#123;
 <h2 id="使用类模板"><a href="#使用类模板" class="headerlink" title="- 使用类模板"></a>- 使用类模板</h2><ul>
 <li>Stack<int> stack：定义了一类型为int的Stack， 大小为默认值</li>
 <li>Stack<int, 100> stack：定义了一个类型为int, 大小为100的Stack</li>
-<li>将100个元素Push到Stack中<div class="hljs"><pre><code class="hljs matlab"><span class="hljs-keyword">for</span> (int <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; <span class="hljs-number">100</span>; ++ <span class="hljs-built_in">i</span>) &#123;
-    stack.Push(<span class="hljs-built_in">i</span>);
+<li>将100个元素Push到Stack中<div class="hljs"><pre><code class="hljs reasonml"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>;<span class="hljs-operator"> ++ </span>i) &#123;
+    stack.<span class="hljs-constructor">Push(<span class="hljs-params">i</span>)</span>;
 &#125;</code></pre></div></li>
 <li>Pop出Stack顶部元素:<div class="hljs"><pre><code class="hljs reasonml"><span class="hljs-built_in">int</span> element
 stack.<span class="hljs-constructor">Pop(<span class="hljs-params">element</span>)</span>;</code></pre></div></li>
@@ -375,7 +375,7 @@ Stack&lt;Stack&lt;<span class="hljs-built_in">int</span>&gt;&gt; <span class="hl
 </ul>
 </li>
 <li>特化后的具体体现可以和柱模板的实现不一样，比如以下的特化增加了一个成员函数，并采用list作元素存取的实现<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">template</span> &lt;&gt;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> &lt;std :: wstring&gt; &#123;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> &lt;</span><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>&gt; &#123;
   <span class="hljs-keyword">public</span>:
       <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetStackStack</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span> :: <span class="hljs-keyword">size_t</span> n)</span> </span>&#123;m_nMaxSize = n;&#125;
       <span class="hljs-comment">// 添加一个新的成员函数</span>

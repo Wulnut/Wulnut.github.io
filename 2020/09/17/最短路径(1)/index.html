@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -299,8 +299,8 @@ que = Queue()
 <span class="hljs-comment"># 邻接表存储边</span>
 edges = [[]]
 <span class="hljs-comment"># 维护是否在队列当中</span>
-visited = [<span class="hljs-literal">False</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(V)]
-dis = [sys.maxsize <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(V)]
+visited = [<span class="hljs-literal">False</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(V)]
+dis = [sys.maxsize <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(V)]
 dis[s] = <span class="hljs-number">0</span>
 
 que.put(s)
@@ -378,29 +378,29 @@ visited[s] = <span class="hljs-literal">True</span>
     <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, t);
 &#125;
 </code></pre></div></p>
-<p>Python版；<br><div class="hljs"><pre><code class="hljs python">n, m, k = map(int, input().split())
+<p>Python版；<br><div class="hljs"><pre><code class="hljs python">n, m, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 
 <span class="hljs-comment">## 用一个list 记录所有边的信息即可</span>
 g = []
-dist = [float(<span class="hljs-string">&quot;inf&quot;</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n+<span class="hljs-number">1</span>)]
+dist = [<span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n+<span class="hljs-number">1</span>)]
 
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(m):
-    a, b, w = map(int, input().split())
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):
+    a, b, w = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
     g.append([a, b, w])
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bellman_ford</span>():</span>
     dist[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>
 
     <span class="hljs-comment">## 循环几次代表最多用几条边</span>
-    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(k):
+    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k):
         <span class="hljs-comment">## 必须backup 防止在过程中会更新dist里面的数据导致并不是最多k条边</span>
         backup = dist[:]
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(m):
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):
             a, b, w = g[i][<span class="hljs-number">0</span>], g[i][<span class="hljs-number">1</span>], g[i][<span class="hljs-number">2</span>]
-            dist[b] = min(dist[b], backup[a] + w)
+            dist[b] = <span class="hljs-built_in">min</span>(dist[b], backup[a] + w)
 
 bellman_ford()
-print(dist[n] <span class="hljs-keyword">if</span> dist[n] != float(<span class="hljs-string">&quot;inf&quot;</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;impossible&quot;</span>)</code></pre></div></p>
+print(dist[n] <span class="hljs-keyword">if</span> dist[n] != <span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;impossible&quot;</span>)</code></pre></div></p>
 
             </div>
             <hr>

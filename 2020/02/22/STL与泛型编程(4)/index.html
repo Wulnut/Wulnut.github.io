@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -315,12 +315,12 @@
 &#125;</code></pre></div></p>
 <h3 id="判断vector是否为空、获取vector大小"><a href="#判断vector是否为空、获取vector大小" class="headerlink" title="判断vector是否为空、获取vector大小"></a>判断vector是否为空、获取vector大小</h3><ul>
 <li>如果要判断vector是否为空则调用empty()函数</li>
-<li>如果要获取vector大小则调用size()函数<div class="hljs"><pre><code class="hljs angelscript">std :: vector &lt;std :: wstring&gt; v3;
-<span class="hljs-built_in">bool</span> isEmpty = v3.empty();
+<li>如果要获取vector大小则调用size()函数<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">vector</span> &lt;<span class="hljs-built_in">std</span> :: <span class="hljs-built_in">wstring</span>&gt; v3;
+<span class="hljs-keyword">bool</span> isEmpty = v3.empty();
 
-<span class="hljs-built_in">int</span> <span class="hljs-built_in">array</span>[] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>&#125;;
-std :: vector&lt;<span class="hljs-built_in">int</span>&gt; v(<span class="hljs-built_in">array</span>, <span class="hljs-built_in">array</span> + <span class="hljs-number">10</span>)
-std :: size vSize = v.size();</code></pre></div>
+<span class="hljs-keyword">int</span> <span class="hljs-built_in">array</span>[] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>&#125;;
+<span class="hljs-built_in">std</span> :: <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">v</span><span class="hljs-params">(<span class="hljs-built_in">array</span>, <span class="hljs-built_in">array</span> + <span class="hljs-number">10</span>)</span></span>
+<span class="hljs-function"><span class="hljs-built_in">std</span> :: <span class="hljs-built_in">size</span> vSize </span>= v.<span class="hljs-built_in">size</span>();</code></pre></div>
 </li>
 </ul>
 <h3 id="访问vector中元素"><a href="#访问vector中元素" class="headerlink" title="访问vector中元素"></a>访问vector中元素</h3><ul>

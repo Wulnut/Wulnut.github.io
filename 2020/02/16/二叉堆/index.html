@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -275,16 +275,16 @@
 <li>左儿子的编号是自己的编号 $×2+1$</li>
 <li>右儿子的编号是自己的编号 $×2+2$</li>
 </ul>
-<div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> N = <span class="hljs-number">10000</span>;
-<span class="hljs-built_in">int</span> heap[N], sz;
+<div class="hljs"><pre><code class="hljs arduino"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">10000</span>;
+<span class="hljs-keyword">int</span> heap[N], sz;
 
-<span class="hljs-built_in">void</span> push(<span class="hljs-built_in">int</span> x) &#123;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
     <span class="hljs-comment">//自己节点的编号</span>
-    <span class="hljs-built_in">int</span> i = sz ++;
+    <span class="hljs-keyword">int</span> i = sz ++;
     
     <span class="hljs-keyword">while</span>(i &gt; <span class="hljs-number">0</span>) &#123;
         <span class="hljs-comment">// 父亲结点的编号</span>
-        <span class="hljs-built_in">int</span> p = (i = <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">int</span> p = (i = <span class="hljs-number">1</span>) &gt;&gt; <span class="hljs-number">2</span>;
 
         <span class="hljs-comment">//如果已经没有大小颠倒则退出</span>
         <span class="hljs-keyword">if</span> (heap[p] &lt;= x) <span class="hljs-keyword">break</span>;
@@ -297,20 +297,20 @@
     heap[i] = x;
 &#125;
 
-<span class="hljs-built_in">int</span> pop() &#123;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;
 
     <span class="hljs-comment">//最小值</span>
 
-    <span class="hljs-built_in">int</span> ret = heap[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">int</span> ret = heap[<span class="hljs-number">0</span>];
 
     <span class="hljs-comment">//要提到根的数值</span>
-    <span class="hljs-built_in">int</span> x = heap[--sz];
+    <span class="hljs-keyword">int</span> x = heap[--sz];
 
     <span class="hljs-comment">//从根开始向下交换</span>
-    <span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
     <span class="hljs-keyword">while</span> ((i &lt;&lt; <span class="hljs-number">2</span>) + <span class="hljs-number">1</span> &lt; sz) &#123;
         <span class="hljs-comment">//比较儿子的值</span>
-        <span class="hljs-built_in">int</span> a = i * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, b = i * <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">int</span> a = i * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, b = i * <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;
         <span class="hljs-keyword">if</span> (b &lt; sz &amp;&amp; heap[b] &lt; heap[a]) a = b;
 
         <span class="hljs-comment">//如果已经没有大小颠倒则退出</span>

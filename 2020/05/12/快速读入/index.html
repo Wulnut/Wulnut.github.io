@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -463,8 +463,8 @@ flush()<span class="hljs-comment">//刷新缓冲区，把缓冲区的内容输�
 &#125;</code></pre></div>
 <p>用时3.339s</p>
 <h3 id="fwrite输出优化"><a href="#fwrite输出优化" class="headerlink" title="fwrite输出优化"></a>fwrite输出优化</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span> &gt;</span>
-<span class="hljs-class">    <span class="hljs-title">inline</span> <span class="hljs-title">void</span> <span class="hljs-title">print</span>( <span class="hljs-title">register</span> <span class="hljs-title">T</span> <span class="hljs-title">u</span> )</span>
-<span class="hljs-class">    &#123;</span>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">( <span class="hljs-keyword">register</span> T u )</span></span>
+<span class="hljs-function">    </span>&#123;
         <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> * q = a;
         <span class="hljs-keyword">if</span>( !u ) * t++ = <span class="hljs-number">48</span>;
         <span class="hljs-keyword">else</span>

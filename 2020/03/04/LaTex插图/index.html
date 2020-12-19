@@ -58,7 +58,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
 </head>
 
 
@@ -301,8 +301,8 @@
 
 \end&#123;document&#125;</code></pre></div>
 <h2 id="using-package"><a href="#using-package" class="headerlink" title="using package"></a>using package</h2><p>$\LaTeX$中绘图均要引入<code>tikz</code>宏包</p>
-<div class="hljs"><pre><code class="hljs latex"><span class="hljs-tag">\<span class="hljs-name">usepackage</span><span class="hljs-string">&#123;tikz&#125;</span></span>
-<span class="hljs-tag">\<span class="hljs-name">usetikzlibrary</span><span class="hljs-string">&#123;shapes.geometric, arrows&#125;</span></span></code></pre></div>
+<div class="hljs"><pre><code class="hljs dust"><span class="xml">\usepackage</span><span class="hljs-template-variable">&#123;tikz&#125;</span>
+<span class="xml">\usetikzlibrary</span><span class="hljs-template-variable">&#123;shapes.geometric, arrows&#125;</span></code></pre></div>
 <h2 id="对节点node进行定义"><a href="#对节点node进行定义" class="headerlink" title="对节点node进行定义"></a>对节点node进行定义</h2><div class="hljs"><pre><code class="hljs arduino">\tikzstyle&#123;<span class="hljs-built_in">process</span>&#125; = [rectangle,minimum <span class="hljs-built_in">width</span>=<span class="hljs-number">3</span>cm,minimum <span class="hljs-built_in">height</span>=<span class="hljs-number">1</span>cm,<span class="hljs-built_in">text</span> centered,<span class="hljs-built_in">text</span> <span class="hljs-built_in">width</span> =<span class="hljs-number">3</span>cm,draw=black,<span class="hljs-built_in">fill</span>=orange!<span class="hljs-number">30</span>]</code></pre></div>
 <h3 id="节点形状"><a href="#节点形状" class="headerlink" title="节点形状"></a>节点形状</h3><div class="hljs"><pre><code class="hljs avrasm"><span class="hljs-symbol">rectangle:</span>矩形，可加圆角(rounded corners)
 <span class="hljs-symbol">trapezium:</span>平行四边形
@@ -310,7 +310,7 @@
 <h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><div class="hljs"><pre><code class="hljs arduino">minimum <span class="hljs-built_in">width</span>
 minimum <span class="hljs-built_in">height</span></code></pre></div>
 <h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><div class="hljs"><pre><code class="hljs applescript"><span class="hljs-built_in">text</span> centered:文本居中</code></pre></div>
-<h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><div class="hljs"><pre><code class="hljs angelscript">text width=<span class="hljs-number">3</span>cm:文本超过<span class="hljs-number">3</span>cm时会自动换行</code></pre></div>
+<h3 id="文本宽度"><a href="#文本宽度" class="headerlink" title="文本宽度"></a>文本宽度</h3><div class="hljs"><pre><code class="hljs apache"><span class="hljs-attribute">text</span> width=<span class="hljs-number">3</span>cm:文本超过<span class="hljs-number">3</span>cm时会自动换行</code></pre></div>
 <h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><div class="hljs"><pre><code class="hljs ebnf"><span class="hljs-attribute">draw</span></code></pre></div>
 <h3 id="填充颜色"><a href="#填充颜色" class="headerlink" title="填充颜色"></a>填充颜色</h3><div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">fill</span></code></pre></div>
 <h2 id="对箭头进行定义"><a href="#对箭头进行定义" class="headerlink" title="对箭头进行定义"></a>对箭头进行定义</h2><div class="hljs"><pre><code>tikzstyle&#123;arrow&#125; = [thick,-&gt;,&gt;=stealth]
