@@ -373,14 +373,14 @@
 <span class="hljs-keyword">import</span> java.util.Vector;
  
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionPool</span> </span>&#123;
-	<span class="hljs-keyword">private</span> String jdbcDriver = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 数据库驱动</span>
+ <span class="hljs-keyword">private</span> String jdbcDriver = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 数据库驱动</span>
 	<span class="hljs-keyword">private</span> String dbUrl = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 数据 URL</span>
 	<span class="hljs-keyword">private</span> String dbUsername = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 数据库用户名</span>
 	<span class="hljs-keyword">private</span> String dbPassword = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 数据库用户密码</span>
 	<span class="hljs-keyword">private</span> String testTable = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 测试连接是否可用的测试表名，默认没有测试表</span>
 	
-	<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> initialConnections = <span class="hljs-number">10</span>; <span class="hljs-comment">// 连接池的初始大小</span>
-	<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> incrementalConnections = <span class="hljs-number">5</span>;<span class="hljs-comment">// 连接池自动增加的大小</span>
+ <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> initialConnections = <span class="hljs-number">10</span>; <span class="hljs-comment">// 连接池的初始大小</span>
+ <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> incrementalConnections = <span class="hljs-number">5</span>;<span class="hljs-comment">// 连接池自动增加的大小</span>
 	<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> maxConnections = <span class="hljs-number">50</span>; <span class="hljs-comment">// 连接池最大的大小</span>
 	<span class="hljs-keyword">private</span> Vector connections = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// 存放连接池中数据库连接的向量 , 初始时为 null</span>
 	<span class="hljs-comment">// 它中存放的对象为 PooledConnection 型</span>
