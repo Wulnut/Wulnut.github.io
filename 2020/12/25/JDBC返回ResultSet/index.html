@@ -1,0 +1,884 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/panda.png">
+  <link rel="icon" type="image/png" href="/img/panda.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一个普普通通的，知识于思想分享破站。虽然不成熟但是记录了我的成长过程">
+  <meta name="author" content="Wulnut">
+  <meta name="keywords" content="Wulnut,垃圾桶,ash-bin,美赛">
+  <title>JDBC ResultSet结果通过java反射赋值给java对象 ~ Wulnut`s space</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Wulnut`s space" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Wulnut's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Home/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-brush"></i>
+                Blog
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                Rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/JDBC_index.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-25 11:00" pubdate>
+        2020年12月25日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">JDBC ResultSet结果通过java反射赋值给java对象</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>使用反射</p>
+<a id="more"></a>
+<p>我们先来写一个不用框架，用JDBC来操作呢数据库，下面写一个简单的例子：</p>
+<div class="hljs"><pre><code class="hljs java">
+<span class="hljs-comment">// 加载驱动程序</span>
+Class.forName(driver);
+conn = DriverManager.getConnection(url, user, password);
+
+Statement statement = conn.createStatement();
+String sql = <span class="hljs-string">&quot;select * from user&quot;</span>;
+ResultSet rs = statement.executeQuery(sql);
+
+String name  = <span class="hljs-keyword">null</span>;
+String phone = <span class="hljs-keyword">null</span>;
+
+<span class="hljs-keyword">while</span> (rs.next()) &#123;
+    <span class="hljs-comment">//获取stuname这列数据</span>
+    name  = rs.getString(<span class="hljs-string">&quot;user_name&quot;</span>);
+    phone = rs.getString(<span class="hljs-string">&quot;user_phone&quot;</span>);
+
+    System.out.println(name + <span class="hljs-string">&quot;\t&quot;</span> + phone);
+&#125;</code></pre></div>
+<p>就是这么简单的一段代码，然后就是想从数据库中获取相应的字段，就用get和set方法来处理，返回一个对象，写起来就是麻烦，不通用</p>
+<p>因为java有反射的功能，所以可以抽取出来，写个通用的方法。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment">	 * 把ResultSet的结果放到java对象中</span>
+<span class="hljs-comment">	 * </span>
+<span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> &lt;T&gt;</span>
+<span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> rs</span>
+<span class="hljs-comment">	 *            ResultSet</span>
+<span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> obj</span>
+<span class="hljs-comment">	 *            java类的class</span>
+<span class="hljs-comment">	 * <span class="hljs-doctag">@return</span></span>
+<span class="hljs-comment">	 */</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function">ArrayList&lt;T&gt; <span class="hljs-title">putResult</span><span class="hljs-params">(ResultSet rs, Class&lt;T&gt; obj)</span> </span>&#123;
+		<span class="hljs-keyword">try</span> &#123;
+			ArrayList&lt;T&gt; arrayList = <span class="hljs-keyword">new</span> ArrayList&lt;T&gt;();
+			ResultSetMetaData metaData = rs.getMetaData();
+			<span class="hljs-comment">/**</span>
+<span class="hljs-comment">			 * 获取总列数</span>
+<span class="hljs-comment">			 */</span>
+			<span class="hljs-keyword">int</span> count = metaData.getColumnCount();
+			<span class="hljs-keyword">while</span> (rs.next()) &#123;
+				<span class="hljs-comment">/**</span>
+<span class="hljs-comment">				 * 创建对象实例</span>
+<span class="hljs-comment">				 */</span>
+				T newInstance = obj.newInstance();
+				<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= count; i++) &#123;
+					<span class="hljs-comment">/**</span>
+<span class="hljs-comment">					 * 给对象的某个属性赋值</span>
+<span class="hljs-comment">					 */</span>
+					String name = metaData.getColumnName(i).toLowerCase();
+					name = toJavaField(name);<span class="hljs-comment">// 改变列名格式成java命名格式</span>
+					String substring = name.substring(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<span class="hljs-comment">// 首字母大写</span>
+					String replace = name.replaceFirst(substring, substring.toUpperCase());
+					Class&lt;?&gt; type = obj.getDeclaredField(name).getType();<span class="hljs-comment">// 获取字段类型</span>
+					Method method = obj.getMethod(<span class="hljs-string">&quot;set&quot;</span> + replace, type);
+					<span class="hljs-comment">/**</span>
+<span class="hljs-comment">					 * 判断读取数据的类型</span>
+<span class="hljs-comment">					 */</span>
+					<span class="hljs-keyword">if</span>(type.isAssignableFrom(String.class))&#123;
+						method.invoke(newInstance, rs.getString(i));
+					&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.isAssignableFrom(<span class="hljs-keyword">int</span>.class) || type.isAssignableFrom(Integer.class))&#123;
+						method.invoke(newInstance, rs.getInt(i));
+					&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.isAssignableFrom(Boolean.class) || type.isAssignableFrom(<span class="hljs-keyword">boolean</span>.class))&#123;
+						method.invoke(newInstance, rs.getBoolean(i));
+					&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.isAssignableFrom(Date.class))&#123;
+						method.invoke(newInstance, rs.getDate(i));
+					&#125;
+				&#125;
+				arrayList.add(newInstance);
+			&#125;
+			<span class="hljs-keyword">return</span> arrayList;
+ 
+		&#125; <span class="hljs-keyword">catch</span> (InstantiationException | IllegalAccessException | SQLException | SecurityException
+				| NoSuchMethodException | IllegalArgumentException | InvocationTargetException
+				| NoSuchFieldException e) &#123;
+			<span class="hljs-comment">// TODO Auto-generated catch block</span>
+			e.printStackTrace();
+		&#125;
+ 
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+	&#125;
+	<span class="hljs-comment">/**</span>
+<span class="hljs-comment">	 * 数据库命名格式转java命名格式</span>
+<span class="hljs-comment">	 * </span>
+<span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> str</span>
+<span class="hljs-comment">	 *            数据库字段名</span>
+<span class="hljs-comment">	 * <span class="hljs-doctag">@return</span> java字段名</span>
+<span class="hljs-comment">	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">toJavaField</span><span class="hljs-params">(String str)</span> </span>&#123;
+ 
+ 
+		String[] split = str.split(<span class="hljs-string">&quot;_&quot;</span>);
+		StringBuilder builder = <span class="hljs-keyword">new</span> StringBuilder();
+		builder.append(split[<span class="hljs-number">0</span>]);<span class="hljs-comment">// 拼接第一个字符</span>
+ 
+ 
+		<span class="hljs-comment">// 如果数组不止一个单词</span>
+		<span class="hljs-keyword">if</span> (split.length &gt; <span class="hljs-number">1</span>) &#123;
+			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; split.length; i++) &#123;
+				<span class="hljs-comment">// 去掉下划线，首字母变为大写</span>
+				String string = split[i];
+				String substring = string.substring(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+				split[i] = string.replaceFirst(substring, substring.toUpperCase());
+				builder.append(split[i]);
+			&#125;
+		&#125;
+ 
+ 
+		<span class="hljs-keyword">return</span> builder.toString();
+	&#125;</code></pre></div>
+<p>这里先简单处理这几种常用类型，其他的其实可以后续再加上。这里主要依赖反射obj.getDeclaredField(name).getType()获取字段类型，然后通过obj.getMethod(“set” + replace, type)来找到数据库java对象的这个set方法，最终method.invoke(newInstance, rs.getString(i))来附值，这么一想，如果查出来是一个很大的list的，那么该怎么优化呢？</p>
+<p>先来使用一下，这个写的小工具，就可以不用繁琐的get和set方法：</p>
+<div class="hljs"><pre><code class="hljs java">ArrayList&lt;userDO&gt; userDOS = ResultSetPropertiesHelper.transferResult(rs, userDO.class);
+<span class="hljs-keyword">for</span> (UserDD userDO : userDOS) &#123;
+    System.out.println(userDO.toString());
+&#125;</code></pre></div>
+<p>上面是通过对象里面的set和get方法来设置变量的值，这样写起来感觉比较麻烦，直接用Field的set方法是不是更加简单一点，但是这样写，访问的是public对象，所以</p>
+<div class="hljs"><pre><code class="hljs `java">Field field &#x3D; obj.getField(name);
+if (type.isAssignableFrom(String.class)) &#123;
+method.invoke(newInstance, rs.getString(i));
+&#125; else if (type.isAssignableFrom(byte.class) || type.isAssignableFrom(Byte.class)) &#123;
+method.invoke(newInstance, rs.getByte(i));&#x2F;&#x2F; byte 数据类型是8位、有符号的，以二进制补码表示的整数
+&#125; else if (type.isAssignableFrom(short.class) || type.isAssignableFrom(Short.class)) &#123;
+method.invoke(newInstance, rs.getShort(i));&#x2F;&#x2F; short 数据类型是 16 位、有符号的以二进制补码表示的整数
+&#125; else if (type.isAssignableFrom(int.class) || type.isAssignableFrom(Integer.class)) &#123;
+method.invoke(newInstance, rs.getInt(i));&#x2F;&#x2F; int 数据类型是32位、有符号的以二进制补码表示的整数
+&#125; else if (type.isAssignableFrom(long.class) || type.isAssignableFrom(Long.class)) &#123;
+method.invoke(newInstance, rs.getLong(i));&#x2F;&#x2F; long 数据类型是 64 位、有符号的以二进制补码表示的整数
+&#125; else if (type.isAssignableFrom(float.class) || type.isAssignableFrom(Float.class)) &#123;
+method.invoke(newInstance, rs.getFloat(i));&#x2F;&#x2F; float 数据类型是单精度、32位、符合IEEE 754标准的浮点数
+&#125; else if (type.isAssignableFrom(double.class) || type.isAssignableFrom(Double.class)) &#123;
+method.invoke(newInstance, rs.getDouble(i));&#x2F;&#x2F; double 数据类型是双精度、64 位、符合IEEE 754标准的浮点数
+&#125; else if (type.isAssignableFrom(BigDecimal.class)) &#123;
+method.invoke(newInstance, rs.getBigDecimal(i));
+&#125; else if (type.isAssignableFrom(boolean.class) || type.isAssignableFrom(Boolean.class)) &#123;
+method.invoke(newInstance, rs.getBoolean(i));&#x2F;&#x2F; boolean数据类型表示一位的信息
+&#125; else if (type.isAssignableFrom(Date.class)) &#123;
+method.invoke(newInstance, rs.getDate(i));
+&#125;</code></pre></div>
+<p>这里补充一下ResultSetMetaData接口都有哪些信息</p>
+<p>可以使用此对象获得列的数目和类型以及每一列的名称：</p>
+<ul>
+<li>getColumnCount(); 返回 ResultSet 中的列数。 </li>
+<li>getColumnName(int); 返回列序号为 int 的列名。 </li>
+<li>getColumnLabel(int); 返回此列暗含的标签。 </li>
+<li>isCurrency(int); 如果此列包含带有货币单位的一个数字，则返回 true。 </li>
+<li>isReadOnly(int); 如果此列为只读，则返回 true。 </li>
+<li>isAutoIncrement(int); 如果此列自动递增，则返回 true。这类列通常为键，而且始终是只读的。 </li>
+<li>getColumnType(int); 返回此列的 SQL 数据类型。这些数据类型包括 </li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/23/%E8%BF%9E%E6%8E%A5%E6%B1%A0/">
+                        <span class="hidden-mobile">简述数据库连接池</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          enableQQ: true,
+          booolean: true,
+          app_id: "l5qw48G3zG9UeCAED2Aglgmd-gzGzoHsz",
+          app_key: "xl3wqB9zn5vqUSMrXdqpDLwT",
+          placeholder: "ヾﾉ≧∀≦)o来说点嘛",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+          requureFiel: ['niick', 'mail'],
+          emojiCDN: '//i0.hdslb.com/bfs/emote/',
+          emojiMaps: {
+        "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
+        "tv_亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
+        "tv_偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
+        "tv_再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
+        "tv_冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
+        "tv_发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
+        "tv_发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
+        "tv_可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
+        "tv_吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
+        "tv_呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
+        "tv_呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
+        "tv_困": "241ee304e44c0af029adceb294399391e4737ef2.png",
+        "tv_坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
+        "tv_大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
+        "tv_大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
+        "tv_委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
+        "tv_害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
+        "tv_尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
+        "tv_微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
+        "tv_思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
+        "tv_惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
+        "tv_打脸": "56ab10b624063e966bfcb76ea5dc4794d87dfd47.png",
+        "tv_抓狂": "fe31c08edad661d63762b04e17b8d5ae3c71a757.png",
+        "tv_抠鼻": "c666f55e88d471e51bbd9fab9bb308110824a6eb.png",
+        "tv_斜眼笑": "911f987aa8bc1bee12d52aafe62bc41ef4474e6c.png",
+        "tv_无奈": "ea8ed89ee9878f2fece2dda0ea8a5dbfe21b5751.png",
+        "tv_晕": "5443c22b4d07fb1907ccc610c8e6db254f2461b7.png",
+        "tv_流汗": "cead1c351ab8d79e9f369605beb90148db0fbed3.png",
+        "tv_流泪": "7e71cde7858f0cd50d74b0264aa26db612a8a167.png",
+        "tv_流鼻血": "c32d39db2737f89b904ca32700d140a9241b0767.png",
+        "tv_点赞": "f85c354995bd99e28fc76c869bfe42ba6438eff4.png",
+        "tv_生气": "26702dcafdab5e8225b43ffd23c94ac1ff932654.png",
+        "tv_生病": "8b0ec90e6b86771092a498c54f09fc94621c1900.png",
+        "tv_疑问": "0793d949b18d7be716078349c202c15ff166f314.png",
+        "tv_白眼": "c1d59f439e379ee50eef488bcb5e5378e5044ea4.png",
+        "tv_皱眉": "72ccad6679fea0d14cce648b4d818e09b8ffea2d.png",
+        "tv_目瞪口呆": "0b8cb81a68de5d5365212c99375e7ace3e7891b7.png",
+        "tv_睡着": "8b196675b53af58264f383c50ad0945048290b33.png",
+        "tv_笑哭": "1abc628f6d4f4caf9d0e7800878f4697abbc8273.png",
+        "tv_腼腆": "89712c0d4af73e67f89e35cbc518420380a7f6f4.png",
+        "tv_色": "61822c7e9aae5da76475e7892534545336b23a6f.png",
+        "tv_调侃": "4bc022533ef31544ca0d72c12c808cf4a1cce3e3.png",
+        "tv_调皮": "b9c41de8e82dd7a8515ae5e3cb63e898bf245186.png",
+        "tv_鄙视": "6e72339f346a692a495b123174b49e4e8e781303.png",
+        "tv_闭嘴": "c9e990da7f6e93975e25fd8b70e2e290aa4086ef.png",
+        "tv_难过": "87f46748d3f142ebc6586ff58860d0e2fc8263ba.png",
+        "tv_馋": "fc7e829b845c43c623c8b490ee3602b7f0e76a31.png",
+        "tv_鬼脸": "0ffbbddf8a94d124ca2f54b360bbc04feb6bbfea.png",
+        "tv_黑人问号": "45821a01f51bc867da9edbaa2e070410819a95b2.png",
+        "tv_鼓掌": "1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png",
+        "custom_37" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/097cd88f446efae87cb27de38c5eed15.png",
+        "custom_36" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/ec2166501d29bc1eb7380c22944db462.png",
+        "custom_35" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/8ca39f96c182e51cd752dde464157c2e.png",
+        "custom_34" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/0a65c5dd18872b56605c08f7bae2e8c8.png",
+        "custom_33" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@latest/2020/04/22/ec3edbfe84684fdb1680307d261c3c7b.png",
+        "custom_32" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/31.webp",
+        "custom_31" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/30.gif",
+        "custom_30" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/29.webp",
+        "custom_29" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/28.webp",
+        "custom_28" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/27.webp",
+        "custom_27" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/26.webp",
+        "custom_26" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/25.jpg",
+        "custom_25" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/24.webp",
+        "custom_24" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/23.webp",
+        "custom_23" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/22.webp",
+        "custom_22" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/21.webp",
+        "custom_21" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/20.webp",
+        "custom_20" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/19.webp",
+        "custom_19" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/18.jpg",
+        "custom_18" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/17.webp",
+        "custom_17" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/16.webp",
+        "custom_16" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/15.webp",
+        "custom_15" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/14.webp",
+        "custom_14" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/13.webp",
+        "custom_13" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/12.webp",
+        "custom_12" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/11.webp",
+        "custom_11" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/10.webp",
+        "custom_10" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/9.webp",
+        "custom_9" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/8.webp",
+        "custom_8" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/7.webp",
+        "custom_7" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/6.gif",
+        "custom_6" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/5.gif",
+        "custom_5" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/4.jpg",
+        "custom_4" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/3.jpg",
+        "custom_3" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/2.webp",
+        "custom_2" : "https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/1.webp",
+        "custom_1" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@master/2020/04/19/c3164053d300cc5cca5e4dc3311842dc.png",
+        "custom_0" : "https://cdn.jsdelivr.net/gh/blogimg/picbed@master/2020/04/19/6b5e768e524c8441ba66184bfdd86d4d.png",
+            // ... 更多表情
+        }
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+        <p>copyright &copy 2019-2020</p>
+        <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
+        <i class="iconfont icon-love"></i>
+        <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
+      </div>
+    
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">鄂ICP证20001010号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "JDBC ResultSet结果通过java反射赋值给java对象&nbsp;",
+      ],
+      cursorChar: "|",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "🔗"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/mermaid/8.5.0/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8fe93db1aa8a4d3cebf0b912bc6d9f12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-155249740-1# Google 统计的 Tracking ID，参见 https://analytics.google.com/analytics/web/', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
