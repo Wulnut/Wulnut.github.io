@@ -220,7 +220,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      341 字
+      419 字
     </span>
   
 
@@ -230,7 +230,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      7
        分钟
     </span>
   
@@ -375,6 +375,7 @@ section .section_item:hover a {
 </section> -->
 <div class = "Photo">
 <center>
+    <p class="count"></p>
     <img src = "https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/Top-2.jpg" alt = "photo" />
 </center>
 <br>
@@ -386,6 +387,38 @@ section .section_item:hover a {
 这就是成功的秘诀，也是让大家尊敬你的关键。
 </center>
 </div>
+
+
+  <script>
+      window.onload = function () {
+          countDown();
+          function addZero(i) {
+              return i < 10 ? "0" + i: i + "";
+          }
+          function countDown() {
+              var nowtime = new Date();
+              var endtime = new Date("2021/12/26,8:30:00");
+              var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
+              var d = parseInt(lefttime / (24*60*60))
+              var h = parseInt(lefttime / (60 * 60) % 24);
+              var m = parseInt(lefttime / 60 % 60);
+              var s = parseInt(lefttime % 60);
+              d = addZero(d)
+              h = addZero(h);
+              m = addZero(m);
+              s = addZero(s);
+              document.querySelector(".count").innerHTML = `距离考研还剩  ${d}天 ${h} 时 ${m} 分 ${s} 秒`;
+              if (lefttime <= 0) {
+                  document.querySelector(".count").innerHTML = "考研加油！";
+                  return;
+              }
+              setTimeout(countDown, 1000);
+            }
+        }
+    </script>
+
+
+
 
 <script>
 $(window).resize(function () {
