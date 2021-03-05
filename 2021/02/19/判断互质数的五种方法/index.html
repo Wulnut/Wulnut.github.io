@@ -19,7 +19,7 @@
   <meta name="description" content="一个普普通通的，知识于思想分享破站。虽然不成熟但是记录了我的成长过程">
   <meta name="author" content="Wulnut">
   <meta name="keywords" content="Wulnut,垃圾桶,ash-bin,美赛">
-  <title>STL队列 ~ Wulnut`s space</title>
+  <title>判断互质数的五种方法 ~ Wulnut`s space</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -193,7 +193,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/queue(stl).jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/math-banner.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -208,8 +208,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-02-02 23:05" pubdate>
-        2020年2月2日 晚上
+      <time datetime="2021-02-19 15:52" pubdate>
+        2021年2月19日 下午
       </time>
     </span>
   
@@ -220,7 +220,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      437 字
+      542 字
     </span>
   
 
@@ -230,7 +230,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -260,74 +260,27 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">STL队列</h1>
+            <h1 style="display: none">判断互质数的五种方法</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>STL队列简述</p>
-<a id="more"></a>
-<h1 id="STL中队列-queue-的使用方法"><a href="#STL中队列-queue-的使用方法" class="headerlink" title="STL中队列(queue)的使用方法"></a><font color="#f278">STL中队列(queue)的使用方法</font></h1><h3 id="STL中队列的使用方法-queue"><a href="#STL中队列的使用方法-queue" class="headerlink" title="STL中队列的使用方法(queue)"></a><font style="text-align: 'center'">STL中队列的使用方法(queue)</font></h3><p>基本操作：</p>
-<ul>
-<li>push(x) 将x压入队列的末端</li>
-<li>pop() 弹出队列的第一个元素(队顶元素)，注意此函数并不返回任何值</li>
-<li>front() 返回第一个元素(队顶元素)</li>
-<li>back() 返回最后被压入的元素(队尾元素)</li>
-<li>empty() 当队列为空时，返回true</li>
-<li>size() 返回队列的长度</li>
-</ul>
-<p>使用方法：</p>
-<p>头文件：</p>
-<div class="hljs"><pre><code>#include &lt;queue&gt;
-</code></pre></div><p> 声明方法：<br>1、普通声明</p>
-<div class="hljs"><pre><code>queue&lt;int&gt;q;
-</code></pre></div><p>2、结构体</p>
-<div class="hljs"><pre><code>struct node
-&#123;    
-int x, y;
-&#125;;
-queue&lt;node&gt;q;
-</code></pre></div><h3 id="STL-中优先队列的使用方法-priority-queue"><a href="#STL-中优先队列的使用方法-priority-queue" class="headerlink" title="STL 中优先队列的使用方法(priority_queue)"></a>STL 中<font color="#f278">优先队列</font>的使用方法(priority_queue)</h3><p>&emsp;&emsp;优先队列容器与队列一样，只能从队尾插入元素，从队首删除元素。但是它有一个特性，就是队列中最大的元素总是位于队首，所以出队时，并非按照先进先出的原则进行，而是将当前队列中最大的元素出队。这点类似于给队列里的元素进行了由大互小的顺序排序。元素的比较规则默认按元素值由大到小排序，可以重载“&lt;”操作符来重新定义比较规则。</p>
-<p>基本操作：</p>
-<ul>
-<li><p>empty() 如果队列为空返回真</p>
-</li>
-<li><p>pop() 删除对顶元素</p>
-</li>
-<li><p>push() 加入一个元素</p>
-</li>
-<li><p>size() 返回优先队列中拥有的元素个数</p>
-</li>
-<li><p>top() 返回优先队列对顶元素</p>
-</li>
-</ul>
-<p>在默认的优先队列中，优先级高的先出队。在默认的int型中先出队的为较大的数。</p>
-<p>使用方法：</p>
-<p>头文件：</p>
-<div class="hljs"><pre><code>#include &lt;queue&gt;
-</code></pre></div><p>声明方式：</p>
-<p>1、普通方法：<br>    priority_queue<int>q;   //通过操作，按照元素从大到小的顺序出队<br>    priority_queue<int,vector<int>, greater<int> &gt;q;  //通过操作，按照元素从小到大的顺序出队</p>
-<p>2、自定义优先级：</p>
-<div class="hljs"><pre><code>struct cmp &#123;     
-　　operator bool ()(int x, int y)     
-　　&#123;        
-　　　　 return　x &gt; y; // x小的优先级高       
-        //也可以写成其他方式，如： return p[x] &gt; p[y];表示p[i]小的优先级高
-　　&#125;
-&#125;;
-priority_queue&lt;int, vector&lt;int&gt;, cmp&gt;q;    //定义方法
-//其中，第二个参数为容器类型。第三个参数为比较函数。
-</code></pre></div><p>3、结构体声明方式：</p>
-<div class="hljs"><pre><code>struct node &#123;     
-　　int x, y;     
-　　friend bool operator &lt; (node a, node b)     
-　　&#123;         
-　　　　return a.x &gt; b.x;    //结构体中，x小的优先级高     
-　　&#125;
-&#125;;
-priority_queue&lt;node&gt;q;   //定义方法
-//在该结构中，y为值, x为优先级。
-//通过自定义operator&lt;操作符来比较元素中的优先级。
-//在重载“&lt;”时，最好不要重载“&gt;”，可能会发生编译错误
-</code></pre></div>
+              <p>一. 概念判断法</p>
+<p>公约数只有1的两个数叫做互质数。根据互质数的概念可以对一组数是否互质进行判断。如：9和11的公约数只有1，则它们是互质数。</p>
+<p>二. 规律判断法</p>
+<p>根据互质数的定义，可总结出一些规律，利用这些规律能迅速判断一组数是否互质。</p>
+<p>（1）两个不相同的质数一定是互质数。如：7和11、17和31是互质数。</p>
+<p>（2）两个连续的自然数一定是互质数。如：4和5、13和14是互质数。</p>
+<p>（3）相邻的两个奇数一定是互质数。如：5和7、75和77是互质数。</p>
+<p>（4）1和其他所有的自然数一定是互质数。如：1和4、1和13是互质数。</p>
+<p>（5）两个数中的较大一个是质数，这两个数一定是互质数。如：3和19、16和97是互质数。</p>
+<p>（6）两个数中的较小一个是质数，而较大数是合数且不是较小数的倍数，这两个数一定是互质数。如：2和15、7和54是互质数。</p>
+<p>（7）较大数比较小数的2倍多1或少1，这两个数一定是互质数。如：13和27、13和25是互质数。</p>
+<p>三. 分解判断法</p>
+<p>如果两个数都是合数，可先将两个数分别分解质因数，再看两个数是否含有相同的质因数。如果没有，这两个数是互质数。如：130和231，先将它们分解质因数：130＝2×5×13，231＝3×7×11。分解后，发现它们没有相同的质因数，则130和231是互质数。</p>
+<p>四. 求差判断法</p>
+<p>如果两个数相差不大，可先求出它们的差，再看差与其中较小数是否互质。如果互质，则原来两个数一定是互质数。如：194和201，先求出它们的差，201－194＝7，因7和194互质，则194和201是互质数。</p>
+<p>五. 求商判断法</p>
+<p>用大数除以小数，如果除得的余数与其中较小数互质，则原来两个数是互质数。如：317和52，317÷52＝6……5，因余数5与52互质，则317和52是互质数。</p>
+
             </div>
             <hr>
             <div>
@@ -341,6 +294,13 @@ priority_queue&lt;node&gt;q;   //定义方法
                   </div>
                 
                 
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
               </div>
               
                 <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
@@ -350,18 +310,12 @@ priority_queue&lt;node&gt;q;   //定义方法
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/02/10/%E8%83%8C%E5%8C%85/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">背包九讲(01背包)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/02/02/%E6%8B%AF%E6%95%91%E5%85%AC%E4%B8%BB/">
-                        <span class="hidden-mobile">拯救公主</span>
+                      <a href="/2021/02/18/%E6%95%B0%E5%AD%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="hidden-mobile">数学学习的思考</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -640,7 +594,7 @@ priority_queue&lt;node&gt;q;   //定义方法
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "STL队列&nbsp;",
+        "判断互质数的五种方法&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 70,
