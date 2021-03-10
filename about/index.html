@@ -262,9 +262,20 @@
            "
            
         >
-          <i class="iconfont icon-wechat-fill" aria-hidden="true"></i>
+          <i class="iconfont icon-qq-fill" aria-hidden="true"></i>
           
-            <img class="qr-img" src="/img/weixin.png" srcset="/img/loading.gif" alt="qrcode" />
+            <img class="qr-img" src="/img/qq.jpg" srcset="/img/loading.gif" alt="qrcode" />
+          
+        </a>
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://weibo.com/5081919928/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" class="
+           hint--bottom hint--rounded"
+           aria-label=WeiBo
+        >
+          <i class="iconfont icon-weibo-fill" aria-hidden="true"></i>
           
         </a>
       
@@ -272,7 +283,39 @@
   </div>
 </div>
 <div class="mt-5 markdown-body">
-  <h3 id="随便说说"><a href="#随便说说" class="headerlink" title="随便说说"></a>随便说说</h3><p>&emsp;&emsp;bulabualbualabula,我还没说完bulabualbulabula。</p>
+  <h3 id="随便说说"><a href="#随便说说" class="headerlink" title="随便说说"></a>随便说说</h3><!-- &emsp;&emsp;bulabualbualabula,我还没说完bulabualbulabula。 -->
+<center>
+<div class='count'></div>
+</center>
+
+  <script>
+      window.onload = function () {
+          countDown();
+          function addZero(i) {
+              return i < 10 ? "0" + i: i + "";
+          }
+          function countDown() {
+              var nowtime = new Date();
+              var endtime = new Date("2021/12/26,8:30:00");
+              var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
+              var d = parseInt(lefttime / (24*60*60))
+              var h = parseInt(lefttime / (60 * 60) % 24);
+              var m = parseInt(lefttime / 60 % 60);
+              var s = parseInt(lefttime % 60);
+              d = addZero(d)
+              h = addZero(h);
+              m = addZero(m);
+              s = addZero(s);
+              document.querySelector(".count").innerHTML = `距离考研还剩  ${d}天 ${h} 时 ${m} 分 ${s} 秒`;
+              if (lefttime <= 0) {
+                  document.querySelector(".count").innerHTML = "考研加油！";
+                  return;
+              }
+              setTimeout(countDown, 1000);
+            }
+        }
+    </script>
+
 <style>
 hr.style{ 
     width:80%;
@@ -284,6 +327,8 @@ hr.style{
 </style>
 
 <hr class = "style">
+
+
 
 <h3 id="说点什么"><a href="#说点什么" class="headerlink" title="说点什么"></a>说点什么</h3><p>  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div><br>  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script></p>
