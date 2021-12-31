@@ -220,7 +220,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      419 字
+      319 字
     </span>
   
 
@@ -230,7 +230,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      5
        分钟
     </span>
   
@@ -355,25 +355,7 @@ section .section_item:hover a {
 
 </style>
 
-
-  <!-- <section>
-        <div class="section_item">
-            <div class="a">Before.</div>
-            <div class="a">Before.</div>
-            <a class="btn" href="" title="title">六级</a>
-        </div>
-        <div class="section_item">
-            <div class="a">Now.</div>
-            <div class="a">Now.</div>
-            <a class="btn" href="" title="title">六级</a>
-        </div>
-        <div class="section_item">
-            <div class="a">After.</div>
-            <div class="a">After.</div>
-            <a class="btn" href="" title="title">六级</a>
-        </div>
-</section> -->
-<div class = "Photo">
+<p><div class = "Photo"></p>
 <center>
     <p class="count"></p>
     <img src = "https://cdn.jsdelivr.net/gh/Wulnut/Figure/img/Top-2.jpg" alt = "photo" />
@@ -386,61 +368,6 @@ section .section_item:hover a {
 一旦你决定好职业，你必须全心投入工作中，你必须爱你的工作，千万不要有怨言，你必须穷尽一生磨练技能，
 这就是成功的秘诀，也是让大家尊敬你的关键。
 </center>
-</div>
-
-
-  <script>
-      window.onload = function () {
-          countDown();
-          function addZero(i) {
-              return i < 10 ? "0" + i: i + "";
-          }
-          function countDown() {
-              var nowtime = new Date();
-              var endtime = new Date("2021/12/26,8:30:00");
-              var lefttime = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);
-              var d = parseInt(lefttime / (24*60*60))
-              var h = parseInt(lefttime / (60 * 60) % 24);
-              var m = parseInt(lefttime / 60 % 60);
-              var s = parseInt(lefttime % 60);
-              d = addZero(d)
-              h = addZero(h);
-              m = addZero(m);
-              s = addZero(s);
-              document.querySelector(".count").innerHTML = `距离考研还剩  ${d}天 ${h} 时 ${m} 分 ${s} 秒`;
-              if (lefttime <= 0) {
-                  document.querySelector(".count").innerHTML = "考研加油！";
-                  return;
-              }
-              setTimeout(countDown, 1000);
-            }
-        }
-    </script>
-
-
-
-
-<script>
-$(window).resize(function () {
-    resizeList();
-
-})
-
-function resizeList(){
-    var s_width=$(window).width();
-        //console.log("s_width:"+s_width);
-        if(s_width>600 && s_width <=1280)
-        {
-            $(".list-table1 li").css("width","25%");
-        }else if(s_width>400 && s_width <=600){
-            $(".list-table1 li").css("width","33.3%");
-        }else if(s_width>200 && s_width <=400){
-            $(".list-table1 li").css("width","50%");
-        }else if(s_width<=200){
-             $(".list-table1 li").css("width","100%");
-        }
-}
-</script>
             </div>
             <hr>
             <div>
