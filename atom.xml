@@ -6,7 +6,7 @@
   <link href="https://www.wulnut.top/atom.xml" rel="self"/>
   
   <link href="https://www.wulnut.top/"/>
-  <updated>2021-02-19T07:53:17.296Z</updated>
+  <updated>2022-01-01T01:53:19.806Z</updated>
   <id>https://www.wulnut.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021</title>
+    <link href="https://www.wulnut.top/2021/12/31/2021%E6%80%BB%E7%BB%93/"/>
+    <id>https://www.wulnut.top/2021/12/31/2021%E6%80%BB%E7%BB%93/</id>
+    <published>2021-12-31T14:50:45.241Z</published>
+    <updated>2022-01-01T01:53:19.806Z</updated>
+    
+    <content type="html"><![CDATA[<p>2021总结<br><a id="more"></a></p><h1 id="序-简述一下这一年"><a href="#序-简述一下这一年" class="headerlink" title="序-简述一下这一年"></a>序-简述一下这一年</h1><p>&nbsp;&nbsp;2021年是关键一年，因为我选择了考研。正因我从年初选择了考研，这一年我一开始想想必是单一而枯燥的一年，但是到年终我才发现我只猜中了开始但是没有猜中结尾。</p><p>我记得我在刚去自习室的时候发现，自习室厕所窗户前有课水杉，我当时就想起来高中毕业的时候有个老兄发了四张教室窗户前水杉四个季节的照片，印象特别深刻也正应为这个我也决定用这种方法来记录一下生活，</p><p>我也用这种方法记录了这9个月来的生活。我本以为学习见坚持的过程是很痛苦的，但是我有一群志同道合的朋友这使我减轻了不少的压力。但是我在学习中好方法的保持上还是没能做到一如既往，这确实我的一个遗憾。</p><p>正因为这群朋友让我对每个月的月底感到非常的期待，因为我们可以一起出去吃烧烤也是我感到最为放松的时候。</p><p>&nbsp;&nbsp;这一年下来最痛苦的时期也是最让我成长的时期我觉得应该就是考前的三个月的那段时间，因为那段时间查漏补缺问题层次不穷的冒出来，也导致了自己状态的起伏，心态的变化也在那个时期最为频繁。</p><p>“焦虑”算是那段时间的关键词吧，睡不着见，吃不进饭，学习效率底下，基本上都是焦虑的基本病状。这也要我逐渐失去了把题目做对的信心。</p><h1 id="有的放矢"><a href="#有的放矢" class="headerlink" title="有的放矢"></a>有的放矢</h1><p>&nbsp;&nbsp;有的放矢这四个字应该是我这一路下来领悟最深的成语。因为在最后几个月里面我真真真切切的明白了人的精力是有限的。也正因为感觉自己可以抓住整个面，但是到最后每个点都很平庸。在适当的时候放弃，</p><p>并不会影响整个事情的发展，反而会有好的结果。但是对我来说要是能做到这点只有我想明白放过自己才能做到，不然我就会感到不甘心，觉得自己还是能全都要，但是实际上这对我来说是种非常愚蠢的想法。</p><h1 id="蚌埠住了"><a href="#蚌埠住了" class="headerlink" title="蚌埠住了"></a>蚌埠住了</h1><p>&nbsp;&nbsp;最后一个月的背书应该是我以后再也忘不掉的记忆了，真的是太痛苦了。每天晚睡早起，躲到人少的隔间里背书，我本以为我早点开始记忆可以缓解冲刺阶段的压力，但是实际并没有什么作用，每天需要背诵的东西基本上</p><p>不可能完成自己的任务，而我确没有意识到这个问题，这也使我在冲刺的时候埋下了隐患，直接导致了直到考试前一天知识我还没背完。再加上不让别的学科状态下滑，就得额外抽出时间来弥补这些可能出现的问题。</p><p>不过这也是个普遍的现象，坚持不下去的也在最后这段时间摆烂了。真的太不容易了，如果要我再来一次我感觉我真的坚持不下去。</p><p>未完待续…..</p><!-- # 心态&nbsp;&nbsp;心态起伏是我考试那几天最有感触的东西，从感觉良好，到心态爆炸，再到自信满满。真的是在短暂的两天里经历了人生的大起大落。考试的时候 -->]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;2021总结&lt;br&gt;</summary>
+    
+    
+    
+    <category term="day" scheme="https://www.wulnut.top/categories/day/"/>
+    
+    
+    <category term="回忆" scheme="https://www.wulnut.top/tags/%E5%9B%9E%E5%BF%86/"/>
+    
+    <category term="杂谈" scheme="https://www.wulnut.top/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>判断互质数的五种方法</title>
@@ -411,27 +434,6 @@
     
     
     <category term="回忆，杂谈" scheme="https://www.wulnut.top/tags/%E5%9B%9E%E5%BF%86%EF%BC%8C%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>快速幂</title>
-    <link href="https://www.wulnut.top/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
-    <id>https://www.wulnut.top/2020/04/01/%E5%BF%AB%E9%80%9F%E5%B9%82/</id>
-    <published>2020-04-01T09:10:36.287Z</published>
-    <updated>2020-09-17T10:34:24.191Z</updated>
-    
-    <content type="html"><![CDATA[<p>快快快~</p><a id="more"></a><h1 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h1><p>问题描述：</p><p>&emsp;&emsp;求$A^B$的最后三位数的整数。</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>如果我们直接通过循环的方法来解决我们会发现</p><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= power; ++ i) &#123;            result = result * base;      &#125;        <span class="hljs-keyword">return</span> result % <span class="hljs-number">1000</span>;&#125;</code></pre><p>如果给出$base = 2$ $power = 100$ 的时候我们就就会发现函数$f(x) = a^{b}$是一个指数函数后期的增长速度是非常快的所以我们需要对此进行优化。</p><h3 id="取模运算"><a href="#取模运算" class="headerlink" title="取模运算"></a>取模运算</h3><p>取模运算有以下 性质：</p><ol><li><p>$(a + b)\%c = ((a\%c) + (b\%c))\%c$</p></li><li><p>$(a \times b)\%c = ((a\%c) \times (b\%c))\%c$</p></li><li><p>$(a - b)\%c = ((a\%c)-(b\%c))\%c$</p><p>总成依据话就是，在取模运算的时候我们在中间过程每次都取模，在得出答案之后我们再取一次模。</p><p>我们通过性质性质2来优化我们的代码：</p><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i &lt;= power; ++ i) &#123;        result *= base;        result %= <span class="hljs-number">1000</span>;    &#125;    <span class="hljs-keyword">return</span> result % <span class="hljs-number">1000</span>;&#125;</code></pre><p>通过这样的运算优化，我们发现这种取模运算中如果我们中间进行取模的话是可以防止出现溢出的情况的。</p></li></ol><h2 id="快速幂-1"><a href="#快速幂-1" class="headerlink" title="快速幂"></a>快速幂</h2><p>&emsp;&emsp;快速幂算法能帮我们算出指数非常大的幂，传统的求幂算法之所以时间复杂度非常高（为O(指数n)），就是因为当指数n非常大的时候，需要执行的循环操作次数也非常大。所以我们快速幂算法的核心思想就是每一步都把指数分成两半，而相应的底数做平方运算。这样不仅能把非常大的指数给不断变小，所需要执行的循环次数也变小，而最后表示的结果却一直不会变。从而达到快速计算的目的。</p><p>例如：</p><p>$3^{10} = 3\times3\times3\times3\times3\times3\times3\times3\times3\times3$</p><p>我们可以尽可能的将其指数降下来，来简化运算。</p><p>$3^{10} = (3\times3)\times(3\times3)\times(3\times3)\times(3\times3)\times(3\times3)$</p><p>$3^{10} = (3\times3)^5$</p><p>其实这种方法也在平常也是十分常见的，比如我们向计算$2^4$我们肯定不会一个一个的乘$2$我们一般都会去直接计算$4\times4$从而快速的计算出结果，其实两者的关系是一样的。</p><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> base, <span class="hljs-keyword">int</span> power)</span> </span>&#123;    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = base;        whlie (power &gt; <span class="hljs-number">0</span>) &#123;        <span class="hljs-keyword">if</span> (power % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;            <span class="hljs-comment">//如果指数为偶数</span>            power /= <span class="hljs-number">2</span>;<span class="hljs-comment">//把指数缩小为一半</span>            base = base * base % <span class="hljs-number">1000</span>;<span class="hljs-comment">//底数变大成原来的平方</span>        &#125; <span class="hljs-keyword">else</span> &#123;             <span class="hljs-comment">//如果指数为奇数</span>            power = power - <span class="hljs-number">1</span>;<span class="hljs-comment">//把指数减去1，使其变成一个偶数</span>            result = result * base % <span class="hljs-number">1000</span>;<span class="hljs-comment">//此时记得要把指数为奇数时分离出来的底数的一次方收集好</span>            power /= <span class="hljs-number">2</span>;<span class="hljs-comment">//此时指数为偶数，可以继续执行操作</span>            base = base * base % <span class="hljs-number">1000</span>;        &#125;    &#125;        <span class="hljs-keyword">return</span> result;&#125;</code></pre><h2 id="最终优化"><a href="#最终优化" class="headerlink" title="最终优化"></a>最终优化</h2><p>&emsp;&emsp;我们知到判断奇偶性除了使用 $\%$看其余数是否为$0$ $or$ $1$来进行判断之外，我们还可以通过位运算来进行计算，例如：power&amp;1。因为如果power为偶数，则其二进制表示的最后一位一定是0；如果power是奇数，则其二进制表示的最后一位一定是1。将他们分别与1的二进制做“与”运算，得到的就是power二进制最后一位的数字了，是0则为偶数，是1则为奇数。例如5是奇数，则5&amp;1=1；而6是偶数，则6&amp;1=0；因此奇偶数的判断就可以用“位运算”来替换了。</p><p>&emsp;&emsp;同样对于除以$2$的运算我们也可以使用位运算来进行优化power /= 2可以使用右移power = power &gt;&gt; 1实现，右移动1就是除以2，如果右移2就是除以4，同理左移就是乘，左移1就是乘以2左移2就是乘以4；</p><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> base, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> power)</span> </span>&#123;    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">1</span>;    <span class="hljs-keyword">while</span> (power &gt; <span class="hljs-number">0</span>) &#123;        <span class="hljs-keyword">if</span> (power &amp; <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//此处等价于if(power%2==1)</span>            result = result * base % <span class="hljs-number">1000</span>;        &#125;        power &gt;&gt;= <span class="hljs-number">1</span>;<span class="hljs-comment">//此处等价于power=power/2</span>        base = (base * base) % <span class="hljs-number">1000</span>;    &#125;    <span class="hljs-keyword">return</span> result;&#125;</code></pre><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>求$m^k$ $\% $ $p$ 时间复杂度为$O(logk)$</p><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> p)</span> </span>&#123;    <span class="hljs-keyword">int</span> res = <span class="hljs-number">1</span> % p, t = m;        <span class="hljs-keyword">while</span> (k) &#123;                <span class="hljs-comment">//如果为奇数</span>        <span class="hljs-keyword">if</span> (k &amp;  <span class="hljs-number">1</span>) res = res * t % p;                t = t * t % p;        k &gt;&gt; <span class="hljs-number">1</span>;    &#125;        <span class="hljs-keyword">return</span> res;&#125;</code></pre>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;快快快~&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="study" scheme="https://www.wulnut.top/categories/study/"/>
-    
-    
-    <category term="C++" scheme="https://www.wulnut.top/tags/C/"/>
     
   </entry>
   
