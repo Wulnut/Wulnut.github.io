@@ -548,7 +548,7 @@ os.makedirs(<span class="hljs-string">&#x27;d:\hello\hi&#x27;</span>) <span clas
 <span class="hljs-comment">#  则os.mkdir(&#x27;d:\hello\hi&#x27;)  #  仍然正常</span></code></pre></div>
 <h2 id="自动积分框架"><a href="#自动积分框架" class="headerlink" title="自动积分框架"></a>自动积分框架</h2><!-- 不错的博客：https://www.cnblogs.com/yanqiang/p/12771928.html -->
 <p>grad_fn: 记录的是创建该张量时所用的方法</p>
-<p>例如：\<MulBackward0>、\<AddBackward0>、\<MeanBackward1>等等</p>
+<p>例如：MulBackward0、AddBackward0、MeanBackward1等等</p>
 <h2 id="matplotlib基础用法"><a href="#matplotlib基础用法" class="headerlink" title="matplotlib基础用法"></a>matplotlib基础用法</h2><h3 id="Matplotlib-绘图基础"><a href="#Matplotlib-绘图基础" class="headerlink" title="Matplotlib 绘图基础"></a>Matplotlib 绘图基础</h3><h4 id="xlim-和ylim-在Matplotlib种设置轴的限制"><a href="#xlim-和ylim-在Matplotlib种设置轴的限制" class="headerlink" title="xlim()和ylim()在Matplotlib种设置轴的限制"></a>xlim()和ylim()在Matplotlib种设置轴的限制</h4><p>&emsp;&emsp;<code>matplotlib.pyplot.xlim()</code>和<code>matplotlib.pyplot.ylim()</code>可用于分别设置或获取 X 轴和 Y 轴的</p>
 <p>范围限制。如果在这些方法中传递参数，则它们将设置各个轴的极限，如果不传递任何参数，则将获得各个轴的范围。例如</p>
 <p>绘制$\sin(2 \pi x) + 1$的图像。</p>
@@ -702,11 +702,6 @@ plt.show()</code></pre></div>
 <tr>
 <td><code>&#39;d&#39;</code></td>
 <td>thin_diamond marker</td>
-</tr>
-<tr>
-<td>`’</td>
-<td>‘`</td>
-<td>vline marker</td>
 </tr>
 <tr>
 <td><code>&#39;_&#39;</code></td>
