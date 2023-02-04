@@ -193,7 +193,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/openwrt%E6%8E%A7%E5%88%B6%E5%8F%B0.png') no-repeat center center;
+         style="background: url('https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/openwrt%E6%8E%A7%E5%88%B6%E5%8F%B0.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -273,11 +273,11 @@
 <p>方式：旁路由。旁路由准确来说是旁路网关，也就说在整个家庭网络环境中，我们通过统一更改设备网关来达到目的。</p>
 <h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><h3 id="主路由"><a href="#主路由" class="headerlink" title="主路由"></a>主路由</h3><p>对于一些路由器厂商例如华为、荣耀、TP-Link需要设置WAN网口我们用荣耀路由器为例</p>
 <ol>
-<li><p>首先去荣耀路由器关闭WAN/LAN自动识别： 在更多功能-系统设置<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/honor1.png" srcset="/img/loading.gif" alt="设置WAN口"></p>
+<li><p>首先去荣耀路由器关闭WAN/LAN自动识别： 在更多功能-系统设置<br><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/honor1.png" srcset="/img/loading.gif" alt="设置WAN口"></p>
 </li>
-<li><p>然后关闭荣耀路由的DHCP功能：更多设置-网络设置-局域网-关闭DHCP<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/honor2.png" srcset="/img/loading.gif" alt="关闭DHCP"></p>
+<li><p>然后关闭荣耀路由的DHCP功能：更多设置-网络设置-局域网-关闭DHCP<br><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/honor2.png" srcset="/img/loading.gif" alt="关闭DHCP"></p>
 </li>
-<li><p>如果你家是电信的宽带，一般会分配ipv6地址给你，我想你都点开这篇博客了肯定是想用旁路由干点啥，我建议你关闭ipv6，因为这可能会对你的openwrt旁路由产生影响<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/honor3.png" srcset="/img/loading.gif" alt="关闭ipv6"></p>
+<li><p>如果你家是电信的宽带，一般会分配ipv6地址给你，我想你都点开这篇博客了肯定是想用旁路由干点啥，我建议你关闭ipv6，因为这可能会对你的openwrt旁路由产生影响<br><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/honor3.png" srcset="/img/loading.gif" alt="关闭ipv6"></p>
 </li>
 </ol>
 <p>好到这里你的主路由已经设置好了然后我们再来设置旁路由</p>
@@ -331,17 +331,17 @@
 </tbody>
 </table>
 </div>
-<h4 id="固件选择"><a href="#固件选择" class="headerlink" title="固件选择"></a>固件选择</h4><p><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/openwrt.png" srcset="/img/loading.gif" alt="openwrt固件"></p>
+<h4 id="固件选择"><a href="#固件选择" class="headerlink" title="固件选择"></a>固件选择</h4><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/openwrt.png" srcset="/img/loading.gif" alt="openwrt固件"></p>
 <p>我们会发现很多固件不知道选择哪个一个，我们只需要关注ext4和squashfs这两个版本就够了。ext4代表可以使用swap进行空间交换，</p>
 <p>适合一些内存比较的设备，可以扩容一些存储空间给内存提升性能，但是没有重置系统的功能。squashfs代表可以进行系统重置也就是恢复出厂设置。</p>
 <p>然后有个factory.img和sysupgrade。factory.img就是我们需要刷写的系统，sysupgrade是当内核更新时系统升级的版本。</p>
 <h4 id="设置旁路有"><a href="#设置旁路有" class="headerlink" title="设置旁路有"></a>设置旁路有</h4><p>我们把树莓派插到路由器上</p>
 <p>主路由器(192.168.3.1)—-&gt;树莓派网关(192.168.3.2)</p>
-<p>设置openwrt 网络-接口-基本设置<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/openwrt2.png" srcset="/img/loading.gif" alt="openwrt设置"></p>
+<p>设置openwrt 网络-接口-基本设置<br><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/openwrt2.png" srcset="/img/loading.gif" alt="openwrt设置"></p>
 <p>设置传输协议为静态地址，ip地址要和主路由在一个网段内，子网掩码设置默认，ipv4网关设置为主路由的ipv4地址，和ipv6相关设置全部关闭。</p>
 <p><strong>这里有个坑需要注意</strong>,我们设置好这些最好填写一些自定义DNS服务器比如：114.114.114.114。这是为了防止出现在路由器终端内ping的通公网ip但是</p>
 <p>ping不通域名的尴尬情况。</p>
-<p>在高级设置内打开动态DHCP和强制、开机自运行、强制链路，物理设置内关闭桥接、接口选择eth0就行了。最后就保存并运用<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/openwrt3.png" srcset="/img/loading.gif" alt="openwrt设置"></p>
+<p>在高级设置内打开动态DHCP和强制、开机自运行、强制链路，物理设置内关闭桥接、接口选择eth0就行了。最后就保存并运用<br><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/openwrt3.png" srcset="/img/loading.gif" alt="openwrt设置"></p>
 <p>最后需要设置防火墙，在自定义规则内填入</p>
 <div class="hljs"><pre><code class="hljs shell">iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE</code></pre></div>
 <p>重启防火墙即可。</p>
@@ -355,8 +355,8 @@
 <p>然后设置好动态DNS后，设置端口转发时就会发现我们无论怎么设置都不能通过网址访问除了openwrt以外的所有设备，这可能就是我最开始说的</p>
 <p>旁路由相对独特的网络的特点。我们就需要先在主路由上设置端口转发给openwrt然后我们再通过openwrt上的端口转发再进行转发到相应的设备端口上。</p>
 <p>有人可能会有疑问我们需不需要设置openwrt防火墙里面的转发为接受，我测试的结果是不需要，无论是拒绝和接受都不影响。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/openwrt4.png" srcset="/img/loading.gif" alt="主路由设置"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/openwrt5.png" srcset="/img/loading.gif" alt="旁路由设置"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/openwrt4.png" srcset="/img/loading.gif" alt="主路由设置"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/openwrt5.png" srcset="/img/loading.gif" alt="旁路由设置"></p>
 <p>对了，可能你为了省事打开了DMZ服务，那你可能会面临一个问题，你可能会无法从域名访问你的设备，具体为什么我也不太清楚。</p>
 <h2 id="最最后"><a href="#最最后" class="headerlink" title="最最后"></a>最最后</h2><p>可能会有人担心树莓派的行能问题，目前来说我通过梯子上网，开启的有广告过滤，smartDNS，DDNS，基本上每天的cpu性能使用率不到2%。家里的设备大概是</p>
 <p>8台300M的网速基本无压力，可以大胆放心使用。</p>
@@ -602,7 +602,7 @@
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-        <p>copyright &copy 2019-2022</p>
+        <p>copyright &copy 2019-2023</p>
         <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
         <i class="iconfont icon-love"></i>
         <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>

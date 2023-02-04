@@ -193,7 +193,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/CMake%E7%BC%96%E8%AF%91.jpg') no-repeat center center;
+         style="background: url('https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/CMake%E7%BC%96%E8%AF%91.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -264,7 +264,7 @@
             
             <div class="markdown-body" id="post-body">
               <p>踩坑记录<br><a id="more"></a></p>
-<p>事情是这样的这两天我准备搭一个CLion的远程开发环境来给我的毕业设计做一下准备，在配置Toolchains的时候因为是一个远程环境。<br>需要确认远程主机上是否有相应的开发环境。<br><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" alt=""><br>大概就是上图那个样子，我的树莓派上没有CMake所以就有了后来的这些坑。</p>
+<p>事情是这样的这两天我准备搭一个CLion的远程开发环境来给我的毕业设计做一下准备，在配置Toolchains的时候因为是一个远程环境。<br>需要确认远程主机上是否有相应的开发环境。<br><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/%E8%BF%9C%E7%A8%8B%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" alt=""><br>大概就是上图那个样子，我的树莓派上没有CMake所以就有了后来的这些坑。</p>
 <h1 id="第一个问题"><a href="#第一个问题" class="headerlink" title="第一个问题"></a>第一个问题</h1><p>&nbsp;&nbsp;当时忘记截图了，大概就是我通过<code>bootstrap</code>引导<code>cmake</code>安装的时候报了一个它找不到openssl和openssl所对应的库。</p>
 <p>我当时第一反应以为是我的机器上没有装openssl然后我就尝试用了一下<code>openssl version</code>的命令看看能不能有结果。</p>
 <p>发现嘿！我机器上有这玩意，然后我以为是我的版本太低了，网上有些帖子也有这种观点。我就尝试去更行一下openssl。</p>
@@ -273,7 +273,7 @@
 <h1 id="第二个问题"><a href="#第二个问题" class="headerlink" title="第二个问题"></a>第二个问题</h1><p>&nbsp;&nbsp;当然CMake的报错还给了我另一条路可以选，就是编译的时候忽略<code>openssl</code>，提示是-DCMAKE_USE_OPENSSL=OFF，我试了一下是不是在使用bootstrap命令的时候后面加一句，发现这样没什么卵用，又因为是CMake的编译是由CMakeList.txt控制的和makefile差不多，想是不是改CMakeList.txt来实现。</p>
 <p>就在CMakeList.txt的头部加上set(CMAKE_USE_OPENSSL OFF)然后再试一下bootstrap命令，唉!就成了然后就是一些基本流程。</p>
 <p>还有个很重要的问题，我的机器是树莓派编译CMake的时间长大概编译了快两个小时，所以性能差的设备就被干等了。乘早挂在那里睡觉吧。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Wulnut/Figure//img/CMake%E7%BC%96%E8%AF%91.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/CMake%E7%BC%96%E8%AF%91.jpg" srcset="/img/loading.gif" alt=""></p>
 <p>不要学我在那傻等。</p>
 <h1 id="第三个问题"><a href="#第三个问题" class="headerlink" title="第三个问题"></a>第三个问题</h1><p>&nbsp;&nbsp;当我把CMake配置好之后，我准备把CLion的最后一部分配置完成一切都正常，但是还是有个问题就是CLion找不到gmake。</p>
 <p>gamke其实就是make，因为在别的平台上面make这个名词一直被占用就叫做gmake了这个相对来说好解决，只需要建立一个链接就好了。</p>
@@ -537,7 +537,7 @@ ln -s make gamke</code></pre></div>
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-        <p>copyright &copy 2019-2022</p>
+        <p>copyright &copy 2019-2023</p>
         <a href="https://www.wulnut.top/" target="_blank" rel="nofollow noopener"><b>Wulnut</b></a>
         <i class="iconfont icon-love"></i>
         <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>fluid</b></a>
