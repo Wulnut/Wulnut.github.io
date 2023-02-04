@@ -193,7 +193,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/js_index.jpg') no-repeat center center;
+         style="background: url('https://fastly.jsdelivr.net/gh/Wulnut/Figure/img/js_index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -312,9 +312,9 @@
 <p>一个简单的demo，从各个CDN上引用了2个CSS3个JS，在body里面创建了1000个li。通过调整外部引用资源的位置和加入相关的属性利用chrome的Timeline进行验证。</p>
 <h2 id="放置在内"><a href="#放置在内" class="headerlink" title="放置在内"></a>放置在<head>内</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure/img/2699686611-57c6929ae4e60_articlex.jpg" srcset="/img/loading.gif" alt=""><br>异步加载资源，但会阻塞<code>&lt;body&gt;</code>的渲染会出现白屏，按照顺序立即执行脚本</p>
 <h2 id="3-3-放置在底部"><a href="#3-3-放置在底部" class="headerlink" title="3.3 放置在底部"></a>3.3 放置在<body>底部</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure/img/2025377632-57c692a8e1d80_articlex.jpg" srcset="/img/loading.gif" alt=""><br>异步加载资源，等<body>中的内容渲染完毕后且加载完按顺序执行JS</p>
-<h2 id="3-3-放置在头部并使用async"><a href="#3-3-放置在头部并使用async" class="headerlink" title="3.3 放置在头部并使用async"></a>3.3 放置在<head>头部并使用async</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/1609828464-57c692b36943c_articlex.jpg" srcset="/img/loading.gif" alt=""><br>异步加载资源，且加载完JS资源立即执行，并不会按顺序，谁快谁先上</p>
-<h2 id="3-4-放置在头部并使用defer"><a href="#3-4-放置在头部并使用defer" class="headerlink" title="3.4 放置在头部并使用defer"></a>3.4 放置在<head>头部并使用defer</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/3039840796-57c692be0062f_articlex.jpg" srcset="/img/loading.gif" alt=""><br>异步加载资源，在DOM渲染后之后再按顺序执行JS</p>
-<h2 id="3-5-放置在头部并同时使用async和defer"><a href="#3-5-放置在头部并同时使用async和defer" class="headerlink" title="3.5 放置在头部并同时使用async和defer"></a>3.5 放置在<head>头部并同时使用async和defer</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure//img/3802019618-57c692c9d447e_articlex.jpg" srcset="/img/loading.gif" alt=""><br>表现和async一致，开了个脑洞，把这两个属性交换一下位置，看会不会有覆盖效果，结果发现是一致的 = =、</p>
+<h2 id="3-3-放置在头部并使用async"><a href="#3-3-放置在头部并使用async" class="headerlink" title="3.3 放置在头部并使用async"></a>3.3 放置在<head>头部并使用async</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure/img/1609828464-57c692b36943c_articlex.jpg" srcset="/img/loading.gif" alt=""><br>异步加载资源，且加载完JS资源立即执行，并不会按顺序，谁快谁先上</p>
+<h2 id="3-4-放置在头部并使用defer"><a href="#3-4-放置在头部并使用defer" class="headerlink" title="3.4 放置在头部并使用defer"></a>3.4 放置在<head>头部并使用defer</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure/img/3039840796-57c692be0062f_articlex.jpg" srcset="/img/loading.gif" alt=""><br>异步加载资源，在DOM渲染后之后再按顺序执行JS</p>
+<h2 id="3-5-放置在头部并同时使用async和defer"><a href="#3-5-放置在头部并同时使用async和defer" class="headerlink" title="3.5 放置在头部并同时使用async和defer"></a>3.5 放置在<head>头部并同时使用async和defer</h2><p><img src="https://fastly.jsdelivr.net/gh/Wulnut/Figure/img/3802019618-57c692c9d447e_articlex.jpg" srcset="/img/loading.gif" alt=""><br>表现和async一致，开了个脑洞，把这两个属性交换一下位置，看会不会有覆盖效果，结果发现是一致的 = =、</p>
 <p>综上，在webkit引擎下，建议的方式仍然是把<code>&lt;script&gt;</code>写在<code>&lt;body&gt;</code>底部，如果需要使用百度谷歌分析或者不蒜子等独立库时可以使用async属性，若你的<code>&lt;script&gt;</code>标签必须写在<code>&lt;head&gt;</code>头部内可以使用defer属性</p>
 <h1 id="4-兼容性"><a href="#4-兼容性" class="headerlink" title="4. 兼容性"></a>4. 兼容性</h1><p>那么，同时写上的原因是什么呢，兼容性?</p>
 <p>上caniuse，async在IE&lt;=9时不支持，其他浏览器OK；defer在IE&lt;=9时支持但会有bug，其他浏览器OK；现象在这个issue里有描述，这也就是“望远镜”里建议只有一个defer的原因。所以两个属性都指定是为了在async不支持的时候启用defer，但defer在某些情况下还是有bug。</p>
