@@ -193,7 +193,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162229663-269157985.webp') no-repeat center center;
+         style="background: url('https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162229663-269157985.webp') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -270,20 +270,20 @@
 <blockquote>
 <p>(块地址)mod(cache中的块数)</p>
 </blockquote>
-<p>&emsp;&emsp;一个内存块地址始终映射到一个固定的Cache 地址。下图中主存被分为了0-2047个内存块，缓存块或者说cache line有16块。那么第0，16，n*16块因为mod16都为0，所以他们对应到的Cache行号都为0。如果我们要访问第16号内存块(内存块从0开始计数的)，只要它在缓存块里面，那么它必定是在0号缓存块，也就是行号为0.<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162229663-269157985.webp" srcset="/img/loading.gif" alt=""></p>
-<p>&emsp;&emsp;知道了映射方法，那么如何规定主存地址呢？其实对于取模运算，我们只需要取低位字节就可以了。在十进制里面如果对16取余，那么结果定是两位数以内，并且不会大于15。比如说Cache有16行，16是2的4次方，那么我们就可以直接取主存块号的低四位作为Cache行号。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162127959-1713738037.webp" srcset="/img/loading.gif" alt=""></p>
-<p>&emsp;&emsp;17对应的cache行号就是1.但当我们读取某一个缓存行时，我们怎么知道他是0块群的还是其他块群的呢？其实正如主存块号中包含了Cache行号一样，其低四位之前的高位就可以作为区分的Tag(主存标记)使用。最后一点就是，CPU读取数据只是要读取它需要的字(Word)而已，那么这个字具体是在Cache line的哪里，我们还需要一个偏移量来纪录它。所以直接映射的主存地址应该由三部分组成：主存子块标记，Cache子块标记，字块内地址。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162153262-921590979.webp" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;一个内存块地址始终映射到一个固定的Cache 地址。下图中主存被分为了0-2047个内存块，缓存块或者说cache line有16块。那么第0，16，n*16块因为mod16都为0，所以他们对应到的Cache行号都为0。如果我们要访问第16号内存块(内存块从0开始计数的)，只要它在缓存块里面，那么它必定是在0号缓存块，也就是行号为0.<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162229663-269157985.webp" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;知道了映射方法，那么如何规定主存地址呢？其实对于取模运算，我们只需要取低位字节就可以了。在十进制里面如果对16取余，那么结果定是两位数以内，并且不会大于15。比如说Cache有16行，16是2的4次方，那么我们就可以直接取主存块号的低四位作为Cache行号。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162127959-1713738037.webp" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;17对应的cache行号就是1.但当我们读取某一个缓存行时，我们怎么知道他是0块群的还是其他块群的呢？其实正如主存块号中包含了Cache行号一样，其低四位之前的高位就可以作为区分的Tag(主存标记)使用。最后一点就是，CPU读取数据只是要读取它需要的字(Word)而已，那么这个字具体是在Cache line的哪里，我们还需要一个偏移量来纪录它。所以直接映射的主存地址应该由三部分组成：主存子块标记，Cache子块标记，字块内地址。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162153262-921590979.webp" srcset="/img/loading.gif" alt=""></p>
 <blockquote>
 <p>现在我们来自己动手做一做：假设数据在主存和Cache间的传送单位为512B，Cache大小为$2^{13}$B，主存大小为$2^{20}$B。</p>
 </blockquote>
-<p>&emsp;&emsp;因为主存大小为$2^{20}$B,且以512B为传送单位。那么$2^{20}$B=2048块$ \times $512B/块，主存可以划分为2048块，主存地址为20位二进制数。因为我们需要确定要取的是块中的哪个字，又$512=2^9$，所以需要9位作为偏移量，或者说字块内地址。 Cache可以划分出16行($2^{13}$=16行 $\times$ 512B/行)，也就是说划出4位作为行号标记，或者说Cache字块地址。剩下的7位自然就作为主存字块标记啦。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162153262-921590979.webp" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;因为主存大小为$2^{20}$B,且以512B为传送单位。那么$2^{20}$B=2048块$ \times $512B/块，主存可以划分为2048块，主存地址为20位二进制数。因为我们需要确定要取的是块中的哪个字，又$512=2^9$，所以需要9位作为偏移量，或者说字块内地址。 Cache可以划分出16行($2^{13}$=16行 $\times$ 512B/行)，也就是说划出4位作为行号标记，或者说Cache字块地址。剩下的7位自然就作为主存字块标记啦。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162153262-921590979.webp" srcset="/img/loading.gif" alt=""></p>
 <p>优缺点：</p>
 <ul>
 <li>电路实现简单，命中时间短</li>
 <li>无需考虑替换问题</li>
 <li>Cache的存储空间没有得到充分使用，命中率低</li>
 </ul>
-<h2 id="全相联映射"><a href="#全相联映射" class="headerlink" title="全相联映射"></a>全相联映射</h2><p>&emsp;&emsp;针对直接映射Cache空间利用率低的问题，我们有一种简单粗暴的办法提升空间的利用率。那就是主存中的任意一块都可以映射到Cache中的任意一个位置。有空位置你就坐下，随意，映射位置不在固定。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162153262-921590979.webp" srcset="/img/loading.gif" alt=""></p>
+<h2 id="全相联映射"><a href="#全相联映射" class="headerlink" title="全相联映射"></a>全相联映射</h2><p>&emsp;&emsp;针对直接映射Cache空间利用率低的问题，我们有一种简单粗暴的办法提升空间的利用率。那就是主存中的任意一块都可以映射到Cache中的任意一个位置。有空位置你就坐下，随意，映射位置不在固定。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162153262-921590979.webp" srcset="/img/loading.gif" alt=""></p>
 <p>&emsp;&emsp;那么我们唯一要做的就是知道Cache中是对应主存中的哪一块和字块内地址就行。因为是随便映射，所以我们把直接映射中的Cache字块标记合并到主存字块标记中。</p>
 <p><code>全相联映射主存地址只有两部分：主存字块标记，字块内地址。</code></p>
 <p>优缺点：</p>
@@ -295,12 +295,12 @@
 <blockquote>
 <p>Cache组号=主存块号 mod Cache组数</p>
 </blockquote>
-<p><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162251696-1669819464.webp" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162251696-1669819464.webp" srcset="/img/loading.gif" alt=""></p>
 <p>&emsp;&emsp;那么问题来了怎么确定Cache中的字块是对应主存的那一块呢？首先我们仍需要字块内地址，需要区分组号，那么剩下的地址就可以作为主存字块标记使用。</p>
 <blockquote>
 <p>容量为64块的Cache，采用组相联方式映像，字块大小为128字，每4块为一组。若主存容量为4096块，且以字编址，那么主存地址该如何划分？</p>
 </blockquote>
-<p>&emsp;&emsp;因为$4096=2^{19}$，所以主存地址应该为19位，Cache总共有16组，所以需要4位确定组号。又字块大小为$128$字，$128=2^7$，所有字块内地址为7位，剩下的$19-7-4=8$位作为主存字块标记。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img/1932912-20200702162305856-386316918.webp" srcset="/img/loading.gif" alt=""></p>
+<p>&emsp;&emsp;因为$4096=2^{19}$，所以主存地址应该为19位，Cache总共有16组，所以需要4位确定组号。又字块大小为$128$字，$128=2^7$，所有字块内地址为7位，剩下的$19-7-4=8$位作为主存字块标记。<br><img src="https://wulnut-blog.oss-cn-shanghai.aliyuncs.com/blog-img1932912-20200702162305856-386316918.webp" srcset="/img/loading.gif" alt=""></p>
 <p>优缺点：</p>
 <ul>
 <li>电路较简单，速度较快，命中率较高，属于比较理想的方式</li>
